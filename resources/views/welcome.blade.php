@@ -140,7 +140,7 @@
 <footer class="bg-white">
     <div class="container mx-auto  px-8">
 
-        <div class="w-full flex flex-col md:flex-row py-6">
+        <div class="w-full flex flex-col md:flex-row py-6 pb-3">
 
             <div class="flex-1 mb-6">
 
@@ -210,7 +210,8 @@
         </div>
     </div>
 
-    <a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500">Background vector created by freepik - www.freepik.com</a>
+    <p class="text-gray-700 text-center py-3">Copyright © 2020 Inkybot, Dofus® is a trademark of Ankama © 2020<br>
+        Inkybot is not in any way affiliated with Ankama SAS.</p>
 
 </footer>
 

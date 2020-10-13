@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class FeatureCard extends Component
 {
+    public $icon = "";
     public $tags = [];
 
     /**
@@ -13,8 +14,9 @@ class FeatureCard extends Component
      *
      * @param array $tags
      */
-    public function __construct(array $tags=[])
+    public function __construct($icon="", array $tags=[])
     {
+        $this->icon = $icon;
         $this->tags = $tags;
     }
 

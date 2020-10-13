@@ -8,7 +8,7 @@
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <x-feature-card>
+        <x-feature-card icon="expand">
             <x-slot name="title">
                 OCR Data Gathering
             </x-slot>
@@ -16,40 +16,40 @@
             using powerful OCR technologies. This ensures complete undetectability and stability throughout dofus updates.
         </x-feature-card>
 
-        <x-feature-card>
+        <x-feature-card icon="mouse-pointer">
             <x-slot name="title">
                 Human-like Behavior
             </x-slot>
             Simulating mouse and keyboard strokes makes the bot indistinguishable from human players.
         </x-feature-card>
 
-        <x-feature-card>
+        <x-feature-card icon="sync">
             <x-slot name="title">
                 Regular updates
             </x-slot>
             Inkybot is under active development and will continue to be improved long after the official release.
-            We want to make maging with Inkybot better than maging by yourself in every way - for you and for us!
+            We play Dofus too, so we want to make maging with Inkybot better than maging by yourself in every way - for you and for us!
         </x-feature-card>
 
-        <x-feature-card>
+        <x-feature-card icon="comments">
             <x-slot name="title">
                 Community
             </x-slot>
-            Let's build Inkybot together! We listen and encourage suggestions on how we can improve our service through Discord.
+            Let's build Inkybot together! We listen and encourage suggestions on how we can improve our services. Join our Discord server now!
         </x-feature-card>
 
-        <x-feature-card :tags="['in development']">
-            <x-slot name="title">
-                Notifications
-            </x-slot>
-            Be notified when you complete a lengthy mage.
-        </x-feature-card>
-
-        <x-feature-card :tags="['in development']">
+        <x-feature-card icon="code" :tags="['in development']">
             <x-slot name="title">
                 Advanced API
             </x-slot>
             Our API is a developer's dream and caters to scripters. We take active input from all scripters for it!
+        </x-feature-card>
+
+        <x-feature-card icon="bell" :tags="['in development']">
+            <x-slot name="title">
+                Notifications
+            </x-slot>
+            Receive notifications for special events that may occur during maging, for instance finishing an item mage.
         </x-feature-card>
 
     </div>
