@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     -->
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
-    <!--Replace with your tailwind.css once created-->
+    <!--Replace with your tailwind.sass once created-->
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 

@@ -1,16 +1,19 @@
-<section class="bg-gray-100 py-8">
+<section class="bg-gray-100 py-8 pb-12">
 
 
 
-    <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
+    <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
 
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Pricing</h1>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-        <h2 class="w-full my-2 text-xl leading-tight text-center text-gray-800">! Pricing is subject to change until the official release</h2>
-
-
+        <h2 class="w-full my-2 text-xl leading-tight text-center text-gray-800">
+            Inkybot is currently <strong>free</strong> to use for everyone.
+            Purchasing subscription before the official release is still very much appreciated.<br>
+            Your subscription will be activated once the pre-release period ends - perhaps with some added benefits.<br>
+            Thank you for your support.
+        </h2>
 
         <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
 
@@ -72,6 +75,8 @@
 
         </div>
     </div>
+
+    <h3 class="w-full my-2 leading-tight text-center text-gray-800">* Features are currently in development and are not yet available</h3>
 
 
 </section>

@@ -13,35 +13,36 @@
                 OCR Data Gathering
             </x-slot>
             Data is collected by taking a screenshot of the client and parsing necessary information
-            using powerful OCR technologies.
+            using powerful OCR technologies. This ensures complete undetectability and stability throughout dofus updates.
         </x-feature-card>
 
         <x-feature-card>
             <x-slot name="title">
                 Human-like Behavior
             </x-slot>
-            Simulating mouse and keyboard strokes makes Inkybot indistinguishable from humans.
+            Simulating mouse and keyboard strokes makes the bot indistinguishable from human players.
         </x-feature-card>
 
         <x-feature-card>
             <x-slot name="title">
-                Easy to use
+                Regular updates
             </x-slot>
-            The client was made to feel like you instantly could set it up. It's easy to understand and use even for new botters.
+            Inkybot is under active development and will continue to be improved long after the official release.
+            We want to make maging with Inkybot better than maging by yourself in every way - for you and for us!
         </x-feature-card>
 
         <x-feature-card>
             <x-slot name="title">
                 Community
             </x-slot>
-            Our staff is actively developing Inkybot and we listen to your suggestions.
+            Let's build Inkybot together! We listen and encourage suggestions on how we can improve our service through Discord.
         </x-feature-card>
 
         <x-feature-card :tags="['in development']">
             <x-slot name="title">
                 Notifications
             </x-slot>
-            Our bot will notify you when completing a mage.
+            Be notified when you complete a lengthy mage.
         </x-feature-card>
 
         <x-feature-card :tags="['in development']">

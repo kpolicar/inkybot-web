@@ -13,8 +13,8 @@
     <!-- Font Awesome if you need it
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     -->
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
-    <!--Replace with your tailwind.css once created-->
+    <link rel="stylesheet" href="css/app.css">
+    <!--Replace with your tailwind.sass once created-->
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
@@ -27,35 +27,6 @@
         .bg-gray-200 {
             background: #EFEFEF
         }
-
-        svg.mouse-animated .right-click {
-            -webkit-animation: right-clicking ease-in 5s infinite;
-            animation: right-clicking ease-in 5s infinite;
-        }
-
-        @-webkit-keyframes right-clicking {
-            0%,
-            50%,
-            100% {
-                fill: #ea3970;
-            }
-            25%,
-            75% {
-                fill: #282828;
-            }
-        }
-
-        @keyframes right-clicking {
-            0%,
-            50%,
-            100% {
-                fill: #ea3970;
-            }
-            25%,
-            75% {
-                fill: #282828;
-            }
-        }
     </style>
 
 </head>
@@ -63,92 +34,11 @@
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
 
 <!--Nav-->
-<nav id="header" class="fixed w-full z-30 top-0 text-white">
-
-    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
-
-        <div class="pl-4 flex items-center">
-            <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"  href="#">
-                <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34">
-                    <rect class="fill-current" x="0" y="31" width="31" height="3" transform="matrix(1,0,0,1,0,0)" />
-                    <path transform="translate(3 0)" d="M 25.875 0.0625 C 7.531 0.0625 8.78125 11.4375 8.78125 11.4375 C 8.2290994 12.246696 7.6995693 13.046426 7.25 13.84375 C 7.2192731 13.898245 7.1865288 13.94563 7.15625 14 L 4 14 A 1.0001 1.0001 0 0 0 3.90625 14 A 1.001098 1.001098 0 0 0 3.5 15.90625 L 3 16 C 1.343 16 0 17.344 0 19 L 0 23 C 0 24.656 1.343 26 3 26 L 13 26 C 14.657 26 16 24.656 16 23 L 16 19 C 16 17.344 14.657 16 13 16 L 12.46875 15.875 A 1.0001 1.0001 0 0 0 12 14 L 8.78125 14 C 9.3768313 12.98664 10.046844 11.978044 10.8125 10.96875 C 10.850157 10.925536 10.924518 10.804345 10.96875 10.75 C 11.312321 10.305889 11.682667 9.871631 12.0625 9.4375 C 12.206935 9.262417 12.364614 9.0972071 12.53125 8.90625 C 14.065329 7.2428175 15.90652 5.6997788 18.0625 4.40625 C 16.2125 6.10525 13.15425 9.5635 11.65625 12.1875 C 14.10025 12.4015 17.5465 11.016 19.9375 9 C 19.3975 8.939 16.875 8.48475 16.125 7.84375 C 17.563 7.95975 19.95325 7.97425 20.90625 7.90625 C 22.84525 6.47025 25.063 3.0785 25.875 0.0625 z"/>
-                </svg> INKYBOT
-                <small class="text-sm uppercase">Beta</small>
-            </a>
-        </div>
-
-        <div class="block lg:hidden pr-4">
-            <button id="nav-toggle" class="flex items-center p-1 text-orange-800 hover:text-gray-900">
-                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-            </button>
-        </div>
-
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-            <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                <li class="mr-3">
-                    <a class="toggleColour inline-block py-2 px-4 text-white font-bold no-underline" href="#">Home</a>
-                </li>
-                <li class="mr-3">
-                    <a class="toggleColour inline-block text-white no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Download</a>
-                </li>
-                <li class="mr-3">
-                    <a class="toggleColour inline-block text-white no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Discord</a>
-                </li>
-                <li class="mr-3">
-                    <a class="toggleColour inline-block text-white no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Login</a>
-                </li>
-            </ul>
-            <button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">Sign up</button>
-        </div>
-    </div>
-
-    <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
-</nav>
-
-
+@include('partials.nav')
 
 
 <!--Hero-->
-<div class="pt-24">
-
-    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-        <!--Left Col-->
-        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p class="uppercase tracking-loose w-full">The Dofus 2.0 Maging bot</p>
-            <h1 class="my-4 text-5xl font-bold leading-tight">Customize your items the way you want</h1>
-            <p class="leading-normal text-2xl mb-8">Tell us what stats you want on your items and we'll do the rest.</p>
-
-
-
-            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">Download</button>
-
-        </div>
-        <!--Right Col-->
-        <div class="w-full md:w-3/5 py-6 text-center">
-            <img class="w-full md:w-4/5 z-50" src="hero.png">
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="relative -mt-12 lg:-mt-24">
-    <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
-                <path d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z" opacity="0.100000001"></path>
-                <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
-            </g>
-            <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                <path d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"></path>
-            </g>
-        </g>
-    </svg>
-</div>
-
-
+@include('partials.hero')
 
 <section class="bg-white border-b py-8">
     <div class="container max-w-5xl mx-auto m-8">
