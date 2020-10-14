@@ -24,7 +24,7 @@
                     <a class="inline-block py-2 px-4 font-bold no-underline" href="/">Home</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Discord</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
                 </li>
                 <li class="mr-3">
                     @auth
