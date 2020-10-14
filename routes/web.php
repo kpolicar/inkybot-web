@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
+Route::get('/profile', function (Request $request) {
+    $message = $action = "";
+    if (!optional($request->user())->hasVerifiedEmail()) {
+        $message = "Please verify your email address to complete registration.";
+        $action = 'partials.resend-verification';
+    } elseif ($request->get('verified')) {
+        $message = "You have successfully verified your email.";
+    }
+    return view('profile')
+        ->with(compact('message', 'action'));
 });
 
 Route::get('/nav', function () {

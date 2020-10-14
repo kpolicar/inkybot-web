@@ -19334,6 +19334,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./nav */ "./resources/js/nav.js");
 
+document.querySelector("#notification-close").addEventListener('click', function () {
+  document.querySelector("#notification").style.display = "none";
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

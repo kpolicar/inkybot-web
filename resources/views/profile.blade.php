@@ -77,12 +77,22 @@
         <!--Right Col-->
         <div class="flex flex-col w-full md:w-2/5 justify-center items-center text-center md:text-right md:items-end">
             <p class="uppercase tracking-loose w-full">The Dofus 2.0 Maging bot</p>
-            <h1 class="my-4 text-5xl font-bold leading-tight">Association</h1>
-            <p class="leading-normal text-2xl mb-8">You are subscribed until 21/10/2020</p>
+            <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
+            <p class="leading-normal text-2xl mb-8">
+                @subscribed
+                    You are subscribed until {{ Auth::user()->subscribed_to }}
+                @else
+                    You are not subscribed
+                @endsubscribed
+            </p>
 
-
-
-            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">Extend subscription</button>
+            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+                @subscribed
+                    Extend subscription
+                @else
+                    Purchase subscription
+                @endsubscribed
+            </button>
 
         </div>
 
@@ -178,6 +188,10 @@
 @include('partials.engage')
 
 @include('partials.footer')
+
+@if ($message)
+    @include('partials.notification')
+@endif
 
 </body>
 
