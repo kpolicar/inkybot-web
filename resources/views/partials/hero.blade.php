@@ -1,5 +1,4 @@
 <div class="pt-24">
-
     <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <div class="flex flex-col w-full justify-center items-start text-center md:text-left lg:py-24 pb-40 pt-5"
              style="background: url('hero.png') right bottom no-repeat; background-size: contain">

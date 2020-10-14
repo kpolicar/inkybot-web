@@ -19,19 +19,13 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 </head>
 
-<body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+<body class="leading-normal tracking-normal text-white bg-white" style="font-family: 'Source Sans Pro', sans-serif;">
 
-@include('partials.nav')
+<div class="gradient">
+    @include('partials.nav')
 
-@include('partials.hero')
-
-@include('partials.features')
-
-@include('partials.pricing')
-
-@include('partials.engage')
-
-@include('partials.footer')
+    @include('partials.register-hero')
+</div>
 
 </body>
 

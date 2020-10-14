@@ -3,3 +3,12 @@
 @tailwind utilities;
 
 @import "fontawesome";
+
+
+.gradient {
+    background: linear-gradient(90deg, #15181d 0%, #5b5b5b 100%);
+}
+
+.bg-gray-200 {
+    background: #EFEFEF
+}

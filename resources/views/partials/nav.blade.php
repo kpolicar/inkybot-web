@@ -21,16 +21,33 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4 font-bold no-underline" href="#">Home</a>
+                    <a class="inline-block py-2 px-4 font-bold no-underline" href="/">Home</a>
                 </li>
                 <li class="mr-3">
                     <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Discord</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Login</a>
+                    @auth
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="/profile">Profile</a>
+                    @endauth
+
+                    @guest
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('login') }}">Login</a>
+                    @endguest
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Sign up</a>
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <input type="submit"
+                                   value="Sign out"
+                                   class="bg-transparent cursor-pointer inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="/logout" />
+                        </form>
+                    @endauth
+
+                    @guest
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="/register">Sign up</a>
+                    @endguest
                 </li>
             </ul>
             <button id="navAction" class="mx-auto lg:mx-0 lg:ml-2 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">Download</button>
