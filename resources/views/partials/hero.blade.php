@@ -1,20 +1,14 @@
 <div class="pt-24">
 
     <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-        <!--Left Col-->
-        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <p class="uppercase tracking-loose w-full">The Dofus 2.0 Maging bot</p>
-            <h1 class="my-4 text-5xl font-bold leading-tight">Customize your items the way you want</h1>
-            <p class="leading-normal text-2xl mb-8">Tell us what stats you want on your items and we'll do the rest.</p>
-
-
-
-            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">Download</button>
-
-        </div>
-        <!--Right Col-->
-        <div class="w-full md:w-3/5 py-6 text-center">
-            <img class="w-full md:w-4/5 z-50" src="hero.png">
+        <div class="flex flex-col w-full justify-center items-start text-center md:text-left lg:py-24 pb-40 pt-5"
+             style="background: url('hero.png') right bottom no-repeat; background-size: contain">
+            <div class="w-full lg:w-2/5">
+                <p class="uppercase tracking-loose w-full">The Dofus 2.0 Maging bot</p>
+                <h1 class="my-4 text-5xl font-bold leading-tight">Customize your items the way you want</h1>
+                <p class="leading-normal text-2xl mb-8">Tell us what stats you want on your items and we'll do the rest.</p>
+                <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">Download</button>
+            </div>
         </div>
 
     </div>

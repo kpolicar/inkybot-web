@@ -28,7 +28,7 @@
                 Regular updates
             </x-slot>
             Inkybot is under active development and will continue to be improved long after the official release.
-            We play Dofus too, so we want to make maging with Inkybot better than maging by yourself in every way - for you and for us!
+            We play Dofus too, so we are committed to make maging with Inkybot better than maging by yourself in every way - for you and for us!
         </x-feature-card>
 
         <x-feature-card icon="comments">

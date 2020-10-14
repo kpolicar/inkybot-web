@@ -13,24 +13,24 @@
         </div>
 
         <div class="block lg:hidden pr-4">
-            <button id="nav-toggle" class="flex items-center p-1 text-orange-800 hover:text-gray-900">
+            <button id="nav-toggle" class="flex items-center p-1 text-gray-900 hover:text-gray-800">
                 <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
             </button>
         </div>
 
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
                 <li class="mr-3">
-                    <a class="toggleColour inline-block py-2 px-4 text-white font-bold no-underline" href="#">Home</a>
+                    <a class="inline-block py-2 px-4 font-bold no-underline" href="#">Home</a>
                 </li>
                 <li class="mr-3">
-                    <a class="toggleColour inline-block text-white no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Discord</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Discord</a>
                 </li>
                 <li class="mr-3">
-                    <a class="toggleColour inline-block text-white no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Login</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Login</a>
                 </li>
                 <li class="mr-3">
-                    <a class="toggleColour inline-block text-white no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Sign up</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="#">Sign up</a>
                 </li>
             </ul>
             <button id="navAction" class="mx-auto lg:mx-0 lg:ml-2 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">Download</button>
