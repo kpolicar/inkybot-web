@@ -9,7 +9,7 @@
     </button>
 @else
     <a class="mx-auto cursor-pointer lg:mx-0 hover:underline gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg"
-        href="/register">
+        href="{{ route('register') }}">
         Sign up
     </a>
 @endif

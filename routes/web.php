@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\PaypalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +33,4 @@ Route::get('/profile', function (Request $request) {
 
 Route::get('/nav', function () {
     return view('nav');
-});
-
-Route::get('/register', function () {
-    return view('register');
 });

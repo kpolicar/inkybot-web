@@ -46,7 +46,7 @@
                     @endauth
 
                     @guest
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="/register">Sign up</a>
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('register') }}">Sign up</a>
                     @endguest
                 </li>
             </ul>
