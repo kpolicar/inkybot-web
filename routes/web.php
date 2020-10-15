@@ -27,10 +27,19 @@ Route::get('/profile', function (Request $request) {
     } elseif ($request->get('verified')) {
         $message = "You have successfully verified your email.";
     }
+
     return view('profile')
         ->with(compact('message', 'action'));
 });
 
 Route::get('/nav', function () {
     return view('nav');
+});
+
+Route::get('/subscribe', function (Request $request) {
+    //$intent = $request->user()->createSetupIntent();
+    $intent = '';
+
+    return view('subscribe')
+        ->with(compact('message', 'action', 'intent'));
 });

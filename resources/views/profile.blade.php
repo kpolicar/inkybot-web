@@ -23,7 +23,6 @@
 
 @include('partials.nav')
 
-
 <!--Hero-->
 <div class="pt-24">
 
@@ -45,13 +44,14 @@
                 @endsubscribed
             </p>
 
-            <a href="#pricing" class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+
+            <button class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                 @subscribed
                     Extend subscription
                 @else
                     Purchase subscription
                 @endsubscribed
-            </a>
+            </button>
 
         </div>
 
@@ -114,7 +114,7 @@
                         </div>
                         <div class="md:w-3/5">
                             <input class="form-input block w-full focus:bg-white bg-gray-200 rounded p-2 text-gray-700 focus:text-gray-800"
-                                   id="name" name="email" type="email" value="{{ Auth::user()->email }}">
+                                   id="email" name="email" type="email" value="{{ Auth::user()->email }}">
                             <p class="py-2 text-sm text-gray-600">your email is used for password recovery</p>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                         Your token is linked to your account.</p>
                     <div class="flex">
                         <input class="form-input w-full focus:bg-white bg-gray-200 p-2 text-gray-500 focus:text-gray-800"
-                               id="email" type="text" value="sg7878s4d54g7s6g63s" disabled>
+                               id="discord-token" type="text" value="sg7878s4d54g7s6g63s" disabled>
                         <button class="inline-block text-xs hover:underline gradient text-white font-bold ml-4 rounded mt-2 py-2 px-8 shadow-lg">
                             Regenerate
                         </button>
@@ -251,6 +251,7 @@
 
 </body>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script src="js/app.js"></script>
 
 </html>

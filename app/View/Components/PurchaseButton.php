@@ -3,13 +3,12 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Stripe\PaymentIntent;
 
 class PurchaseButton extends Component
 {
-
     /**
      * Create a new component instance.
-     *
      */
     public function __construct()
     {
