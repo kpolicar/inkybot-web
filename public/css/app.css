@@ -27955,6 +27955,18 @@ readers do not read off random characters that represent icons */
   background: #EFEFEF;
 }
 
+.anchor {
+  padding-top: 53px;
+  margin-top: -53px;
+}
+
+@media (min-width: 1024px) {
+  .anchor {
+    padding-top: 72px;
+    margin-top: -72px;
+  }
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

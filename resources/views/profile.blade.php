@@ -13,51 +13,10 @@
     <!-- Font Awesome if you need it
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     -->
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css">
+    <link rel="stylesheet" href="css/app.css">
     <!--Replace with your tailwind.sass once created-->
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-
-    <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
-    <style>
-        .gradient {
-            background: linear-gradient(90deg, #15181d 0%, #5b5b5b 100%);
-        }
-
-        .bg-gray-200 {
-            background: #EFEFEF
-        }
-
-        svg.mouse-animated .right-click {
-            -webkit-animation: right-clicking ease-in 5s infinite;
-            animation: right-clicking ease-in 5s infinite;
-        }
-
-        @-webkit-keyframes right-clicking {
-            0%,
-            50%,
-            100% {
-                fill: #ea3970;
-            }
-            25%,
-            75% {
-                fill: #282828;
-            }
-        }
-
-        @keyframes right-clicking {
-            0%,
-            50%,
-            100% {
-                fill: #ea3970;
-            }
-            25%,
-            75% {
-                fill: #282828;
-            }
-        }
-    </style>
-
 </head>
 
 <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
@@ -86,13 +45,13 @@
                 @endsubscribed
             </p>
 
-            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+            <a href="#pricing" class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                 @subscribed
                     Extend subscription
                 @else
                     Purchase subscription
                 @endsubscribed
-            </button>
+            </a>
 
         </div>
 
@@ -116,6 +75,99 @@
     </svg>
 </div>
 
+<div id="details" class="anchor"></div>
+
+<section class="bg-white border-b py-8">
+    <div class="container max-w-5xl mx-auto m-8">
+        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Details</h1>
+        <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+                <form action="{{ route('user-profile-information.update') }}#details" method="POST">
+                    @csrf
+                    <input type="hidden" name="_method" value="PUT">
+
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="name">
+                                Display name
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <input class="form-input block w-full focus:bg-white bg-gray-200 rounded p-2 text-gray-700 focus:text-gray-800"
+                                   id="name" name="name" type="text" value="{{ Auth::user()->name }}">
+
+                            @error('name', 'updateProfileInformation')
+                                <p class="text-red-500 text-sm italic">{{ $message }}</p>
+                            @enderror
+
+                            <p class="py-2 text-sm text-gray-600">your name is used for representational purposes</p>
+                        </div>
+                    </div>
+
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="email">
+                                Email
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <input class="form-input block w-full focus:bg-white bg-gray-200 rounded p-2 text-gray-700 focus:text-gray-800"
+                                   id="name" name="email" type="email" value="{{ Auth::user()->email }}">
+                            <p class="py-2 text-sm text-gray-600">your email is used for password recovery</p>
+                        </div>
+                    </div>
+
+                    <hr class="bg-gray-300 my-8">
+
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="password">
+                                New Password
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <input class="@error('password', 'updateProfileInformation') border-red-500 @enderror form-input rounded block w-full focus:bg-white bg-gray-200 p-2 text-gray-700 focus:text-gray-800"
+                                   id="password" name="password" type="text" value="" placeholder="******">
+
+                            @error('password', 'updateProfileInformation')
+                            <p class="text-red-500 text-sm italic">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
+                                Current password
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <input class="@error('current_password', 'updateProfileInformation') border-red-500 @enderror form-input block w-full focus:bg-white bg-gray-200 p-2 text-gray-700 focus:text-gray-800"
+                                   id="current_password" name="current_password" type="text" value="" placeholder="******">
+
+                            @error('current_password', 'updateProfileInformation')
+                            <p class="text-red-500 text-sm italic">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <hr class="bg-gray-300 my-8">
+
+                    <div class="md:flex md:items-center">
+                        <div class="md:w-2/3">
+                            <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+    </div>
+
+</section>
 
 <section class="bg-white border-b py-8">
     <div class="container max-w-5xl mx-auto m-8">
@@ -169,13 +221,17 @@
                     <p class="text-gray-600 mb-1">
                         Post or upvote suggestions on how we can improve our services. The more upvotes a post receives,
                         the higher priority it will be given towards development.</p>
-                    <p class="text-gray-600 mb-8">
-                        Report bugs to earn rewards!</p>
                     <p class="text-gray-600">
+                        Report bugs to earn rewards!</p>
+                    <p class="text-gray-600 font-bold mb-4">
                         Your token is linked to your account.</p>
-                    <p class="text-gray-600 bold">
-                        Token: <strong>sg7878s4d54g7s6g63s</strong></p>
-                    <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">Generate Token</button>
+                    <div class="flex">
+                        <input class="form-input w-full focus:bg-white bg-gray-200 p-2 text-gray-500 focus:text-gray-800"
+                               id="email" type="text" value="sg7878s4d54g7s6g63s" disabled>
+                        <button class="inline-block text-xs hover:underline gradient text-white font-bold ml-4 rounded mt-2 py-2 px-8 shadow-lg">
+                            Regenerate
+                        </button>
+                    </div>
                 </div>
             </div>
 

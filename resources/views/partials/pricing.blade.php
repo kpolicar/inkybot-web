@@ -1,3 +1,4 @@
+<div class="anchor" id="pricing"></div>
 <section class="bg-gray-100 py-8 pb-12">
 
 
@@ -49,7 +50,7 @@
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                     <div class="w-full pt-6 text-4xl font-bold text-center">€5.00 <span class="text-base">/ month</span></div>
                     <div class="flex items-center justify-center">
-                        <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg">Sign Up</button>
+                        <x-purchase-button />
                     </div>
                 </div>
             </div>
@@ -68,7 +69,7 @@
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                     <div class="w-full text-3xl text-gray-600 font-bold text-center">€90</div>
                     <div class="flex items-center justify-center">
-                        <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg">Sign up</button>
+                        <x-purchase-button />
                     </div>
                 </div>
             </div>
