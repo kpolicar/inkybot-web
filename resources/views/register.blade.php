@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Inkybot - Dofus Maging Bot</title>
+    <title>Register - Inkybot - Dofus Maging Bot</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -69,8 +69,10 @@
                     @enderror
                 </div>
             </div>
-            <input class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg cursor-pointer"
-                   type="submit" value="Register">
+            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
+                    type="submit">
+                Register
+            </button>
         </form>
     </x-main-hero>
 
