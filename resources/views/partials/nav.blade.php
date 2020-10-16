@@ -50,7 +50,9 @@
                     @endguest
                 </li>
             </ul>
-            <button id="navAction" class="mx-auto lg:mx-0 lg:ml-2 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">Download</button>
+            <a id="navAction" href="{{ asset('storage/example.exe') }}" class="mx-auto lg:mx-0 lg:ml-2 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
+                Download
+            </a>
         </div>
     </div>
 

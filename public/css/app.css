@@ -3533,6 +3533,10 @@ video {
   background-image: linear-gradient(to top left, var(--gradient-color-stops));
 }
 
+.bg-hero{
+  background-image: url('hero.png');
+}
+
 .from-transparent{
   --gradient-from-color: transparent;
   --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -30971,6 +30975,10 @@ readers do not read off random characters that represent icons */
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
   }
 
+  .sm\:bg-hero{
+    background-image: url('hero.png');
+  }
+
   .sm\:from-transparent{
     --gradient-from-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -52107,6 +52115,10 @@ readers do not read off random characters that represent icons */
 
   .md\:bg-gradient-to-tl{
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
+  }
+
+  .md\:bg-hero{
+    background-image: url('hero.png');
   }
 
   .md\:from-transparent{
@@ -73247,6 +73259,10 @@ readers do not read off random characters that represent icons */
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
   }
 
+  .lg\:bg-hero{
+    background-image: url('hero.png');
+  }
+
   .lg\:from-transparent{
     --gradient-from-color: transparent;
     --gradient-color-stops: var(--gradient-from-color), var(--gradient-to-color, rgba(0, 0, 0, 0));
@@ -94383,6 +94399,10 @@ readers do not read off random characters that represent icons */
 
   .xl\:bg-gradient-to-tl{
     background-image: linear-gradient(to top left, var(--gradient-color-stops));
+  }
+
+  .xl\:bg-hero{
+    background-image: url('hero.png');
   }
 
   .xl\:from-transparent{
