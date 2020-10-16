@@ -38,20 +38,20 @@
             <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
-                    You are subscribed until {{ Auth::user()->subscribed_to }}
+                    You are subscribed until {{ Auth::user()->subscribed_to->format('d/m/Y H:i') }}
                 @else
                     You are not subscribed
                 @endsubscribed
             </p>
 
 
-            <button class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+            <a href="{{ route('subscribe') }}" class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                 @subscribed
                     Extend subscription
                 @else
                     Purchase subscription
                 @endsubscribed
-            </button>
+            </a>
 
         </div>
 
