@@ -99,6 +99,7 @@
             // Gather additional customer data we may have collected in our form.
             var name = form.querySelector('#name');
             var email = form.querySelector('#email');
+            var paymentResponse = example.querySelector('#payment-response');
             var additionalData = {
                 billing_details: {
                     name: name ? name.value : undefined,
@@ -119,8 +120,11 @@
                         .then(result => {
                             example.classList.remove('submitting');
                             example.classList.add('submitted')
-                        }).catch(handleError);
+                            paymentResponse.innerHTML = result.data;
+                        }).catch(response => console.log(response));
                     } else {
+                    console.log("ops1")
+                    console.log(result)
                     // Otherwise, un-disable inputs.
                     enableInputs();
                 }

@@ -3,14 +3,20 @@
         <div class="flex flex-col w-full justify-center items-start text-center md:text-left lg:py-24 pb-40 pt-5"
              style="background: url('hero.png') right bottom no-repeat; background-size: contain">
             <div class="w-full lg:w-2/5 lg:px-0 px-5">
-                <h1 class="my-4 text-3xl font-bold leading-tight">Purchase subscription</h1>
-                <div class="w-full mb-4">
-                    <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
-                </div>
-
-
                 <div id="payment-form" class="stripe-payment-form">
+
+                    <div class="flex flex-col lg:flex-row justify-around items-center loader">
+                        <p class="text-xl my-8">Processing your payment...</p>
+                        <i class="fas fa-spinner fa-spin text-6xl"></i>
+                    </div>
+
                     <form>
+                        <h1 class="my-4 text-3xl font-bold leading-tight">Purchase subscription</h1>
+                        <div class="w-full mb-4">
+                            <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
+                        </div>
+
+
                         <div class="flex flex-wrap -mx-3">
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                 <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -48,15 +54,7 @@
                         </div>
                     </form>
 
-                    <div class="success">
-                        <div class="icon">
-                            <svg width="84px" height="84px" viewBox="0 0 84 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <circle class="border" cx="42" cy="42" r="40" stroke-linecap="round" stroke-width="4" stroke="#000" fill="none"></circle>
-                                <path class="checkmark" stroke-linecap="round" stroke-linejoin="round" d="M23.375 42.5488281 36.8840688 56.0578969 64.891932 28.0500338" stroke-width="4" stroke="#000" fill="none"></path>
-                            </svg>
-                        </div>
-                        <h3 class="title" data-tid="elements_examples.success.title">Payment successful</h3>
-                        <p class="message"><span data-tid="elements_examples.success.message">Thanks for trying Stripe Elements. No money was charged, but we generated a token: </span><span class="token"></span></p>
+                    <div id="payment-response">
                     </div>
                 </div>
             </div>

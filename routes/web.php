@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use Illuminate\Support\Facades\Route;
@@ -46,3 +47,8 @@ Route::get('/subscribe', function (Request $request) {
     return view('subscribe')
         ->with(compact('intent'));
 });
+
+Route::post(
+    'stripe/webhook',
+    [WebhookController::class, 'handleWebhook']
+);

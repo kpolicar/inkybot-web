@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Cashier\Exceptions\IncompletePayment;
+use Stripe\Exception\CardException;
 
 class StripeController extends Controller
 {
@@ -11,14 +13,14 @@ class StripeController extends Controller
         if (!$user->hasStripeId())
             $user->createAsStripeCustomer();
 
-        $payment = $user->charge(500, $paymentId);
-        $payment->validate();
+        try {
+            $user->charge(500, $paymentId);
+        } catch (IncompletePayment $exception) {
+            return response()->view('partials.payment.payment-error', compact('exception'));
+        } catch (CardException $exception) {
+            return response()->view('partials.payment.card-error', compact('exception'));
+        }
 
-        $extendedDate = $user->subscribed_to ?? $user->freshTimestamp();
-        $extendedDate = $extendedDate->maximum($user->freshTimestamp());
-        $extendedDate = $extendedDate->addMonth();
-
-        $user->forceFill(['subscribed_to' => $extendedDate])
-            ->save();
+        return response()->view('partials.payment.success');
     }
 }

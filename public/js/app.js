@@ -19558,6 +19558,7 @@ function checkParent(t, elm) {
 
       var name = form.querySelector('#name');
       var email = form.querySelector('#email');
+      var paymentResponse = example.querySelector('#payment-response');
       var additionalData = {
         billing_details: {
           name: name ? name.value : undefined,
@@ -19575,9 +19576,14 @@ function checkParent(t, elm) {
           axios.post('/pay/subscribe/' + result.paymentMethod.id).then(function (result) {
             example.classList.remove('submitting');
             example.classList.add('submitted');
-          })["catch"](handleError);
+            paymentResponse.innerHTML = result.data;
+          })["catch"](function (response) {
+            return console.log(response);
+          });
         } else {
-          // Otherwise, un-disable inputs.
+          console.log("ops1");
+          console.log(result); // Otherwise, un-disable inputs.
+
           enableInputs();
         }
       })["catch"](handleError);

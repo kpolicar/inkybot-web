@@ -3,6 +3,9 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Laravel\Cashier\Exceptions\PaymentActionRequired;
+use Laravel\Cashier\Exceptions\PaymentFailure;
+use Stripe\Exception\CardException;
 
 class Handler extends ExceptionHandler
 {
@@ -32,6 +35,8 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+        $this->renderable(function (CardException $exception, $request) {
+            return response()->view('errors.card', [], 500);
+        });
     }
 }

@@ -14,10 +14,18 @@
         display: none;
     }
 
-    &:not(.submitted) .success {
-        display: none;
-    }
     &.submitted form {
         display: none;
+    }
+    .loader {
+        display: none;
+    }
+    &.submitting {
+        form {
+            display: none;
+        }
+        .loader {
+            display: block;
+        }
     }
 }
