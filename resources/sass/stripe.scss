@@ -1,0 +1,23 @@
+.stripe-payment-form {
+    .stripe-fields {
+        input, .stripe-field {
+            @apply appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight;
+            @extend .bg-gray-200;
+
+            &:focus {
+                @apply outline-none bg-white border-gray-500;
+            }
+        }
+    }
+
+    .error:not(.visible) {
+        display: none;
+    }
+
+    &:not(.submitted) .success {
+        display: none;
+    }
+    &.submitted form {
+        display: none;
+    }
+}

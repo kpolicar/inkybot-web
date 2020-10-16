@@ -17,6 +17,11 @@
     <!--Replace with your tailwind.sass once created-->
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_51HcdZLDl3uJ5ENdaQX6KQHq8Ap4g4k7gWkdikvPfqw6U2lbnHuERwib5LOUpY0ZQ9IqbxTIvMVDPctHKAYdWkilM00qF8JOnAe');
+    </script>
 </head>
 
 <body class="leading-normal tracking-normal text-white bg-white" style="font-family: 'Source Sans Pro', sans-serif;">
@@ -24,9 +29,8 @@
 <div class="gradient">
     @include('partials.nav')
 
-    @include('partials.register-hero')
+    @include('partials.subscribe-hero')
 </div>
-
 </body>
 
 <script src="js/app.js"></script>

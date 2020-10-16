@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StripeController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use Illuminate\Support\Facades\Route;
@@ -36,10 +37,12 @@ Route::get('/nav', function () {
     return view('nav');
 });
 
+Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe']);
+
 Route::get('/subscribe', function (Request $request) {
     //$intent = $request->user()->createSetupIntent();
     $intent = '';
 
     return view('subscribe')
-        ->with(compact('message', 'action', 'intent'));
+        ->with(compact('intent'));
 });

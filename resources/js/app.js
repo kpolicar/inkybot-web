@@ -1,7 +1,9 @@
 require('./bootstrap');
 require('./nav');
+require('./stripe');
 
-document.querySelector("#notification-close").addEventListener('click', function () {
-    document.querySelector("#notification").style.display = "none";
-})
+
+var notification = document.querySelector("#notification-close")
+if (notification)
+    notification.addEventListener('click', ()=> document.querySelector("#notification").style.display = "none")
 
