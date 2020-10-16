@@ -13,11 +13,7 @@ class WebhookController extends CashierController
     protected function handlePaymentIntentSucceeded(array $payload)
     {
         if ($user = $this->getUserByStripeId($payload['data']['object']['customer'])) {
-            $extendedDate = $user->subscribed_to ?? $user->freshTimestamp();
-            $extendedDate = $extendedDate->maximum($user->freshTimestamp());
-            $extendedDate = $extendedDate->addMonth();
-
-            $user->forceFill(['subscribed_to' => $extendedDate])
+            $user->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate()])
                 ->save();
         }
 

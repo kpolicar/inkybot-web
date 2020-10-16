@@ -48,9 +48,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_subscribed'
     ];
 
-
     public function GetIsSubscribedAttribute() {
         //return false;
         return $this->freshTimestamp()->isBefore($this->subscribed_to);
+    }
+
+    public function ExtendedSubscriptionDate() {
+        $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
+        $extendedDate = $extendedDate->maximum($this->freshTimestamp());
+        return $extendedDate->addMonth();
     }
 }

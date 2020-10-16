@@ -77,7 +77,7 @@
 
             if (_.find(savedErrors, error => error !== null))
                 return;
-            
+
             // Trigger HTML5 validation UI on the form if any of the inputs fail
             // validation.
             var plainInputsValid = true;
