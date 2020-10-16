@@ -19535,7 +19535,10 @@ function checkParent(t, elm) {
     }); // Listen on the form's 'submit' handler...
 
     form.addEventListener('submit', function (e) {
-      e.preventDefault(); // Trigger HTML5 validation UI on the form if any of the inputs fail
+      e.preventDefault();
+      if (_.find(savedErrors, function (error) {
+        return error !== null;
+      })) return; // Trigger HTML5 validation UI on the form if any of the inputs fail
       // validation.
 
       var plainInputsValid = true;
@@ -19567,7 +19570,7 @@ function checkParent(t, elm) {
       };
 
       var handleError = function handleError(error) {
-        console.log(error);
+        example.classList.remove('submitting');
         enableInputs();
       };
 
@@ -19577,14 +19580,9 @@ function checkParent(t, elm) {
             example.classList.remove('submitting');
             example.classList.add('submitted');
             paymentResponse.innerHTML = result.data;
-          })["catch"](function (response) {
-            return console.log(response);
           });
         } else {
-          console.log("ops1");
-          console.log(result); // Otherwise, un-disable inputs.
-
-          enableInputs();
+          handleError();
         }
       })["catch"](handleError);
     });
@@ -19602,26 +19600,25 @@ function checkParent(t, elm) {
   });
   var elementStyles = {
     base: {
-      color: '#000000',
-      fontWeight: 600,
+      color: '#4A5568',
+      fontWeight: 400,
       fontFamily: 'Source Sans Pro", sans-serif',
       fontSize: '16px',
       fontSmoothing: 'antialiased',
+      iconColor: '#4A5568',
       ':focus': {
-        color: '#000000'
+        color: '#4A5568'
       },
       '::placeholder': {
-        color: '#969696'
+        color: '#A3B0C2'
       },
       ':focus::placeholder': {
-        color: '#969696'
+        color: '#A0AEC0'
       }
     },
     invalid: {
+      iconColor: '#9d2020',
       color: '#9d2020',
-      ':focus': {
-        color: '#000000'
-      },
       '::placeholder': {
         color: '#be5252'
       }
@@ -19633,6 +19630,7 @@ function checkParent(t, elm) {
     invalid: 'invalid'
   };
   var cardNumber = elements.create('cardNumber', {
+    showIcon: true,
     style: elementStyles,
     classes: elementClasses
   });

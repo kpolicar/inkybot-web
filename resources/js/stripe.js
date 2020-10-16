@@ -74,6 +74,10 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
 
+
+            if (_.find(savedErrors, error => error !== null))
+                return;
+            
             // Trigger HTML5 validation UI on the form if any of the inputs fail
             // validation.
             var plainInputsValid = true;
@@ -108,7 +112,7 @@
             };
 
             var handleError = function(error) {
-                console.log(error);
+                example.classList.remove('submitting');
                 enableInputs();
             }
 
@@ -121,12 +125,9 @@
                             example.classList.remove('submitting');
                             example.classList.add('submitted')
                             paymentResponse.innerHTML = result.data;
-                        }).catch(response => console.log(response));
+                        });
                     } else {
-                    console.log("ops1")
-                    console.log(result)
-                    // Otherwise, un-disable inputs.
-                    enableInputs();
+                    handleError();
                 }
             }).catch(handleError);
         });
@@ -149,29 +150,28 @@
 
     var elementStyles = {
         base: {
-            color: '#000000',
-            fontWeight: 600,
+            color: '#4A5568',
+            fontWeight: 400,
             fontFamily: 'Source Sans Pro", sans-serif',
             fontSize: '16px',
             fontSmoothing: 'antialiased',
+            iconColor: '#4A5568',
 
             ':focus': {
-                color: '#000000',
+                color: '#4A5568',
             },
 
             '::placeholder': {
-                color: '#969696',
+                color: '#A3B0C2',
             },
 
             ':focus::placeholder': {
-                color: '#969696',
+                color: '#A0AEC0',
             },
         },
         invalid: {
+            iconColor: '#9d2020',
             color: '#9d2020',
-            ':focus': {
-                color: '#000000',
-            },
             '::placeholder': {
                 color: '#be5252',
             },
@@ -185,6 +185,7 @@
     };
 
     var cardNumber = elements.create('cardNumber', {
+        showIcon: true,
         style: elementStyles,
         classes: elementClasses,
     });

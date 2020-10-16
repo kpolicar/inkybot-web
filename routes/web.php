@@ -46,7 +46,7 @@ Route::get('/subscribe', function (Request $request) {
 
     return view('subscribe')
         ->with(compact('intent'));
-});
+})->name('subscribe');
 
 Route::post(
     'stripe/webhook',

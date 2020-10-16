@@ -28000,6 +28000,11 @@ readers do not read off random characters that represent icons */
   display: block;
 }
 
+.btn-color-secondary {
+  background: #D3D3D3;
+  color: #353D4A;
+}
+
 .gradient {
   background: linear-gradient(90deg, #15181d 0%, #5b5b5b 100%);
 }

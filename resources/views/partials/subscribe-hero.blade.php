@@ -16,6 +16,10 @@
                             <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
                         </div>
 
+                        <p class="text-gray-400 text-base my-4 mb-8">
+                            An issue with your card has occurred while trying to process your request.
+                        </p>
+
 
                         <div class="flex flex-wrap -mx-3">
                             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -41,8 +45,8 @@
                             </div>
                         </div>
 
-                        <input class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg cursor-pointer"
-                               type="submit" value="Pay">
+                        <input class="mx-auto lg:mx-0 hover:underline font-bold rounded my-6 py-4 px-8 shadow-lg cursor-pointer uppercase btn-color-secondary w-full"
+                               type="submit" value="Pay 5€">
 
                         <div class="error" role="alert">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">

@@ -7,11 +7,15 @@ use Stripe\PaymentIntent;
 
 class PurchaseButton extends Component
 {
+    public $route;
+
     /**
      * Create a new component instance.
+     * @param string $route
      */
-    public function __construct()
+    public function __construct(string $route)
     {
+        $this->route = $route;
     }
 
     /**
