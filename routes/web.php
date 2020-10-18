@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/profile', function (Request $request) {
     $message = $action = "";
@@ -32,11 +32,7 @@ Route::get('/profile', function (Request $request) {
 
     return view('profile')
         ->with(compact('message', 'action'));
-});
-
-Route::get('/nav', function () {
-    return view('nav');
-});
+})->name('profile');
 
 Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe']);
 

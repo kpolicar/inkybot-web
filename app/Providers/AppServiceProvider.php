@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Url;
 use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -32,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         if (config('app.env') == 'production') {
-            URL::forceScheme('https');
+            \URL::forceScheme('https');
         }
     }
 }
