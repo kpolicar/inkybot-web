@@ -27,6 +27,9 @@
                     <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
                 </li>
                 <li class="mr-3">
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('release', ['version' => 'latest']) }}">Help</a>
+                </li>
+                <li class="mr-3">
                     @auth
                         <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('profile') }}">Profile</a>
                     @endauth

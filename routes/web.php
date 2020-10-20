@@ -47,8 +47,7 @@ Route::post(
     [WebhookController::class, 'handleWebhook']
 );
 
-Route::get('/release/{version}', function (ClientVersion $versions, $version) {
-
+Route::get('/release/{version?}', function (ClientVersion $versions, $version) {
     $versionDetails = $version == "latest" ?
         $versions->latest() :
         $versions->firstWhere('code', $version);
