@@ -18,9 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/version', function (Request $request) {
+Route::get('/', function () {
     return [
         'name' => "v0.1 Beta",
-        'number' => 2,
+        'endpoint' => "v0.1beta",
+        'number' => 3,
     ];
 });
