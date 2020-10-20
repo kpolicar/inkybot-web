@@ -34,7 +34,8 @@ Route::get('/profile', function (Request $request) {
         ->with(compact('message', 'action'));
 })->name('profile');
 
-Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe']);
+Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
+    ->middleware('verified');
 
 Route::get('/subscribe', function (Request $request) {
     //$intent = $request->user()->createSetupIntent();
@@ -42,7 +43,7 @@ Route::get('/subscribe', function (Request $request) {
 
     return view('subscribe')
         ->with(compact('intent'));
-})->name('subscribe');
+})->name('subscribe')->middleware('verified');
 
 Route::post(
     'stripe/webhook',

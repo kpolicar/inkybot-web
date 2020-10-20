@@ -17,5 +17,6 @@
     Your payment has been processed successfully. Your subscription should be added to your account in a few moments.
 </p>
 <p class="text-gray-200 text-sm mt-5">
-    In the event that you do not receive your subscription, but have paid the amount, send us an email at <strong>support@inkybot.me</strong>
+    In the event that you do not receive your subscription, but have paid the amount, send us an email at
+    <a href="mailto:payment@inkybot.me" class="font-bold">payment@inkybot.me</a>
 </p>

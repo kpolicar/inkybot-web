@@ -196,15 +196,9 @@
                         the higher priority it will be given towards development.</p>
                     <p class="text-gray-600">
                         Report bugs to earn rewards!</p>
-                    <p class="text-gray-600 font-bold mb-4">
-                        Your token is linked to your account.</p>
-                    <div class="flex">
-                        <input class="form-input w-full focus:bg-white bg-gray-200 p-2 text-gray-500 focus:text-gray-800"
-                               id="discord-token" type="text" value="sg7878s4d54g7s6g63s" disabled>
-                        <button class="inline-block text-xs hover:underline gradient text-white font-bold ml-4 rounded mt-2 py-2 px-8 shadow-lg">
-                            Regenerate
-                        </button>
-                    </div>
+                    <a href="https://discord.gg/ueutfe8" target="_blank" class="inline-block hover:underline gradient text-white font-bold rounded mt-3 py-2 px-8 shadow-lg">
+                        Join now
+                    </a>
                 </div>
             </div>
 
