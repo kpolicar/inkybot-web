@@ -46,7 +46,7 @@
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="w-full pt-6 text-4xl font-bold text-center">€5.00 <span class="text-base">/ month</span></div>
+                    <div class="w-full pt-6 text-4xl font-bold text-center">€5 <span class="text-base">/ month</span></div>
                     <div class="flex items-center justify-center">
                         <x-purchase-button route="{{ route('subscribe') }}" />
                     </div>
