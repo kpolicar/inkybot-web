@@ -28004,6 +28004,10 @@ readers do not read off random characters that represent icons */
   display: block;
 }
 
+html {
+  background: white;
+}
+
 .btn-color-secondary {
   background: #D3D3D3;
   color: #353D4A;

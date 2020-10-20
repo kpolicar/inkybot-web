@@ -5,6 +5,10 @@
 @import "fontawesome";
 @import "stripe";
 
+html {
+    background: white;
+}
+
 .btn-color-secondary {
     background: #D3D3D3;
     color: #353D4A;
@@ -15,7 +19,7 @@
 }
 
 .bg-gray-200 {
-    background: #EFEFEF
+    background: #EFEFEF;
 }
 
 .anchor {

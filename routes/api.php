@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/client-version', function (Request $request) {
+Route::get('/version', function (Request $request) {
     return [
         'name' => "v0.1 Beta",
         'number' => 2,
