@@ -1,5 +1,6 @@
 <?php
 
+use App\ClientVersion;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
@@ -38,14 +39,21 @@ Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe']
     ->middleware('verified');
 
 Route::get('/subscribe', function (Request $request) {
-    //$intent = $request->user()->createSetupIntent();
-    $intent = '';
-
-    return view('subscribe')
-        ->with(compact('intent'));
+    return view('subscribe');
 })->name('subscribe')->middleware('verified');
 
 Route::post(
     'stripe/webhook',
     [WebhookController::class, 'handleWebhook']
 );
+
+Route::get('/release/{version}', function (ClientVersion $versions, $version) {
+
+    $versionDetails = $version == "latest" ?
+        $versions->latest() :
+        $versions->firstWhere('code', $version);
+    $view = $versionDetails['number'] ?? abort(404);
+
+    return view("release.$view");
+})->name('release');
+
