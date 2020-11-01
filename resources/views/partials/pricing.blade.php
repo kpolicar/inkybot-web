@@ -8,7 +8,7 @@
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
         <h2 class="w-full my-2 text-xl leading-tight text-center text-gray-800">
-            Inkybot is currently <strong>free</strong> to use for everyone.
+            Inkybot is currently <strong class="uppercase">free</strong> to use for everyone.
             Purchasing subscription before the official release is still very much appreciated.<br>
             Your subscription will be activated once the pre-release period ends - perhaps with some added benefits.<br>
             Thank you for your support.
@@ -20,8 +20,9 @@
                 <div class="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
                     <div class="p-8 text-3xl font-bold text-center border-b-4">Free trial</div>
                     <ul class="w-full text-center text-sm">
-                        <li class="border-b py-4">Limited to 15 minutes</li>
+                        <li class="border-b py-4"><strike>Limited to 15 minutes</strike> Unlimited use</li>
                         <li class="border-b py-4">Simple maging</li>
+                        <li class="border-b py-4">Overmaging</li>
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -41,9 +42,9 @@
                     <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
                     <ul class="w-full text-center text-base font-bold">
                         <li class="border-b py-4">Unlimited use</li>
-                        <li class="border-b py-4">Exomaging*</li>
-                        <li class="border-b py-4">Overmaging*</li>
-                        <li class="border-b py-4">Powermaging*</li>
+                        <li class="border-b py-4">Overmaging</li>
+                        <li class="border-b py-4"><strike>Exomaging</strike>*</li>
+                        <li class="border-b py-4"><strike>Powermaging</strike>*</li>
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
