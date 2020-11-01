@@ -30,7 +30,7 @@
 
         <form class="w-full max-w-lg" method="POST" action="{{ route('register') }}">
             @csrf
-            <input type="hidden" name="referred_by" value="{{ request('referal') }}">
+            <input type="hidden" name="referred_by" value="{{ request('referral') }}">
 
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

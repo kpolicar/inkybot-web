@@ -114,6 +114,20 @@
 
                     <hr class="bg-gray-300 my-8">
 
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
+                                Referral link
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <p class="text-gray-800">{{ route('register', ['referral' => request()->user()->referral_code]) }}</p>
+                            <p class="py-2 text-sm text-gray-600">
+                                each referred user that purchases subscription will grant you 2 extra days of subscription
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="md:flex md:items-center">
                         <div class="md:w-2/3">
                             <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
