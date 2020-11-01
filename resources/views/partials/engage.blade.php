@@ -25,6 +25,7 @@
 
     <h3 class="my-4 text-3xl leading-tight">Inkybot is currently <strong class="uppercase">free</strong> for everyone until the official release</h3>
 
-    <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">Download now!</button>
+    <a href="{{ asset('storage/Inkybot_01beta.zip') }}"
+        class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">Download now!</a>
 
 </section>

@@ -22,6 +22,6 @@ Route::get('/', function () {
     return [
         'name' => "v0.1 Beta",
         'endpoint' => "v0.1beta",
-        'number' => 3,
+        'number' => 1,
     ];
 });
