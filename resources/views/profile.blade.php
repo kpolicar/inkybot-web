@@ -32,7 +32,7 @@
             You are subscribed until {{ Auth::user()->subscribed_to->format('d/m/Y H:i') }}
             @else
                 You are not subscribed
-                @endsubscribed
+            @endsubscribed
         </p>
 
 
@@ -41,7 +41,7 @@
             Extend subscription
             @else
                 Purchase subscription
-                @endsubscribed
+            @endsubscribed
         </a>
     </div>
 </x-main-hero>
@@ -88,6 +88,11 @@
                         <div class="md:w-3/5">
                             <input class="form-input block w-full focus:bg-white bg-gray-200 rounded p-2 text-gray-700 focus:text-gray-800"
                                    id="email" name="email" type="email" value="{{ Auth::user()->email }}">
+
+                            @error('email', 'updateProfileInformation')
+                            <p class="text-red-500 text-sm italic">{{ $message }}</p>
+                            @enderror
+
                             <p class="py-2 text-sm text-gray-600">your email is used for password recovery</p>
                         </div>
                     </div>
