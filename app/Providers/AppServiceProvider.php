@@ -30,5 +30,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('subscribed', function () {
             return optional(auth()->user())->is_subscribed;
         });
+
+        if (config('app.env') == 'production') {
+            \URL::forceScheme('https');
+        }
     }
 }

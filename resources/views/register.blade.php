@@ -74,7 +74,6 @@
                 Register
             </button>
         </form>
-        {{ dump(session('status')) }}
 
         <p class="mt-3 text-gray-400 text-base text-left">
             <a href="{{ route('login') }}" class="text-white font-bold">Already registered?</a>
