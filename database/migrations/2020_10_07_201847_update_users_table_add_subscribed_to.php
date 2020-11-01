@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,9 @@ class UpdateUsersTableAddSubscribedTo extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->timestamp('subscribed_to')->nullable();
+            $trialEnd = Carbon::create(2021, 1, 1, 12);
+
+            $table->timestamp('subscribed_to')->default($trialEnd)->nullable();
         });
     }
 
