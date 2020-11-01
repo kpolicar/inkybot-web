@@ -32,10 +32,15 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
+        $data = [
             'name' => $input['name'],
             'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+            'password' => Hash::make($input['password'])
+        ];
+
+        if ($input['referred_by'] != null)
+            $data['referred_by'] = User::FindByReferral($input['referred_by'])->id;
+
+        return User::create($data);
     }
 }

@@ -14,11 +14,18 @@
     <meta name="keywords" content="Dofus, Bot, Maging, Mage, Magus, Items, Cheat, Hack, Stats, Game, Automate, Program">
     <meta name="author" content="Inkybot">
 
-    <meta property="og:title" content="@hasSection('title')@yield('title') -@endif Inkybot - Dofus Maging Bot" />
+
+    @section('og:title')
+        <meta property="og:title" content="@hasSection('title')@yield('title') -@endif Inkybot - Dofus Maging Bot" />
+    @show
+    @section('og:description')
+        <meta name="og:description" content="Inkybot is a Dofus Maging Bot compatible with the latest version of the game. Configure the stats you want and let Inkybot do the rest." />
+    @show
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_us" />
     <meta property="og:url" content="/" />
     <meta property="og:site_name" content="Inkybot" />
+    <meta property="og:image" content="{{ public_path('logo_white_on_black.jpg') }}" />
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">

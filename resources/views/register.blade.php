@@ -2,6 +2,20 @@
 
 @section('title', 'Register')
 
+@if (request('referral'))
+    @section('og:title')
+        <meta property="og:title" content="Inkybot Invitation - Dofus Maging Bot" />
+    @endsection
+
+    @section('og:description')
+        @if (($user = App\Models\User::findByReferral(request('referral'))) && $user->exists)
+            <meta property="og:description" content="{{ App\Models\User::findByReferral(request('referral'))->name }} is inviting you to check out Inkybot, the new FREE Dofus Maging Bot!" />
+        @else
+            <meta property="og:description" content="You have been invited to check out Inkybot, the new FREE Dofus Maging Bot!" />
+        @endif
+    @endsection
+@endif
+
 
 @section('content')
     <x-main-hero>
@@ -16,6 +30,8 @@
 
         <form class="w-full max-w-lg" method="POST" action="{{ route('register') }}">
             @csrf
+            <input type="hidden" name="referred_by" value="{{ request('referal') }}">
+
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="name">

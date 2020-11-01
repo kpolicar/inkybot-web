@@ -22,6 +22,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'referred_by',
+        'referral_code',
     ];
 
     /**
@@ -48,6 +50,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_subscribed'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        parent::creating(function ($user) {
+            $user->referral_code = \Str::random(20);
+        });
+    }
+
     public function GetIsSubscribedAttribute() {
         //return false;
         return $this->freshTimestamp()->isBefore($this->subscribed_to);
@@ -57,5 +67,9 @@ class User extends Authenticatable implements MustVerifyEmail
         $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
         $extendedDate = $extendedDate->maximum($this->freshTimestamp());
         return $extendedDate->addMonth();
+    }
+
+    public static function FindByReferral($code) {
+        return optional(static::firstWhere('referral_code', $code));
     }
 }
