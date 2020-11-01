@@ -42,7 +42,7 @@
             <x-slot name="title">
                 Advanced API
             </x-slot>
-            Our API is a developer's dream and caters to scripters. We take active input from all scripters for it!
+            We are building an API to support anyone who would like to write their own maging script.
         </x-feature-card>
 
         <x-feature-card icon="bell" :tags="['in development']">

@@ -50,13 +50,18 @@
                 </div>
 
                 <ul class="text-black">
-                    <li>
-                        <i class="fas fa-plus-circle text-3xl p-3 pl-0"></i>
-                        Configure what stats you want on your item
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Simple maging AI</strong> mages until the desired stats are achieved</span>
                     </li>
-                    <li>
-                        <i class="fas fa-plus-circle text-3xl p-3 pl-0"></i>
-                        Configure what stats you want on your item
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Stats configurator</strong> allows you to specify what stats you want on your item</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Error detection</strong> will stop the mage if an unexpected stat landed (this may happen
+                        if you run out of runes or due to poor internet connection)</span>
                     </li>
                 </ul>
 
@@ -66,17 +71,21 @@
                 </div>
 
                 <ul class="text-black">
-                    <li>
-                        <i class="fas fa-clock text-3xl p-3 pl-0"></i>
-                        <span>Support usage of the bot in any resolution</span>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Support usage of the bot in <strong>any resolution</strong></span>
                     </li>
-                    <li>
-                        <i class="fas fa-clock text-3xl p-3 pl-0"></i>
-                        Support usage of the bot when the window is in minimized mode
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Support usage of the bot when the window is in <strong>minimized mode</strong></span>
                     </li>
-                    <li>
-                        <i class="fas fa-clock text-3xl p-3 pl-0"></i>
-                        Detailed logs for errors, warnings and simply maging information
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Fix <strong>user input interfering</strong> with the bot's input</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Detailed logs</strong> for errors, warnings and simply maging information</span>
                     </li>
                 </ul>
 
@@ -105,6 +114,12 @@
                     <small class="text-sm italic">
                         Windows will not allow simulating mouse clicks in normal mode.
                     </small>
+                </p>
+
+                <h2 class="text-black text-xl font-bold"><i class="fas fa-mouse-pointer text-3xl mr-3"></i> Run in background</h2>
+                <p class="text-black my-3">
+                    You must not hover your mouse over the Dofus client while maging.<br>
+                    You can have other windows over Inkybot, however Inkybot must not be minimized.<br>
                 </p>
 
             </div>
