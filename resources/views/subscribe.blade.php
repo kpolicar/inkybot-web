@@ -20,7 +20,7 @@
 
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-        var stripe = Stripe('pk_test_51HcdZLDl3uJ5ENdaQX6KQHq8Ap4g4k7gWkdikvPfqw6U2lbnHuERwib5LOUpY0ZQ9IqbxTIvMVDPctHKAYdWkilM00qF8JOnAe');
+        var stripe = Stripe('{{ config('cashier.key') }}');
     </script>
 </head>
 
