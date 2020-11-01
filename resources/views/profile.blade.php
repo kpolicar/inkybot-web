@@ -201,7 +201,7 @@
                         the higher priority it will be given towards development.</p>
                     <p class="text-gray-600">
                         Report bugs to earn rewards!</p>
-                    <a href="https://discord.gg/ueutfe8" target="_blank" class="inline-block hover:underline gradient text-white font-bold rounded mt-3 py-2 px-8 shadow-lg">
+                    <a href="https://discord.gg/ueutfe8" target="_blank" class="inline-block hover:underline gradient text-white font-bold rounded mt-3 py-4 px-8 shadow-lg">
                         Join now
                     </a>
                 </div>
