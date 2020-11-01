@@ -24,7 +24,7 @@
     <meta property="og:locale" content="en_us" />
     <meta property="og:url" content="/" />
     <meta property="og:site_name" content="Inkybot" />
-    <meta property="og:image" content="{{ public_path('logo_white_on_black.jpg') }}" />
+    <meta property="og:image" content="{{ asset('logo_white_on_black.jpg') }}" />
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
