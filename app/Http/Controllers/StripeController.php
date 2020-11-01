@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Exceptions\IncompletePayment;
 use Stripe\Exception\CardException;
+use Stripe\Exception\InvalidRequestException;
 
 class StripeController extends Controller
 {

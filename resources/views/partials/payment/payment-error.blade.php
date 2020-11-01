@@ -12,9 +12,12 @@
 <p class="text-gray-200 text-sm mt-5">
     <strong>Status:</strong> <i>{{ $exception->payment->status }}</i>
 </p>
+
+@if ($message = $exception->getMessage())
 <h4 class="text-gray-200 text-sm font-bold">
     Message:
 </h4>
 <p class="text-gray-200 text-sm">
-    {{ $exception->getMessage() }}
+    {{ $message }}
 </p>
+@endif
