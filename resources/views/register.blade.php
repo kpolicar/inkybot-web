@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.hero')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register - Inkybot - Dofus Maging Bot</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+@section('title', 'Register')
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-</head>
-
-<body class="leading-normal tracking-normal text-white bg-white" style="font-family: 'Source Sans Pro', sans-serif;">
-
-<div class="gradient">
-    @include('partials.nav')
-
+@section('content')
     <x-main-hero>
         <h2 class="uppercase tracking-loose w-full">Create a new account</h2>
         <div class="flex justify-between">
@@ -79,11 +63,5 @@
             <a href="{{ route('login') }}" class="text-white font-bold">Already registered?</a>
         </p>
     </x-main-hero>
+@endsection
 
-</div>
-
-</body>
-
-<script src="{{ asset('js/app.js') }}"></script>
-
-</html>

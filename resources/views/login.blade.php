@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.hero')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login - Inkybot - Dofus Maging Bot</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+@section('title', 'Login')
 
-    <!-- Font Awesome if you need it
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-    -->
-    <link rel="stylesheet" href="css/app.css">
-    <!--Replace with your tailwind.sass once created-->
 
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-</head>
-
-<body class="leading-normal tracking-normal text-white bg-white" style="font-family: 'Source Sans Pro', sans-serif;">
-
-<div class="gradient">
-    @include('partials.nav')
-
+@section('content')
     <x-main-hero>
 
         <h2 class="uppercase tracking-loose w-full">Access your account</h2>
@@ -62,7 +42,7 @@
                 </div>
             </div>
             <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
-                   type="submit">
+                    type="submit">
                 Login
             </button>
         </form>
@@ -71,10 +51,6 @@
             <a href="{{ route('password.request') }}" class="text-white font-bold">Forgot password?</a>
         </p>
     </x-main-hero>
-</div>
+@endsection
 
-</body>
 
-<script src="js/app.js"></script>
-
-</html>

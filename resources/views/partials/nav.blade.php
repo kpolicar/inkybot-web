@@ -40,7 +40,7 @@
                 </li>
                 <li class="mr-3">
                     @auth
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form class="m-0" method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
                                    class="bg-transparent focus:outline-none inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4">
