@@ -16,7 +16,7 @@
     </g>
 </svg>
 
-<section class="container mx-auto text-center py-6 mb-12">
+<section class="container mx-auto text-center py-6 mb-12 px-4 lg:px-0">
 
     <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white uppercase">Pre-release Freedom!</h1>
     <div class="w-full mb-4">

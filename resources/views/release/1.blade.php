@@ -154,29 +154,38 @@
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
 
-            <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                1. Open Inkybot and Login
-            </h3>
-            <p class="text-base">You will need to login to your Inkybot account to gain access to the Dofus client</p>
+            <div class="px-4 lg:px-0">
+                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
+                    1. Open Inkybot and Login
+                </h3>
+                <p class="text-base">You will need to login to your Inkybot account to gain access to the Dofus client. From there on
+                    you can login to your Dofus account as you would normally.</p>
+            </div>
+
             <img src="{{ asset('images/releases/login.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
 
             <div class="anchor" id="ocr-bounds"></div>
-            <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                2. Ensure the OCR indicators cover the appropriate bounds
-            </h3>
-            <p class="text-base">
-                You can view the OCR bounds by pressing the "Debug" button on the sidebar.
-                The bot is configured to run in 1920x1080 resolution simply because it's the most common resolution,
-                thus if you are running in this resolution you will not encounter issues. Run the bot in full-screen mode
-                and make sure your Windows display settings are not scaled over 100%.
-            </p>
+            <div class="px-4 lg:px-0">
+                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
+                    2. Ensure the OCR indicators cover the appropriate bounds
+                </h3>
+                <p class="text-base">
+                    You can view the OCR bounds by pressing the "Debug" button on the sidebar.
+                    The bot is configured to run in 1920x1080 resolution simply because it's the most common resolution,
+                    thus if you are running in this resolution you will not encounter issues. Run the bot in full-screen mode
+                    and make sure your Windows display settings are not scaled over 100%.
+                </p>
+            </div>
 
             <img src="{{ asset('images/releases/ocr.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
 
-            <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                3. Configure your stats and begin maging!
-            </h3>
-            <p class="text-base">You can access the stats configurator by pressing the "Stats" button on the sidebar</p>
+            <div class="px-4 lg:px-0">
+                    <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
+                        3. Configure your stats and begin maging!
+                    </h3>
+                    <p class="text-base">You can access the stats configurator by pressing the "Stats" button on the sidebar.</p>
+                    <p class="text-base">Make sure you do not have any runes on the maging table when you begin maging.</p>
+            </div>
 
             <img src="{{ asset('images/releases/stats.gif') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
         </div>
