@@ -54,7 +54,8 @@
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1"><strong>Simple maging AI</strong> mages until the desired stats are achieved.
                             The stats will never go over the defined limits and the appropriate rune (SM, PA, RA) for the current
-                            stat value will be used.
+                            stat value will be used.<br>
+                            <a href="#ai" class="text-gray-600">Read more</a>
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
@@ -183,8 +184,11 @@
                     <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
                         3. Configure your stats and begin maging!
                     </h3>
-                    <p class="text-base">You can access the stats configurator by pressing the "Stats" button on the sidebar.</p>
-                    <p class="text-base">Make sure you do not have any runes on the maging table when you begin maging.</p>
+                    <p class="text-base">
+                        You can access the stats configurator by pressing the "Stats" button on the sidebar.
+                        You will know the bot is finished when it removes the item from the maging table.
+                    </p>
+                    <p class="text-base">Make sure you do not have any runes on the maging table when you begin.</p>
             </div>
 
             <img src="{{ asset('images/releases/stats.gif') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
@@ -193,12 +197,53 @@
     </section>
 
 
-    <div class="anchor" id="usage"></div>
+    <div class="anchor" id="ai"></div>
     <section class="bg-white py-8 pb-32 border-t">
 
         <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
 
-            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Final notes</h1>
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Basic Maging AI</h2>
+            <div class="w-full mb-4">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+
+            <div class="flex lg:flex-row flex-col px-6 lg:px-0">
+                <i class="text-center lg:text-left fas fa-robot text-6xl lg:mr-10 mr-0 pb-3"></i>
+                <div>
+
+                    <p class="text-base mt-2">
+                        The simple Dofus maging AI will mage your items to the configured stats. The target is treated
+                        as a <strong>limit</strong>, thus it will never attempt to go over it.
+                    </p>
+                    <p class="text-base">
+                        For example, if you target vitality
+                        to 390 and the current value is 362, the bot will not try to mage any further (the RA vitality rune
+                        would make the stat land at 412, which is over the limit).
+                    </p>
+                    <p class="text-base mt-2">
+                        Stats are <strong>prioritized</strong> by how many runes are required to reach the target.
+                    </p>
+                    <p class="text-base mt-2">
+                        Once a stat reaches a certain threshold, it will change <strong>strengths</strong> (from SM to PA to RA). These thresholds
+                        are not yet configurable, but they are reasonably declared.
+                    </p>
+                    <p class="text-base mt-2">
+                        You must make sure you always have <strong>enough runes</strong> for maging. If you run out of a rune,
+                        the bot will warn you only after it discovers this.
+                    </p>
+                    <p class="text-base mt-2">
+                        The Basic Maging AI does not yet make use of <strong>sink</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-8 pb-32 border-t">
+
+        <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
+
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Final notes</h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
@@ -223,7 +268,7 @@
 
 
 
-    @include('partials.engage', ['color' => "#fff"])
+    @include('partials.engage')
 
     @include('partials.footer')
 
