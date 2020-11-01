@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <h3 class="w-full my-2 leading-tight text-center text-gray-800">* Features are currently in development and are not yet available</h3>
+    <h3 class="w-full my-2 leading-tight text-center text-gray-800">* Features are under active development and have not yet been made available</h3>
 
 
 </section>

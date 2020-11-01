@@ -29,7 +29,7 @@
         </p>
         <p class="leading-normal text-lg mb-2">
             Below you will find important information regarding this version of the bot client.
-            Read the release notes carefully so you know what to expect and what to be careful for.
+            Read the release notes carefully so you know what to watch out for.
         </p>
         <p class="leading-normal text-lg mb-8">
             Bear in mind this is an early release, therefore it may be unstable and rather restrictive.
@@ -85,11 +85,11 @@
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">Support usage of the bot when the window is in <strong>minimized mode</strong></span>
+                        <span class="pt-1">Allow the bot to run when the window is in <strong>minimized mode</strong></span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">Fix <strong>user input interfering</strong> with the bot's input</span>
+                        <span class="pt-1">Fix <strong>user input interference</strong> with the bot's input</span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
@@ -97,7 +97,7 @@
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1"><strong>French translation</strong> to allow running Dofus in either language</span>
+                        <span class="pt-1"><strong>French translation</strong> to allow running Dofus in English & French</span>
                     </li>
                 </ul>
 
@@ -124,7 +124,7 @@
                 <p class="text-black my-3">
                     The bot must be run in administrator mode.<br>
                     <small class="text-sm italic">
-                        Windows will not allow simulating mouse clicks in normal mode.
+                        Windows does not allow simulating mouse clicks in normal mode.
                     </small>
                 </p>
 
@@ -202,9 +202,8 @@
                     You should definitely supervise the bot to prevent unexpected behavior that may lead to ruined items.
                 </p>
                 <p class="text-center text-black mb-2">
-                    Depending on how beafy your computer is, Inkybot might run rather slow.
-                    OCR can be a rather resource intensive operation to perform, however we will surely improve this
-                    in the future.
+                    Depending on how beefy your computer is, Inkybot might run rather slow.
+                    OCR can be a rather resource intensive operation to perform, however we are working to improve this.
                 </p>
                 <p class="text-center text-xl font-bold text-black mt-6">
                     Thank you for trying Inkybot and we hope you will stick around for the official release. <i class="fas fa-heart text-2xl"></i>
