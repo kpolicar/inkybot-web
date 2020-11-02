@@ -41,10 +41,11 @@
     @yield('content')
 </div>
 
-</body>
 
 @section('scripts')
     <script src="{{ asset('js/app.js') }}"></script>
 @show
+@include('partials.analytics')
+</body>
 
 </html>
