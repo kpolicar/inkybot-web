@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>v0.1Beta - Release notes - Inkybot - Dofus Maging Bot</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+@section('title', 'v0.1 Beta - Release Notes')
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-</head>
-
-<body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
-
-<div class="gradient">
-    @include('partials.nav')
-
+@section('hero')
     <x-main-hero>
 
         <h2 class="tracking-loose text-xl w-full font">v0.1 BETA</h2>
@@ -36,6 +20,10 @@
         </p>
 
     </x-main-hero>
+@endsection
+
+@section('content')
+
 
     <section class="bg-white py-8 border-b">
 
@@ -181,14 +169,14 @@
             <img src="{{ asset('images/releases/ocr.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
 
             <div class="px-4 lg:px-0">
-                    <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                        3. Configure your stats and begin maging!
-                    </h3>
-                    <p class="text-base">
-                        You can access the stats configurator by pressing the "Stats" button on the sidebar.
-                        You will know the bot is finished when it removes the item from the maging table.
-                    </p>
-                    <p class="text-base">Make sure you do not have any runes on the maging table when you begin.</p>
+                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
+                    3. Configure your stats and begin maging!
+                </h3>
+                <p class="text-base">
+                    You can access the stats configurator by pressing the "Stats" button on the sidebar.
+                    You will know the bot is finished when it removes the item from the maging table.
+                </p>
+                <p class="text-base">Make sure you do not have any runes on the maging table when you begin.</p>
             </div>
 
             <img src="{{ asset('images/releases/stats.gif') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
@@ -266,17 +254,4 @@
         </div>
     </section>
 
-
-
-    @include('partials.engage')
-
-    @include('partials.footer')
-
-
-</div>
-
-</body>
-
-<script src="{{ asset('js/app.js') }}"></script>
-
-</html>
+@endsection
