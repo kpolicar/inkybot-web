@@ -22,8 +22,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'referred_by',
-        'referral_code',
     ];
 
     /**
@@ -53,9 +51,20 @@ class User extends Authenticatable implements MustVerifyEmail
     protected static function boot()
     {
         parent::boot();
+
         parent::creating(function ($user) {
-            $user->referral_code = \Str::random(20);
+            $user->GenerateReferralCode();
+
+            if ($referredBy = \Cookie::get('referral')) {
+                $user->referred_by = static::FindByReferral($referredBy)->id;
+            }
         });
+    }
+
+    protected function GenerateReferralCode() {
+        do {
+            $this->referral_code = $referralCode = \Str::random(10);
+        } while (static::FindByReferral($referralCode)->exists);
     }
 
     public function GetIsSubscribedAttribute() {

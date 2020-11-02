@@ -38,9 +38,6 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password'])
         ];
 
-        if ($input['referred_by'] != null)
-            $data['referred_by'] = User::FindByReferral($input['referred_by'])->id;
-
         return User::create($data);
     }
 }
