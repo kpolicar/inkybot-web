@@ -13,7 +13,7 @@ class CheckReferral
             return $next($request);
         }
 
-        if (($ref = $request->query('referral')) && User::findByReferral($ref)->exists) {
+        if (($ref = $request->query('ref')) && User::findByReferral($ref)->exists) {
             return redirect($request->fullUrl())->withCookie(cookie()->forever('referral', $ref));
         }
 
