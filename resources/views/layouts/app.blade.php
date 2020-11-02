@@ -47,8 +47,8 @@
     @include('partials.footer')
 @show
 
-</body>
-
 <script src="{{ asset('js/app.js') }}"></script>
+@include('partials.analytics')
+</body>
 
 </html>
