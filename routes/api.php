@@ -1,5 +1,6 @@
 <?php
 
+use App\ClientVersion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function () {
+Route::get('/', function (ClientVersion $versions) {
+    $last = $versions->latest();
+
     return [
-        'name' => "v0.1 Beta",
-        'endpoint' => "v0.1beta",
-        'number' => 1,
+        'name' => $last['name'],
+        'endpoint' => $last['code'],
+        'number' => $last['number'],
     ];
 });

@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
  */
 class ClientVersion
 {
-    public $latest = 1;
     public $versions;
 
     public function __construct()
@@ -18,6 +17,11 @@ class ClientVersion
                 'number' => 1,
                 'code' => 'v0.1beta',
                 'name' => 'v0.1 Beta',
+            ],
+            2 => [
+                'number' => 2,
+                'code' => 'v0.2beta',
+                'name' => 'v0.2 Beta',
             ]
         ]);
     }
