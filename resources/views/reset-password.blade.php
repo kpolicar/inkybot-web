@@ -6,7 +6,7 @@
 @section('content')
     <x-main-hero>
         <h2 class="uppercase tracking-loose w-full">Recover your account</h2>
-        <div class="flex justify-between">
+        <div class="flex justify-center lg:justify-between">
             <h1 class="my-4 text-3xl font-bold leading-tight">Reset password</h1>
             <i class="fas fa-user-lock text-4xl p-3"></i>
         </div>
@@ -15,7 +15,7 @@
             <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <form class="w-full max-w-lg" method="POST" action="{{ route('password.update') }}">
+        <form class="w-full" method="POST" action="{{ route('password.update') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
             <input type="hidden" name="email" value="{{ $request->get('email') }}">

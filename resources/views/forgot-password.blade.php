@@ -6,7 +6,7 @@
 @section('content')
     <x-main-hero>
         <h2 class="uppercase tracking-loose w-full">Recover your account</h2>
-        <div class="flex justify-between">
+        <div class="flex justify-center lg:justify-between">
             <h1 class="my-4 text-3xl font-bold leading-tight">Password recovery</h1>
             <i class="fas fa-user-lock text-4xl p-3"></i>
         </div>
@@ -16,7 +16,7 @@
         </div>
 
         @if (!session('status'))
-            <form class="w-full max-w-lg" method="POST" action="{{ route('password.email') }}">
+            <form class="w-full" method="POST" action="{{ route('password.email') }}">
                 @csrf
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">

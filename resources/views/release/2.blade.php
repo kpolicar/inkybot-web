@@ -8,7 +8,7 @@
 
         <h2 class="tracking-loose text-xl w-full font">v0.2 BETA</h2>
         <h1 class="mb-0 text-5xl font-bold leading-tight">Release notes</h1>
-        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">3rd November 2020</h2>
+        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">4th November 2020</h2>
 
         <p class="leading-normal text-lg mb-2">
             Welcome to the second release of Inkybot!

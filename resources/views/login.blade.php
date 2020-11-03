@@ -7,7 +7,7 @@
     <x-main-hero>
 
         <h2 class="uppercase tracking-loose w-full">Access your account</h2>
-        <div class="flex justify-between">
+        <div class="flex justify-center lg:justify-between">
             <h1 class="my-4 text-3xl font-bold leading-tight">Sign-in</h1>
             <i class="fas fa-sign-in-alt text-4xl p-3"></i>
         </div>
@@ -15,7 +15,7 @@
             <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <form class="w-full max-w-lg" method="POST" action="/login">
+        <form class="w-full" method="POST" action="/login">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">

@@ -6,7 +6,7 @@
 @section('content')
     <x-main-hero>
         <h2 class="uppercase tracking-loose w-full">Protect your account</h2>
-        <div class="flex justify-between">
+        <div class="flex justify-center lg:justify-between">
             <h1 class="my-4 text-3xl font-bold leading-tight">Verify your email address</h1>
             <i class="fas fa-user-shield text-4xl p-3"></i>
         </div>

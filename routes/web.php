@@ -42,6 +42,10 @@ Route::get('/subscribe', function (Request $request) {
     return view('subscribe');
 })->name('subscribe')->middleware('verified');
 
+Route::get('/install', function (Request $request) {
+    return view('install');
+})->name('install');
+
 Route::post(
     'stripe/webhook',
     [WebhookController::class, 'handleWebhook']
