@@ -57,9 +57,11 @@
                     @endguest
                 </li>
             </ul>
-            <a id="navAction" href="{{ asset($download_asset) }}" class="mx-auto lg:mx-0 lg:mx-2 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
-                Download
-            </a>
+            <div class="py-4">
+                <a id="navAction" href="{{ asset($download_asset) }}" class="mx-auto lg:mx-0 lg:mx-2 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
+                    Download
+                </a>
+            </div>
         </div>
     </div>
 

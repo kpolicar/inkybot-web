@@ -47,7 +47,7 @@
             </button>
         </form>
 
-        <p class="mt-3 text-gray-400 text-base text-left">
+        <p class="mt-3 text-gray-400 text-base lg:text-left text-center">
             <a href="{{ route('password.request') }}" class="text-white font-bold">Forgot password?</a>
         </p>
     </x-main-hero>

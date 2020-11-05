@@ -73,7 +73,7 @@
             </button>
         </form>
 
-        <p class="mt-3 text-gray-400 text-base text-left">
+        <p class="mt-3 text-gray-400 text-base lg:text-left text-center">
             <a href="{{ route('login') }}" class="text-white font-bold">Already registered?</a>
         </p>
     </x-main-hero>

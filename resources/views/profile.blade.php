@@ -45,7 +45,7 @@
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="name">
-                                Display name
+                                Display Name
                             </label>
                         </div>
                         <div class="md:w-3/5">
@@ -99,7 +99,7 @@
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
-                                Current password
+                                Current Password
                             </label>
                         </div>
                         <div class="md:w-3/5">

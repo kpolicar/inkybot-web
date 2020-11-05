@@ -44,7 +44,7 @@
                         <li class="border-b py-4">Unlimited use</li>
                         <li class="border-b py-4">Overmaging</li>
                         <li class="border-b py-4"><strike>Exomaging</strike>*</li>
-                        <li class="border-b py-4"><strike>Powermaging</strike>*</li>
+                        <li class="border-b py-4"><strike>Magus leveling</strike>*</li>
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
