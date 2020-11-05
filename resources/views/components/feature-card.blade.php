@@ -4,7 +4,7 @@
             <i class="fas fa-{{ $icon }} text-gray-800 text-4xl ml-1 px-6 mt-6"></i>
         @endif
 
-        <div class="w-full font-bold text-xl text-gray-800 px-6 mt-4">{{ $title }}</div>
+        <h2 class="w-full font-bold text-xl text-gray-800 px-6 mt-4">{{ $title }}</h2>
         <p class="text-gray-600 text-base px-6 mb-5">
             {{ $slot }}
         </p>

@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'v0.2 Beta - Release Notes')
+@section('title', 'v0.3 Beta - Release Notes')
 
 
 @section('hero')
     <x-main-hero>
 
-        <h2 class="tracking-loose text-xl w-full font">v0.2 BETA</h2>
+        <h2 class="tracking-loose text-xl w-full font">v0.3 BETA</h2>
         <h1 class="mb-0 text-5xl font-bold leading-tight">Release notes</h1>
-        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">4th November 2020</h2>
+        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">6th November 2020</h2>
 
         <p class="leading-normal text-lg mb-2">
-            Welcome to the second release of Inkybot!
+            Welcome to the third release of Inkybot!
         </p>
         <p class="leading-normal text-lg mb-2">
             Below you will find important information regarding this version of the bot client.
@@ -43,26 +43,49 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Support usage of the bot in <strong>any resolution</strong>.
+                            Fixed <strong>sink</strong> calculations
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Large <strong>OCR improvements</strong> in both
-                            <strong>speed</strong> and <strong>accuracy</strong>
+                            Fixed trying to <strong>combine without runes</strong> in the maging table
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            <strong>Fixed </strong> user input interference with the bot's input
+                            Added handling of mage "<strong>Failure</strong>"
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added <strong>Screenshot Debugging</strong> to better discover when and why OCR fails
+                            Added 5 second <strong>timeout</strong> for history change checking
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            The <strong>email address</strong> field for the Inkybot client is now <strong>saved</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Removed flickering from <strong>OCR bounds indicators</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Improved <strong>responsiveness</strong> of Start/Stop and Screenshot maging buttons
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Removed debugging <strong>mouse position</strong>
                         </span>
                     </li>
                 </ul>
@@ -73,13 +96,6 @@
                 </div>
 
                 <ul class="text-black">
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Fix <strong>bot input</strong> - sometimes Dofus doesn't register the simulated CTRL key and only one rune
-                            is selected instead of all available
-                        </span>
-                    </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">Allow the bot to run when the window is in <strong>minimized mode</strong></span>
@@ -160,7 +176,7 @@
                 </p>
             </div>
 
-            <img src="{{ asset('images/releases/ocr.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
+            <img src="{{ asset('images/releases/newocrindicators.png') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
 
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">

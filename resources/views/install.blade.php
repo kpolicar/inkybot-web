@@ -22,7 +22,7 @@
             If you've already installed Inkybot and are encounterring issues during maging, please refer to
             the <a class="font-bold text-gray-500" href="{{ route('release', ['version' => 'latest']) }}">Release Notes</a>.
         </p>
-        <a href="{{ asset('storage/Inkybot_02beta.zip') }}"
+        <a href="{{ asset($download_asset) }}"
            class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">Download</a>
 
     </x-main-hero>

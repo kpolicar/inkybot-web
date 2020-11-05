@@ -20,7 +20,8 @@
             <x-slot name="title">
                 Human-like Behavior
             </x-slot>
-            Simulating mouse and keyboard strokes makes the bot indistinguishable from human players.
+            Simulating mouse and keyboard strokes makes the bot indistinguishable from human players. Your safety is our number
+            one priority!
         </x-feature-card>
 
         <x-feature-card icon="sync">
@@ -38,18 +39,20 @@
             Let's build Inkybot together! We listen and encourage suggestions on how we can improve our services. Join our Discord server now!
         </x-feature-card>
 
-        <x-feature-card icon="code" :tags="['in development']">
+        <x-feature-card icon="code">
             <x-slot name="title">
-                Advanced API
+                Scriptless
             </x-slot>
-            We are building an API to support anyone who would like to write their own maging script.
+            You don't have to rely on foreign scripts to get the job done. Everything is built in-house and simply works!
+            In the future we may perhaps expose an API for keen scripters.
         </x-feature-card>
 
         <x-feature-card icon="bell" :tags="['in development']">
             <x-slot name="title">
                 Notifications
             </x-slot>
-            Receive notifications for special events that may occur during maging, for instance finishing an item mage.
+            Receive notifications for special events that may occur during maging. Watch a movie and let Inkybot notify you when it's done with
+            an item.
         </x-feature-card>
 
     </div>
