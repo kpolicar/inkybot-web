@@ -2,14 +2,14 @@
 
 @section('title', 'Register')
 
-@if (request('referral'))
+@if (request('ref'))
     @section('og:title')
         <meta property="og:title" content="Inkybot Invitation - Dofus Maging Bot" />
     @endsection
 
     @section('og:description')
-        @if (($user = App\Models\User::findByReferral(request('referral'))) && $user->exists)
-            <meta property="og:description" content="{{ App\Models\User::findByReferral(request('referral'))->name }} is inviting you to check out Inkybot, the new FREE Dofus Maging Bot!" />
+        @if (($user = App\Models\User::findByReferral(request('ref'))) && $user->exists)
+            <meta property="og:description" content="{{ App\Models\User::findByReferral(request('ref'))->name }} is inviting you to check out Inkybot, the new FREE Dofus Maging Bot!" />
         @else
             <meta property="og:description" content="You have been invited to check out Inkybot, the new FREE Dofus Maging Bot!" />
         @endif
