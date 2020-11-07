@@ -8,7 +8,7 @@ class NotificationController extends Controller
 {
     public function Error(Request $request) {
         \OneSignal::sendNotificationToExternalUser(
-            "An error has occurred during maging. The bot has stopped.",
+            "An error has occurred during maging! The bot has stopped.",
             $request->user()->id,
             $url = null,
             $data = null,
@@ -17,9 +17,9 @@ class NotificationController extends Controller
         );
     }
 
-    public function Finish(Request $request) {
+    public function Finished(Request $request) {
         \OneSignal::sendNotificationToExternalUser(
-            "The bot has finished maging.",
+            "Your item is complete! The bot has finished maging.",
             $request->user()->id,
             $url = null,
             $data = null,

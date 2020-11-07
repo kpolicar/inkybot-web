@@ -20,19 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('/notify')->group(function () {
-    Route::post('/', function (Request $request) {
-        \OneSignal::sendNotificationToExternalUser(
-            "This is a test notification.",
-            \App\Models\User::where('email', 'naltamer14@gmail.com')->first()->id,
-            $url = null,
-            $data = null,
-            $buttons = null,
-            $schedule = null
-        );
-    });
-    Route::post('error', [NotificationController::class, "Error"])->middleware('auth:api');
-    Route::post('finished', [NotificationController::class, "Finished"])->middleware('auth:api');
+Route::middleware('auth:api')->prefix('/notify')->group(function () {
+    Route::post('error', [NotificationController::class, "Error"]);
+    Route::post('finished', [NotificationController::class, "Finished"]);
 });
 
 Route::get('/', function (ClientVersion $versions) {
