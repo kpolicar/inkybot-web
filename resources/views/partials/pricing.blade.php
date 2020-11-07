@@ -16,13 +16,16 @@
 
         <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
 
-            <div class="flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-white mt-4">
-                <div class="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
-                    <div class="p-8 text-3xl font-bold text-center border-b-4">Free trial</div>
+            <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10">
+                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
+                    <div class="w-full p-8 text-3xl font-bold text-center">Open Beta</div>
+                    <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
                     <ul class="w-full text-center text-sm">
-                        <li class="border-b py-4"><strike>Limited to 15 minutes</strike> Unlimited use</li>
+                        <li class="border-b py-4">Unlimited use</li>
                         <li class="border-b py-4">Simple maging</li>
                         <li class="border-b py-4">Overmaging</li>
+                        <li class="border-b py-4"><strike>Exomaging</strike>*</li>
+                        <li class="border-b py-4"><strike>Magus leveling</strike>*</li>
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
@@ -34,26 +37,6 @@
                 </div>
             </div>
 
-
-
-            <div class="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10">
-                <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                    <div class="w-full p-8 text-3xl font-bold text-center">Subscription</div>
-                    <div class="h-1 w-full gradient my-0 py-0 rounded-t"></div>
-                    <ul class="w-full text-center text-base font-bold">
-                        <li class="border-b py-4">Unlimited use</li>
-                        <li class="border-b py-4">Overmaging</li>
-                        <li class="border-b py-4"><strike>Exomaging</strike>*</li>
-                        <li class="border-b py-4"><strike>Magus leveling</strike>*</li>
-                    </ul>
-                </div>
-                <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="w-full pt-6 text-4xl font-bold text-center">€5 <span class="text-base">/ month</span></div>
-                    <div class="flex items-center justify-center">
-                        <x-purchase-button route="{{ route('subscribe') }}" />
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
