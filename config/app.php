@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         App\Providers\FortifyServiceProvider::class,
+        Berkayk\OneSignal\OneSignalServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'OneSignal' => Berkayk\OneSignal\OneSignalFacade::class,
     ],
 
 ];

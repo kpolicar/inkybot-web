@@ -6,7 +6,9 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Http\Responses\LoginResponse;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -48,5 +50,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetPasswordView(function ($request) {
             return view('reset-password', ['request' => $request]);
         });
+
+        $this->app->singleton(LoginResponseContract::class, LoginResponse::class);
     }
 }

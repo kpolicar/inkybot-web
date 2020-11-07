@@ -5,7 +5,6 @@
 
 @section('content')
     <x-main-hero>
-
         <h2 class="uppercase tracking-loose w-full">Access your account</h2>
         <div class="flex justify-center lg:justify-between">
             <h1 class="my-4 text-3xl font-bold leading-tight">Sign-in</h1>
