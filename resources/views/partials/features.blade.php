@@ -47,7 +47,7 @@
             In the future we may perhaps expose an API for keen scripters.
         </x-feature-card>
 
-        <x-feature-card icon="bell" :tags="['in development']">
+        <x-feature-card icon="bell">
             <x-slot name="title">
                 Notifications
             </x-slot>

@@ -95,32 +95,7 @@
                 </ul>
 
             </div>
-            <div class="mx-auto flex flex-col w-full lg:w-2/5 p-6">
-
-                <h2 class="w-full my-2 text-5xl font-bold leading-tight text-gray-800">Limitations</h2>
-                <div class="w-full mb-4">
-                    <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-                </div>
-
-                <h2 class="text-black text-xl font-bold"><i class="fas fa-shield-alt text-3xl mr-3"></i> Administrator mode</h2>
-                <p class="text-black my-3">
-                    The bot must be run in administrator mode.<br>
-                    <small class="text-sm italic">
-                        Windows does not allow simulating mouse clicks in normal mode.
-                    </small>
-                </p>
-
-                <h2 class="text-black text-xl font-bold"><i class="fas fa-window-maximize text-3xl mr-3"></i> Do not minimize</h2>
-                <p class="text-black my-3">
-                    You can run Inkybot under other applications, however it must not be minimized.
-                </p>
-
-                <h2 class="text-black text-xl font-bold"><i class="fas fa-wifi text-3xl mr-3"></i> Stable internet connection</h2>
-                <p class="text-black my-3">
-                    You should use Inkybot with a stable internet connection to avoid unexpected issues.
-                </p>
-
-            </div>
+            <x-limitations :restrictions="['administrator', 'minimized', 'stable_connection']" />
         </div>
 
     </section>
