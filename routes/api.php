@@ -1,6 +1,7 @@
 <?php
 
 use App\ClientVersion;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,15 +20,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/notify', function (Request $request) {
-    \OneSignal::sendNotificationToExternalUser(
-        "This is a test notification.",
-        \App\Models\User::where('email', 'naltamer14@gmail.com')->first()->id,
-        $url = null,
-        $data = null,
-        $buttons = null,
-        $schedule = null
-    );
+Route::prefix('/notify')->group(function () {
+    Route::post('/', function (Request $request) {
+        \OneSignal::sendNotificationToExternalUser(
+            "This is a test notification.",
+            \App\Models\User::where('email', 'naltamer14@gmail.com')->first()->id,
+            $url = null,
+            $data = null,
+            $buttons = null,
+            $schedule = null
+        );
+    });
+    Route::post('error', [NotificationController::class, "Error"])->middleware('auth:api');
+    Route::post('finished', [NotificationController::class, "Finished"])->middleware('auth:api');
 });
 
 Route::get('/', function (ClientVersion $versions) {
