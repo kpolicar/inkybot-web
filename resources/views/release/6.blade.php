@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
-@section('title', 'v0.5 Beta - Release Notes')
+@section('title', 'v0.6 Beta - Release Notes')
 
 
 @section('hero')
     <x-main-hero>
 
-        <h2 class="tracking-loose text-xl w-full font">v0.5 BETA</h2>
+        <h2 class="tracking-loose text-xl w-full font">v0.6 BETA</h2>
         <h1 class="mb-0 text-5xl font-bold leading-tight">Release notes</h1>
-        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">9th November 2020</h2>
+        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">11th November 2020</h2>
 
         <p class="leading-normal text-lg mb-2">
-            Welcome to the fifth release of Inkybot!
+            Welcome to the sixth release of Inkybot!
         </p>
         <p class="leading-normal text-lg mb-2">
             Below you will find important information regarding this version of the bot client.
@@ -43,21 +43,25 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            <strong>EXO Maging!</strong> Say goodbye to hours of maging. This is a huge milestone!
+                            <strong>Extensive AI configuration</strong> table; you can specify threshold values for all the stats
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Improvements to the <strong>AI</strong>; it will now use <strong>weaker runes</strong> to get closer to the target value -
-                            under the pretense that the smaller rune can actually land at its current value.
+                            <strong>Fixed</strong> a bug that didn't allow for maging items with negative stats
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Further improvements and <strong>bugfixes</strong> for unpredicted results in the maging history that
-                            have stopped the bots maging process in the past
+                            <strong>Fixed</strong> OCR engine not loading issues
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Save your <strong>login credentials</strong> in the welcome form
                         </span>
                     </li>
                 </ul>
@@ -68,6 +72,13 @@
                 </div>
 
                 <ul class="text-black">
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Handling <strong>Dofus bugs</strong> - when a modal pops up for no reason, informing you that you have run out of runes,
+                            when in fact you have not
+                        </span>
+                    </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1"><strong>Performance</strong> (speed) improvements</span>
