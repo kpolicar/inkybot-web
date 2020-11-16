@@ -52,12 +52,6 @@
                             <strong>UI improvements</strong> in the welcome dialogue and stat configurator
                         </span>
                     </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            <strong>Improved Dofus Error Modal</strong> handling, it will appear fewer times
-                        </span>
-                    </li>
                 </ul>
 
                 <h2 class="w-full my-2 text-5xl font-bold leading-tight text-gray-800 mt-10">Upcoming</h2>
