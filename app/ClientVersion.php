@@ -53,6 +53,11 @@ class ClientVersion
                 'code' => 'v0.8beta',
                 'name' => 'v0.8 Beta',
             ],
+            9 => [
+                'number' => 9,
+                'code' => 'v0.9beta',
+                'name' => 'v0.9 Beta',
+            ],
         ]);
     }
 
