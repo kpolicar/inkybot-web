@@ -123,7 +123,8 @@
                         <div class="md:w-3/5">
                             <p class="text-gray-800">{{ route('register', ['ref' => request()->user()->referral_code]) }}</p>
                             <p class="py-2 text-sm text-gray-600">
-                                each referred user that purchases subscription will grant you 2 extra days of subscription
+                                each referred user that purchases subscription will grant you <strike class="text-gray-500">2</strike> <strong>7*</strong> extra days of subscription<br>
+                                *early referral bonus
                             </p>
                         </div>
                     </div>
