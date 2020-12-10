@@ -32,6 +32,7 @@
                     <div class="w-full pt-6 text-3xl text-gray-600 font-bold text-center">€0</div>
                     <div class="flex items-center justify-center">
                         <a href="{{ asset($download_asset) }}"
+                           download
                             class="inline-block mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg">Download</a>
                     </div>
                 </div>
