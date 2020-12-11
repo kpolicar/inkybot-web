@@ -41,6 +41,8 @@
     @yield('content')
 </div>
 
+@include('partials.notification-download')
+
 
 @section('scripts')
     <script src="{{ asset('js/app.js') }}"></script>

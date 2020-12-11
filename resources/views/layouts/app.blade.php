@@ -48,6 +48,8 @@
     @include('partials.footer')
 @show
 
+@include('partials.notification-download')
+
 <script src="{{ asset('js/app.js') }}"></script>
 @include('partials.analytics')
 </body>
