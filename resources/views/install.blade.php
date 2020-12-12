@@ -42,6 +42,7 @@
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
 
+            <div class="anchor" id="download"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
                     1. Download
@@ -54,6 +55,7 @@
 
             <img src="{{ asset('images/installation/downloadfolder.png') }}" class="my-4" alt="">
 
+            <div class="anchor" id="antivirus"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
                     1A. Add antivirus exception (if necessary)
@@ -72,19 +74,42 @@
                 </p>
             </div>
 
-            <div class="anchor" id="ocr-bounds"></div>
+            <div class="anchor" id="dependency"></div>
+            <div class="px-4 lg:px-0">
+                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
+                    1B. Install Microsoft Visual C++ 2015-2019 Redistributable (If necessary)
+                </h3>
+
+                <p class="text-base mb-2">
+                    This step is required if you do not already have the necessary dependency installed on your machine.
+                </p>
+                <p class="text-base mb-2">
+                    If you are running Inkybot on your personal computer, you most definitely already have
+                    it installed and needn't worry.
+                    If you are running Inkybot on a fresh Windows install or VM, you should make sure you have the dependency installed.
+                </p>
+                <p class="text-base">
+                    You can download the Visual C++ Redistributable (<i>vc_redist.x86.exe</i>) manually on the
+                    <a class="font-bold text-gray-800" target="_blank" href="https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads">official Microsoft Visual C++ download website</a>
+                    or by <a class="font-bold text-gray-800" href="https://aka.ms/vs/16/release/vc_redist.x86.exe" download data-external>downloading it directly</a>.<br>
+                    Make sure to install the 32bit version.
+                </p>
+            </div>
+
+            <div class="anchor" id="extract"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
                     2. Extract
                 </h3>
 
                 <p class="text-base">
-                    Extract the contents of the zipped folder into any folder of your choice.
+                    Extract the contents of the zipped folder into any folder of your choice. The password for the archive is <strong>"{{ $download_password }}"</strong>.
                 </p>
             </div>
 
             <img src="{{ asset('images/installation/extracthere.png') }}" class="my-4" alt="">
 
+            <div class="anchor" id="run"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
                     3. Run application
@@ -97,6 +122,7 @@
 
             <img src="{{ asset('images/installation/runasadmin.png') }}" class="my-4" alt="">
 
+            <div class="anchor" id="path"></div>
             <div class="flex flex-col lg:flex-row mt-10">
                 <div class="px-4 lg:px-0 lg:w-1/3 mr-4">
                     <h3 class="w-full text-xl font-bold leading-tight text-gray-700 uppercase">

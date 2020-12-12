@@ -19343,7 +19343,7 @@ notifications.forEach(function (notification) {
 document.addEventListener('download', function () {
   return document.querySelector('#download-notification').classList.remove('hidden');
 });
-var downloadLinks = document.querySelectorAll("a[download]");
+var downloadLinks = document.querySelectorAll("a[download]:not([data-external])");
 downloadLinks.forEach(function (downloadLink) {
   downloadLink.addEventListener('click', function () {
     return document.dispatchEvent(new Event('download'));
