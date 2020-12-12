@@ -8,9 +8,6 @@
         </div>
 
         <div class="lg:px-32 px-10">
-            <p class="text-center text-black mt-10 mb-2">
-                Please keep in mind this is the very first release of Inkybot, so do not expect things to work without fault.
-            </p>
             <p class="text-center text-black mb-2">
                 You should definitely supervise the bot to prevent unexpected behavior that may lead to ruined items.
             </p>

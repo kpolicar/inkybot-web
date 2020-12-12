@@ -25,7 +25,7 @@
                     Stats are <strong>prioritized</strong> by how many runes are required to reach the target.
                 </p>
                 <p class="text-base mt-2">
-                    Once a stat reaches a certain threshold, it will change <strong>strengths</strong> (from SM to PA to RA). These thresholds
+                    Once a stat reaches a certain threshold, it will change <strong>strength</strong> (from SM to PA to RA). These thresholds
                     are not yet configurable, but they are reasonably declared.
                 </p>
                 <p class="text-base mt-2">

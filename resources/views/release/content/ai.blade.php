@@ -3,7 +3,7 @@
 
     <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
 
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Basic Maging AI</h2>
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Maging AI</h2>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
@@ -13,7 +13,7 @@
             <div>
 
                 <p class="text-base mt-2">
-                    The simple Dofus maging AI will mage your items to the configured stats. The target is treated
+                    The Dofus maging AI will mage your items to the configured stats. The target is treated
                     as a <strong>limit</strong>, thus it will never attempt to go over it.
                 </p>
                 <p class="text-base">
@@ -29,11 +29,20 @@
                     are not yet configurable, but they are reasonably declared.
                 </p>
                 <p class="text-base mt-2">
+                    If the bot cannot use <strong>as strong a rune as it would like</strong> for the current stat value (because it would overmage the stat),
+                    it will check if it can use a <strong>smaller rune</strong>.
+                    All runes have an additional threshold that define the absolute maximum stat value for which the rune
+                    can land.
+                </p>
+                <p class="text-base mt-2">
+                    All of these thresholds are configurable within Inkybot.
+                </p>
+                <p class="text-base mt-2">
                     You must make sure you always have <strong>enough runes</strong> for maging. If you run out of a rune,
                     the bot will warn you only after it discovers this.
                 </p>
                 <p class="text-base mt-2">
-                    The Basic Maging AI does not yet make use of <strong>sink</strong>.
+                    The Maging AI uses <strong>sink</strong> insofar as to use all the remaining sink before trying to finish an item (exo/overmage).
                 </p>
             </div>
         </div>
