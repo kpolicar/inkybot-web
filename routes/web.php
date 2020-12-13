@@ -6,6 +6,7 @@ use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,33 +19,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localize', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function() {
 
-Route::get('/profile', function (Request $request) {
-    $message = $action = "";
-    if (!optional($request->user())->hasVerifiedEmail()) {
-        $message = "Please verify your email address to complete registration.";
-        $action = 'partials.resend-verification';
-    } elseif ($request->get('verified')) {
-        $message = "You have successfully verified your email.";
-    }
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
 
-    return view('profile')
-        ->with(compact('message', 'action'));
-})->middleware('auth')->name('profile');
+    Route::get(LaravelLocalization::transRoute('routes.profile'), function (Request $request) {
+        $message = $action = "";
+        if (!optional($request->user())->hasVerifiedEmail()) {
+            $message = "Please verify your email address to complete registration.";
+            $action = 'partials.resend-verification';
+        } elseif ($request->get('verified')) {
+            $message = "You have successfully verified your email.";
+        }
+
+        return view('profile')
+            ->with(compact('message', 'action'));
+    })->middleware('auth')->name('profile');
+
+
+    Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
+        return view('subscribe');
+    })->name('subscribe')->middleware('verified');
+
+    Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
+        return view('install');
+    })->name('install');
+
+    require_once base_path('vendor\laravel\fortify\routes\routes.php');
+});
 
 Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
     ->middleware('verified');
-
-Route::get('/subscribe', function (Request $request) {
-    return view('subscribe');
-})->name('subscribe')->middleware('verified');
-
-Route::get('/install', function (Request $request) {
-    return view('install');
-})->name('install');
 
 Route::post(
     'stripe/webhook',
@@ -59,4 +70,3 @@ Route::get('/release/{version?}', function (ClientVersion $versions, $version) {
 
     return view("release.$view");
 })->name('release');
-
