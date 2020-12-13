@@ -167,6 +167,7 @@ return [
          */
         App\Providers\FortifyServiceProvider::class,
         Berkayk\OneSignal\OneSignalServiceProvider::class,
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
         /*
          * Application Service Providers...
