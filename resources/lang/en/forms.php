@@ -51,5 +51,9 @@ return [
     'update_form_password' => 'New Password',
     'update_form_password_current' => 'Current Password',
     'update_form_submit' => 'Save Changes',
-    '' => '',
+
+    'login_subheader' => 'Access your account',
+    'login_header' => 'Sign-in',
+    'login_form_submit' => 'Login',
+    'login_form_forgot_password' => 'Forgot password?',
 ];
