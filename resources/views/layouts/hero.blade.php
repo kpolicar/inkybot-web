@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LaravelLocalization::getCurrentLocale() }}">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
         <meta name="og:description" content="{{ __('meta.main_description') }}" />
     @show
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_us" />
+    <meta property="og:locale" content="{{ LaravelLocalization::getCurrentLocaleRegional() }}" />
     <meta property="og:url" content="/" />
     <meta property="og:site_name" content="Inkybot" />
     <meta property="og:image" content="{{ asset('logo_white_on_black.jpg') }}" />
