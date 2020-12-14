@@ -2,6 +2,7 @@
 
 return [
     'main' => 'Dofus Maging Bot',
+    'invite' => 'Invitation',
     'verify' => 'Verify Email',
     'subscribe' => 'Subscribe',
     'recover' => 'Reset password',
