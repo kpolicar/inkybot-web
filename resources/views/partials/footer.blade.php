@@ -10,8 +10,10 @@
                 </svg> INKYBOT
                 <small class="text-sm uppercase">Beta</small>
             </a>
-            <p class="text-gray-700 px-3">Copyright © 2020 Inkybot, Dofus® is a trademark of Ankama © 2020<br>
-                Inkybot is not in any way affiliated with Ankama SAS.</p>
+            <p class="text-gray-700 px-3">
+                {{ __('messages.copyright') }}<br>
+                {{ __('messages.affiliation') }}
+            </p>
         </div>
     </div>
 

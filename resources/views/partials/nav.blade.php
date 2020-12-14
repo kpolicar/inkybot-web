@@ -14,31 +14,31 @@
 
         <div class="block lg:hidden pr-4">
             <button id="nav-toggle" class="flex items-center p-1 text-gray-900 hover:text-gray-800">
-                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>{{ __('common.menu') }}</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
             </button>
         </div>
 
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4 font-bold no-underline" href="{{ route('home') }}">Home</a>
+                    <a class="inline-block py-2 px-4 font-bold no-underline" href="{{ route('home') }}">{{ __('common.home') }}</a>
                 </li>
                 <li class="mr-3">
                     <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('install') }}">Installation</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('install') }}">{{ __('common.installation') }}</a>
                 </li>
                 <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('release', ['version' => 'latest']) }}">Release Notes</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('release', ['version' => 'latest']) }}">{{ __('common.release_notes') }}</a>
                 </li>
                 <li class="mr-3">
                     @auth
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('profile') }}">Profile</a>
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('profile') }}">{{ __('common.profile') }}</a>
                     @endauth
 
                     @guest
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('login') }}">Login</a>
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('login') }}">{{ __('common.login') }}</a>
                     @endguest
                 </li>
                 <li class="mr-3">
@@ -47,19 +47,19 @@
                             @csrf
                             <button type="submit"
                                    class="bg-transparent focus:outline-none inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4">
-                                Sign out
+                                {{ __('common.signout') }}
                             </button>
                         </form>
                     @endauth
 
                     @guest
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('register') }}">Sign up</a>
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('register') }}">{{ __('common.signup') }}</a>
                     @endguest
                 </li>
             </ul>
             <div class="py-4">
                 <a id="navAction" href="{{ asset($download_asset) }}" download class="mx-auto lg:mx-0 lg:mx-2 hover:underline bg-white text-gray-800 font-bold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">
-                    Download
+                    {{ __('common.download') }}
                 </a>
             </div>
         </div>
