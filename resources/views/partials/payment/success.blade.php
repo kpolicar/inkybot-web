@@ -8,11 +8,11 @@
     <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
 </div>
 <div class="flex justify-between my-4 text-xl">
-    <p class="font-bold">Item:</p>
-    <p class="text-lg">1 month subscription</p>
+    <p class="font-bold">{{ __('forms.basket_item') }}</p>
+    <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}</p>
 </div>
 <div class="flex justify-between my-4 text-xl">
-    <p class="font-bold">Amount paid:</p>
+    <p class="font-bold">{{ __('forms.basket_paid') }}</p>
     <p class="text-lg">5.00 €</p>
 </div>
 <p class="text-gray-400 text-base mt-16">

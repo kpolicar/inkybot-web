@@ -48,7 +48,10 @@
         @endif
 
         <p class="text-gray-400 text-sm mt-4">
-            {{ __('forms.verify_instructions_unexpected') }} <a href="mailto:support@inkybot.me" class="font-bold">support@inkybot.me</a>
+            @section('support_email')
+                <a href="mailto:support@inkybot.me" class="font-bold">support@inkybot.me</a>
+            @endsection
+            {!! __('forms.verify_instructions_unexpected', ['link' => View::getSection('support_email')]) !!}
         </p>
 
     </x-main-hero>

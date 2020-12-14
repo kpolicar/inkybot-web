@@ -40,11 +40,11 @@
                 </div>
 
                 <div class="flex justify-between text-xl">
-                    <p class="font-bold">{{ __('forms.subscribe_basket_item') }}</p>
-                    <p class="text-lg">{{ __('forms.subscribe_basket_option', ['option' => 1]) }}</p>
+                    <p class="font-bold">{{ __('forms.basket_item') }}</p>
+                    <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}</p>
                 </div>
                 <div class="flex justify-between text-xl">
-                    <p class="font-bold">{{ __('forms.subscribe_basket_price') }}</p>
+                    <p class="font-bold">{{ __('forms.basket_price') }}</p>
                     <p class="text-lg">5.00 €</p>
                 </div>
 

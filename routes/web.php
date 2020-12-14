@@ -51,7 +51,7 @@ Route::group(
         return view('install');
     })->name('install');
 
-    require_once base_path('vendor\laravel\fortify\routes\routes.php');
+    require_once 'fortify.php';
 });
 
 Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
