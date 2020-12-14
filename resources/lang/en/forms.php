@@ -56,4 +56,8 @@ return [
     'login_header' => 'Sign-in',
     'login_form_submit' => 'Login',
     'login_form_forgot_password' => 'Forgot password?',
+
+    'quick_verify_header' => 'Please verify your email address to complete registration.',
+    'quick_verify_success' => 'You have successfully verified your email.',
+    'quick_verify_action' => 'Resend',
 ];

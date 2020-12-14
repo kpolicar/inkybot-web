@@ -1,6 +1,6 @@
 @extends('layouts.hero')
 
-@section('title', 'Subscribe')
+@section('title', __('titles.subscribe'))
 
 
 @section('head')

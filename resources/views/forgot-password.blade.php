@@ -1,6 +1,6 @@
 @extends('layouts.hero')
 
-@section('title', 'Forgot Password')
+@section('title', __('titles.forgot'))
 
 
 @section('content')

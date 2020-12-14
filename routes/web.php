@@ -32,10 +32,10 @@ Route::group(
     Route::get(LaravelLocalization::transRoute('routes.profile'), function (Request $request) {
         $message = $action = "";
         if (!optional($request->user())->hasVerifiedEmail()) {
-            $message = "Please verify your email address to complete registration.";
+            $message = __('forms.quick_verify_header');
             $action = 'partials.resend-verification';
         } elseif ($request->get('verified')) {
-            $message = "You have successfully verified your email.";
+            $message = __('forms.quick_verify_success');
         }
 
         return view('profile')

@@ -1,6 +1,6 @@
 @extends('layouts.hero')
 
-@section('title', 'Verify Email')
+@section('title', __('titles.verify'))
 
 
 @section('content')
