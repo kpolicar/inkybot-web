@@ -19349,6 +19349,13 @@ downloadLinks.forEach(function (downloadLink) {
     return document.dispatchEvent(new Event('download'));
   });
 });
+var dropdowns = document.querySelectorAll("[data-dropdown]");
+dropdowns.forEach(function (dropdown) {
+  var trigger = document.querySelector(dropdown.getAttribute('data-dropdown'));
+  trigger.addEventListener('click', function () {
+    if (dropdown.classList.contains('hidden')) dropdown.classList.remove('hidden');else dropdown.classList.add('hidden');
+  });
+});
 
 /***/ }),
 

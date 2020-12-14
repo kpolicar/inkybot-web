@@ -21794,6 +21794,30 @@ video {
           animation: bounce 1s infinite;
 }
 
+.filter-none {
+  filter: none;
+}
+
+.filter-grayscale-80 {
+  filter: grayscale(80%);
+}
+
+.hover\:filter-none:hover {
+  filter: none;
+}
+
+.hover\:filter-grayscale-80:hover {
+  filter: grayscale(80%);
+}
+
+.focus\:filter-none:focus {
+  filter: none;
+}
+
+.focus\:filter-grayscale-80:focus {
+  filter: grayscale(80%);
+}
+
 /*!
  * Font Awesome Free 5.15.1 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)

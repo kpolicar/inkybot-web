@@ -1,6 +1,7 @@
-<nav id="header" class="fixed w-full z-30 top-0 text-white">
+<nav id="header" class="fixed w-full z-30 top-0 text-white flex justify-between">
 
-    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+    <div class="" style="flex-grow: 1;"></div>
+    <div class="container flex flex-wrap items-center justify-between mt-0 py-2">
 
         <div class="pl-4 flex items-center">
             <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"  href="{{ route('home') }}">
@@ -18,42 +19,42 @@
             </button>
         </div>
 
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
-            <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                <li class="mr-3">
-                    <a class="inline-block py-2 px-4 font-bold no-underline" href="{{ route('home') }}">{{ __('common.home') }}</a>
+        <div class="flex-grow lg:flex justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
+            <ul class="list-reset lg:flex justify-end items-center">
+                <li class="xl:mr-3 m-1">
+                    <a class="font-bold no-underline xl:py-2 xl:px-4 p-2" href="{{ route('home') }}">{{ __('common.home') }}</a>
                 </li>
-                <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
+                <li class="xl:mr-3 m-1">
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
                 </li>
-                <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('install') }}">{{ __('common.installation') }}</a>
+                <li class="xl:mr-3 m-1">
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('install') }}">{{ __('common.installation') }}</a>
                 </li>
-                <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('release', ['version' => 'latest']) }}">{{ __('common.release_notes') }}</a>
+                <li class="xl:mr-3 m-1">
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('release', ['version' => 'latest']) }}">{{ __('common.release_notes') }}</a>
                 </li>
-                <li class="mr-3">
+                <li class="xl:mr-3 m-1">
                     @auth
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('profile') }}">{{ __('common.profile') }}</a>
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('profile') }}">{{ __('common.profile') }}</a>
                     @endauth
 
                     @guest
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('login') }}">{{ __('common.login') }}</a>
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('login') }}">{{ __('common.login') }}</a>
                     @endguest
                 </li>
-                <li class="mr-3">
+                <li class="xl:mr-3 m-1">
                     @auth
                         <form class="m-0" method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
-                                   class="bg-transparent focus:outline-none inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4">
+                                    class="bg-transparent focus:outline-none inline-block no-underline hover:text-gray-500 hover:text-underline">
                                 {{ __('common.signout') }}
                             </button>
                         </form>
                     @endauth
 
                     @guest
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('register') }}">{{ __('common.signup') }}</a>
+                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('register') }}">{{ __('common.signup') }}</a>
                     @endguest
                 </li>
             </ul>
@@ -64,5 +65,7 @@
             </div>
         </div>
     </div>
-
+    <div style="flex: 1" class="text-right">
+        <div class="p-2 pl-0 mt-0 lg:mt-2">@include('partials.language')</div>
+    </div>
 </nav>

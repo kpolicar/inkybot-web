@@ -5,6 +5,17 @@
 @import "fontawesome";
 @import "stripe";
 
+@layer utilities {
+    @variants hover, focus {
+        .filter-none {
+            filter: none;
+        }
+        .filter-grayscale-80 {
+            filter: grayscale(80%);
+        }
+    }
+}
+
 html {
     background: white;
 }
