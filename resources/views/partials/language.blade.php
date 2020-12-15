@@ -54,18 +54,7 @@
                             </g>
                         </g>
                     </g>
-
-                    <metadata>
-                        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-                            <rdf:Description about="https://iconscout.com/legal#licenses" dc:title="united-kingdom-britain-european-country-flag" dc:description="united-kingdom-britain-european-country-flag" dc:publisher="Iconscout" dc:date="2017-05-27" dc:format="image/svg+xml" dc:language="en">
-                                <dc:creator>
-                                    <rdf:Bag>
-                                        <rdf:li>Vignesh Oviyan</rdf:li>
-                                    </rdf:Bag>
-                                </dc:creator>
-                            </rdf:Description>
-                        </rdf:RDF>
-                    </metadata></svg>
+                </svg>
                 <span class="pl-3">English</span>
             </a>
             <a rel="alternate" hreflang="fr" href="{{ LaravelLocalization::getLocalizedURL('fr', null, [], true) }}" class="duration-150 filter-grayscale-80 hover:filter-none block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center flag" role="menuitem">
@@ -85,18 +74,7 @@
                             <path inkscape:connector-curvature="0" id="path15957" d="m -19701.578,7037.4949 216,0 0,448.002 -216,0 0,-448.002 z" style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;white-space:normal;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#3d6591;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:15.99999905;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"/>
                         </g>
                     </g>
-
-                    <metadata>
-                        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-                            <rdf:Description about="https://iconscout.com/legal#licenses" dc:title="france-french-european-country-flag" dc:description="france-french-european-country-flag" dc:publisher="Iconscout" dc:date="2017-05-27" dc:format="image/svg+xml" dc:language="en">
-                                <dc:creator>
-                                    <rdf:Bag>
-                                        <rdf:li>Vignesh Oviyan</rdf:li>
-                                    </rdf:Bag>
-                                </dc:creator>
-                            </rdf:Description>
-                        </rdf:RDF>
-                    </metadata></svg>
+                </svg>
 
                 <span class="pl-3">French</span>
             </a>

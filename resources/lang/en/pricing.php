@@ -12,6 +12,6 @@ return [
     'package_feature_simple_maging' => 'Simple maging',
     'package_feature_over_maging' => 'Overmaging',
     'package_feature_exo_maging' => 'Exomaging',
-    'package_feature_magus_leveling' => 'Magus leveling',
+    'package_feature_magus_leveling' => 'Magus profession leveling',
     'package_feature_in_development' => 'Features are under active development and have not yet been made available',
 ];
