@@ -145,9 +145,20 @@
 
             <img src="{{ asset('images/releases/2.58_ocrindicators.png') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
 
+            <div class="anchor" id="advanced-mode"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    3. Configure your stats and begin maging!
+                    3. Activate Advanced Mode
+                </h3>
+                <p class="text-base">
+                    Make sure you enable "Advanced Mode" in-game. You can find this option on the maging table under the item stats.
+                </p>
+            </div>
+            <img src="{{ asset('images/releases/advanced_mode.png') }}" class="shadow-lg rounded my-4" alt="">
+
+            <div class="px-4 lg:px-0">
+                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
+                    4. Configure your stats and begin maging!
                 </h3>
                 <p class="text-base">
                     You can access the stats configurator by pressing the "Stats" button on the sidebar.
