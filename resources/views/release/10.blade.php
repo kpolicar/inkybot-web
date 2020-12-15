@@ -8,7 +8,7 @@
 
         <h2 class="tracking-loose text-xl w-full font">v0.10 BETA</h2>
         <h1 class="mb-0 text-5xl font-bold leading-tight">Release notes</h1>
-        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">10th December 2020</h2>
+        <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">15th December 2020</h2>
 
         <p class="leading-normal text-lg mb-2">
             Welcome to the tenth release of Inkybot! We are approaching the official release!
@@ -40,7 +40,19 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            AI uses <strong>sink</strong> to improve stats as much as possible during exo maging
+                            Compatibility with <strong>Dofus 2.58</strong> update
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            <strong>Save stat configuration</strong> as preset
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            AI uses <strong>sink</strong> to improve stats as much as possible during <strong>exo maging</strong> <small>(more to come)</small>
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
@@ -58,7 +70,7 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Save stat configuration as preset
+                            Reduce bot unexpectedly stopping in debug mode
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
@@ -81,7 +93,7 @@
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1"><strong>Dofus 2.58</strong> smithmagic update</span>
+                        <span class="pt-1">Improve AI's use of <strong>sink</strong> for overmaging</span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
@@ -131,7 +143,7 @@
                 </p>
             </div>
 
-            <img src="{{ asset('images/releases/newocrindicators.png') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
+            <img src="{{ asset('images/releases/2.58_ocrindicators.png') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
 
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
