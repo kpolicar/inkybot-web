@@ -97,6 +97,10 @@
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Rune quantity checking</strong> and warning notifications</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">Allow the bot to run when the window is in <strong>minimized mode</strong></span>
                     </li>
                 </ul>
