@@ -22,7 +22,7 @@
     <p class="text-black my-3">
         The bot must be run in administrator mode.<br>
         <small class="text-sm italic">
-            Windows does not allow simulating mouse clicks in normal mode.
+            Windows does not allow simulating mouse clicks in standard mode.
         </small>
     </p>
     @endif
