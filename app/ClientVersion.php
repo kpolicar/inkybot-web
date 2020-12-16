@@ -63,6 +63,11 @@ class ClientVersion
                 'code' => 'v0.10beta',
                 'name' => 'v0.10 Beta',
             ],
+            11 => [
+                'number' => 11,
+                'code' => 'v0.11beta',
+                'name' => 'v0.11 Beta',
+            ],
         ]);
     }
 
