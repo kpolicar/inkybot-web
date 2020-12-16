@@ -46,6 +46,12 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
+                            Temporarily remove AI using sink - until sink is persistently correctly calculated
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
                             Reduce bot <strong>unexpectedly stopping</strong> while the <strong>mage history is not full</strong>
                         </span>
                     </li>
