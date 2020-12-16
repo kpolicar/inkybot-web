@@ -1,4 +1,3 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
 <div class="relative inline-block text-left">
     <button id="language-selector" type="button" class="opacity-75 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" aria-haspopup="true" aria-expanded="true">
         <span class="md:block hidden">Language</span>
@@ -6,17 +5,7 @@
         <i class="fas fa-chevron-down self-center pl-2"></i>
     </button>
 
-    <!--
-      Dropdown panel, show/hide based on dropdown state.
-
-      Entering: "transition ease-out duration-100"
-        From: "transform opacity-0 scale-95"
-        To: "transform opacity-100 scale-100"
-      Leaving: "transition ease-in duration-75"
-        From: "transform opacity-100 scale-100"
-        To: "transform opacity-0 scale-95"
-    -->
-    <div class="origin-top-right absolute right-0 mt-4 rounded-t-none rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" data-dropdown="#language-selector">
+    <div id="language-selector-dropdown-content" class="origin-top-right absolute right-0 mt-4 rounded-t-none rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-50" data-dropdown="#language-selector">
         <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
             <a rel="alternate" hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}"  class="duration-150 filter-grayscale-80 hover:filter-none block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center flag" role="menuitem">
                 <svg class="h-10 w-10" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="720" height="480" viewBox="0 0 720 480.00001" id="svg11182" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="united-kingdom-britain-european-country-flag.svg">

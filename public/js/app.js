@@ -19448,7 +19448,9 @@ document.addEventListener('scroll', function () {
 
 /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
+var navMenuMain = document.getElementById("header");
 var navMenuDiv = document.getElementById("nav-content");
+var languageSelectorDiv = document.getElementById("language-selector-dropdown-content");
 var navMenu = document.getElementById("nav-toggle");
 document.onclick = check;
 
@@ -19465,8 +19467,11 @@ function check(e) {
         navMenuDiv.classList.add("hidden");
       }
     } else {
-      // click both outside link and outside menu, hide menu
-      navMenuDiv.classList.add("hidden");
+      if (!checkParent(target, navMenuMain)) {
+        // click both outside link and outside menu, hide menu
+        navMenuDiv.classList.add("hidden");
+        languageSelectorDiv.classList.add("hidden");
+      }
     }
   }
 }
