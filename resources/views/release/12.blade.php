@@ -46,6 +46,12 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
+                            <strong>Sink calculation</strong> fixes
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
                             <strong>Fix bugs</strong> related to combining exo rune
                         </span>
                     </li>
