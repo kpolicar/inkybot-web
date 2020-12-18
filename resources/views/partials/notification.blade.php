@@ -1,7 +1,7 @@
 <div id="notification" class="text-white pr-6 py-4 border-0 rounded-lg m-2 bg-black fixed bottom-0 w-auto z-10 opacity-75">
     <span class="inline-block align-middle mx-5 mr-8 font-bold">
         {!! $message !!}
-        @if(isset($action))
+        @if(isset($action) && $action)
             <br>
             @include($action)
         @endif
