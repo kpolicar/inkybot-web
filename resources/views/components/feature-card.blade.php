@@ -1,4 +1,4 @@
-<div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
+<div class="w-full md:w-1/2 lg:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
     <div class="flex-1 bg-gray-200 rounded-xl overflow-hidden shadow py-4 @if ($tags) rounded-b-none @endif">
         @if ($icon)
             <i class="fas fa-{{ $icon }} text-gray-800 text-4xl ml-1 px-6 mt-6"></i>

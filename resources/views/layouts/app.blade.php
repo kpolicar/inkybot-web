@@ -41,7 +41,9 @@
 
 @yield('hero')
 
-@yield('content')
+<main>
+    @yield('content')
+</main>
 
 @section('footer')
     @include('partials.engage')

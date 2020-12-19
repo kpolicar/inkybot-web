@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('head')
+    <meta property="og:video" content="{{ asset('videos/inkybot_intro.mp4') }}" />
+    <meta property="og:video:width" content="1920">
+    <meta property="og:video:height" content="1080">
+@show
+
 @section('hero')
     <x-main-hero>
         <h2 class="uppercase tracking-loose w-full">The Dofus 2.0 Maging bot</h2>
@@ -16,6 +22,6 @@
 
 @section('content')
     @include('partials.features')
-
+    @include('partials.introvideo')
     @include('partials.pricing')
 @endsection

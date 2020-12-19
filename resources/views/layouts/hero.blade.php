@@ -38,7 +38,9 @@
         @include('partials.nav')
     @show
 
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 </div>
 
 @include('partials.notification-download')

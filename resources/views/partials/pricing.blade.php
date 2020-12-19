@@ -1,5 +1,5 @@
 <div class="anchor" id="pricing"></div>
-<section class="bg-gray-100 py-8 pb-12">
+<section class="bg-white py-8 pb-12">
 
     <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
 
@@ -7,12 +7,12 @@
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-        <h2 class="w-full my-2 text-xl leading-tight text-center text-gray-800">
+        <p class="w-full my-2 text-xl leading-tight text-center text-gray-800">
             Inkybot is currently <strong class="uppercase">free</strong> to use for everyone.
             Purchasing subscription before the official release is still very much appreciated.<br>
             Your subscription will be activated once the pre-release period ends - perhaps with some added benefits.<br>
             Thank you for your support.
-        </h2>
+        </p>
 
         <div class="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
 
