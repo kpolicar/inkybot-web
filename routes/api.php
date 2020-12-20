@@ -1,6 +1,7 @@
 <?php
 
 use App\ClientVersion;
+use App\Http\Controllers\ClientStatisticsController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,3 +35,5 @@ Route::get('/', function (ClientVersion $versions) {
         'number' => $last['number'],
     ];
 });
+
+Route::post('/statistics', [ClientStatisticsController::class, "Update"]);

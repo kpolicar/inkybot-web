@@ -3,6 +3,7 @@
 use App\ClientVersion;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\WebhookController;
+use App\Models\Maging;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use Illuminate\Support\Facades\Route;
@@ -33,9 +34,10 @@ Route::get('/profile', function (Request $request) {
             $message = "You have successfully verified your email.";
         }
     }
+    $maging = Maging::todaysForUser($request->user());
 
     return view('profile')
-        ->with(compact('message', 'action'));
+        ->with(compact('message', 'action', 'maging'));
 })->middleware('auth')->name('profile');
 
 Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])

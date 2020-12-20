@@ -61,6 +61,10 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function maging() {
+        return $this->hasMany(Maging::class);
+    }
+
     protected function GenerateReferralCode() {
         do {
             $this->referral_code = $referralCode = \Str::random(10);

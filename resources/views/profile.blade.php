@@ -129,6 +129,22 @@
                         </div>
                     </div>
 
+                    <hr class="bg-gray-300 my-8">
+
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
+                                Kamas spent today
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <p class="text-gray-800 flex items-center">
+                                {{ number_format($maging->expended) }}
+                                <img src="{{ asset('images/kamas.png') }}" class="ml-2" alt="" style="height: 1.5rem; filter: grayscale(100%)">
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="md:flex md:items-center">
                         <div class="md:w-2/3">
                             <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
