@@ -13,16 +13,16 @@
                 You are subscribed until {{ Auth::user()->subscribed_to->format('d/m/Y H:i') }}
                 @else
                     You are not subscribed
-                    @endsubscribed
+                @endsubscribed
             </p>
 
 
             <a href="{{ route('subscribe') }}" class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                 @subscribed
-                Extend subscription
+                    Extend subscription
                 @else
                     Purchase subscription
-                    @endsubscribed
+                @endsubscribed
             </a>
         </div>
     </x-main-hero>
@@ -123,7 +123,7 @@
                         <div class="md:w-3/5">
                             <p class="text-gray-800">{{ route('register', ['ref' => request()->user()->referral_code]) }}</p>
                             <p class="py-2 text-sm text-gray-600">
-                                each referred user that purchases subscription will grant you <strike class="text-gray-500">2</strike> <strong>7*</strong> extra days of subscription<br>
+                                each referred user that purchases subscription will grant you <strike class="text-gray-500">2</strike> <strong>5*</strong> extra days of subscription<br>
                                 *early referral bonus
                             </p>
                         </div>

@@ -11,7 +11,7 @@
 </div>
 <div class="flex justify-between my-4 text-xl">
     <p class="font-bold">Amount paid:</p>
-    <p class="text-lg">5.00 €</p>
+    <p class="text-lg">4.00 €</p>
 </div>
 <p class="text-gray-400 text-base mt-16">
     Your payment has been processed successfully. Your subscription should be added to your account in a few moments.

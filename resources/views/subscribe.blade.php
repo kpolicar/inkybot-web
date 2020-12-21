@@ -45,7 +45,7 @@
                 </div>
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">Price:</p>
-                    <p class="text-lg">5.00 €</p>
+                    <p class="text-lg"><strike>6.00€</strike> 4.00 €</p>
                 </div>
 
 
@@ -78,7 +78,7 @@
 
                 <button class="mx-auto lg:mx-0 hover:underline font-bold rounded mt-2 py-4 px-8 shadow-lg cursor-pointer uppercase btn-color-secondary w-full"
                         type="submit">
-                    Pay 5€
+                    Pay 4€
                 </button>
 
 

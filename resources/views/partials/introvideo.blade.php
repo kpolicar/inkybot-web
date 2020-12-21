@@ -21,6 +21,6 @@
         <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
     </video>
     <p class="text-xs text-gray-600 text-center">
-        Please keep in mind this is a timelapse video. Inkybot is not <i style="word-spacing: 2px">that </i>fast.
+        Please keep in mind this is a timelapse video. Maging is not <i style="word-spacing: 2px">that </i>fast.
     </p>
 </section>
