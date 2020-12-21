@@ -14,8 +14,9 @@
             <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <form class="w-full" method="POST" action="/login">
+        <form class="w-full" method="POST" action="{{ route('login') }}">
             @csrf
+            <input type="hidden" name="remember" value="1">
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
                     <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="grid-password">
