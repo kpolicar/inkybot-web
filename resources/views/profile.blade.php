@@ -134,14 +134,38 @@
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
-                                Kamas spent today
+                                Today's activity
                             </label>
                         </div>
                         <div class="md:w-3/5">
-                            <p class="text-gray-800 flex items-center">
-                                {{ number_format($maging->expended) }}
-                                <img src="{{ asset('images/kamas.png') }}" class="ml-2" alt="" style="height: 1.5rem; filter: grayscale(100%)">
-                            </p>
+                            <ul class="text-gray-800">
+                                @foreach(['ap', 'mp', 'range'] as $rune)
+                                    @if(array_key_exists($rune, $maging->exo_attempts ?? []))
+                                        <li class="w-1/2 flex flex-wrap items-center py-2 pt-0">
+                                            <div class="w-1/5 mr-2">
+                                                <img src="{{ asset('images/icons/'.$rune.'.png') }}" alt=""
+                                                     class="rounded object-contain h-10"
+                                                     style="background: no-repeat center center url('{{ asset('images/icons/rune_bg.jpg') }}'); background-size: contain">
+                                            </div>
+                                            <span class="4/5">
+                                                {{ $maging->exo_attempts[$rune] ?? 0 }} tries
+                                                @if(array_key_exists($rune, $maging->exo_successes ?? []))
+                                                    <b class="mx-1">//</b>
+                                                    <strong>{{ $maging->exo_successes['ap'] }} success</strong>
+                                                @endif
+                                            </span>
+                                        </li>
+                                    @endif
+                                @endforeach
+
+                                <hr class="bg-gray-300 my-3">
+                                <li class="w-1/2 flex flex-wrap items-center">
+                                    <div class="w-1/5">
+                                        <img src="{{ asset('images/icons/kamas.png') }}" class="ml-2" alt="" style="height: 1.5rem; filter: grayscale(30%)">
+                                    </div>
+                                    -{{ number_format($maging->expended) }}
+                                </li>
+                            </ul>
                         </div>
                     </div>
 

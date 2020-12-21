@@ -128,8 +128,8 @@
                 </p>
             </div>
             <div class="flex flex-wrap">
-                <img src="{{ asset('images/ingame_settings.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4" alt="">
-                <img src="{{ asset('images/ingame_settings_menu.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4" alt="">
+                <img src="{{ asset('images/ingame_settings.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain" alt="">
+                <img src="{{ asset('images/ingame_settings_menu.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain" alt="">
             </div>
 
             <div class="anchor" id="ocr-bounds"></div>
