@@ -78,7 +78,7 @@
                 <ul class="text-black">
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1"><strong>Rune quantity checking</strong> and warning notifications</span>
+                        <span class="pt-1"><strong>Quality of life</strong> improvements (rune quantity checking, warnings, notifications)</span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
@@ -88,7 +88,7 @@
 
             </div>
 
-            <x-limitations :restrictions="['administrator', 'minimized', 'stable_connection']" />
+            <x-limitations :restrictions="['administrator', 'minimized']" />
         </div>
 
     </section>
