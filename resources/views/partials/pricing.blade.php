@@ -63,7 +63,7 @@
                         @else
                             <a href="{{ route('register') }}"
                                class="inline-block mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg">
-                                Signup
+                                Sign up
                             </a>
                         @endauth
                     </div>
