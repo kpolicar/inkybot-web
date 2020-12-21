@@ -4,8 +4,8 @@
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
     <p class="w-full my-2 text-xl leading-tight text-center text-gray-800">
-        Check out Inkybot in action. This timelapse video was recorded while the staff was off eating lunch.<br>
-        Spend your time elsewhere, let Inkybot do it's thing. Don't let maging be frustrating.
+        Check out Inkybot in action. This video was recorded while the staff was off eating lunch.<br>
+        Spend your time elsewhere, let Inkybot do its thing. Don't let maging be frustrating.
     </p>
 
     <video title="EXO Maging Presentation Video"

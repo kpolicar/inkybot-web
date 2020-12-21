@@ -139,7 +139,7 @@
                         </div>
                         <div class="md:w-3/5">
                             <ul class="text-gray-800">
-                                @foreach(Arr::only($maging->exo_attempts ?? [], ['ap', 'mp', 'range']) as $rune => $attempts)
+                                @forelse(Arr::only($maging->exo_attempts ?? [], ['ap', 'mp', 'range']) as $rune => $attempts)
                                     <li class="w-1/2 flex flex-wrap items-center py-2 pt-0">
                                         <div class="w-1/5 mr-2">
                                             <img src="{{ asset('images/icons/'.$rune.'.png') }}" alt=""
@@ -154,7 +154,9 @@
                                             @endif
                                         </span>
                                     </li>
-                                @endforeach
+                                @empty
+                                    No activity
+                                @endforelse
                             </ul>
                         </div>
                     </div>

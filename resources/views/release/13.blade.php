@@ -40,26 +40,26 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added basic <strong>analytics</strong>, visible on Profile page
+                            Added basic <strong>analytics</strong> (exo attempts), visible on Profile page
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            AI uses <strong>sink calculation</strong> fixed, added safeguards to prevent incorrect AI behavior
+                            Fixed AI's <strong>sink calculation</strong>, added safeguards to prevent incorrect AI behavior
                             if sink is ever incorrectly interpreted
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added client UI <strong>popup warnings</strong>
+                            Added popup <strong>warnings</strong>
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Various <strong>UI fixes</strong>: scaling for high DPI screens, prevent crashes due to unexpected user behavior
+                            Various <strong>UI improvements</strong>: scaling for high DPI screens, prevent crashes due to unexpected user behavior
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
@@ -82,7 +82,52 @@
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Improve AI's use of <strong>sink</strong> for <strong>overmaging</strong></span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">Allow the bot to run when the window is in <strong>minimized mode</strong></span>
+                    </li>
+                </ul>
+
+
+                <h2 class="w-full my-2 text-5xl font-bold leading-tight text-gray-800 mt-10">The road so far</h2>
+                <div class="w-full mb-4">
+                    <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+                </div>
+
+                <ul class="text-black">
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-check text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Exo maging</strong> with proper sink usage</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-check text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Perfect item maging</strong> with proper sink usage</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-check text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Overmaging</strong> <u>without</u> proper sink usage</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-check text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Safe & stable</strong> maging without fear of ruining items</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-check text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Configurable AI behavior</strong> so users can decide which runes to use and when</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-check text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Basic Data gathering</strong> so users know how much they're making/losing</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-times text-3xl mr-3"></i>
+                        <span class="pt-1">Cannot mage items that have more stats than Dofus can display at once</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-times text-3xl mr-3"></i>
+                        <span class="pt-1">Does not make use of transcendence runes</span>
                     </li>
                 </ul>
 
