@@ -10,7 +10,7 @@
 
     <video title="EXO Maging Presentation Video"
            poster="{{ asset('images/poster_inkybot_intro.png') }}"
-           class="mx-auto mt-8 my-6 rounded"
+           class="mx-auto mt-8 my-6 mb-3 rounded"
            height="1920"
            width="1080"
            preload="metadata"
@@ -20,4 +20,7 @@
            disablePictureInPicture>
         <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
     </video>
+    <p class="text-xs text-gray-600 text-center">
+        Please keep in mind this is a timelapse video. Inkybot is not <i style="word-spacing: 2px">that </i>fast.
+    </p>
 </section>

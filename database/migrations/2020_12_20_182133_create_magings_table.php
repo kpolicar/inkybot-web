@@ -16,6 +16,8 @@ class CreateMagingsTable extends Migration
         Schema::create('magings', function (Blueprint $table) {
             $table->id();
             $table->integer('expended')->default(0);
+            $table->json('exo_attempts')->nullable();
+            $table->json('exo_successes')->nullable();
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');

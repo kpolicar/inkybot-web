@@ -18,12 +18,15 @@
 
 <section class="container mx-auto text-center py-6 mb-12 px-4 lg:px-0">
 
-    <h3 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white uppercase">Pre-release Freedom!</h3>
+    <h3 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white uppercase">It's official!</h3>
     <div class="w-full mb-4">
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
-    <h4 class="my-4 text-3xl leading-tight">Inkybot is currently <strong class="uppercase">free</strong> for everyone until the official release</h4>
+    <h4 class="my-4 text-3xl leading-tight">
+        Inkybot's <strong class="uppercase">beta phase</strong> is over!
+        Get ready for some serious maging!
+    </h4>
 
     <a href="{{ asset($download_asset) }}"
        download

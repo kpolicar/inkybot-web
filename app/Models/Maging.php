@@ -14,6 +14,11 @@ class Maging extends Model
         'user_id', 'expended'
     ];
 
+    protected $casts = [
+        'exo_attempts' => 'array',
+        'exo_successes' => 'array',
+    ];
+
     protected $attributes = [
         'expended' => 0,
     ];
