@@ -21,10 +21,7 @@
 @endsection
 
 @section('content')
-    <div class="anchor" id="features"></div>
     @include('partials.features')
-    <div class="anchor" id="presentation"></div>
     @include('partials.introvideo')
-    <div class="anchor" id="pricing"></div>
     @include('partials.pricing')
 @endsection

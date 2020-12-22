@@ -1,3 +1,4 @@
+<div class="anchor" id="features"></div>
 <section class="bg-white border-b py-8">
 
 

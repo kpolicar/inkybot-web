@@ -1,3 +1,4 @@
+<div class="anchor" id="presentation"></div>
 <section class="bg-gray-100 py-8 pb-12 border-b">
     <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Presentation</h1>
     <div class="w-full mb-4">
