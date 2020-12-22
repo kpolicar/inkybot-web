@@ -24,14 +24,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+    protected $visible = [
+        'name', 'email', 'created_at', 'updated_at', 'subscribed_to', 'is_subscribed', 'is_free_trial',  'free_trial_available',
     ];
 
     /**
@@ -45,7 +39,7 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $appends = [
-        'is_subscribed'
+        'is_subscribed', 'is_free_trial', 'free_trial_available',
     ];
 
     protected static function boot()
@@ -61,6 +55,10 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function free_trial() {
+        return $this->hasOne(FreeTrial::class);
+    }
+
     public function maging() {
         return $this->hasMany(Maging::class);
     }
@@ -72,8 +70,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function GetIsSubscribedAttribute() {
-        //return false;
         return $this->freshTimestamp()->isBefore($this->subscribed_to);
+    }
+
+    public function GetIsFreeTrialAttribute() {
+        $trial = optional($this->free_trial);
+        return $trial->exists && !$trial->expired;
+    }
+
+    public function GetFreeTrialAvailableAttribute() {
+        $trial = optional($this->free_trial);
+        return !$trial->exists || !$trial->expired;
     }
 
     public function ExtendedSubscriptionDate() {
