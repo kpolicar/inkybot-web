@@ -13,8 +13,19 @@ class WebhookController extends CashierController
     protected function handlePaymentIntentSucceeded(array $payload)
     {
         if ($user = $this->getUserByStripeId($payload['data']['object']['customer'])) {
-            $user->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate()])
+            $success = $user
+                ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate()])
                 ->save();
+
+            $referrer = optional($user->referrer);
+            if ($success && $referrer->exists && !$referrer->received_referral_reward) {
+                $referrer
+                    ->forceFill([
+                        'subscribed_to' => $referrer->ExtendedSubscriptionDateForReferral(),
+                        'received_referral_reward' => 1,
+                    ])
+                    ->save();
+            }
         }
 
         return $this->successMethod();

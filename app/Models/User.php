@@ -55,6 +55,10 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function referrer() {
+        return $this->belongsTo(User::class, 'referred_by', 'id');
+    }
+
     public function free_trial() {
         return $this->hasOne(FreeTrial::class);
     }
@@ -87,6 +91,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
         $extendedDate = $extendedDate->maximum($this->freshTimestamp());
         return $extendedDate->addMonth();
+    }
+
+    public function ExtendedSubscriptionDateForReferral() {
+        $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
+        $extendedDate = $extendedDate->maximum($this->freshTimestamp());
+        return $extendedDate->addDays(config('app.referrer_reward_days'));
     }
 
     public static function FindByReferral($code) {
