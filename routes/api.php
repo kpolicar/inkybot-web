@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->prefix('/notify')->group(function () {
     Route::post('error', [NotificationController::class, "Error"]);
+    Route::post('runes', [NotificationController::class, "Runes"]);
     Route::post('finished', [NotificationController::class, "Finished"]);
 });
 

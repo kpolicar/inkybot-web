@@ -53,13 +53,20 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added popup <strong>warnings</strong>
+                            <strong>Rune quantity checking</strong> and send notification when run out of runes
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Various <strong>UI improvements</strong>: scaling for high DPI screens, prevent crashes due to unexpected user behavior
+                            Added a popup <strong>confirmation dialog</strong> for when starting the bot might ruin an item
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Various <strong>UI improvements</strong>: scaling for high DPI screens, prevent crashes due to unexpected user behavior,
+                            warn the user for unsupported items
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
@@ -69,27 +76,6 @@
                         </span>
                     </li>
                 </ul>
-
-                <h2 class="w-full my-2 text-5xl font-bold leading-tight text-gray-800 mt-10">Upcoming</h2>
-                <div class="w-full mb-4">
-                    <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-                </div>
-
-                <ul class="text-black">
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1"><strong>Quality of life</strong> improvements (rune quantity checking, warnings, notifications)</span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">Improve AI's use of <strong>sink</strong> for <strong>overmaging</strong></span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">Allow the bot to run when the window is in <strong>minimized mode</strong></span>
-                    </li>
-                </ul>
-
 
                 <h2 class="w-full my-2 text-5xl font-bold leading-tight text-gray-800 mt-10">The road so far</h2>
                 <div class="w-full mb-4">
@@ -119,7 +105,11 @@
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-check text-3xl mr-3"></i>
-                        <span class="pt-1"><strong>Basic Data gathering</strong> so users know how much they're making/losing</span>
+                        <span class="pt-1"><strong>Basic data gathering</strong> so users know how much they're making/losing</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-check text-3xl mr-3"></i>
+                        <span class="pt-1"><strong>Notifications</strong> to inform the user for when the bot has stopped</span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-times text-3xl mr-3"></i>
@@ -128,6 +118,10 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-times text-3xl mr-3"></i>
                         <span class="pt-1">Does not make use of transcendence runes</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-times text-3xl mr-3"></i>
+                        <span class="pt-1">Does not expose the possibility of scripting</span>
                     </li>
                 </ul>
 
