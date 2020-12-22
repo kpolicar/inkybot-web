@@ -39,7 +39,9 @@
     @include('partials.nav')
 @show
 
-@yield('hero')
+<header>
+    @yield('hero')
+</header>
 
 <main>
     @yield('content')

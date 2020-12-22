@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <h3 class="w-full my-2 leading-tight text-center text-gray-800">* Features are under active development and have not yet been made available</h3>
+    <p class="w-full my-2 leading-tight text-center text-gray-800">* Features are under active development and have not yet been made available</p>
 
 
 </section>
