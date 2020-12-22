@@ -45,4 +45,3 @@ Route::get('/', function (ClientVersion $versions) {
 });
 
 Route::middleware('auth:api')->post('/statistics', [ClientStatisticsController::class, "Update"]);
-Route::post('/{user}/statistics', [ClientStatisticsController::class, "UpdateUser"]);

@@ -25,12 +25,4 @@ class ClientStatisticsController extends Controller
 
         $maging->save();
     }
-
-    public function UpdateUser(Request $request, $version, User $user)
-    {
-        $request->setUserResolver(function () use ($user) {
-            return $user;
-        });
-        return $this->Update($request);
-    }
 }
