@@ -39,9 +39,13 @@
     @include('partials.nav')
 @show
 
-@yield('hero')
+<header>
+    @yield('hero')
+</header>
 
-@yield('content')
+<main>
+    @yield('content')
+</main>
 
 @section('footer')
     @include('partials.engage')

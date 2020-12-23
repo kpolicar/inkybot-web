@@ -41,7 +41,7 @@
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+            <div id='section2' class="p-8 mt-6 lg:mt-0 rounded border shadow-sm bg-white">
                 <form action="{{ route('user-profile-information.update') }}#details" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="PUT">
@@ -131,9 +131,42 @@
                         <div class="md:w-3/5">
                             <p class="text-gray-800">{{ route('register', ['ref' => request()->user()->referral_code]) }}</p>
                             <p class="py-2 text-sm text-gray-600">
-                                {!! __('profile.referral_details', ['reward' => '<strike class="text-gray-500">2</strike> <strong>7*</strong>']) !!}<br>
+                                {!! __('profile.referral_details', ['reward' => '<strike class="text-gray-500">2</strike> <strong>5*</strong>']) !!}<br>
                                 *{{ __('profile.referral_details_early') }}
                             </p>
+                        </div>
+                    </div>
+
+                    <hr class="bg-gray-300 my-8">
+
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
+                                Today's activity
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <ul class="text-gray-800">
+                                @forelse(Arr::only($maging->exo_attempts ?? [], ['ap', 'mp', 'range']) as $rune => $attempts)
+                                    <li class="w-1/2 flex flex-wrap items-center py-2 pt-0">
+                                        <div class="w-1/5 mr-2">
+                                            <img src="{{ asset('images/icons/'.$rune.'.png') }}" alt=""
+                                                 class="rounded object-contain h-10"
+                                                 title="{{ __("runes.{$rune}") }}"
+                                                 style="background: no-repeat center center url('{{ asset('images/icons/rune_bg.jpg') }}'); background-size: contain">
+                                        </div>
+                                        <span class="4/5">
+                                            {{ $attempts }} tries
+                                            @if(array_key_exists($rune, $maging->exo_successes ?? []))
+                                                <b class="mx-1">//</b>
+                                                <strong>{{ $maging->exo_successes[$rune] }} success</strong>
+                                            @endif
+                                        </span>
+                                    </li>
+                                @empty
+                                    No activity
+                                @endforelse
+                            </ul>
                         </div>
                     </div>
 
@@ -151,7 +184,7 @@
 
     </section>
 
-    <section class="bg-white border-b py-8">
+    <section class="bg-gray-100 border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
             <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Discord</h1>
             <div class="w-full mb-4">

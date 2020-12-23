@@ -16,6 +16,16 @@ class NotificationController extends Controller
             $schedule = null,
         );
     }
+    public function Runes(Request $request) {
+        \OneSignal::sendNotificationToExternalUser(
+            "You have run out of runes (".$request->input('rune')."). The bot has stopped.",
+            $request->user()->id,
+            $url = null,
+            $data = null,
+            $buttons = null,
+            $schedule = null,
+        );
+    }
 
     public function Finished(Request $request) {
         \OneSignal::sendNotificationToExternalUser(

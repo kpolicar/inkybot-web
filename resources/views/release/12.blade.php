@@ -108,10 +108,29 @@
 
             <img src="{{ asset('images/releases/login.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
 
+            <div class="anchor" id="full-screen"></div>
+            <div class="px-4 lg:px-0">
+                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
+                    2. Assign the appropriate in-game settings
+                </h3>
+                <p class="text-base">
+                    It is essential you put your <strong>graphics settings as high</strong> as possible, especially <strong>anti-aliasing</strong>.
+                    In general, if you can see the text better, so can Inkybot. Remember, we use OCR to gather in-game information.
+                </p>
+                <p class="text-base">
+                    Also, make sure you turn off <strong>Full screen mode</strong> as it will mess up Inkybot's OCR bounds.
+                    You may have to restart Inkybot after changing this setting.
+                </p>
+            </div>
+            <div class="flex flex-wrap">
+                <img src="{{ asset('images/ingame_settings.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain" alt="">
+                <img src="{{ asset('images/ingame_settings_menu.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain" alt="">
+            </div>
+
             <div class="anchor" id="ocr-bounds"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    2. Ensure the OCR indicators cover the appropriate bounds
+                    3. Ensure the OCR indicators cover the appropriate bounds
                 </h3>
                 <p class="text-base">
                     You can view the OCR bounds by pressing the "Debug" button on the sidebar. The OCR bounds adjust
@@ -128,7 +147,7 @@
             <div class="anchor" id="advanced-mode"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    3. Activate Advanced Mode
+                    4. Activate Advanced Mode
                 </h3>
                 <p class="text-base">
                     Make sure you enable "Advanced Mode" in-game. You can find this option on the maging table under the item stats.
@@ -138,7 +157,7 @@
 
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    4. Configure your stats and begin maging!
+                    5. Configure your stats and begin maging!
                 </h3>
                 <p class="text-base">
                     You can access the stats configurator by pressing the "Stats" button on the sidebar.

@@ -15,9 +15,14 @@ class StripeController extends Controller
             $user->createAsStripeCustomer();
 
         try {
-            $user->charge(500, $paymentId);
+            $user->charge(400, $paymentId);
         } catch (IncompletePayment $exception) {
-            return response()->view('partials.payment.payment-error', compact('exception'));
+            return [
+                "redirect" => route(
+                    'cashier.payment',
+                    [$exception->payment->id, 'redirect' => route('profile')],
+                )
+            ];
         } catch (CardException $exception) {
             return response()->view('partials.payment.card-error', compact('exception'));
         }

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\ClientVersion;
+use App\Models\Maging;
+use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +38,5 @@ class AppServiceProvider extends ServiceProvider
         $currentVersion = $this->app[ClientVersion::class]->latest();
         \View::share('download_password', "inkybot");
         \View::share('download_asset', "storage/Inkybot_{$currentVersion['number']}beta.zip");
-
     }
 }

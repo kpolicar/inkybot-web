@@ -20,6 +20,7 @@
 
         <form class="w-full" method="POST" action="{{  \LaravelLocalization::localizeURL('/login') }}">
             @csrf
+            <input type="hidden" name="remember" value="1">
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
                     <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="grid-password">

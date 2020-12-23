@@ -2,7 +2,7 @@
 
 return [
 
-    'heading' => 'Pre-release Freedom!',
-    'subheading' => 'Inkybot is currently <strong class="uppercase">free</strong> for everyone until the official release',
+    'heading' => 'We have arrived!',
+    'subheading' => 'The first <strong class="uppercase">major release</strong> is here! Get your equipment ready, the exos are coming!',
     'download' => 'Download now!',
 ];

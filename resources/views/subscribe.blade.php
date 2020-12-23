@@ -2,15 +2,6 @@
 
 @section('title', __('titles.subscribe'))
 
-
-@section('head')
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        var stripe = Stripe('{{ config('cashier.key') }}');
-    </script>
-@endsection
-
-
 @section('content')
     <x-main-hero>
         <div id="payment-form" class="stripe-payment-form">
@@ -45,7 +36,7 @@
                 </div>
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">{{ __('forms.basket_price') }}</p>
-                    <p class="text-lg">5.00 €</p>
+                    <p class="text-lg"><strike>6.00€</strike> 4.00 €</p>
                 </div>
 
 
@@ -78,7 +69,7 @@
 
                 <button class="mx-auto lg:mx-0 hover:underline font-bold rounded mt-2 py-4 px-8 shadow-lg cursor-pointer uppercase btn-color-secondary w-full"
                         type="submit">
-                    {{ __('forms.subscribe_form_submit', ['price' => '5€']) }}
+                    {{ __('forms.subscribe_form_submit', ['price' => '4€']) }}
                 </button>
 
 

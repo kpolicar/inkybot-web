@@ -25,8 +25,7 @@
                     Stats are <strong>prioritized</strong> by how many runes are required to reach the target.
                 </p>
                 <p class="text-base mt-2">
-                    Once a stat reaches a certain threshold, it will change <strong>strength</strong> (from SM to PA to RA). These thresholds
-                    are not yet configurable, but they are reasonably declared.
+                    Once a stat reaches a certain threshold, it will change <strong>strength</strong> (from SM to PA to RA).
                 </p>
                 <p class="text-base mt-2">
                     If the bot cannot use <strong>as strong a rune as it would like</strong> for the current stat value (because it would overmage the stat),
@@ -38,8 +37,7 @@
                     All of these thresholds are configurable within Inkybot.
                 </p>
                 <p class="text-base mt-2">
-                    You must make sure you always have <strong>enough runes</strong> for maging. If you run out of a rune,
-                    the bot will warn you only after it discovers this.
+                    You must make sure you always have <strong>enough runes</strong> for maging. You will be notified if you run out of runes - granted you enable notifications.
                 </p>
                 <p class="text-base mt-2">
                     The Maging AI uses <strong>sink</strong> insofar as to use all the remaining sink before trying to finish an item (exo/overmage).
