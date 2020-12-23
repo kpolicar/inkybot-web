@@ -1,5 +1,11 @@
-(function() {
+import {loadStripe} from '@stripe/stripe-js';
+
+
+(async function() {
     'use strict';
+
+
+    const stripe = await loadStripe(process.env.MIX_STRIPE_KEY);
 
     function registerElements(elements) {
         var example = document.querySelector("#payment-form");

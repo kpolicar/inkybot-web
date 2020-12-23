@@ -22,6 +22,9 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
+        "@stripe/stripe-js": "^1.11.0",
+        "install": "^0.13.0",
+        "npm": "^6.14.10",
         "tailwindcss": "^1.9.1"
     }
 }

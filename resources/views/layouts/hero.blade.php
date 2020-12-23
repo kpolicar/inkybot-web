@@ -26,7 +26,7 @@
     <meta property="og:site_name" content="Inkybot" />
     <meta property="og:image" content="{{ asset('logo_white_on_black.jpg') }}" />
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     @yield('head')
 </head>
@@ -45,7 +45,7 @@
 
 
 @section('scripts')
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 @show
 @include('partials.analytics')
 </body>

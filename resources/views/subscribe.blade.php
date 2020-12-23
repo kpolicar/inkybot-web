@@ -3,15 +3,6 @@
 @section('title', 'Subscribe')
 
 
-@section('head')
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
-        var stripe = Stripe('{{ config('cashier.key') }}');
-        window.stripe = stripe;
-    </script>
-@endsection
-
-
 @section('content')
     <x-main-hero>
         <div id="payment-form" class="stripe-payment-form">
@@ -107,5 +98,5 @@
 
 @section('scripts')
     @parent
-    <script src="{{ asset('js/stripe1.js') }}"></script>
+    <script src="{{ mix('js/stripe.js') }}"></script>
 @show
