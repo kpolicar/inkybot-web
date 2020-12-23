@@ -39,7 +39,7 @@ Route::get('/profile', function (Request $request) {
 })->middleware('auth')->name('profile');
 
 Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
-    ->middleware('verified');
+    ->middleware(['auth', 'verified']);
 
 Route::get('/subscribe', function (Request $request) {
     return view('subscribe');
