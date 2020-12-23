@@ -209,7 +209,7 @@
 
     @include('partials.pricing')
 
-    @if ($message)
+    @if (isset($message) && $message)
         @include('partials.notification')
     @endif
 @endsection
