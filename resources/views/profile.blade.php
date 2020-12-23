@@ -144,6 +144,7 @@
                                         <div class="w-1/5 mr-2">
                                             <img src="{{ asset('images/icons/'.$rune.'.png') }}" alt=""
                                                  class="rounded object-contain h-10"
+                                                 title="{{ __("runes.{$rune}") }}"
                                                  style="background: no-repeat center center url('{{ asset('images/icons/rune_bg.jpg') }}'); background-size: contain">
                                         </div>
                                         <span class="4/5">
