@@ -106,5 +106,5 @@
 
 @section('scripts')
     @parent
-    <script src="{{ asset('js/stripe.js') }}"></script>
+    <script src="{{ asset('js/stripe1.js') }}"></script>
 @show

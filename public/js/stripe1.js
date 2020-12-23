@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/stripe.js":
-/*!********************************!*\
+/***/ "./resources/js/stripe1.js":
+/*!*********************************!*\
   !*** ./resources/js/stripe1.js ***!
-  \********************************/
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -275,13 +275,13 @@
 /***/ }),
 
 /***/ 1:
-/*!**************************************!*\
+/*!***************************************!*\
   !*** multi ./resources/js/stripe1.js ***!
-  \**************************************/
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! A:\Projects\PhpstormProjects\inkybot-server\resources\js\stripe1.js */"./resources/js/stripe.js");
+module.exports = __webpack_require__(/*! A:\Projects\PhpstormProjects\inkybot-server\resources\js\stripe1.js */"./resources/js/stripe1.js");
 
 
 /***/ })
