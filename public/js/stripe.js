@@ -192,11 +192,19 @@
       };
 
       stripe.createPaymentMethod('card', elements[0], additionalData).then(function (result) {
+        console.log("stripe result: " + result);
+
         if (result.paymentMethod) {
           axios.post('/pay/subscribe/' + result.paymentMethod.id).then(function (result) {
-            example.classList.remove('submitting');
-            example.classList.add('submitted');
-            paymentResponse.innerHTML = result.data;
+            if (result.data.redirect) {
+              window.location.href = result.data.redirect;
+            } else {
+              example.classList.remove('submitting');
+              example.classList.add('submitted');
+              paymentResponse.innerHTML = result.data;
+            }
+          })["catch"](function (error) {
+            return console.log("server error: " + error);
           });
         } else {
           handleError();
@@ -205,7 +213,6 @@
     });
   }
 
-  console.log('stripe loaded');
   var elements = stripe.elements({
     fonts: [{
       cssSrc: 'https://fonts.googleapis.com/css?family=Quicksand'
