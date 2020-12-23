@@ -7,6 +7,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         var stripe = Stripe('{{ config('cashier.key') }}');
+        window.stripe = stripe;
     </script>
 @endsection
 
