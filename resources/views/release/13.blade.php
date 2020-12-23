@@ -59,6 +59,12 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
+                            Added support for <strong>weapons maging</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
                             Added a popup <strong>confirmation dialog</strong> for when starting the bot might ruin an item
                         </span>
                     </li>

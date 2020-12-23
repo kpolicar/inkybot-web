@@ -122,9 +122,13 @@
                 if (result.paymentMethod) {
                     axios.post('/pay/subscribe/'+result.paymentMethod.id)
                         .then(result => {
-                            example.classList.remove('submitting');
-                            example.classList.add('submitted')
-                            paymentResponse.innerHTML = result.data;
+                            if (result.data.redirect) {
+                                window.location.href = result.data.redirect;
+                            } else {
+                                example.classList.remove('submitting');
+                                example.classList.add('submitted')
+                                paymentResponse.innerHTML = result.data;
+                            }
                         });
                     } else {
                     handleError();
@@ -133,8 +137,6 @@
         });
     }
 
-
-    console.log('stripe loaded')
 
     var elements = stripe.elements({
         fonts: [
