@@ -99,4 +99,4 @@
 @section('scripts')
     @parent
     <script src="{{ mix('js/stripe.js') }}"></script>
-@show
+@endsection

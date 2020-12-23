@@ -1124,7 +1124,7 @@ _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MOD
               };
 
               stripe.createPaymentMethod('card', elements[0], additionalData).then(function (result) {
-                console.log("stripe result: " + result);
+                console.log("stripe result: ", result);
 
                 if (result.paymentMethod) {
                   axios.post('/pay/subscribe/' + result.paymentMethod.id).then(function (result) {
@@ -1136,7 +1136,7 @@ _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MOD
                       paymentResponse.innerHTML = result.data;
                     }
                   })["catch"](function (error) {
-                    return console.log("server error: " + error);
+                    return console.log("server error: ", error);
                   });
                 } else {
                   handleError();
