@@ -78,6 +78,8 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function GetIsFreeTrialAttribute() {
+        if ($this->is_subscribed)
+            return false;
         $trial = optional($this->free_trial);
         return $trial->exists && !$trial->expired;
     }
