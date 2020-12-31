@@ -24,8 +24,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
     ];
 
-    protected $visible = [
-        'name', 'email', 'created_at', 'updated_at', 'subscribed_to', 'is_subscribed', 'is_free_trial',  'free_trial_available',
+    protected $hidden = [
+        'password',
+        'stripe_id',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
+        'remember_token',
+        'card_brand',
+        'card_last_four',
     ];
 
     /**
