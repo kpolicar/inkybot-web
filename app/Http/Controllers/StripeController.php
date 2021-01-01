@@ -15,7 +15,7 @@ class StripeController extends Controller
             $user->createAsStripeCustomer();
 
         try {
-            $user->charge(500, $paymentId);
+            $user->charge(400, $paymentId);
         } catch (IncompletePayment $exception) {
             return [
                 "redirect" => route(
