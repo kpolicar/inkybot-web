@@ -151,7 +151,7 @@
                                             {{ $attempts }} tries
                                             @if(array_key_exists($rune, $maging->exo_successes ?? []))
                                                 <b class="mx-1">//</b>
-                                                <strong>{{ $maging->exo_successes['ap'] }} success</strong>
+                                                <strong>{{ $maging->exo_successes[$rune] }} success</strong>
                                             @endif
                                         </span>
                                     </li>
