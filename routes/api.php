@@ -2,6 +2,7 @@
 
 use App\ClientVersion;
 use App\Http\Controllers\ClientStatisticsController;
+use App\Http\Controllers\DiscordController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
 use App\Http\Resources\ClientUser as ClientUserResource;
@@ -20,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::prefix('/discord')->group(function () {
+    Route::post('login', [DiscordController::class, "Login"]);
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return new ClientUserResource($request->user());

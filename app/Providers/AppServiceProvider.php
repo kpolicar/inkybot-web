@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use Str;
 use App\ClientVersion;
 use App\Models\Maging;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
