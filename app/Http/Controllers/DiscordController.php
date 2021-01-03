@@ -12,7 +12,7 @@ class DiscordController extends Controller
 {
     public function Login(Request $request) {
         $request->validate([
-            'email' => 'exists:users',
+            'email' => 'required|email|exists:users',
             'discord_id' => 'required',
         ]);
         $user = User::where('email', $request->input('email'))->first();

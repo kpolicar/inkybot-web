@@ -35,7 +35,7 @@ class WebhookController
 
             $member->addRole(WebhookController::ROLE_SUBSCRIBER_ID)
                 ->then(function () use ($member, $message) {
-                    $member->user->sendMessage("Your discord role on has been updated to: Subscriber.");
+                    $member->user->sendMessage("Your discord role on has been updated to: **Subscriber**.");
                 });
         });
     }
@@ -47,7 +47,7 @@ class WebhookController
 
             $member->removeRole(WebhookController::ROLE_SUBSCRIBER_ID)
                 ->then(function () use ($member, $message) {
-                    $member->user->sendMessage("Your discord role on has been updated to: Guest.");
+                    $member->user->sendMessage("Your discord role on has been updated to: **Guest**.");
                 });
         });
     }
