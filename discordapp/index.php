@@ -21,16 +21,20 @@ $discord->on('ready', function (\Discord\Discord $discord) {
     $discord->guilds->fetch(GUILD_ID)->then(function (Guild $guild) use ($discord) {
 
         $discord->on('message', function (Message $message, Discord $discord) use ($guild) {
-            if ($message->author->id == WEBHOOK_USER_ID && str_starts_with($message->content, "!"))
-                return (new WebhookController($guild))->handleMessage($message);
+            try {
+                if ($message->author->id == WEBHOOK_USER_ID && str_starts_with($message->content, "!"))
+                    return (new WebhookController($guild))->handleMessage($message);
 
-            if ($discord->username == $message->author->username ||
-                $message->channel->type != Channel::TYPE_DM)
-                return;
+                if ($discord->username == $message->author->username ||
+                    $message->channel->type != Channel::TYPE_DM)
+                    return;
 
-            return (new MessageController($guild))->handle($message);
+                return (new MessageController($guild))->handle($message);
 
-            echo "Recieved a message from {$message->author->username}: {$message->content}", PHP_EOL;
+                echo "Recieved a message from {$message->author->username}: {$message->content}", PHP_EOL;
+            } catch (\Exception $e) {
+                echo "[EXCEPTION]: ".$e->getMessage();
+            }
         });
     });
     echo "Bot is ready.", PHP_EOL;

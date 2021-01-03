@@ -27,11 +27,20 @@ class MessageController
         $argument = Str::of($message->content)->split("/ /")->skip(1);
 
         if (!in_array($command, $this->commands)) {
-            $message->reply("This command is not registered!");
+            $this->replyWithInfo($message);
         } else {
             $this->$command($message, ...$argument);
             echo "Executed command: $message->content\n";
         }
+    }
+
+    private function replyWithInfo(Message $message) {
+        $message->reply(
+            "Hello **".$message->author->nick."**!\n\n".
+            "To connect Discord with your Inkybot account, you can execute the command `!login {email}`\n".
+            "Replace {email} with the email address you have associated with your Inkybot account.".
+            "Once you connect your accounts, you will be granted the appropriate role."
+        );
     }
 
     public function login(Message $message, $email) {
