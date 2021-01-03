@@ -32,8 +32,8 @@ $discord->on('ready', function (\Discord\Discord $discord) {
                 return (new MessageController($guild))->handle($message);
 
                 echo "Recieved a message from {$message->author->username}: {$message->content}", PHP_EOL;
-            } catch (\Exception $e) {
-                echo "[EXCEPTION]: ".$e->getMessage();
+            } catch (\Throwable $throwable) {
+                echo "[ERROR]: ".$throwable->getMessage();
             }
         });
     });
