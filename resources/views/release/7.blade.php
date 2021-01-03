@@ -114,7 +114,7 @@
                 </p>
                 <p class="text-base">
                     We <strong>highly recommend</strong> you run Inkybot <strong>maximized</strong> as this will
-                    improve OCR results, thus minimizing error.make
+                    improve OCR results, thus minimizing error.
                 </p>
             </div>
 
