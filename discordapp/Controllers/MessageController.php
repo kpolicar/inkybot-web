@@ -29,8 +29,12 @@ class MessageController
         if (!in_array($command, $this->commands)) {
             $this->replyWithInfo($message);
         } else {
-            $this->$command($message, ...$argument);
-            echo "Executed command: $message->content\n";
+            try {
+                $this->$command($message, ...$argument);
+                echo "Executed command: $message->content\n";
+            } catch (\ArgumentCountError $error) {
+                $this->replyWithInfo($message);
+            }
         }
     }
 
