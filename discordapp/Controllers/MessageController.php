@@ -36,10 +36,11 @@ class MessageController
 
     private function replyWithInfo(Message $message) {
         $message->reply(
-            "Hello **".$message->author->nick."**!\n\n".
-            "To connect Discord with your Inkybot account, you can execute the command `!login {email}`\n".
-            "Replace {email} with the email address you have associated with your Inkybot account.".
-            "Once you connect your accounts, you will be granted the appropriate role."
+            "Greetings!\n".
+            "To connect Discord with your Inkybot account, you should execute the command: `!login email`\n".
+            "Replace *email* with the email address you have associated with your Inkybot account.\n".
+            "Once you connect your account, you will be granted the appropriate role.\n".
+            "Happy botting!"
         );
     }
 
