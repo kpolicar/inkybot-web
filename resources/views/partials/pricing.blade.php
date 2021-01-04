@@ -22,7 +22,7 @@
                         Free trial
                     </div>
                     <ul class="w-full text-center text-sm">
-                        <li class="border-b py-4">15 minute use</li>
+                        <li class="border-b py-4">30 minute use</li>
                         <li class="border-b py-4">Simple maging</li>
                     </ul>
                 </div>

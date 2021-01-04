@@ -75,7 +75,7 @@ class ClientVersion
             ],
             13 => [
                 'number' => 13,
-                'code' => 'v1.0',
+                'code' => 'v1',
                 'name' => 'v1.0',
             ],
         ]);

@@ -47,6 +47,8 @@ Route::group(
             ->with(compact('message', 'action', 'maging'));
     })->middleware('auth')->name('profile');
 
+Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
+    ->middleware(['auth', 'verified']);
 
     Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
         return view('subscribe');
@@ -58,35 +60,6 @@ Route::group(
 
     require_once 'fortify.php';
 });
-
-Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
-    ->middleware('verified');
-
-Route::get('/gifts/christmas', function (Request $request) {
-    return view('christmas');
-})->name('gifts.christmas');
-
-Route::post('/gifts/christmas/claim', function (Request $request) {
-    $request->validate([
-        'confirmation' => 'accepted'
-    ], [
-        'confirmation.accepted' => 'Only good boys/girls can claim their gifts.',
-    ]);
-
-    $user = $request->user();
-    if (!$user->has_claimed_christmas_gift) {
-        $message = "You have successfully claimed your christmas gift! Happy holidays!";
-        $user->has_claimed_christmas_gift = true;
-        $user->subscribed_to = $user->subscribed_to->addDays(5);
-        $user->save();
-    } else {
-        $message = "Naughty, naughty! You have already claimed your christmas gift!";
-    }
-
-    return redirect()
-        ->route('profile')
-        ->with(['notification' => $message]);
-})->middleware('auth')->name('gifts.christmas');
 
 Route::post(
     'stripe/webhook',

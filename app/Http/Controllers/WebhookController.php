@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserPurchasedSubscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Laravel\Cashier\Http\Controllers\WebhookController as CashierController;
@@ -17,15 +18,8 @@ class WebhookController extends CashierController
                 ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate()])
                 ->save();
 
-            $referrer = optional($user->referrer);
-            if ($success && $referrer->exists && !$referrer->received_referral_reward) {
-                $referrer
-                    ->forceFill([
-                        'subscribed_to' => $referrer->ExtendedSubscriptionDateForReferral(),
-                        'received_referral_reward' => 1,
-                    ])
-                    ->save();
-            }
+            if ($success)
+                UserPurchasedSubscription::dispatch($user);
         }
 
         return $this->successMethod();

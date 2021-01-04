@@ -71,14 +71,29 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Various <strong>UI improvements</strong>: scaling for high DPI screens, prevent crashes due to unexpected user behavior,
+                            Various <strong>UI improvements</strong>:
+                            scaling for high DPI screens,
+                            configuration tooltips,
+                            prevent crashes due to unexpected user behavior,
                             warn the user for unsupported items
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Slightly improved <strong>performance</strong>
+                            Improved <strong>performance</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Improvements for users with an <strong>unstable internet connection</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            <strong>Maintain user settings</strong> (eg. presets) throughout version upgrades
                         </span>
                     </li>
                 </ul>
@@ -188,7 +203,7 @@
                 </p>
                 <p class="text-base">
                     We <strong>highly recommend</strong> you run Inkybot <strong>maximized</strong> as this will
-                    improve OCR results, thus minimizing error.make
+                    improve OCR results, thus minimizing error.
                 </p>
             </div>
 

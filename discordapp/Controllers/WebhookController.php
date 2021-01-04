@@ -1,0 +1,54 @@
+<?php namespace DiscordApp\Controllers;
+
+use Illuminate\Support\Str;
+use Discord\Discord;
+use Discord\Parts\Channel\Channel;
+use Discord\Parts\Channel\Message;
+use Discord\Parts\Guild\Guild;
+use Discord\Parts\Guild\Role;
+use Discord\Parts\User\Member;
+
+class WebhookController
+{
+    const ROLE_SUBSCRIBER_ID = 764527915467276288;
+    /**
+     * @var Guild
+     */
+    private $guild;
+
+    public function __construct(Guild $guild) {
+        $this->guild = $guild;
+    }
+
+    public function handleMessage(Message $message)
+    {
+        $command = Str::between($message->content, "!", " ");
+        $argument = Str::of($message->content)->split("/ /")->skip(1);
+        $this->$command($message, ...$argument);
+        echo "Executed command: $message->content\n";
+    }
+
+    public function subscribe(Message $message, $id) {
+        $this->guild->members->fetch($id)->then(function (Member $member) use($message) {
+            if ($member->roles->has(WebhookController::ROLE_SUBSCRIBER_ID))
+                return;
+
+            $member->addRole(WebhookController::ROLE_SUBSCRIBER_ID)
+                ->then(function () use ($member, $message) {
+                    $member->user->sendMessage("Your discord role on has been updated to: **Subscriber**.");
+                });
+        });
+    }
+
+    public function unsubscribe(Message $message, $id) {
+        $this->guild->members->fetch($id)->then(function (Member $member) use($message) {
+            if (!$member->roles->has(WebhookController::ROLE_SUBSCRIBER_ID))
+                return;
+
+            $member->removeRole(WebhookController::ROLE_SUBSCRIBER_ID)
+                ->then(function () use ($member, $message) {
+                    $member->user->sendMessage("Your discord role on has been updated to: **Guest**.");
+                });
+        });
+    }
+}
