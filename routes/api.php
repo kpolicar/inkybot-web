@@ -2,8 +2,12 @@
 
 use App\ClientVersion;
 use App\Http\Controllers\ClientStatisticsController;
+use App\Http\Controllers\DiscordController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
+use App\Http\Resources\ClientUser as ClientUserResource;
 use App\Models\FreeTrial;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,14 +22,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('/discord')->group(function () {
+    Route::post('login', [DiscordController::class, "Login"]);
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return new ClientUserResource($request->user());
 });
 
 Route::middleware('auth:api')->post('/trial/begin', function (Request $request) {
-    return FreeTrial::where('user_id', $user_id = $request->user()->id)
+    $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
         ->orWhere('ip_address', $ip_address = $request->ip())
         ->updateOrCreate([], compact('user_id', 'ip_address'));
+
+    return new ClientFreeTrialResource($freeTrial);
 });
 
 Route::middleware('auth:api')->prefix('/notify')->group(function () {

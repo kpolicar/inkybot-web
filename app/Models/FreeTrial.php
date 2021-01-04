@@ -24,7 +24,7 @@ class FreeTrial extends Model
     public function getExpiredAttribute()
     {
         return $this->freshTimestamp()
-            ->subMinutes(15)
+            ->subMinutes(30)
             ->isAfter($this->created_at);
     }
 }
