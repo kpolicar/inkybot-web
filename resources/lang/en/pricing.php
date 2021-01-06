@@ -2,16 +2,20 @@
 
 return [
     'heading' => 'Pricing',
-    'description_prerelease_free' => 'Inkybot is currently <strong class="uppercase">free</strong> to use for everyone.',
-    'description_prerelease_appreciated' => 'Purchasing subscription before the official release is still very much appreciated.',
-    'description_prerelease_activated' => 'Your subscription will be activated once the pre-release period ends - perhaps with some added benefits.',
-    'description_thanks' => 'Thank you for your support.',
+    'description' => 'Inkybot pricing follows a typical monthly subscription based model.',
+    'description_no_recurring_payments' => 'We do not support recurring payments, the customer must repurchase subscription manually each month.',
+    'description_thank_you' => 'Thank you for your support.',
 
-    'package_free' => 'Open Beta',
-    'package_feature_unlimited_usage' => 'Unlimited use',
-    'package_feature_simple_maging' => 'Simple maging',
-    'package_feature_over_maging' => 'Overmaging',
-    'package_feature_exo_maging' => 'Exomaging',
-    'package_feature_magus_leveling' => 'Magus profession leveling',
+    'package_free' => 'Free trial',
+    'package_subscription' => 'Subscription',
+    'package_feature_usage_30' => '30 minute use',
+    'package_feature_usage_unlimited' => 'Unlimited use',
+    'package_feature_maging_basic' => 'Basic Maging',
+    'package_feature_maging_sink' => 'Maging with sink',
+    'package_feature_exo' => 'Exomaging',
+    'package_feature_overmaging' => 'Overmaging',
+    'package_feature_magus_leveling' => 'Magus leveling',
+    'package_feature_leveling' => 'Magus profession leveling',
+
     'package_feature_in_development' => 'Features are under active development and have not yet been made available',
 ];

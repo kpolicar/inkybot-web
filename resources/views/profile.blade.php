@@ -141,8 +141,8 @@
 
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
-                                Today's activity
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+                                {{ __('profile.activity') }}
                             </label>
                         </div>
                         <div class="md:w-3/5">
@@ -156,15 +156,17 @@
                                                  style="background: no-repeat center center url('{{ asset('images/icons/rune_bg.jpg') }}'); background-size: contain">
                                         </div>
                                         <span class="4/5">
-                                            {{ $attempts }} tries
+                                            {{ __('profile.exo_attempts', ['number' => $attempts]) }}
                                             @if(array_key_exists($rune, $maging->exo_successes ?? []))
                                                 <b class="mx-1">//</b>
-                                                <strong>{{ $maging->exo_successes[$rune] }} success</strong>
+                                                <strong>
+                                                    {{ __('profile.exo_successes', ['number' => $maging->exo_successes[$rune]]) }}
+                                                </strong>
                                             @endif
                                         </span>
                                     </li>
                                 @empty
-                                    No activity
+                                    {{ __('profile.activity_none') }}
                                 @endforelse
                             </ul>
                         </div>

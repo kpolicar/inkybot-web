@@ -1,15 +1,17 @@
 <div class="anchor" id="presentation"></div>
 <section class="bg-gray-100 py-8 pb-12 border-b">
-    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Presentation</h1>
+    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        {{ __('presentation.header') }}
+    </h1>
     <div class="w-full mb-4">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
     <p class="w-full my-2 text-xl leading-tight text-center text-gray-800">
-        Check out Inkybot in action. This video was recorded while the staff was off eating lunch.<br>
-        Spend your time elsewhere, let Inkybot do its thing. Don't let maging be frustrating.
+        {{ __('presentation.description') }}<br>
+        {{ __('presentation.engage') }}
     </p>
 
-    <video title="EXO Maging Presentation Video"
+    <video title="{{ __('presentation.video_alt') }}"
            poster="{{ asset('images/poster_inkybot_intro.png') }}"
            class="mx-auto mt-8 my-6 mb-3 rounded"
            height="1920"
@@ -22,6 +24,6 @@
         <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
     </video>
     <p class="text-xs text-gray-600 text-center">
-        Please keep in mind this is a timelapse video. Maging is not <i style="word-spacing: 2px">that </i>fast.
+        {!! __('presentation.note') !!}
     </p>
 </section>

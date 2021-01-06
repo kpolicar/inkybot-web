@@ -23,16 +23,21 @@
         <div class="flex-grow lg:flex justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
             <ul class="list-reset lg:flex justify-end items-center">
                 <li class="xl:mr-3 m-1">
-                    <a class="font-bold no-underline xl:py-2 xl:px-4 p-2" href="{{ route('home') }}">{{ __('common.home') }}</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('install') }}">{{ __('common.installation') }}</a>
+                </li>
+                <li class="xl:mr-3 m-1">
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('release', ['version' => 'latest']) }}">{{ __('common.release_notes') }}</a>
                 </li>
                 <li class="xl:mr-3 m-1">
                     <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
                 </li>
                 <li class="xl:mr-3 m-1">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('install') }}">{{ __('common.installation') }}</a>
-                </li>
-                <li class="xl:mr-3 m-1">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('release', ['version' => 'latest']) }}">{{ __('common.release_notes') }}</a>
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2"
+                       title="Cheat-gam3.com"
+                       target="_blank"
+                       href="https://forum.cheat-gam3.com/forums/inkybot/">
+                        {{ __('common.forum') }}
+                    </a>
                 </li>
                 <li class="xl:mr-3 m-1">
                     @auth
