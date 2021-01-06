@@ -20,16 +20,21 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
                 <li class="mr-3">
-                    <a class="inline-block py-2 px-4 font-bold no-underline" href="{{ route('home') }}">Home</a>
-                </li>
-                <li class="mr-3">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
-                </li>
-                <li class="mr-3">
                     <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('install') }}">Installation</a>
                 </li>
                 <li class="mr-3">
                     <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" href="{{ route('release', ['version' => 'latest']) }}">Release Notes</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4"
+                       title="Cheat-Gam3.com"
+                       target="_blank"
+                       href="https://forum.cheat-gam3.com/forums/inkybot/">
+                        Forum
+                    </a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline py-2 px-4" target="_blank" href="https://discord.gg/ueutfe8">Discord</a>
                 </li>
                 <li class="mr-3">
                     @auth
