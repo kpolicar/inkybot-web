@@ -17,4 +17,9 @@ return [
     'community_collaboration' => 'Post or upvote suggestions on how we can improve our services. The more upvotes a post receives, the higher priority it will be given towards development.',
     'community_bugs' => 'Report bugs to earn rewards!',
     'community_action' => 'Join now',
+
+    'activity' => 'Today\'s activity',
+    'exo_attempts' => ':number attempts',
+    'exo_successes' => ':number success',
+    'activity_none' => 'No activity',
 ];
