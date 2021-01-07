@@ -70,7 +70,8 @@
                 </h3>
 
                 <p class="text-base mb-2">
-                    {{ __('install.step_download_antivirus_description') }}
+                    {{ __('install.step_download_antivirus_description') }}<br>
+                    {{ __('install.step_download_antivirus_description_malware') }}
                 </p>
                 <p class="text-base">
                     @section('antivirus_avast_link')
