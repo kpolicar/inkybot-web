@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('./nav');
+require('./noise');
 
 var notifications = document.querySelectorAll("[data-hide]")
 notifications.forEach(notification => {

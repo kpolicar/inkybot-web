@@ -39,11 +39,13 @@
     @include('partials.nav')
 @show
 
-<header>
+<header class="relative">
+    <canvas id="gradient-canvas">
+    </canvas>
     @yield('hero')
 </header>
 
-<main>
+<main class="z-10">
     @yield('content')
 </main>
 
