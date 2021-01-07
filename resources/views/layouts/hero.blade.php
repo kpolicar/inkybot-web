@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LaravelLocalization::getCurrentLocale() }}">
 
 <head>
     <meta charset="UTF-8">
@@ -7,21 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>
-        @hasSection('title')@yield('title') -@endif Inkybot - Dofus Maging Bot
+        @hasSection('title')@yield('title') - @endif{{ 'Inkybot - ' . __('titles.main') }}
     </title>
 
-    <meta name="description" content="Inkybot is a Dofus Maging Bot compatible with the latest version of the game. Configure the stats you want and let Inkybot do the rest.">
-    <meta name="keywords" content="Dofus, Bot, Maging, Mage, Magus, Items, Cheat, Hack, Stats, Game, Automate, Program">
+    <meta name="description" content="{{ __('meta.main_description') }}">
+    <meta name="keywords" content="Dofus, Bot, Maging, Mage, Magus, Profession, Items, Cheat, Hack, Stats, Game, Automate, Program">
     <meta name="author" content="Inkybot">
 
     @section('og:title')
-        <meta property="og:title" content="@hasSection('title')@yield('title') -@endif Inkybot - Dofus Maging Bot" />
+        <meta property="og:title" content="@hasSection('title')@yield('title') - @endif{{ 'Inkybot - ' . __('titles.main') }}" />
     @show
     @section('og:description')
-        <meta name="og:description" content="Inkybot is a Dofus Maging Bot compatible with the latest version of the game. Configure the stats you want and let Inkybot do the rest." />
+        <meta name="og:description" content="{{ __('meta.main_description') }}" />
     @show
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_us" />
+    <meta property="og:locale" content="{{ LaravelLocalization::getCurrentLocaleRegional() }}" />
     <meta property="og:url" content="/" />
     <meta property="og:site_name" content="Inkybot" />
     <meta property="og:image" content="{{ asset('logo_white_on_black.jpg') }}" />
@@ -38,7 +38,9 @@
         @include('partials.nav')
     @show
 
-    <main>
+    <main class="relative">
+        <canvas id="gradient-canvas">
+        </canvas>
         @yield('content')
     </main>
 </div>
