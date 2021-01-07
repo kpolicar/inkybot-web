@@ -1,13 +1,17 @@
 @extends('layouts.hero')
 
-@section('title', 'Verify Email')
+@section('title', __('titles.verify'))
 
 
 @section('content')
     <x-main-hero>
-        <h2 class="uppercase tracking-loose w-full">Protect your account</h2>
+        <h2 class="uppercase tracking-loose w-full">
+            {{ __('forms.verify_subheader') }}
+        </h2>
         <div class="flex justify-center lg:justify-between">
-            <h1 class="my-4 text-3xl font-bold leading-tight">Verify your email address</h1>
+            <h1 class="my-4 text-3xl font-bold leading-tight">
+                {{ __('forms.verify_header') }}
+            </h1>
             <i class="fas fa-user-shield text-4xl p-3"></i>
         </div>
 
@@ -17,38 +21,38 @@
 
         @if (!session('status'))
             <p>
-                You will be sent an email at <strong>{{ Auth::user()->email }}</strong>.
+                {{ __('forms.verify_instructions_send') }} <strong>{{ Auth::user()->email }}</strong>.
             </p>
             <p>
-                In order to complete verification, click the highlighted link in the email.
+                {{ __('forms.verify_instructions_complete') }}
             </p>
 
             <form action="{{ route('verification.send') }}" method="POST">
                 @csrf
                 <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 mt-8 shadow-lg"
                         type="submit">
-                    Send verification email
+                    {{ __('forms.verify_action') }}
                 </button>
             </form>
 
         @else
             <p>
-                You have been sent an email at <strong>{{ Auth::user()->email }}</strong>.
+                {{ __('forms.verify_instructions_sent') }} <strong>{{ Auth::user()->email }}</strong>.
             </p>
             <p>
-                In order to complete verification, click the highlighted link in the email.
+                {{ __('forms.verify_instructions_complete') }}
             </p>
             <a href="{{ route('profile') }}" class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 mt-8 shadow-lg">
-                Back to profile
+                {{ __('forms.verify_action_back') }}
             </a>
         @endif
 
         <p class="text-gray-400 text-sm mt-4">
-            In the case that you have tried to resend the verification email multiple times, and have still not received
-            an email from us, please contact us directly at
-            <a href="mailto:support@inkybot.me" class="font-bold">support@inkybot.me</a>
+            @section('support_email')
+                <a href="mailto:support@inkybot.me" class="font-bold">support@inkybot.me</a>
+            @endsection
+            {!! __('forms.verify_instructions_unexpected', ['link' => View::getSection('support_email')]) !!}
         </p>
-
 
     </x-main-hero>
 @endsection

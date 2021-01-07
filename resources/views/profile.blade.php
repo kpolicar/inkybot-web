@@ -1,27 +1,29 @@
 @extends('layouts.app')
 
-@section('title', 'Profile')
+@section('title', __('titles.profile'))
 
 
 @section('hero')
     <x-main-hero invert>
         <div class="py-20">
-            <p class="uppercase tracking-loose w-full">The Dofus 2.0 Maging bot</p>
+            <p class="uppercase tracking-loose w-full">
+                {{ __('messages.category') }}
+            </p>
             <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
-                You are subscribed until {{ Auth::user()->subscribed_to->format('d/m/Y H:i') }}
+                    {{ __('profile.subscribed_duration', ['date' => Auth::user()->subscribed_to->format('d/m/Y H:i')]) }}
                 @else
-                    You are not subscribed
+                    {{ __('profile.subscribed_false') }}
                 @endsubscribed
             </p>
 
 
             <a href="{{ route('subscribe') }}" class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                 @subscribed
-                    Extend subscription
+                    {{ __('profile.subscribed_extend') }}
                 @else
-                    Purchase subscription
+                    {{ __('profile.subscribed_purchase') }}
                 @endsubscribed
             </a>
         </div>
@@ -33,7 +35,9 @@
 
     <section class="bg-white border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
-            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Details</h1>
+            <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+                {{ __('profile.details') }}
+            </h1>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
@@ -45,7 +49,7 @@
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="name">
-                                Display Name
+                                {{ __('forms.name') }}
                             </label>
                         </div>
                         <div class="md:w-3/5">
@@ -56,14 +60,16 @@
                             <p class="text-red-500 text-sm italic">{{ $message }}</p>
                             @enderror
 
-                            <p class="py-2 text-sm text-gray-600">your name is used for representational purposes</p>
+                            <p class="py-2 text-sm text-gray-600">
+                                {{ __('forms.update_form_name_comment') }}
+                            </p>
                         </div>
                     </div>
 
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="email">
-                                Email
+                                {{ __('forms.email') }}
                             </label>
                         </div>
                         <div class="md:w-3/5">
@@ -74,7 +80,9 @@
                             <p class="text-red-500 text-sm italic">{{ $message }}</p>
                             @enderror
 
-                            <p class="py-2 text-sm text-gray-600">your email is used for password recovery</p>
+                            <p class="py-2 text-sm text-gray-600">
+                                {{ __('forms.update_form_email_comment') }}
+                            </p>
                         </div>
                     </div>
 
@@ -83,12 +91,12 @@
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="password">
-                                New Password
+                                {{ __('forms.update_form_password') }}
                             </label>
                         </div>
                         <div class="md:w-3/5">
                             <input class="@error('password', 'updateProfileInformation') border-red-500 @enderror form-input rounded block w-full focus:bg-white bg-gray-200 p-2 text-gray-700 focus:text-gray-800"
-                                   id="password" name="password" type="text" value="" placeholder="******">
+                                   id="password" name="password" type="password" value="" placeholder="******">
 
                             @error('password', 'updateProfileInformation')
                             <p class="text-red-500 text-sm italic">{{ $message }}</p>
@@ -99,12 +107,12 @@
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
-                                Current Password
+                                {{ __('forms.update_form_password_current') }}
                             </label>
                         </div>
                         <div class="md:w-3/5">
                             <input class="@error('current_password', 'updateProfileInformation') border-red-500 @enderror form-input block w-full focus:bg-white bg-gray-200 p-2 text-gray-700 focus:text-gray-800"
-                                   id="current_password" name="current_password" type="text" placeholder="******">
+                                   id="current_password" name="current_password" type="password" placeholder="******">
 
                             @error('current_password', 'updateProfileInformation')
                             <p class="text-red-500 text-sm italic">{{ $message }}</p>
@@ -116,15 +124,15 @@
 
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
-                                Referral link
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+                                {{ __('profile.referral') }}
                             </label>
                         </div>
                         <div class="md:w-3/5">
                             <p class="text-gray-800">{{ route('register', ['ref' => request()->user()->referral_code]) }}</p>
                             <p class="py-2 text-sm text-gray-600">
-                                each referred user that purchases subscription will grant you <strike class="text-gray-500">2</strike> <strong>5*</strong> extra days of subscription<br>
-                                *early referral bonus
+                                {!! __('profile.referral_details', ['reward' => '<strike class="text-gray-500">2</strike> <strong>5*</strong>']) !!}<br>
+                                *{{ __('profile.referral_details_early') }}
                             </p>
                         </div>
                     </div>
@@ -133,8 +141,8 @@
 
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="current_password">
-                                Today's activity
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+                                {{ __('profile.activity') }}
                             </label>
                         </div>
                         <div class="md:w-3/5">
@@ -148,15 +156,17 @@
                                                  style="background: no-repeat center center url('{{ asset('images/icons/rune_bg.jpg') }}'); background-size: contain">
                                         </div>
                                         <span class="4/5">
-                                            {{ $attempts }} tries
+                                            {{ __('profile.exo_attempts', ['number' => $attempts]) }}
                                             @if(array_key_exists($rune, $maging->exo_successes ?? []))
                                                 <b class="mx-1">//</b>
-                                                <strong>{{ $maging->exo_successes[$rune] }} success</strong>
+                                                <strong>
+                                                    {{ __('profile.exo_successes', ['number' => $maging->exo_successes[$rune]]) }}
+                                                </strong>
                                             @endif
                                         </span>
                                     </li>
                                 @empty
-                                    No activity
+                                    {{ __('profile.activity_none') }}
                                 @endforelse
                             </ul>
                         </div>
@@ -165,7 +175,7 @@
                     <div class="md:flex md:items-center">
                         <div class="md:w-2/3">
                             <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
-                                Save Changes
+                                {{ __('forms.update_form_submit') }}
                             </button>
                         </div>
                     </div>
@@ -222,15 +232,20 @@
                 </div>
                 <div class="w-full sm:w-1/2 p-6 mt-6">
                     <div class="align-middle">
-                        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">Join the community!</h3>
-                        <p class="text-gray-600 mb-1">Your voice matters. Join our discord to stay up to date with the newest features and bugfixes.</p>
+                        <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+                            {{ __('profile.community') }}
+                        </h3>
                         <p class="text-gray-600 mb-1">
-                            Post or upvote suggestions on how we can improve our services. The more upvotes a post receives,
-                            the higher priority it will be given towards development.</p>
+                            {{ __('profile.community_engage') }}
+                        </p>
+                        <p class="text-gray-600 mb-1">
+                            {{ __('profile.community_collaboration') }}
+                        </p>
                         <p class="text-gray-600">
-                            Report bugs to earn rewards!</p>
+                            {{ __('profile.community_bugs') }}
+                        </p>
                         <a href="https://discord.gg/ueutfe8" target="_blank" class="inline-block hover:underline gradient text-white font-bold rounded mt-3 py-4 px-8 shadow-lg">
-                            Join now
+                            {{ __('profile.community_action') }}
                         </a>
                     </div>
                 </div>

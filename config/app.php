@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Inkybot'),
 
     /*
     |--------------------------------------------------------------------------
@@ -170,6 +170,7 @@ return [
          */
         App\Providers\FortifyServiceProvider::class,
         Berkayk\OneSignal\OneSignalServiceProvider::class,
+        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
         /*
          * Application Service Providers...
