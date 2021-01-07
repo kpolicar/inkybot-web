@@ -3,16 +3,16 @@
 return [
 
     'profile' => 'profil',
-    'subscribe' => 'souscrire',
+    'subscribe' => 'abonnement',
     'install' => 'installer',
-    'login' => 'identifier',
-    'logout' => 'déconnecter',
-    'register' => 'inscrire',
-    'forgot-password' => 'passe-oublié',
-    'reset-password' => 'réinitialiser-passe',
-    'reset-password-token' => 'réinitialiser-passe/{token}',
-    'email-verify' => 'email/vérifier',
-    'email-verify-id-hash' => 'email/vérifier/{id}/{hash}',
+    'login' => 'connexion',
+    'logout' => 'deconnexion',
+    'register' => 'inscription',
+    'forgot-password' => 'motdepasse-oublie',
+    'reset-password' => 'reinitialiser-motdepasse',
+    'reset-password-token' => 'reinitialiser-motdepasse/{token}',
+    'email-verify' => 'email/verifier',
+    'email-verify-id-hash' => 'email/verifier/{id}/{hash}',
     'email-verification-notification' => 'email/renvoyer',
 
 ];

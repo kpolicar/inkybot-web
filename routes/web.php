@@ -47,18 +47,27 @@ Route::group(
             ->with(compact('message', 'action', 'maging'));
     })->middleware('auth')->name('profile');
 
-Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
-    ->middleware(['auth', 'verified']);
+    Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
+        ->middleware(['auth', 'verified']);
 
-    Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
-        return view('subscribe');
-    })->name('subscribe')->middleware('verified');
+        Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
+            return view('subscribe');
+        })->name('subscribe')->middleware('verified');
 
-    Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
-        return view('install');
-    })->name('install');
+        Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
+            return view('install');
+        })->name('install');
 
-    require_once 'fortify.php';
+    Route::get('/release/{version?}', function (ClientVersion $versions, $version) {
+        $versionDetails = $version == "latest" ?
+            $versions->latest() :
+            $versions->firstWhere('code', $version);
+        $view = $versionDetails['number'] ?? abort(404);
+
+        return view("release.$view");
+    })->name('release');
+
+        require_once 'fortify.php';
 });
 
 Route::post(
@@ -66,11 +75,3 @@ Route::post(
     [WebhookController::class, 'handleWebhook']
 );
 
-Route::get('/release/{version?}', function (ClientVersion $versions, $version) {
-    $versionDetails = $version == "latest" ?
-        $versions->latest() :
-        $versions->firstWhere('code', $version);
-    $view = $versionDetails['number'] ?? abort(404);
-
-    return view("release.$view");
-})->name('release');

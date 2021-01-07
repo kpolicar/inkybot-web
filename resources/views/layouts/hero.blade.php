@@ -38,7 +38,9 @@
         @include('partials.nav')
     @show
 
-    <main>
+    <main class="relative">
+        <canvas id="gradient-canvas">
+        </canvas>
         @yield('content')
     </main>
 </div>

@@ -96,7 +96,7 @@
                         </div>
                         <div class="md:w-3/5">
                             <input class="@error('password', 'updateProfileInformation') border-red-500 @enderror form-input rounded block w-full focus:bg-white bg-gray-200 p-2 text-gray-700 focus:text-gray-800"
-                                   id="password" name="password" type="text" value="" placeholder="******">
+                                   id="password" name="password" type="password" value="" placeholder="******">
 
                             @error('password', 'updateProfileInformation')
                             <p class="text-red-500 text-sm italic">{{ $message }}</p>
@@ -112,7 +112,7 @@
                         </div>
                         <div class="md:w-3/5">
                             <input class="@error('current_password', 'updateProfileInformation') border-red-500 @enderror form-input block w-full focus:bg-white bg-gray-200 p-2 text-gray-700 focus:text-gray-800"
-                                   id="current_password" name="current_password" type="text" placeholder="******">
+                                   id="current_password" name="current_password" type="password" placeholder="******">
 
                             @error('current_password', 'updateProfileInformation')
                             <p class="text-red-500 text-sm italic">{{ $message }}</p>

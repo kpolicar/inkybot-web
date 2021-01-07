@@ -1,5 +1,6 @@
 var scrollpos = window.scrollY;
 var header = document.getElementById("header");
+var languageSelector = document.getElementById("language-selector-dropdown-content");
 var navcontent = document.getElementById("nav-content");
 var navaction = document.getElementById("navAction");
 var brandname = document.getElementById("brandname");
@@ -26,6 +27,7 @@ document.addEventListener('scroll', function() {
         navcontent.classList.add("bg-white");
         navcontent.classList.remove("lg:text-white");
         navcontent.classList.add("lg:text-gray-800");
+        languageSelector.classList.add("rounded-t-none");
     }
     else {
         header.classList.remove("bg-white");
@@ -44,6 +46,7 @@ document.addEventListener('scroll', function() {
         navcontent.classList.add("bg-gray-100");
         navcontent.classList.remove("lg:text-gray-800");
         navcontent.classList.add("lg:text-white");
+        languageSelector.classList.remove("rounded-t-none");
 
     }
 

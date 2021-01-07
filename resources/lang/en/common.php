@@ -16,4 +16,5 @@ return [
     'download' => 'Download',
     'forum' => 'Forum',
     'month' => 'month',
+    'translated_credits' => 'translated by :name',
 ];
