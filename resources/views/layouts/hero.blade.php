@@ -43,6 +43,7 @@
         </canvas>
         @yield('content')
     </main>
+    <div class="relative -mt-2 p-4 bg-white"></div>
 </div>
 
 @include('partials.notification-download')

@@ -26,3 +26,5 @@
         </g>
     </svg>
 </div>
+
+<div class="relative p-4 bg-white"></div>
