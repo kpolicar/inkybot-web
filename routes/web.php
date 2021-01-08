@@ -48,7 +48,8 @@ Route::group(
     })->middleware('auth')->name('profile');
 
     Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
-        ->middleware(['auth', 'verified']);
+        ->middleware(['auth', 'verified'])
+        ->name('pay');
 
         Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
             return view('subscribe');
