@@ -2,6 +2,12 @@
 
 @section('title', 'v1.0 - Release Notes')
 
+@section('head')
+    @if (LaravelLocalization::getCurrentLocale() != ($defaultLocale = LaravelLocalization::getDefaultLocale()))
+        <link rel="canonical" href="{{ LaravelLocalization::getLocalizedURL($defaultLocale, null, [], true) }}" />
+    @endif
+@endsection
+@section('link:alternate', '')
 
 @section('hero')
     <x-main-hero>
@@ -22,7 +28,6 @@
 @endsection
 
 @section('content')
-
 
     <section class="bg-white py-8 border-b">
 
