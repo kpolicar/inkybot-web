@@ -4,7 +4,7 @@
 
 @section('content')
     <x-main-hero>
-        <div id="payment-form" class="stripe-payment-form">
+        <div id="payment-form" class="stripe-payment-form" data-handler="{{ route('pay', ['paymentId' => '/']) }}">
 
             <div class="flex flex-col lg:flex-row justify-around items-center loader">
                 <p class="text-xl my-8">{{ __('forms.subscribe_processing') }}</p>

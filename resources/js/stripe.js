@@ -1,6 +1,5 @@
 import {loadStripe} from '@stripe/stripe-js';
 
-
 (async function() {
     'use strict';
 
@@ -8,9 +7,9 @@ import {loadStripe} from '@stripe/stripe-js';
     const stripe = await loadStripe(process.env.MIX_STRIPE_KEY);
 
     function registerElements(elements) {
-        var example = document.querySelector("#payment-form");
+        var paymentForm = document.querySelector("#payment-form");
 
-        var form = example.querySelector('form');
+        var form = paymentForm.querySelector('form');
         var error = form.querySelector('.error');
         var errorMessage = error.querySelector('.message');
 
@@ -101,7 +100,7 @@ import {loadStripe} from '@stripe/stripe-js';
             }
 
             // Show a loading screen...
-            example.classList.add('submitting');
+            paymentForm.classList.add('submitting');
 
             // Disable all inputs.
             disableInputs();
@@ -109,7 +108,7 @@ import {loadStripe} from '@stripe/stripe-js';
             // Gather additional customer data we may have collected in our form.
             var name = form.querySelector('#name');
             var email = form.querySelector('#email');
-            var paymentResponse = example.querySelector('#payment-response');
+            var paymentResponse = paymentForm.querySelector('#payment-response');
             var additionalData = {
                 billing_details: {
                     name: name ? name.value : undefined,
@@ -118,7 +117,7 @@ import {loadStripe} from '@stripe/stripe-js';
             };
 
             var handleError = function(error) {
-                example.classList.remove('submitting');
+                paymentForm.classList.remove('submitting');
                 enableInputs();
             }
 
@@ -127,13 +126,13 @@ import {loadStripe} from '@stripe/stripe-js';
 
                 console.log("stripe result: ", result);
                 if (result.paymentMethod) {
-                    axios.post('/pay/subscribe/'+result.paymentMethod.id)
+                    axios.post(paymentForm.getAttribute('data-handler')+'/'+result.paymentMethod.id)
                         .then(result => {
                             if (result.data.redirect) {
                                 window.location.href = result.data.redirect;
                             } else {
-                                example.classList.remove('submitting');
-                                example.classList.add('submitted')
+                                paymentForm.classList.remove('submitting');
+                                paymentForm.classList.add('submitted')
                                 paymentResponse.innerHTML = result.data;
                             }
                         }).catch(error => console.log("server error: ", error));
