@@ -45,7 +45,7 @@
     @yield('hero')
 </header>
 
-<main class="z-10">
+<main class="relative z-10">
     @yield('content')
 </main>
 
