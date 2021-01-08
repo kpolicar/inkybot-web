@@ -21,13 +21,20 @@
         <meta name="og:description" content="{{ __('meta.main_description') }}" />
     @show
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="{{ LaravelLocalization::getCurrentLocaleRegional() }}" />
+    <meta property="og:locale" content="{{ LaravelLocalization::getCurrentLocale() }}" />
     <meta property="og:url" content="/" />
     <meta property="og:site_name" content="Inkybot" />
     <meta property="og:image" content="{{ asset('logo_white_on_black.jpg') }}" />
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+
+    @section('link:alternate')
+        @foreach(Arr::except(LaravelLocalization::getSupportedLocales(), LaravelLocalization::getCurrentLocale()) as $localeCode => $properties)
+            <link rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" />
+        @endforeach
+    @show
+
     @yield('head')
 </head>
 
