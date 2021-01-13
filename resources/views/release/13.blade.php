@@ -2,12 +2,11 @@
 
 @section('title', 'v1.0 - Release Notes')
 
-@section('head')
+@section('link:alternate')
     @if (LaravelLocalization::getCurrentLocale() != ($defaultLocale = LaravelLocalization::getDefaultLocale()))
         <link rel="canonical" href="{{ LaravelLocalization::getLocalizedURL($defaultLocale, null, [], true) }}" />
     @endif
 @endsection
-@section('link:alternate', '')
 
 @section('hero')
     <x-main-hero>

@@ -10,7 +10,6 @@
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     # Redirect www
-    RewriteEngine On
     RewriteCond %{HTTP_HOST} ^www.inkybot.me$ [NC]
     RewriteRule ^(.*)$ https://inkybot.me/$1 [R=301,L]
 
