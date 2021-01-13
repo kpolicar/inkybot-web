@@ -6,6 +6,7 @@
     @if (LaravelLocalization::getCurrentLocale() != ($defaultLocale = LaravelLocalization::getDefaultLocale()))
         <link rel="canonical" href="{{ LaravelLocalization::getLocalizedURL($defaultLocale, null, [], true) }}" />
     @endif
+    @parent
 @endsection
 
 @section('hero')
