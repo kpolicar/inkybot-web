@@ -75,4 +75,3 @@ Route::post(
     'stripe/webhook',
     [WebhookController::class, 'handleWebhook']
 );
-
