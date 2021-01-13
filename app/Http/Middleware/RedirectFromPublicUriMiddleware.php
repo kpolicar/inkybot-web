@@ -18,10 +18,10 @@ class RedirectFromPublicUriMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Str::startsWith($request->getBaseUrl(), '/public')) {
+        if (Str::startsWith(Str::lower($request->getBaseUrl()), '/public')) {
             return redirect()->to(URL::current(), 307);
         }
-        if (Str::startsWith($request->getBaseUrl(), '/index.php')) {
+        if (Str::startsWith(Str::lower($request->getBaseUrl()), '/index.php')) {
             return redirect()->to(URL::current(), 307);
         }
 
