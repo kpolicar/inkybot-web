@@ -13,10 +13,6 @@
     RewriteCond %{HTTP_HOST} ^www.inkybot.me$ [NC]
     RewriteRule ^(.*)$ https://inkybot.me/$1 [R=301,L]
 
-    # Redirect http to https
-    RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://inkybot.me/$1 [R,L]
-
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
