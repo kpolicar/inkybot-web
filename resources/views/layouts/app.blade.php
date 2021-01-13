@@ -27,14 +27,19 @@
     <meta property="og:site_name" content="Inkybot" />
     <meta property="og:image" content="{{ asset('logo_white_on_black.jpg') }}" />
 
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-
     @section('link:alternate')
-        @foreach(Arr::except(LaravelLocalization::getSupportedLocales(), LaravelLocalization::getCurrentLocale()) as $localeCode => $properties)
-            <link rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" />
+        <link rel="alternate"
+              hreflang="x-default"
+              href="{{ LaravelLocalization::getLocalizedURL(LaravelLocalization::getDefaultLocale(), null, [], true) }}" />
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <link rel="alternate"
+                  hreflang="{{ $localeCode }}"
+                  href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" />
         @endforeach
     @show
+
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
     @yield('head')
     @include('partials.onesignal')
