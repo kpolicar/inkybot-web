@@ -24,12 +24,15 @@ return [
     'step_download_dependency_download_link_official' => 'official Microsoft Visual C++ download website',
     'step_download_dependency_download_link_direct' => 'downloading it directly',
     'step_download_dependency_download_32bit' => 'Make sure to install the 32bit version.',
+    'step_download_img_alt' => 'Your installation folder',
 
     'step_extract' => 'Extract',
     'step_extract_description' => 'Extract the contents of the zipped folder into any folder of your choice. The password for the archive is <strong>":password"</strong>.',
+    'step_extract_img_alt' => 'Extracting the downloaded zip file',
 
     'step_run' => 'Run application',
     'step_run_description' => 'Run the Inkybot executable file as an administrator.',
+    'step_run_img_alt' => 'Run inkybot.exe as an administrator',
 
     'step_path' => 'Select the path to your Dofus folder',
     'step_path_folder_default' => 'The default installation folder for Dofus is:',
@@ -39,4 +42,5 @@ return [
     'step_finish_description' => 'You are now ready to begin your botting career! Log in with your Inkybot account and continue as you would normally.',
     'step_finish_continue' => 'Now comes the fun part. Learn :link the latest version of Inkybot.',
     'step_finish_continue_link' => 'How to use',
+    'step_finish_img_alt' => 'Login to your Inkybot account',
 ];

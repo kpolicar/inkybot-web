@@ -3,7 +3,7 @@
 
     <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
 
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ __('pricing.heading') }}</h1>
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ __('pricing.heading') }}</h2>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
@@ -46,13 +46,13 @@
                         <li class="border-b py-4">{{ __('pricing.package_feature_usage_unlimited') }}</li>
                         <li class="border-b py-4">{{ __('pricing.package_feature_maging_sink') }}</li>
                         <li class="border-b py-4">{{ __('pricing.package_feature_exo') }}</li>
-                        <li class="border-b py-4"><strike>{{ __('pricing.package_feature_overmaging') }}</strike>*</li>
-                        <li class="border-b py-4"><strike>{{ __('pricing.package_feature_leveling') }}</strike>*</li>
+                        <li class="border-b py-4"><span class="line-through">{{ __('pricing.package_feature_overmaging') }}</span>*</li>
+                        <li class="border-b py-4"><span class="line-through">{{ __('pricing.package_feature_leveling') }}</span>*</li>
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                     <div class="w-full pt-6 text-3xl font-bold text-center leading-none mb-2">
-                        <span class="text-base text-gray-600">€<strike>6.00</strike><br></span>
+                        <span class="text-base text-gray-600">€<span class="line-through">6.00</span><br></span>
                         €4 <small class="text-sm">/ {{ __('common.month') }}</small>
                     </div>
                     <div class="flex items-center justify-center">
