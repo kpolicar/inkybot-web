@@ -65,7 +65,7 @@ Route::group(
             $versions->firstWhere('code', $version);
         $view = $versionDetails['number'] ?? abort(404);
 
-        return view("release.$view");
+        return view("release.$view", ['version' => $versionDetails]);
     })->name('release');
 
         require_once 'fortify.php';
