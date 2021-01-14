@@ -52,7 +52,6 @@
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                     <div class="w-full pt-6 text-3xl font-bold text-center leading-none mb-2">
-                        <span class="text-base text-gray-600">€<span class="line-through">6.00</span><br></span>
                         €4 <small class="text-sm">/ {{ __('common.month') }}</small>
                     </div>
                     <div class="flex items-center justify-center">
