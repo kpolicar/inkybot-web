@@ -1,8 +1,8 @@
 <div class="anchor" id="presentation"></div>
 <section class="bg-gray-100 py-8 pb-12 border-b">
-    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+    <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         {{ __('presentation.header') }}
-    </h1>
+    </h2>
     <div class="w-full mb-4">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
