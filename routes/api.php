@@ -38,7 +38,7 @@ Route::middleware('auth:api')->post('/trial/begin', function (Request $request) 
     return new ClientFreeTrialResource($freeTrial);
 });
 
-Route::middleware(['auth:api', 'throttle:10,1,notifications'])->prefix('/notify')->group(function () {
+Route::middleware(['auth:api', 'throttle:3,1,notifications'])->prefix('/notify')->group(function () {
     Route::post('error', [NotificationController::class, "Error"]);
     Route::post('runes', [NotificationController::class, "Runes"]);
     Route::post('finished', [NotificationController::class, "Finished"]);
