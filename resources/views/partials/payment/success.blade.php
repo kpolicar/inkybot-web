@@ -24,3 +24,7 @@
     @endsection
     {!! __('payment.success_unexpected', ['link' => View::getSection('payment_email')]) !!}
 </p>
+
+<script>
+    setTimeout(function(){ OneSignal.showNativePrompt(); }, 800);
+</script>
