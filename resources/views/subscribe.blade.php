@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">{{ __('forms.basket_price') }}</p>
-                    <p class="text-lg"><strike>6.00€</strike> 4.00 €</p>
+                    <p class="text-lg"><span class="line-through">6.00€</span> 4.00 €</p>
                 </div>
 
 

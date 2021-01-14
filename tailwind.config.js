@@ -6,13 +6,6 @@ module.exports = {
         // standardFontWeights: true
     },
     purge: [],
-    theme: {
-        extend: {
-            backgroundImage: theme => ({
-                'hero': "url('hero.png')",
-            })
-        }
-    },
     variants: {
         display: ['responsive', 'group-hover', 'group-focus'],
     },

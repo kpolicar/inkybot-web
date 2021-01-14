@@ -176,7 +176,7 @@
                     you can login to your Dofus account as you would normally.</p>
             </div>
 
-            <img src="{{ asset('images/releases/login.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
+            <img src="{{ asset('images/releases/login.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="Login to your Dofus Account" height="1919" width="1040">
 
             <div class="anchor" id="full-screen"></div>
             <div class="px-4 lg:px-0">
@@ -193,8 +193,12 @@
                 </p>
             </div>
             <div class="flex flex-wrap">
-                <img src="{{ asset('images/ingame_settings.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain" alt="">
-                <img src="{{ asset('images/ingame_settings_menu.png') }}" class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain" alt="">
+                <img src="{{ asset('images/ingame_settings.png') }}"
+                     class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain"
+                     alt="Assign the correct Performance settings in-game">
+                <img src="{{ asset('images/ingame_settings_menu.png') }}"
+                     class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain"
+                     alt="Assign the correct Menu settings in-game">
             </div>
 
             <div class="anchor" id="ocr-bounds"></div>
@@ -212,7 +216,9 @@
                 </p>
             </div>
 
-            <img src="{{ asset('images/releases/2.58_ocrindicators.png') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="">
+            <img src="{{ asset('images/releases/2.58_ocrindicators.png') }}"
+                 class="shadow-lg rounded-t rounded-b-xl my-4"
+                 alt="Ensure that the OCR indicators are correctly positioned">
 
             <div class="anchor" id="advanced-mode"></div>
             <div class="px-4 lg:px-0">
@@ -223,7 +229,9 @@
                     Make sure you enable "Advanced Mode" in-game. You can find this option on the maging table under the item stats.
                 </p>
             </div>
-            <img src="{{ asset('images/releases/advanced_mode.png') }}" class="shadow-lg rounded my-4" alt="">
+            <img src="{{ asset('images/releases/advanced_mode.png') }}"
+                 class="shadow-lg rounded my-4"
+                 alt="Activate advanced mode in the maging table">
 
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
