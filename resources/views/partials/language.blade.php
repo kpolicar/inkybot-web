@@ -8,9 +8,9 @@
     <div id="language-selector-dropdown-content" class="origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden z-50" data-dropdown="#language-selector">
         <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
             <a rel="alternate" hreflang="en" href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" class="duration-150 filter-grayscale-80 hover:filter-none block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center flag" role="menuitem">
-                <svg class="h-10 w-10" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="720" height="480" viewBox="0 0 720 480.00001" id="svg11182" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="united-kingdom-britain-european-country-flag.svg">
-                    <defs id="defs11184">
-                        <clipPath clipPathUnits="userSpaceOnUse" id="clipPath29920-8-2-1">
+                <svg class="h-10 w-10" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="720" height="480" viewBox="0 0 720 480.00001" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="united-kingdom-britain-european-country-flag.svg">
+                    <defs>
+                        <clipPath clipPathUnits="userSpaceOnUse">
                             <ellipse ry="248.57143" rx="260" cy="506.64789" cx="-514.28571" style="fill:#a9b3c1;fill-opacity:1;stroke:none" id="path29922-3-3-5" transform="matrix(0.68483669,0,0,0.71632344,705.09921,116.38888)"/>
                         </clipPath>
                     </defs>
@@ -47,9 +47,9 @@
                 <span class="pl-3">{{ __('common.language_english') }}</span>
             </a>
             <a rel="alternate" hreflang="fr" href="{{ LaravelLocalization::getLocalizedURL('fr', null, [], true) }}" class="duration-150 filter-grayscale-80 hover:filter-none block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 flex items-center flag" role="menuitem">
-                <svg class="h-10 w-10" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="720" height="480" viewBox="0 0 720 480.00001" id="svg11182" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="france-french-european-country-flag.svg">
-                    <defs id="defs11184">
-                        <clipPath clipPathUnits="userSpaceOnUse" id="clipPath29920-8-2-1">
+                <svg class="h-10 w-10" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="720" height="480" viewBox="0 0 720 480.00001" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="france-french-european-country-flag.svg">
+                    <defs>
+                        <clipPath clipPathUnits="userSpaceOnUse">
                             <ellipse ry="248.57143" rx="260" cy="506.64789" cx="-514.28571" style="fill:#a9b3c1;fill-opacity:1;stroke:none" id="path29922-3-3-5" transform="matrix(0.68483669,0,0,0.71632344,705.09921,116.38888)"/>
                         </clipPath>
                     </defs>

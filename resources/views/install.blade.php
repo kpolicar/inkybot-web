@@ -61,7 +61,9 @@
                 </p>
             </div>
 
-            <img src="{{ asset('images/installation/downloadfolder.png') }}" class="my-4" alt="">
+            <img src="{{ asset('images/installation/downloadfolder.png') }}"
+                 class="my-4"
+                 alt="{{ __('install.step_download_img_alt') }}">
 
             <div class="anchor" id="antivirus"></div>
             <div class="px-4 lg:px-0">
@@ -128,7 +130,9 @@
                 </p>
             </div>
 
-            <img src="{{ asset('images/installation/extracthere.png') }}" class="my-4" alt="">
+            <img src="{{ asset('images/installation/extracthere.png') }}"
+                 class="my-4"
+                 alt="{{ __('install.step_extract_img_alt') }}" />
 
             <div class="anchor" id="run"></div>
             <div class="px-4 lg:px-0">
@@ -141,7 +145,9 @@
                 </p>
             </div>
 
-            <img src="{{ asset('images/installation/runasadmin.png') }}" class="my-4" alt="">
+            <img src="{{ asset('images/installation/runasadmin.png') }}"
+                 class="my-4"
+                 alt="{{ __('install.step_run_img_alt') }}" />
 
             <div class="anchor" id="path"></div>
             <div class="flex flex-col lg:flex-row mt-10">
@@ -159,11 +165,15 @@
                         {{ __('install.step_path_folder_launcher') }}
                     </p>
 
-                    <img src="{{ asset('images/installation/selectpath.png') }}" class="my-4" alt="">
+                    <img src="{{ asset('images/installation/selectpath.png') }}"
+                         class="my-4"
+                         alt="">
                 </div>
 
                 <div class="lg:w-2/3 ml-4">
-                    <img src="{{ asset('images/installation/savelocation.png') }}" class="mb-4" alt="">
+                    <img src="{{ asset('images/installation/savelocation.png') }}"
+                         class="mb-4"
+                         alt="">
                 </div>
             </div>
 
@@ -177,7 +187,9 @@
                 </p>
             </div>
 
-            <img src="{{ asset('images/installation/logindialogue.png') }}" class="my-4" alt="">
+            <img src="{{ asset('images/installation/logindialogue.png') }}"
+                 class="my-4"
+                 alt="{{ __('install.step_finish_img_alt') }}" />
 
             <p class="text-xl">
                 <i class="fas fa-caret-right"></i>
