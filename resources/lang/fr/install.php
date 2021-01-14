@@ -33,7 +33,7 @@ return [
     'step_run_description' => 'Lancez l\'executable Inkybot en mode administrateur.',
     'step_run_img_alt' => 'Exécutez inkybot.exe en tant qu\'administrateur',
 
-    'step_path' => 'Choisissez l\'emplacement de votre fichier Dofus',
+    'step_path' => 'Choisissez l\'emplacement de votre fichier Dofus (si besoin)',
     'step_path_folder_default' => 'Le dossier d\'installation par défaut de Dofus est:',
     'step_path_folder_launcher' => 'Vous pouvez trouver votre dossier d\'sintallation Dofus dans les régalges de votre launcher Ankama.',
 
