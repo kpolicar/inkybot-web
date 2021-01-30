@@ -20,6 +20,11 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      */
     public function update($user, array $input)
     {
+        $input['optin_discord_notifications'] =
+            array_key_exists('optin_discord_notifications', $input) && $input['optin_discord_notifications'];
+        $input['optin_web_notifications'] =
+            array_key_exists('optin_web_notifications', $input) && $input['optin_web_notifications'];
+
         $this->validate($user, $input);
 
         $emailMustBeVerified = $input['email'] !== $user->email &&  $user instanceof MustVerifyEmail;
@@ -33,6 +38,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->forceFill([
             'name' => $input['name'],
             'email' => $input['email'],
+            'optin_discord_notifications' => $input['optin_discord_notifications'],
+            'optin_web_notifications' => $input['optin_web_notifications'],
         ]);
 
         $user->save();
@@ -46,6 +53,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'password' => ['nullable', 'string', new Password],
             'current_password' => ['required_with:password', 'nullable', 'string'],
+            'optin_web_notifications' => 'boolean',
+            'optin_discord_notifications' => 'boolean',
             'email' => [
                 'required',
                 'string',

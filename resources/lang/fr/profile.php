@@ -19,6 +19,7 @@ return [
     'community_action' => 'Rejoindre maintenant',
 
     'activity' => 'Activité journalière',
+    'notifications' => 'Notifications',
     'exo_attempts' => ':number tentatives',
     'exo_successes' => ':number succès',
     'activity_none' => 'Pas d\'activité',

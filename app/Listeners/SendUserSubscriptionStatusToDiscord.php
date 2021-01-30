@@ -26,13 +26,15 @@ class SendUserSubscriptionStatusToDiscord
             );
         }
 
-        $command = $user->is_subscribed
-            ? "subscribe"
-            : "unsubscribe";
-        $content = "!$command {$user->discord_id}";
-        \Http::post(
-            config('discord.webhook_url'),
-            compact('content')
-        );
+        if ($id = $user->discord_id) {
+            $command = $user->is_subscribed
+                ? "subscribe"
+                : "unsubscribe";
+            $content = "!$command {$id}";
+            \Http::post(
+                config('discord.webhook_url'),
+                compact('content')
+            );
+        }
     }
 }

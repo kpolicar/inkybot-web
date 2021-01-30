@@ -142,6 +142,57 @@
                     <div class="md:flex mb-6">
                         <div class="md:w-1/5">
                             <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
+                                {{ __('profile.notifications') }}
+                            </label>
+                        </div>
+                        <div class="md:w-3/5">
+                            <div class="flex items-center">
+                                <input class="focus:bg-white bg-gray-200 rounded p-2 text-gray-700 focus:text-gray-800"
+                                       id="optin_discord_notifications"
+                                       name="optin_discord_notifications"
+                                       type="checkbox"
+                                       @if (Auth::user()->optin_discord_notifications) checked @endif>
+                                <label class="text-gray-800 ml-2 text-sm" for="optin_discord_notifications">
+                                    {{ __('forms.update_form_discord_notifications') }}
+                                </label>
+                            </div>
+
+                            @error('discord_notifications', 'updateProfileInformation')
+                            <p class="text-red-500 text-sm italic">{{ $message }}</p>
+                            @enderror
+
+                            <p class="py-1 text-sm text-gray-600">
+                                {{ __('forms.update_form_discord_notifications_comment') }}
+                            </p>
+
+                            <div class="flex items-center mt-2">
+                                <input class="focus:bg-white bg-gray-200 rounded p-2 text-gray-700 focus:text-gray-800"
+                                       id="optin_web_notifications"
+                                       name="optin_web_notifications"
+                                       onchange="if (this.checked) { OneSignal.showNativePrompt() }"
+                                       type="checkbox"
+                                       @if (Auth::user()->optin_web_notifications) checked @endif>
+                                <label class="text-gray-800 ml-2 text-sm" for="optin_web_notifications">
+                                    {{ __('forms.update_form_web_notifications') }}
+                                </label>
+                            </div>
+
+
+                            @error('discord_notifications', 'updateProfileInformation')
+                            <p class="text-red-500 text-sm italic">{{ $message }}</p>
+                            @enderror
+
+                            <p class="py-1 text-sm text-gray-600">
+                                {{ __('forms.update_form_web_notifications_comment') }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr class="bg-gray-300 my-8">
+
+                    <div class="md:flex mb-6">
+                        <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
                                 {{ __('profile.activity') }}
                             </label>
                         </div>
