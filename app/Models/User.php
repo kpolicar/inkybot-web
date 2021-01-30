@@ -69,6 +69,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(FreeTrial::class);
     }
 
+    public function publishes() {
+        return $this->hasMany(MagePublish::class);
+    }
+
     public function maging() {
         return $this->hasMany(Maging::class);
     }

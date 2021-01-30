@@ -55,3 +55,4 @@ Route::get('/', function (ClientVersion $versions) {
 });
 
 Route::middleware('auth:api')->post('/statistics', [ClientStatisticsController::class, "Update"]);
+Route::middleware(['auth:api'])->post('/publish', [ClientStatisticsController::class, "Publish"]);
