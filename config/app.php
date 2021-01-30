@@ -171,6 +171,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         Berkayk\OneSignal\OneSignalServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -234,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'OneSignal' => Berkayk\OneSignal\OneSignalFacade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

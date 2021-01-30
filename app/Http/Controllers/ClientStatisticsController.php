@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Str;
+use Storage;
+use Image;
 use App\Models\Maging;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,5 +29,22 @@ class ClientStatisticsController extends Controller
         }
 
         $maging->save();
+    }
+
+    public function Publish(Request $request) {
+        $request->validate([
+            'image'=> 'required|image|max:1000',
+        ]);
+        $image = Image::make($request->file('image'))->encode('jpg');
+        $image->insert(asset('images/inkybot_watermark.png'), 'bottom-right');
+
+        $fileName = Str::random(40).'.jpg';
+        $path = "public/mages/{$request->user()->id}";
+        Storage::makeDirectory($path);
+        $image->save(storage_path("app/$path/$fileName"), 75);
+
+        $request->user()->publishes()->create([
+            'image_path' => Storage::url("$path/$fileName")
+        ]);
     }
 }

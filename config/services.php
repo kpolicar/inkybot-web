@@ -30,4 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'xenforo' => [
+        'key' => env('XENFORO_API_KEY')
+    ],
+
 ];
