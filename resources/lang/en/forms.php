@@ -53,6 +53,10 @@ return [
     'update_form_password' => 'New Password',
     'update_form_password_current' => 'Current Password',
     'update_form_submit' => 'Save Changes',
+    'update_form_discord_notifications' => 'Enable Discord notifications',
+    'update_form_discord_notifications_comment' => 'you must first link Discord with your Inkybot account to enable these notifications',
+    'update_form_web_notifications' => 'Enable Web notifications',
+    'update_form_web_notifications_comment' => 'you must first allow push notifications on your browser to enable these notifications',
 
     'login_subheader' => 'Access your account',
     'login_header' => 'Sign-in',

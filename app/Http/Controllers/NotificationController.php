@@ -7,34 +7,45 @@ use Illuminate\Http\Request;
 class NotificationController extends Controller
 {
     public function Error(Request $request) {
-        \OneSignal::sendNotificationToExternalUser(
-            "An error has occurred during maging! The bot has stopped.",
-            $request->user()->id,
-            $url = null,
-            $data = null,
-            $buttons = null,
-            $schedule = null,
-        );
+        $message = "An error has occurred during maging! The bot has stopped.";
+        $this->NotifyDiscord($request, $message);
+        $this->NotifyOneSignal($request, $message);
     }
+
     public function Runes(Request $request) {
-        \OneSignal::sendNotificationToExternalUser(
-            "You have run out of runes (".$request->input('rune')."). The bot has stopped.",
-            $request->user()->id,
-            $url = null,
-            $data = null,
-            $buttons = null,
-            $schedule = null,
-        );
+        $message = "You have run out of runes (" . $request->input('rune') . "). The bot has stopped.";
+        $this->NotifyDiscord($request, $message);
+        $this->NotifyOneSignal($request, $message);
     }
 
     public function Finished(Request $request) {
-        \OneSignal::sendNotificationToExternalUser(
-            "Your item is complete! The bot has finished maging.",
-            $request->user()->id,
-            $url = null,
-            $data = null,
-            $buttons = null,
-            $schedule = null,
-        );
+        $message = "Your item is complete! The bot has finished maging.";
+        $this->NotifyDiscord($request, $message);
+        $this->NotifyOneSignal($request, $message);
+    }
+
+    private function NotifyOneSignal(Request $request, $message)
+    {
+        if ($request->user()->optin_web_notifications) {
+            \OneSignal::sendNotificationToExternalUser(
+                $message,
+                $request->user()->id,
+                $url = null,
+                $data = null,
+                $buttons = null,
+                $schedule = null,
+            );
+        }
+    }
+
+    private function NotifyDiscord(Request $request, $message)
+    {
+        if ($request->user()->optin_discord_notifications) {
+            $content = "!notify {$request->user()->discord_id} \"$message\"";
+            \Http::post(
+                config('discord.webhook_url'),
+                compact('content')
+            );
+        }
     }
 }
