@@ -31,7 +31,9 @@ return [
     ],
 
     'xenforo' => [
-        'key' => env('XENFORO_API_KEY')
+        'key' => env('XENFORO_API_KEY'),
+        'node' => '1714',
+        'endpoint' => 'https://forum.cheat-gam3.com/api',
     ],
 
 ];

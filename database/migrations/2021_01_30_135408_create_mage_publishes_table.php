@@ -18,6 +18,9 @@ class CreateMagePublishesTable extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
+            $table->integer('ex_thread_id')
+                ->nullable()
+                ->index();
             $table->string('image_path');
             $table->timestamps();
         });
