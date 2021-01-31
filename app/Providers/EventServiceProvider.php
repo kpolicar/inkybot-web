@@ -2,12 +2,16 @@
 
 namespace App\Providers;
 
+use App\Events\MagePublishUploaded;
 use App\Events\UserPurchasedSubscription;
 use App\Events\UserSyncedWithDiscord;
 use App\Listeners\EnforceUniqueUserAccessToken;
+use App\Listeners\PostMagePublishToForum;
 use App\Listeners\RewardUserReferrer;
 use App\Listeners\SendUserSubscriptionStatusToDiscord;
+use App\Models\MagePublish;
 use App\Models\User;
+use App\Observers\MagePublishObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -35,7 +39,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserSyncedWithDiscord::class => [
             SendUserSubscriptionStatusToDiscord::class,
-        ]
+        ],
+        MagePublishUploaded::class => [
+            PostMagePublishToForum::class,
+        ],
     ];
 
     /**
@@ -46,5 +53,6 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         User::observe(UserObserver::class);
+        MagePublish::observe(MagePublishObserver::class);
     }
 }

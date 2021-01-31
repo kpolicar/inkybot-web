@@ -17,4 +17,9 @@ class MagePublish extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopePostedOnForum($query)
+    {
+        return $query->whereNotNull('ex_thread_id');
+    }
 }
