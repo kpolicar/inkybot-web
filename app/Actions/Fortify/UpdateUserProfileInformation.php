@@ -50,7 +50,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
     public function validate($user, $input) {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:100'],
             'password' => ['nullable', 'string', new Password],
             'current_password' => ['required_with:password', 'nullable', 'string'],
             'optin_web_notifications' => 'boolean',
