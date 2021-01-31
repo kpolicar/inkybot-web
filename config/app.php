@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Inkybot'),
 
+    'price' => 400,
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
