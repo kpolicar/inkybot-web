@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ConfigMissingException;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Exceptions\IncompletePayment;
 use Stripe\Exception\CardException;
@@ -15,7 +16,10 @@ class StripeController extends Controller
             $user->createAsStripeCustomer();
 
         try {
-            $user->charge(400, $paymentId);
+            $price = config('app.price');
+            throw_unless(is_int($price), ConfigMissingException::class);
+
+            $user->charge($price, $paymentId);
         } catch (IncompletePayment $exception) {
             return [
                 "redirect" => route(
