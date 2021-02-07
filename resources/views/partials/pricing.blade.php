@@ -52,7 +52,7 @@
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                     <div class="w-full pt-6 text-3xl font-bold text-center leading-none mb-2">
-                        €4 <small class="text-sm">/ {{ __('common.month') }}</small>
+                        €{{ config('app.price')/100 }} <small class="text-sm">/ {{ __('common.month') }}</small>
                     </div>
                     <div class="flex items-center justify-center">
                         @auth
