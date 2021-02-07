@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\MagePublishUploaded;
 use App\Events\UserPurchasedSubscription;
 use App\Events\UserSyncedWithDiscord;
+use App\Listeners\AdjustPriceToUser;
 use App\Listeners\EnforceUniqueUserAccessToken;
 use App\Listeners\PostMagePublishToForum;
 use App\Listeners\RewardUserReferrer;
@@ -13,10 +14,10 @@ use App\Models\MagePublish;
 use App\Models\User;
 use App\Observers\MagePublishObserver;
 use App\Observers\UserObserver;
+use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 use Laravel\Passport\Events\AccessTokenCreated;
 
 class EventServiceProvider extends ServiceProvider

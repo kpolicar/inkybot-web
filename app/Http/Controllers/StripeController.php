@@ -16,7 +16,7 @@ class StripeController extends Controller
             $user->createAsStripeCustomer();
 
         try {
-            $price = config('app.price');
+            $price = price();
             throw_unless(is_int($price), ConfigMissingException::class);
 
             $user->charge($price, $paymentId);
