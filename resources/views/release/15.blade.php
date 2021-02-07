@@ -68,6 +68,10 @@
                         <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">Improve accuracy for <strong>Rune quantity checking</strong></span>
                     </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Begin work on <strong>Magus profession leveling bot</strong></span>
+                    </li>
                 </ul>
 
             </div>

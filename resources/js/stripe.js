@@ -121,6 +121,12 @@ import {loadStripe} from '@stripe/stripe-js';
                 enableInputs();
             }
 
+            var handleErrorWithMessage = function(response) {
+                handleError();
+                error.classList.add('visible');
+                errorMessage.innerHTML = response.error.message;
+            }
+
             stripe.createPaymentMethod('card', elements[0], additionalData)
                 .then(function(result) {
 
@@ -139,7 +145,8 @@ import {loadStripe} from '@stripe/stripe-js';
                     } else {
                     handleError();
                 }
-            }).catch(handleError);
+            }).catch(handleErrorWithMessage);
+
         });
     }
 
