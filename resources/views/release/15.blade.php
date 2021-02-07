@@ -1,6 +1,6 @@
 @extends('layouts.release')
 
-@section('date', '10th February 2021')
+@section('date', '7th February 2021')
 @section('welcome', 'Welcome to the third release of this series!')
 
 @section('content')
