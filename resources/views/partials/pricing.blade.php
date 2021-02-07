@@ -46,7 +46,7 @@
                         <li class="border-b py-4">{{ __('pricing.package_feature_usage_unlimited') }}</li>
                         <li class="border-b py-4">{{ __('pricing.package_feature_maging_sink') }}</li>
                         <li class="border-b py-4">{{ __('pricing.package_feature_exo') }}</li>
-                        <li class="border-b py-4"><span class="line-through">{{ __('pricing.package_feature_overmaging') }}</span>*</li>
+                        <li class="border-b py-4">{{ __('pricing.package_feature_overmaging') }}</li>
                         <li class="border-b py-4"><span class="line-through">{{ __('pricing.package_feature_leveling') }}</span>*</li>
                     </ul>
                 </div>
