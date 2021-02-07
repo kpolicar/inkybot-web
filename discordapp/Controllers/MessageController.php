@@ -24,7 +24,12 @@ class MessageController
     public function handle(Message $message)
     {
         $command = Str::between($message->content, "!", " ");
-        $argument = Str::of($message->content)->split("/ /")->skip(1);
+        $argument = Str::of($message->content)
+            ->matchAll("/[A-z]+|\".*?\"/")
+            ->skip(1)
+            ->map(function ($str) {
+                return str_replace('"', '', $str);
+            });
 
         if (!in_array($command, $this->commands)) {
             $this->replyWithInfo($message);

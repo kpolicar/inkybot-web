@@ -23,7 +23,12 @@ class WebhookController
     public function handleMessage(Message $message)
     {
         $command = Str::between($message->content, "!", " ");
-        $argument = Str::of($message->content)->split("/ /")->skip(1);
+        $argument = Str::of($message->content)
+            ->matchAll("/[A-z]+|\".*?\"/")
+            ->skip(1)
+            ->map(function ($str) {
+                return str_replace('"', '', $str);
+            });
         $this->$command($message, ...$argument);
         echo "Executed command: $message->content\n";
     }
@@ -49,6 +54,13 @@ class WebhookController
                 ->then(function () use ($member, $message) {
                     $member->user->sendMessage("Your discord role on has been updated to: **Guest**.");
                 });
+        });
+    }
+
+    public function notify(Message $_, $id, $message)
+    {
+        $this->guild->members->fetch($id)->then(function (Member $member) use($message) {
+            $member->user->sendMessage($message);
         });
     }
 }
