@@ -22,9 +22,10 @@ class WebhookController
 
     public function handleMessage(Message $message)
     {
-        $command = Str::between($message->content, "!", " ");
+        $command = Str::after($message->content, "!");
+        $command = Str::before($command, " ");
         $argument = Str::of($message->content)
-            ->matchAll("/[A-z]+|\".*?\"/")
+            ->matchAll("/[A-z0-9]+|\".*?\"/")
             ->skip(1)
             ->map(function ($str) {
                 return str_replace('"', '', $str);
