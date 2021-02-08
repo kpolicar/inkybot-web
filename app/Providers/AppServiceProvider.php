@@ -44,6 +44,6 @@ class AppServiceProvider extends ServiceProvider
 
         $currentVersion = $this->app[ClientVersion::class]->latest();
         \View::share('download_password', "inkybot");
-        \View::share('download_asset', "storage/Inkybot_{$currentVersion['code']}.zip");
+        \View::share('download_asset', "storage/Inkybot_{$currentVersion['code']}_patch1.zip");
     }
 }
