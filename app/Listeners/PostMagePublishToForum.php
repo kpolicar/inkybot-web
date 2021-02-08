@@ -28,6 +28,7 @@ class PostMagePublishToForum
             config('services.xenforo.endpoint').'/threads/',
             ['node_id' => config('services.xenforo.node')] + $data
         );
+        \Log::info($resultNewThread);
         throw_unless(
             data_get($resultNewThread, 'success', false),
             ForumRequestException::class);
@@ -52,6 +53,7 @@ class PostMagePublishToForum
             config('services.xenforo.endpoint')."/threads/$threadId/",
             Arr::only($data, 'title')
         );
+        \Log::info($resultUpdatedPost);
         throw_unless(
             data_get($resultUpdatedPost, 'success', false),
             ForumRequestException::class);
