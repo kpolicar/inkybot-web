@@ -13,6 +13,7 @@ class PostMagePublishToForum
     public function handle(MagePublishUploaded $event)
     {
         $existing = $event->magePublish->user->publishes()->postedOnForum()->first();
+        $event->magePublish->syncOriginal();
 
         if (!$existing)
             $this->postNewThread($event->magePublish);
@@ -24,55 +25,43 @@ class PostMagePublishToForum
     {
         $data = $this->data($magePublish);
 
-        try {
-            $resultNewThread = $this->authorizedRequest()->post(
-                config('services.xenforo.endpoint').'/threads/',
-                ['node_id' => config('services.xenforo.node')] + $data
-            );
-            \Log::info("INTERESTING PART1:");
-            \Log::info($resultNewThread);
-            throw_unless(
-                data_get($resultNewThread, 'success', false),
-                ForumRequestException::class);
+        $resultNewThread = $this->authorizedRequest()->post(
+            config('services.xenforo.endpoint').'/threads/',
+            ['node_id' => config('services.xenforo.node')] + $data
+        );
+        \Log::info($resultNewThread);
+        throw_unless(
+            data_get($resultNewThread, 'success', false),
+            ForumRequestException::class);
 
-            $magePublish->ex_thread_id = data_get($resultNewThread, 'thread.thread_id');
-            $magePublish->save();
-        } catch (\Exception $e) {
-            \Log::info("INTERESTING PART:");
-            \Log::info($e);
-        }
+        $magePublish->ex_thread_id = data_get($resultNewThread, 'thread.thread_id');
+        $magePublish->save();
     }
 
     private function postNewComment(MagePublish $magePublish, $threadId)
     {
         $data = $this->data($magePublish);
 
-        try {
-            $resultNewComment = $this->authorizedRequest()->post(
-                config('services.xenforo.endpoint') . '/posts/',
-                ['thread_id' => $threadId] + Arr::only($data, 'message')
-            );
-            \Log::info("INTERESTING PART1:");
-            \Log::info($resultNewComment);
-            throw_unless(
-                data_get($resultNewComment, 'success', false),
-                ForumRequestException::class);
+        $resultNewComment = $this->authorizedRequest()->post(
+            config('services.xenforo.endpoint') . '/posts/',
+            ['thread_id' => $threadId] + Arr::only($data, 'message')
+        );
+        \Log::info($resultNewComment);
+        throw_unless(
+            data_get($resultNewComment, 'success', false),
+            ForumRequestException::class);
 
-            $resultUpdatedPost = $this->authorizedRequest()->post(
-                config('services.xenforo.endpoint') . "/threads/$threadId/",
-                Arr::only($data, 'title')
-            );
-            \Log::info($resultUpdatedPost);
-            throw_unless(
-                data_get($resultUpdatedPost, 'success', false),
-                ForumRequestException::class);
+        $resultUpdatedPost = $this->authorizedRequest()->post(
+            config('services.xenforo.endpoint') . "/threads/$threadId/",
+            Arr::only($data, 'title')
+        );
+        \Log::info($resultUpdatedPost);
+        throw_unless(
+            data_get($resultUpdatedPost, 'success', false),
+            ForumRequestException::class);
 
-            $magePublish->ex_thread_id = $threadId;
-            $magePublish->save();
-        } catch (\Exception $e) {
-            \Log::info("INTERESTING PART:");
-            \Log::info($e);
-        }
+        $magePublish->ex_thread_id = $threadId;
+        $magePublish->save();
     }
 
     private function authorizedRequest() {
