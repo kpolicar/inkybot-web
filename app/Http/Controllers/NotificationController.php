@@ -41,7 +41,7 @@ class NotificationController extends Controller
     private function NotifyDiscord(Request $request, $message)
     {
         if ($request->user()->optin_discord_notifications) {
-            $content = "!notify {$request->user()->discord_id} \"$message\"";
+            $content = "!notify {$request->user()->discord_id} \":bell: $message\"";
             \Http::post(
                 config('discord.webhook_url'),
                 compact('content')
