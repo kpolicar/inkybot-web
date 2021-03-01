@@ -2,7 +2,7 @@
 
 return [
 
-    'heading' => 'We have arrived!',
-    'subheading' => 'The first <strong class="uppercase">major release</strong> is here! Get your equipment ready, the exos are coming!',
+    'heading' => 'Hall of fame',
+    'subheading' => 'Check out success stories in the <a href=":link" class="font-bold uppercase hover:underline">Hall of fame</a> and see what Inkybot brings to the table.',
     'download' => 'Download now!',
 ];

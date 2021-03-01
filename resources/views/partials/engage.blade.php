@@ -18,13 +18,15 @@
 
 <section class="container mx-auto text-center py-6 mb-12 px-4 lg:px-0">
 
-    <h3 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white uppercase">{{ __('engage.heading') }}</h3>
+    <h3 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white uppercase">
+        <a class="hover:underline" href="https://forum.cheat-gam3.com/forums/hall-of-fame.1714/">{{ __('engage.heading') }}</a>
+    </h3>
     <div class="w-full mb-4">
         <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
     <h4 class="my-4 text-3xl leading-tight">
-        {!! __('engage.subheading') !!}
+        {!! __('engage.subheading', ['link' => 'https://forum.cheat-gam3.com/forums/hall-of-fame.1714/']) !!}
     </h4>
 
     <a href="{{ asset($download_asset) }}"
