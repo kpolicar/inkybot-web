@@ -31,7 +31,8 @@
     <h2 class="text-black text-xl font-bold"><i class="fas fa-mouse-pointer text-3xl mr-3"></i> Run in background</h2>
     <p class="text-black my-3">
         You must not hover your mouse over the Dofus client while maging.<br>
-        You can have other windows over Inkybot, however Inkybot must not be minimized.<br>
+        You can have other windows over Inkybot, however Inkybot must not be minimized.
+        This is due to how Windows works: it does not draw windows that are minimized.
     </p>
     @endif
 
@@ -39,6 +40,7 @@
     <h2 class="text-black text-xl font-bold"><i class="fas fa-window-maximize text-3xl mr-3"></i> Do not minimize</h2>
     <p class="text-black my-3">
         You can run Inkybot under other applications, however it must not be minimized.
+        This is due to how Windows works: it does not draw windows that are minimized.
     </p>
     @endif
 
