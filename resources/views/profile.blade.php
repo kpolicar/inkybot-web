@@ -131,8 +131,7 @@
                         <div class="md:w-3/5">
                             <p class="text-gray-800">{{ route('register', ['ref' => request()->user()->referral_code]) }}</p>
                             <p class="py-2 text-sm text-gray-600">
-                                {!! __('profile.referral_details', ['reward' => '<strike class="text-gray-500">2</strike> <strong>5*</strong>']) !!}<br>
-                                *{{ __('profile.referral_details_early') }}
+                                {!! __('profile.referral_details', ['reward' => '<strong>2</strong>']) !!}<br>
                             </p>
                         </div>
                     </div>
@@ -198,6 +197,23 @@
                         </div>
                         <div class="md:w-3/5">
                             <ul class="text-gray-800">
+                                @if($maging->expended)
+                                    <li class="w-1/2 flex flex-wrap items-center py-2 pt-0">
+                                        <div class="w-1/5 mr-2">
+                                            <img src="{{ asset('images/icons/kamas.png') }}" alt="Kamas"
+                                                 class="rounded object-contain h-8" title="Kamas"
+                                            >
+                                        </div>
+                                        <span class="4/5">
+                                                @if ($maging->expended >= 1000)
+                                                {{ round($maging->expended / 1000000, 2) }}mk
+                                            @else
+                                                {{ $maging->expended }}
+                                            @endif
+                                            </span>
+                                    </li>
+                                    <hr class="mt-3 mb-4">
+                                @endif
                                 @forelse(Arr::only($maging->exo_attempts ?? [], ['ap', 'mp', 'range']) as $rune => $attempts)
                                     <li class="w-1/2 flex flex-wrap items-center py-2 pt-0">
                                         <div class="w-1/5 mr-2">

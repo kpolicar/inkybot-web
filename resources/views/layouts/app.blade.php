@@ -11,7 +11,7 @@
     </title>
 
     <meta name="description" content="{{ __('meta.main_description') }}">
-    <meta name="keywords" content="Dofus, Bot, Maging, Mage, Magus, Profession, Items, Cheat, Hack, Stats, Game, Automate, Program">
+    <meta name="keywords" content="Dofus, Bot, Maging, Mage, Magus, Profession, Kamas, Items, Cheat, Hack, Stats, Game, Automate, Program">
     <meta name="author" content="Inkybot">
 
 
