@@ -14,7 +14,8 @@ class ClientStatisticsController extends Controller
     public function Update(Request $request) {
         $maging = Maging::todaysForUser($request->user());
 
-        if (($expended = $request->input('expend', 0)) > 300000)
+        if (($expended = $request->input('expend', 0)) > 300000
+            || !$request->input('expended_enabled', false))
             $expended = 0;
         $maging->expended += $expended;
         foreach (json_decode($request->input('attempts_exo', "{}"), true) as $stat => $attempts) {

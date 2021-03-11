@@ -34,6 +34,13 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
+                            <strong>UI improvements</strong> and <strong>bug fixes</strong>: changing presets
+                            no longer crashes the client. Added tooltips and helpful navigation links.
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
                             Prevents <strong>display from turning off</strong> - which could stop the bot
                         </span>
                     </li>
@@ -57,6 +64,20 @@
                 </div>
 
                 <ul class="text-black">
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Improve <strong>Custom AI scripts</strong>:
+                            Move towards extension-like scripts instead of replacement to the built-in AI.
+                            Custom scripts will be used to customize behavior when sink is available -
+                            this behavior is difficult to generalize as it is often specific to the item.
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            More bug fixes, <strong>QoL improvements</strong>, improve french translation
+                        </span>
+                    </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">
