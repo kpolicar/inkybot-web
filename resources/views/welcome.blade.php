@@ -4,7 +4,7 @@
     <meta property="og:video" content="{{ asset('videos/inkybot_intro.mp4') }}" />
     <meta property="og:video:width" content="1920">
     <meta property="og:video:height" content="1080">
-@show
+@endsection
 
 @section('hero')
     <x-main-hero>
