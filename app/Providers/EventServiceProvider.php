@@ -5,10 +5,10 @@ namespace App\Providers;
 use App\Events\MagePublishUploaded;
 use App\Events\UserPurchasedSubscription;
 use App\Events\UserSyncedWithDiscord;
-use App\Listeners\AdjustPriceToUser;
 use App\Listeners\EnforceUniqueUserAccessToken;
 use App\Listeners\PostMagePublishToForum;
 use App\Listeners\RewardUserReferrer;
+use App\Listeners\SendMagePublishToDiscord;
 use App\Listeners\SendUserSubscriptionStatusToDiscord;
 use App\Models\MagePublish;
 use App\Models\User;
@@ -43,6 +43,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         MagePublishUploaded::class => [
             PostMagePublishToForum::class,
+            SendMagePublishToDiscord::class,
         ],
     ];
 
