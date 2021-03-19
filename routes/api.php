@@ -1,13 +1,11 @@
 <?php
 
-use App\ClientVersion;
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\ClientStatisticsController;
 use App\Http\Controllers\DiscordController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
-use App\Http\Resources\ClientUser as ClientUserResource;
 use App\Models\FreeTrial;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,9 +24,6 @@ Route::prefix('/discord')->group(function () {
     Route::post('login', [DiscordController::class, "Login"]);
 });
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return new ClientUserResource($request->user());
-});
 
 Route::middleware('auth:api')->post('/trial/begin', function (Request $request) {
     $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
@@ -44,15 +39,8 @@ Route::middleware(['auth:api', 'throttle:3,1,notification'])->prefix('/notify')-
     Route::post('finished', [NotificationController::class, "Finished"]);
 });
 
-Route::get('/', function (ClientVersion $versions) {
-    $last = $versions->latest();
-
-    return [
-        'name' => $last['name'],
-        'endpoint' => $last['code'],
-        'number' => $last['number'],
-    ];
-});
+Route::get('/', [ApiController::class, 'Info']);
+Route::middleware('auth:api')->get('/user', [ApiController::class, 'User']);
 
 Route::middleware('auth:api')->post('/statistics', [ClientStatisticsController::class, "Update"]);
 Route::middleware(['auth:api', 'throttle:2,1,publish'])->post('/publish', [ClientStatisticsController::class, "Publish"]);
