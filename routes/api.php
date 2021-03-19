@@ -34,13 +34,13 @@ Route::middleware('auth:api')->post('/trial/begin', function (Request $request) 
 });
 
 Route::middleware(['auth:api', 'throttle:3,1,notification'])->prefix('/notify')->group(function () {
-    Route::post('error', [NotificationController::class, "Error"]);
-    Route::post('runes', [NotificationController::class, "Runes"]);
-    Route::post('finished', [NotificationController::class, "Finished"]);
+    Route::post('error', [ApiController::class, "NotifyError"]);
+    Route::post('runes', [ApiController::class, "NotifyRunes"]);
+    Route::post('finished', [ApiController::class, "NotifyFinished"]);
 });
 
 Route::get('/', [ApiController::class, 'Info']);
 Route::middleware('auth:api')->get('/user', [ApiController::class, 'User']);
 
-Route::middleware('auth:api')->post('/statistics', [ClientStatisticsController::class, "Update"]);
-Route::middleware(['auth:api', 'throttle:2,1,publish'])->post('/publish', [ClientStatisticsController::class, "Publish"]);
+Route::middleware('auth:api')->post('/statistics', [ApiController::class, "StatisticsUpdate"]);
+Route::middleware(['auth:api', 'throttle:2,1,publish'])->post('/publish', [ApiController::class, "StatisticsPublish"]);
