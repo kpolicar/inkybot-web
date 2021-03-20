@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Image;
+use Storage;
+use OneSignal;
+use Http;
+use Str;
 use App\ClientVersion;
+use App\Http\Middleware\AuthenticateWithSignature;
+use App\Http\Middleware\DecryptApiRequest;
 use App\Http\Middleware\EncryptApiResponse;
 use App\Http\Middleware\Subscribed;
 use App\Http\Resources\ClientUser as ClientUserResource;
@@ -18,6 +25,10 @@ class ApiController extends Controller
             ->except(['Info', 'User']);
         $this->middleware(EncryptApiResponse::class)
             ->except('Info');
+        $this->middleware(DecryptApiRequest::class)
+            ->only('StatisticsUpdate');
+        $this->middleware(AuthenticateWithSignature::class)
+            ->only('StatisticsPublish');
     }
 
     public function Info($code, ClientVersion $versions) {
