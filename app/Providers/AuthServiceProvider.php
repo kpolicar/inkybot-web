@@ -27,7 +27,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Passport::routes(null, ['middleware' => [DecryptApiRequest::class, EncryptApiResponse::class]]);
+        Passport::routes();
+        Passport::routes(null, [
+            'prefix' => 'oauth-v2',
+            'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class]
+        ]);
 
         Passport::tokensExpireIn(now()->addMinutes(2));
         Passport::refreshTokensExpireIn(now()->addMinutes(5));

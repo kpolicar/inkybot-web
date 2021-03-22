@@ -25,6 +25,8 @@ Route::prefix('/discord')->group(function () {
 });
 
 
+Route::get('/', [ApiController::class, 'Info']);
+
 Route::middleware('auth:api')->post('/trial/begin', function (Request $request) {
     $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
         ->orWhere('ip_address', $ip_address = $request->ip())
@@ -39,8 +41,7 @@ Route::middleware(['auth:api', 'throttle:3,1,notification'])->prefix('/notify')-
     Route::post('finished', [ApiController::class, "NotifyFinished"]);
 });
 
-Route::get('/', [ApiController::class, 'Info']);
 Route::middleware('auth:api')->get('/user', [ApiController::class, 'User']);
 
 Route::middleware('auth:api')->post('/statistics', [ApiController::class, "StatisticsUpdate"]);
-Route::middleware(['auth:api', 'throttle:2,1,publish'])->post('/publish', [ApiController::class, "StatisticsPublish"]);
+Route::middleware(['auth:api', 'throttle:3,60,publish'])->post('/publish', [ApiController::class, "StatisticsPublish"]);

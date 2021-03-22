@@ -21,14 +21,16 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        $this->middleware(Subscribed::class)
-            ->except(['Info', 'User']);
-        $this->middleware(EncryptApiResponse::class)
-            ->except('Info');
-        $this->middleware(DecryptApiRequest::class)
-            ->only('StatisticsUpdate');
-        $this->middleware(AuthenticateWithSignature::class)
-            ->only('StatisticsPublish');
+        if (\Request::segment(2) == 'v1.4') {
+            $this->middleware(Subscribed::class)
+                ->except(['Info', 'User']);
+            $this->middleware(EncryptApiResponse::class)
+                ->except('Info');
+            $this->middleware(DecryptApiRequest::class)
+                ->only('StatisticsUpdate');
+            $this->middleware(AuthenticateWithSignature::class)
+                ->only('StatisticsPublish');
+        }
     }
 
     public function Info($code, ClientVersion $versions) {
@@ -65,9 +67,9 @@ class ApiController extends Controller
 
     public function StatisticsUpdate(Request $request) {
         $maging = Maging::todaysForUser($request->user());
+        $expended = $request->input('expend', 0);
 
-        if (($expended = $request->input('expend', 0)) > 300000
-            || !$request->input('expended_enabled', false))
+        if ($expended > 300000 || !$request->input('expended_enabled', false))
             $expended = 0;
         $maging->expended += $expended;
         foreach (json_decode($request->input('attempts_exo', "{}"), true) as $stat => $attempts) {

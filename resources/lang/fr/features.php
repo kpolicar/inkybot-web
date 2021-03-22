@@ -15,8 +15,8 @@ return [
     'community' => 'Communauté',
     'community_details' => 'Construisons Inkybot ensemble! Nous sommes à votre écoute et encourageons les suggestions concernant l\'amélioration de nos services. Rejoignez notre serveur Discord maintenant!',
 
-    'scriptless' => 'Pas de scripts',
-    'scriptless_details' => 'Vous n\'êtes pas dépendant de scripts compliqués pour forgemager. Tout est en interne et simple d\'utilisation! Nous allons probablement mettre une interface de programmation (API) pour les personnes intéressées dans le futur.',
+    'scriptless' => 'Scripts non nécessaires',
+    'scriptless_details' => 'Vous n\'avez pas besoin d\'utiliser des scripts pour réussir votre forgemagie. Tout est compris dans le logiciel de base, et il fonctionne très bien ! Cependant, si vous souhaitez spécialiser l\'IA fournie pour un item spécifique, vous pouvez écrire votre propre script!',
 
     'notifications' => 'Notifications',
     'notifications_details' => 'Recevez des notifications pour différents événements pouvant arriver pendant la forgemagie. Regardez un film et laissez Inkybot vous notifier quand il a terminé l\'objet en cours!',

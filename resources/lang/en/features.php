@@ -15,8 +15,8 @@ return [
     'community' => 'Community',
     'community_details' => 'Let\'s build Inkybot together! We listen and encourage suggestions on how we can improve our services. Join our Discord server now!',
 
-    'scriptless' => 'Scriptless',
-    'scriptless_details' => 'You don\'t have to rely on foreign scripts to get the job done. Everything is built in-house and simply works! In the future we may perhaps expose an API for keen scripters.',
+    'scriptless' => 'Scripts not needed',
+    'scriptless_details' => 'You don\'t have to rely on foreign scripts to get the job done. Everything is built in-house and simply works! However, if you would like to specialize the AI for a specific item, you can write your own extension script!',
 
     'notifications' => 'Notifications',
     'notifications_details' => 'Receive notifications for special events that may occur during maging. Watch a movie and let Inkybot notify you when it\'s done with an item.',
