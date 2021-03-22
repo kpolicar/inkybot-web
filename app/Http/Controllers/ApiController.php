@@ -100,7 +100,8 @@ class ApiController extends Controller
         $image->save(storage_path("app/$path/$fileName"), 75);
 
         $request->user()->publishes()->create([
-            'image_path' => Storage::url("$path/$fileName")
+            'image_path' => Storage::url("$path/$fileName"),
+            'dont_publish_to_forum' => !$request->input('publish_to_forum', true)
         ]);
     }
 
