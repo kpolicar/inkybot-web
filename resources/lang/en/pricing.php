@@ -8,7 +8,7 @@ return [
 
     'package_free' => 'Free trial',
     'package_subscription' => 'Subscription',
-    'package_feature_usage_30' => '30 minute use',
+    'package_feature_usage_30' => '1 hour use',
     'package_feature_usage_unlimited' => 'Unlimited use',
     'package_feature_maging_basic' => 'Basic Maging',
     'package_feature_maging_sink' => 'Maging with sink',

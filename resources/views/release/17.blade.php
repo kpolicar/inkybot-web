@@ -55,7 +55,7 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Configure parameters to stop the bot if a certain condition is met <i class="text-sm">(sink > x, vitality > y)</i>
+                            Improve OCR accuracy on <strong>low resolutions</strong>
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">

@@ -8,7 +8,7 @@ return [
 
     'package_free' => 'Version d\'essai',
     'package_subscription' => 'Abonnement',
-    'package_feature_usage_30' => '30 minutes d\'utilisation',
+    'package_feature_usage_30' => '1 heure d\'utilisation',
     'package_feature_usage_unlimited' => 'Utilisation illimitée',
     'package_feature_maging_basic' => 'Forgemagie de base',
     'package_feature_maging_sink' => 'Forgemagie avec utilisation de puit',
