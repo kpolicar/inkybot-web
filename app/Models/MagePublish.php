@@ -10,7 +10,8 @@ class MagePublish extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image_path'
+        'image_path',
+        'dont_publish_to_forum',
     ];
 
     public function user()

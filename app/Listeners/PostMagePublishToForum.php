@@ -12,6 +12,9 @@ class PostMagePublishToForum
 {
     public function handle(MagePublishUploaded $event)
     {
+        if ($event->magePublish->dont_publish_to_forum)
+            return;
+
         $existing = $event->magePublish->user->publishes()->postedOnForum()->first();
         $event->magePublish->syncOriginal();
 
