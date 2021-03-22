@@ -34,6 +34,12 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
+                            Discord notification with <strong>image of successful exo</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
                             Various <strong>bug fixes</strong> and more <strong>detailed logging</strong>
                         </span>
                     </li>
