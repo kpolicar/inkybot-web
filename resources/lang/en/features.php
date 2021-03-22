@@ -9,13 +9,13 @@ return [
     'human_like' => 'Human-like Behavior',
     'human_like_details' => 'Simulating mouse and keyboard strokes makes the bot indistinguishable from human players. Your safety is our number one priority!',
 
-    'updates' => 'Regular updates',
+    'updates' => 'Regular Updates',
     'updates_details' => 'Inkybot is under active development and will continue to be improved long after the official release. We play Dofus too, so we are committed to make maging with Inkybot better than maging by yourself in every way - for you and for us!',
 
     'community' => 'Community',
     'community_details' => 'Let\'s build Inkybot together! We listen and encourage suggestions on how we can improve our services. Join our Discord server now!',
 
-    'scriptless' => 'Scripts not needed',
+    'scriptless' => 'Works Out Of The Box',
     'scriptless_details' => 'You don\'t have to rely on foreign scripts to get the job done. Everything is built in-house and simply works! However, if you would like to specialize the AI for a specific item, you can write your own extension script!',
 
     'notifications' => 'Notifications',
