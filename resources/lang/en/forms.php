@@ -57,6 +57,7 @@ return [
     'update_form_discord_notifications_comment' => 'you must first link Discord with your Inkybot account to enable these notifications',
     'update_form_web_notifications' => 'Enable Web notifications',
     'update_form_web_notifications_comment' => 'you must first allow push notifications on your browser to enable these notifications',
+    'update_form_download_data' => 'Download Data',
 
     'login_subheader' => 'Access your account',
     'login_header' => 'Sign-in',

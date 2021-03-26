@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\View\Engine;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +30,10 @@ class Maging extends Model
 
     public function scopeTodays($query) {
         return $query->whereDate('created_at', Carbon::today());
+    }
+
+    public static function Runes() {
+        return require database_path('runes.php');
     }
 
     public static function todaysForUser($user) {

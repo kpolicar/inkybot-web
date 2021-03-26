@@ -53,6 +53,7 @@ return [
     'update_form_password' => 'Nouveau mot de passe',
     'update_form_password_current' => 'Mot de passe actuel',
     'update_form_submit' => 'Sauvegarder les changements',
+    'update_form_download_data' => 'Télécharger les Données',
 
     'update_form_discord_notifications' => 'Activer les notifications Discord',
     'update_form_discord_notifications_comment' => 'vous devez d\'abord associer Discord à votre compte Inkybot pour activer ces notifications',

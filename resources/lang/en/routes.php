@@ -14,5 +14,6 @@ return [
     'email-verify' => 'email/verify',
     'email-verify-id-hash' => 'email/verify/{id}/{hash}',
     'email-verification-notification' => 'email/resend',
+    'export' => 'data/export',
 
 ];
