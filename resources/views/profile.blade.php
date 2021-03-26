@@ -239,12 +239,20 @@
                         </div>
                     </div>
 
-                    <div class="md:flex md:items-center">
-                        <div class="md:w-2/3">
+                    <div class="flex justify-between">
+                        <div>
                             <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
                                 {{ __('forms.update_form_submit') }}
                             </button>
                         </div>
+                        @subscribed
+                        <div class="text-right">
+                            <a href="{{ route('export') }}"
+                               class="block mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
+                                Download Data
+                            </a>
+                        </div>
+                        @endsubscribed
                     </div>
                 </form>
 

@@ -1,12 +1,15 @@
 <?php
 
 use App\ClientVersion;
+use App\Exports\MagingExport;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Middleware\Subscribed;
 use App\Models\Maging;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PaypalController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -68,7 +71,11 @@ Route::group(
         return view("release.$view", ['version' => $versionDetails]);
     })->name('release');
 
-        require_once 'fortify.php';
+    Route::get(LaravelLocalization::transRoute('routes.export'), function (Request $request) {
+        return new MagingExport($request->user());
+    })->name('export')->middleware(['auth', Subscribed::class, 'throttle:1,10,export']);
+
+    require_once 'fortify.php';
 });
 
 Route::post(

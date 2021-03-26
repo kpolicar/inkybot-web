@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\ApiEncrypter as ApiEncrypterContract;
+use App\Exports\MagingExport;
 use Illuminate\Encryption\Encrypter;
 use Str;
 use App\ClientVersion;
