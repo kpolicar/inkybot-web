@@ -5,7 +5,7 @@ return [
     'subheader' => 'Bien commencer',
     'header' => 'Installation',
     'engage' => 'Bienvenu aux instruction d\'installation d\'Inkybot.',
-    'refer_release_notes' => 'Si vous avez déjà installé Inkybot et avez des problèmes durant la forgemagie, veuillez vous référer à',
+    'refer_release_notes' => 'Si vous avez déjà installé Inkybot et avez des problèmes durant la Forgemagie, veuillez vous référer à',
     'refer_release_notes_link' => 'Notes de mise à jour',
 
     'steps' => 'Étapes d\'installation',

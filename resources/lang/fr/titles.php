@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'main' => 'Bot de forgemagie Dofus',
+    'main' => 'Bot de Forgemagie Dofus',
     'invite' => 'Invitation',
     'verify' => 'Vérifier son email',
     'subscribe' => 'S\'abonner',
