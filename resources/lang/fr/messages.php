@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'category' => 'Le bot de forgemagie Dofus 2',
+    'category' => 'Le bot de Forgemagie Dofus 2',
     'heading' => 'Personnalisez vos équipements comme vous le souhaitez!',
     'subheading' => 'Dites nous quelles statistiques vous voulez sur vos items et nous ferons le reste!',
     'install_instructions' => 'Instruction d\'installation',
