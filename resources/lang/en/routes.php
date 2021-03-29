@@ -6,6 +6,7 @@ return [
     'subscribe' => 'subscribe',
     'install' => 'install',
     'login' => 'login',
+    'login-discord' => 'login/discord',
     'logout' => 'logout',
     'register' => 'register',
     'forgot-password' => 'forgot-password',
@@ -15,5 +16,4 @@ return [
     'email-verify-id-hash' => 'email/verify/{id}/{hash}',
     'email-verification-notification' => 'email/resend',
     'export' => 'data/export',
-
 ];

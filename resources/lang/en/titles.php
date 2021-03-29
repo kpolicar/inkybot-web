@@ -11,4 +11,5 @@ return [
     'login' => 'Login',
     'installation' => 'Installation',
     'forgot' => 'Forgot Password',
+    'discord-link' => 'Link Discord',
 ];

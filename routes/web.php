@@ -2,8 +2,10 @@
 
 use App\ClientVersion;
 use App\Exports\MagingExport;
+use App\Http\Controllers\LinkDiscordController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Middleware\SetLocaleFromSession;
 use App\Http\Middleware\Subscribed;
 use App\Models\Maging;
 use Illuminate\Http\Request;
@@ -76,6 +78,16 @@ Route::group(
     })->name('export')->middleware(['auth', Subscribed::class, 'throttle:1,10,export']);
 
     require_once 'fortify.php';
+
+    Route::view(LaravelLocalization::transRoute('routes.login-discord'), 'discord-link')
+        ->middleware(['guest'])
+        ->name('login.discord');
+});
+
+Route::prefix('discord')->group(function () {
+    Route::get('link/{id}', [LinkDiscordController::class, '__invoke'])
+        ->middleware([SetLocaleFromSession::class, 'auth', 'signed', /*'throttle:3,1'*/])
+        ->name('discord.link');
 });
 
 Route::post(
