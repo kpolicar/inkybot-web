@@ -59,6 +59,10 @@ return [
     'update_form_web_notifications_comment' => 'you must first allow push notifications on your browser to enable these notifications',
     'update_form_download_data' => 'Download Data',
 
+    'discord-login_subheader' => 'Discord',
+    'discord-login_header' => 'Sign-in & Connect Discord',
+    'discord-login_description' => 'Please sign in to Inkybot to connect your account with Discord. Once your accounts are linked, you will receive notifications during your botting sessions.',
+
     'login_subheader' => 'Access your account',
     'login_header' => 'Sign-in',
     'login_form_submit' => 'Login',

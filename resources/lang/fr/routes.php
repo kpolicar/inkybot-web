@@ -6,6 +6,7 @@ return [
     'subscribe' => 'abonnement',
     'install' => 'installer',
     'login' => 'connexion',
+    'login-discord' => 'connexion/discord',
     'logout' => 'deconnexion',
     'register' => 'inscription',
     'forgot-password' => 'motdepasse-oublie',
@@ -15,5 +16,4 @@ return [
     'email-verify-id-hash' => 'email/verifier/{id}/{hash}',
     'email-verification-notification' => 'email/renvoyer',
     'export' => 'donnees/exporter',
-
 ];

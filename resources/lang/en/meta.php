@@ -5,4 +5,5 @@ return [
     'home' => 'Home',
     'invite_description' => ':name is inviting you to check out Inkybot, a Dofus Maging Bot!',
     'invite_anonymous_description' => 'You have been invited to check out Inkybot, a Dofus Maging Bot!',
+    'discord_link_description' => 'Open this link to connect Discord with your Inkybot account. Once successful, you will receive notifications during your botting sessions.',
 ];
