@@ -60,6 +60,11 @@ return [
     'update_form_web_notifications' => 'Activer les notifications Web',
     'update_form_web_notifications_comment' => 'vous devez d\'abord autoriser les notifications push sur votre navigateur pour activer ces notifications',
 
+
+    'discord-login_subheader' => 'Discord',
+    'discord-login_header' => 'Connectez-vous & lier Discord',
+    'discord-login_description' => 'Veuillez vous connecter à Inkybot pour connecter votre compte à Discord. Une fois vos comptes liés, vous recevrez des notifications lors de vos sessions de botting.',
+
     'login_subheader' => 'Accéder à mon compte',
     'login_header' => 'Se connecter',
     'login_form_submit' => 'Connexion',
