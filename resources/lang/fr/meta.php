@@ -5,4 +5,5 @@ return [
     'home' => 'Accueil',
     'invite_description' => ':name vous invite à jeter un coup d\'oeil à Inkybot, un bot Dofus de Forgemagie!',
     'invite_anonymous_description' => 'Vous avez été invité à jeter un coup d\'oeil à Inkybot, un bot Dofus de Forgemagie:',
+    'discord_link_description' => 'Ouvrez ce lien pour connecter Discord avec votre compte Inkybot. Une fois réussi, vous recevrez des notifications lors de vos sessions de forgemagie.',
 ];
