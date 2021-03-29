@@ -10,7 +10,7 @@
         @hasSection('title')@yield('title') - @endif{{ 'Inkybot - ' . __('titles.main') }}
     </title>
 
-    <meta name="description" content="{{ __('meta.main_description') }}">
+    <meta name="description" content="@yield('meta:description', __('meta.main_description'))">
     <meta name="keywords" content="Dofus, Bot, Maging, Mage, Magus, Profession, Kamas, Items, Cheat, Hack, Stats, Game, Automate, Program">
     <meta name="author" content="Inkybot">
 
@@ -18,7 +18,7 @@
         <meta property="og:title" content="@hasSection('title')@yield('title') - @endif{{ 'Inkybot - ' . __('titles.main') }}" />
     @show
     @section('og:description')
-        <meta name="og:description" content="{{ __('meta.main_description') }}" />
+        <meta name="og:description" content="@yield('meta:description', __('meta.main_description'))" />
     @show
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="{{ LaravelLocalization::getCurrentLocale() }}" />
