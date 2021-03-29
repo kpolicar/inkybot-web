@@ -86,7 +86,7 @@ Route::group(
 
 Route::prefix('discord')->group(function () {
     Route::get('link/{id}', [LinkDiscordController::class, '__invoke'])
-        ->middleware([SetLocaleFromSession::class, 'auth', 'signed', /*'throttle:3,1'*/])
+        ->middleware([SetLocaleFromSession::class, 'auth', 'signed', 'throttle:3,1'])
         ->name('discord.link');
 });
 
