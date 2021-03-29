@@ -10,7 +10,7 @@ class ReactionController
 {
     public function handle(User $user, MessageReaction $reaction)
     {
-        $endpoint = "https://oryxbot.me/api/v1/discord/link-generate";
+        $endpoint = "https://inkybot.me/api/v1/discord/link-generate";
 
         $request = (new PendingRequest)->acceptJson();
         $response = new Response($request->post($endpoint, [
