@@ -114,4 +114,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public static function FindByReferral($code) {
         return optional(static::firstWhere('referral_code', $code));
     }
+
+    public function linkDiscord($id)
+    {
+        $this->forceFill([
+            'discord_id' => $id
+        ])->save();
+    }
 }
