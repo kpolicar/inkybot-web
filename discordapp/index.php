@@ -13,7 +13,7 @@ use Discord\Parts\Guild\Guild;
 include __DIR__.'/../vendor/autoload.php';
 const GUILD_ID = 764510615049076797;
 const WEBHOOK_USER_ID = 795037986592391178;
-const REACTION_MESSAGE_ID = 821105493421326358;
+const REACTION_MESSAGE_ID = 826110239035621387;
 
 $discord = new \Discord\Discord([
     'token' => 'NzY0NTYyNTI3NzUyMjkwMzE2.X4IEVw.d7ncwQTjpOirR7QrmqQ1yoipLEs',
