@@ -36,4 +36,8 @@ return [
         'endpoint' => 'https://forum.cheat-gam3.com/api',
     ],
 
+    'coinbase' => [
+        'key' => env('COINBASE_API_KEY')
+    ],
+
 ];

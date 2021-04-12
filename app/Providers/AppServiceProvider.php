@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\ApiEncrypter as ApiEncrypterContract;
 use App\Exports\MagingExport;
+use CoinbaseCommerce\ApiClient as CoinbaseClient;
 use Illuminate\Encryption\Encrypter;
 use Str;
 use App\ClientVersion;
@@ -26,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
                 $key = base64_decode(substr($key, 7));
             }
             return new Encrypter($key, config('app.cipher'));
+        });
+        $this->app->singleton(CoinbaseClient::class, function () {
+            return CoinbaseClient::init(config('services.coinbase.key'));
         });
     }
 

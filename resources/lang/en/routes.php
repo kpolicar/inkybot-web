@@ -4,6 +4,8 @@ return [
 
     'profile' => 'profile',
     'subscribe' => 'subscribe',
+    'subscribe-stripe' => 'subscribe/card',
+    'subscribe-coinbase' => 'subscribe/crypto',
     'install' => 'install',
     'login' => 'login',
     'login-discord' => 'login/discord',
