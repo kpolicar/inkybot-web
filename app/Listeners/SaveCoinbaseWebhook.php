@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Carbon\Carbon;
 use DB;
 use App\Events\CoinbaseWebhookReceived;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,6 +22,7 @@ class SaveCoinbaseWebhook
             ->insert([
                 'type' => $data->event['type'],
                 'payload' => $data->event['data'],
+                'created_at' => Carbon::now(),
             ]);
     }
 }

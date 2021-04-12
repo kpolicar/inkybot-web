@@ -17,7 +17,7 @@ class CreateCoinbaseWebhookCallsTable extends Migration
             $table->id();
             $table->string('type')->nullable();
             $table->text('payload')->nullable();
-            $table->timestamps();
+            $table->timestamp('created_at');
         });
     }
 

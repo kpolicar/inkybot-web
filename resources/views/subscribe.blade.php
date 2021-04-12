@@ -16,12 +16,9 @@
                 Card
             </a>
 
-            <a href="#" x-href="{{ route('subscribe.coinbase') }}" class="cursor-not-allowed w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 mx-2 shadow-lg rounded relative">
+            <a href="#" x-href="{{ route('subscribe.coinbase') }}" class="cursor-not-allowed w-full text-center bg-white text-gray-800 font-bold my-6 py-4 mx-2 shadow-lg rounded relative">
                 <i class="fab fa-bitcoin text-4xl mb-1"></i><br>
-                Crypto<br>
-                <aside class="absolute top-0 right-0 pr-2">
-                    +1 day
-                </aside>
+                Crypto
             </a>
         </div>
     </x-main-hero>
