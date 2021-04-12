@@ -22,7 +22,7 @@
 
             <p class="text-gray-400 text-base mt-4 text-left my-4">
                 {{ __('forms.subscribe_option', ['option' => 1]) }}<br>
-                {!! __('forms.subscribe_duration', ['date' => Auth::user()->ExtendedSubscriptionDate(true)->format('d/m/Y')]) !!}<br>
+                {!! __('forms.subscribe_duration', ['date' => Auth::user()->ExtendedSubscriptionDate(1)->format('d/m/Y')]) !!}<br>
                 {{ __('forms.subscribe_thanks') }}
             </p>
             <div class="w-full mb-4">
@@ -31,7 +31,7 @@
 
             <div class="flex justify-between text-xl">
                 <p class="font-bold">{{ __('forms.basket_item') }}</p>
-                <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }} <small class="font-bold">(+1 day)</small></p>
+                <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}<small class="ml-2 text-gray-300 font-bold">(+1 day)</small></p>
             </div>
             <div class="flex justify-between text-xl">
                 <p class="font-bold">{{ __('forms.basket_price') }}</p>

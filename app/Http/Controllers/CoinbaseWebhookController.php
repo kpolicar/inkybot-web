@@ -68,7 +68,7 @@ class CoinbaseWebhookController extends Controller
             : User::first();
 
         $success = $user
-            ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate(true)])
+            ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate()])
             ->save();
 
         if ($success)
