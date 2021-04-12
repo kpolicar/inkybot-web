@@ -6,6 +6,7 @@ return [
     'subscribe' => 'subscribe',
     'subscribe-stripe' => 'subscribe/card',
     'subscribe-coinbase' => 'subscribe/crypto',
+    'subscribe-coinbase-checkout' => 'subscribe/crypto/checkout',
     'install' => 'install',
     'login' => 'login',
     'login-discord' => 'login/discord',
