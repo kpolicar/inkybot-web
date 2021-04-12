@@ -2,9 +2,11 @@
 
 use App\ClientVersion;
 use App\Exports\MagingExport;
+use App\Http\Controllers\CoinbaseController;
+use App\Http\Controllers\CoinbaseWebhookController;
 use App\Http\Controllers\LinkDiscordController;
 use App\Http\Controllers\StripeController;
-use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\StripeWebhookController;
 use App\Http\Middleware\SetLocaleFromSession;
 use App\Http\Middleware\Subscribed;
 use App\Models\Maging;
@@ -61,11 +63,15 @@ Route::group(
             ->middleware('verified');
 
         Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
-            ->name('subscribe-stripe')
+            ->name('subscribe.stripe')
             ->middleware('verified');
 
         Route::view(LaravelLocalization::transRoute('routes.subscribe-coinbase'), 'subscribe-coinbase')
-            ->name('subscribe-coinbase')
+            ->name('subscribe.coinbase')
+            ->middleware('verified');
+
+        Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
+            ->name('subscribe.coinbase.checkout')
             ->middleware('verified');
 
         Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
@@ -98,7 +104,5 @@ Route::prefix('discord')->group(function () {
         ->name('discord.link');
 });
 
-Route::post(
-    'stripe/webhook',
-    [WebhookController::class, 'handleWebhook']
-);
+Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+Route::post('coinbase/webhook', [CoinbaseWebhookController::class, 'handleWebhook']);

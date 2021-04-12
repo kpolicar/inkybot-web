@@ -11,12 +11,12 @@
 
         <div class="flex">
 
-            <a href="{{ route('subscribe-stripe') }}" class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 mx-2 shadow-lg rounded">
+            <a href="{{ route('subscribe.stripe') }}" class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 mx-2 shadow-lg rounded">
                 <i class="far fa-credit-card text-4xl mb-1"></i><br>
                 Card
             </a>
 
-            <a href="{{ route('subscribe-coinbase') }}" class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 mx-2 shadow-lg rounded relative">
+            <a href="#" x-href="{{ route('subscribe.coinbase') }}" class="cursor-not-allowed w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 mx-2 shadow-lg rounded relative">
                 <i class="fab fa-bitcoin text-4xl mb-1"></i><br>
                 Crypto<br>
                 <aside class="absolute top-0 right-0 pr-2">

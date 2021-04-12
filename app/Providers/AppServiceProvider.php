@@ -28,9 +28,7 @@ class AppServiceProvider extends ServiceProvider
             }
             return new Encrypter($key, config('app.cipher'));
         });
-        $this->app->singleton(CoinbaseClient::class, function () {
-            return CoinbaseClient::init(config('services.coinbase.key'));
-        });
+        CoinbaseClient::init(config('services.coinbase.key'));
     }
 
     /**

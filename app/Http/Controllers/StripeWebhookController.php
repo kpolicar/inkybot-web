@@ -9,7 +9,7 @@ use Laravel\Cashier\Http\Controllers\WebhookController as CashierController;
 use Laravel\Cashier\Subscription;
 use Stripe\Subscription as StripeSubscription;
 
-class WebhookController extends CashierController
+class StripeWebhookController extends CashierController
 {
     protected function handlePaymentIntentSucceeded(array $payload)
     {

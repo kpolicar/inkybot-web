@@ -37,7 +37,8 @@ return [
     ],
 
     'coinbase' => [
-        'key' => env('COINBASE_API_KEY')
+        'key' => env('COINBASE_KEY'),
+        'webhook_secret' => env('COINBASE_WEBHOOK_SECRET')
     ],
 
 ];
