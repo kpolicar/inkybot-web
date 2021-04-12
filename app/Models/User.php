@@ -99,9 +99,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return !$trial->exists || !$trial->expired;
     }
 
-    public function ExtendedSubscriptionDate() {
+    public function ExtendedSubscriptionDate($withCryptoPayment=false) {
         $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
         $extendedDate = $extendedDate->maximum($this->freshTimestamp());
+        if ($withCryptoPayment)
+            $extendedDate->addDay();
         return $extendedDate->addMonth();
     }
 

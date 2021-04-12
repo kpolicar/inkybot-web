@@ -56,9 +56,17 @@ Route::group(
         ->middleware(['auth', 'verified'])
         ->name('pay');
 
-        Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
-            return view('subscribe');
-        })->name('subscribe')->middleware('verified');
+        Route::view(LaravelLocalization::transRoute('routes.subscribe'), 'subscribe')
+            ->name('subscribe')
+            ->middleware('verified');
+
+        Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
+            ->name('subscribe-stripe')
+            ->middleware('verified');
+
+        Route::view(LaravelLocalization::transRoute('routes.subscribe-coinbase'), 'subscribe-coinbase')
+            ->name('subscribe-coinbase')
+            ->middleware('verified');
 
         Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
             return view('install');

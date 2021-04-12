@@ -5,6 +5,8 @@ return [
     'invite' => 'Invitation',
     'verify' => 'Vérifier son email',
     'subscribe' => 'S\'abonner',
+    'subscribe-stripe' => 'Pay with Card',
+    'subscribe-coinbase' => 'Pay with Crypto',
     'recover' => 'Réinitialiser son mot de passe',
     'register' => 'S\'inscrire',
     'profile' => 'Profil',
