@@ -48,6 +48,6 @@ class CoinbaseChargeCompleted extends Notification
                     ->line(new HtmlString('The crypto payment with code <strong>'.$this->charge['code'].'</strong> has been successfully processed.'))
                     ->line('The purchased subscription has been added to your account.')
                     ->action('View profile', route('profile'))
-                    ->line(new HtmlString('You are now subscribed to <strong>'.$notifiable->subscribed_to->format('d/m/Y').'</strong>'));
+                    ->line(new HtmlString('You are now subscribed until <strong>'.$notifiable->subscribed_to->format('d/m/Y').'</strong>.'));
     }
 }
