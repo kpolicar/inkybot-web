@@ -38,34 +38,23 @@ class CoinbaseWebhookController extends Controller
 
     public function handleChargePending(Charge $charge)
     {
-        \Log::info('handling charge pending!');
-        \Log::info($charge);
-
-        $user = $charge['metadata']['user_id']
-            ? User::find($charge['metadata']['user_id'])
-            : User::first();
+        $user = User::findOrFail($charge['metadata']['user_id']);
         $user->notify(new CoinbaseChargePending($charge));
     }
 
     public function handleChargeFailed(Charge $charge)
     {
-        \Log::info('handling charge failed!');
-        \Log::info($charge);
+        $user = User::findOrFail($charge['metadata']['user_id']);
 
-        $user = $charge['metadata']['user_id']
-            ? User::find($charge['metadata']['user_id'])
-            : User::first();
-        $user->notify(new CoinbaseChargeFailed($charge));
+        $lastUpdate = collect($charge['timeline'])->last();
+        if (data_get($lastUpdate, 'status') == 'UNRESOLVED')
+            $user->notify(new CoinbaseChargeFailed($charge));
+
     }
 
     public function handleChargeConfirmed(Charge $charge)
     {
-        \Log::info('handling charge confirmed!');
-        \Log::info($charge);
-
-        $user = $charge['metadata']['user_id']
-            ? User::find($charge['metadata']['user_id'])
-            : User::first();
+        $user = User::findOrFail($charge['metadata']['user_id']);
 
         $success = $user
             ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate(1)])
