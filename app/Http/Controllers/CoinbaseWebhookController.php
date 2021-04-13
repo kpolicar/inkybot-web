@@ -60,9 +60,9 @@ class CoinbaseWebhookController extends Controller
             ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate(1)])
             ->save();
 
-        if ($success)
+        if ($success) {
             UserPurchasedSubscription::dispatch($user);
-
-        $user->notify(new CoinbaseChargeCompleted($charge));
+            $user->notify(new CoinbaseChargeCompleted($charge));
+        }
     }
 }

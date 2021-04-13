@@ -6,11 +6,10 @@
     <x-main-hero>
         <div id="payment-form" class="stripe-payment-form" data-handler="{{ route('pay', ['paymentId' => '/']) }}">
 
-            <div class="flex flex-col lg:flex-row justify-around items-center loader">
-                <p class="text-xl my-8">{{ __('forms.subscribe_processing') }}</p>
-                <i class="fas fa-spinner fa-spin text-6xl"></i>
-            </div>
-
+            <a href="{{ route('subscribe') }}" class="text-gray-500 hover:underline">
+                <i class="fas fa-arrow-left mr-1"></i>
+                Back
+            </a>
             <div class="flex justify-between items-end mb-4">
                 <h1 class="text-left text-3xl font-bold leading-tight w-100">{{ __('forms.subscribe_header') }}</h1>
 
@@ -60,6 +59,17 @@
             <p class="text-gray-200 font-bold text-base mt-4 text-left my-4">
                 It is strongly recommended you pay using a cryptocurrency with a low network fee - Bitcoin's fees are high.
             </p>
+
+
+            <div class="flex items-center">
+
+                <i class="fas fa-exclamation-triangle text-5xl pl-0 px-4 py-3"></i>
+
+                <p class="text-gray-200 font-bold text-base mt-4 text-left my-4">
+                    If you are not paying through Coinbase, it is important you send the exact amount. Underpayments/Overpayments
+                    will have to be refunded manually, which may take up to a week!
+                </p>
+            </div>
 
         </div>
     </x-main-hero>

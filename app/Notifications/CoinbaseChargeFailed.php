@@ -44,10 +44,11 @@ class CoinbaseChargeFailed extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Payment status updated')
-                    ->line(new HtmlString('The crypto payment with code <strong>'.$this->charge['code'].'</strong> has failed.'))
+                    ->subject('Payment status updated #'.$this->charge['code'])
+                    ->line(new HtmlString('The crypto payment with code <strong>'.$this->charge['code'].'</strong> has <strong>failed</strong>.'))
                     ->line('This can happen due to underpayment or overpayment.')
-                    ->line('The balance will be refunded to your cryptocurrency wallet. If you would like, you can create a new charge and try again.')
+                    ->line(new HtmlString('To refund the balance to your cryptocurrency wallet, please write to <a href="mailto:payment@inkybot.me">payment@inkybot.me</a>. You will have to specify your cryptocurrency address and payment code.'))
+                    ->line('If you would like, you can create a new charge and try again.')
                     ->action('Retry payment', route('subscribe.coinbase'));
     }
 }

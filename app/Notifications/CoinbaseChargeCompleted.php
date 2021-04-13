@@ -44,7 +44,7 @@ class CoinbaseChargeCompleted extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Payment status updated')
+            ->subject('Payment status updated #'.$this->charge['code'])
                     ->line(new HtmlString('The crypto payment with code <strong>'.$this->charge['code'].'</strong> has been successfully processed.'))
                     ->line('The purchased subscription has been added to your account.')
                     ->action('View profile', route('profile'))
