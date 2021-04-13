@@ -25,9 +25,13 @@ class CoinbaseWebhookController extends Controller
 {
     public function handleWebhook(Request $request)
     {
-        $signature = $request->header('X-CC-Webhook-Signature');
         try {
-            $event = Webhook::buildEvent($request->getContent(), $signature, config('services.coinbase.webhook_secret'));
+            $signature = $request->header('X-CC-Webhook-Signature');
+            $payload = $request->getContent();
+
+            if (!is_string($signature))
+                throw new SignatureVerificationException($signature, $payload);
+            $event = Webhook::buildEvent($payload, $signature, config('services.coinbase.webhook_secret'));
         } catch (InvalidResponseException $exception) {
             throw new BadRequestHttpException($exception->getMessage(), $exception);
         } catch (SignatureVerificationException $exception) {
