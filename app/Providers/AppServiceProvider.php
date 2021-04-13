@@ -28,7 +28,8 @@ class AppServiceProvider extends ServiceProvider
             }
             return new Encrypter($key, config('app.cipher'));
         });
-        CoinbaseClient::init(config('services.coinbase.key'));
+        if ($key=config('services.coinbase.key'))
+            CoinbaseClient::init($key);
     }
 
     /**
