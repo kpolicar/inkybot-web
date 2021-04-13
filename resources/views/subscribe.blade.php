@@ -21,7 +21,7 @@
                 Card
             </a>
 
-            <a href="#" x-href="{{ route('subscribe.coinbase') }}" class="cursor-not-allowed w-full text-center bg-white text-gray-800 font-bold my-6 py-4 ml-2 shadow-lg rounded relative">
+            <a href="{{ route('subscribe.coinbase') }}" class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 ml-2 shadow-lg rounded relative">
                 <i class="fab fa-bitcoin text-4xl mb-1"></i><br>
                 Crypto
                 <aside class="absolute top-0 right-0 pt-3">

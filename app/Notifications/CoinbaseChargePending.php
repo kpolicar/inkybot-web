@@ -44,8 +44,8 @@ class CoinbaseChargePending extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Payment status updated')
-                    ->line(new HtmlString('The crypto payment with code <strong>'.$this->charge['code'].'</strong> has been detected.'))
-                    ->line('Once the payment is confirmed by the blockchain, the payment will be confirmed and your subscription will be added to your account.');
+            ->subject('Payment status updated #'.$this->charge['code'])
+                    ->line(new HtmlString('The crypto payment with code <strong>'.$this->charge['code'].'</strong> has been detected and is pending confirmation by the blockchain.'))
+                    ->line('Once the payment is confirmed, the payment will be complete and subscription will be added to your account.');
     }
 }
