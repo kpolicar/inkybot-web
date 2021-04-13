@@ -24,7 +24,7 @@
         "mcamara/laravel-localization": "^1.6",
         "predis/predis": "^1.1",
         "team-reflex/discord-php": "^5.1",
-        "coinbase/coinbase-commerce": "*"
+        "coinbase/coinbase-commerce": "dev-master#107702e71f8b058701f92a3a101f5954ca6792e1"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
