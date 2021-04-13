@@ -5,8 +5,6 @@ namespace App\Listeners;
 use Carbon\Carbon;
 use DB;
 use App\Events\CoinbaseWebhookReceived;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SaveCoinbaseWebhook
 {
@@ -21,7 +19,7 @@ class SaveCoinbaseWebhook
         DB::table('coinbase_webhook_calls')
             ->insert([
                 'type' => $data->event['type'],
-                'payload' => $data->event['data'],
+                'payload' => $data->event,
                 'created_at' => Carbon::now(),
             ]);
     }
