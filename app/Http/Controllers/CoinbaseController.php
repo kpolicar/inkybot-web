@@ -33,7 +33,7 @@ class CoinbaseController extends Controller
         $validator = Validator::make($charge->getAttributes(), [
             'hosted_url' => 'required|url',
         ]);
-        
+
         if ($validator->fails()) {
             return redirect()
                 ->back()
