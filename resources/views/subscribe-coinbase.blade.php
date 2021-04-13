@@ -39,7 +39,6 @@
             </div>
 
 
-
             <p class="text-gray-400 text-base mt-4 text-left my-4">
                 By clicking <b>Pay</b> you will be redirected to a checkout page hosted by Coinbase.
                 Subscription will be added to your account once the transaction has been processed and
@@ -58,23 +57,10 @@
                 </button>
             </form>
 
+            <p class="text-gray-200 font-bold text-base mt-4 text-left my-4">
+                It is strongly recommended you pay using a cryptocurrency with a low network fee - Bitcoin's fees are high.
+            </p>
 
-            <div class="flex items-center">
-
-                <i class="fas fa-info-circle text-5xl px-4 py-3"></i>
-
-                <div>
-                    <p class="text-gray-400 text-base mt-4 text-left">
-                        {{ __('forms.subscribe_recurring') }}
-                    </p>
-                    <p class="text-gray-400 text-base text-left font-bold">
-                        {{ __('forms.subscribe_info_saved') }}
-                    </p>
-                </div>
-            </div>
-
-            <div id="payment-response">
-            </div>
         </div>
     </x-main-hero>
 @endsection
