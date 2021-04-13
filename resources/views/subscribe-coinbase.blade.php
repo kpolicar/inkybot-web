@@ -45,9 +45,9 @@
                 received on our end.
             </p>
 
-            <div class="error" role="alert">
-                <p class="text-red-500 text italic message"></p>
-            </div>
+            @if ($errors->any())
+                <p class="text-red-500 text italic message">Something went wrong!</p>
+            @endif
 
             <form class="w-full" method="POST" action="{{ route('subscribe.coinbase.checkout') }}">
                 @csrf

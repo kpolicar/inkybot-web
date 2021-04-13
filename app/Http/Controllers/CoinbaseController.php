@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use CoinbaseCommerce\ApiClient;
 use CoinbaseCommerce\Exceptions\CoinbaseException;
 use CoinbaseCommerce\Resources\Charge;
@@ -27,10 +28,18 @@ class CoinbaseController extends Controller
                 'cancel_url' => route('subscribe.coinbase')
             ]
         );
-
         $charge->save();
-        throw_unless($charge->getAttribute('hosted_url'), CoinbaseException::class);
 
-        return redirect($charge->getAttribute('hosted_url'));
+        $validator = Validator::make($charge->getAttributes(), [
+            'hosted_url' => 'required|url',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator);
+        }
+
+        return redirect($charge['hosted_url']);
     }
 }
