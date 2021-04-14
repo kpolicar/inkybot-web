@@ -14,7 +14,7 @@
             <form>
                 <a href="{{ route('subscribe') }}" class="text-gray-500 hover:underline">
                     <i class="fas fa-arrow-left mr-1"></i>
-                    Back
+                    {{ __('common.back') }}
                 </a>
                 <div class="flex justify-between items-end mb-4">
                     <h1 class="text-left text-3xl font-bold leading-tight w-100">{{ __('forms.subscribe_header') }}</h1>
