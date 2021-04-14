@@ -17,4 +17,7 @@ return [
     'forum' => 'Forum',
     'month' => 'month',
     'translated_credits' => 'translated by :name',
+    'back' => 'Back',
+
+    'error_generic' => 'Something went wrong!',
 ];

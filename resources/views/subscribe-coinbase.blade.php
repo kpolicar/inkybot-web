@@ -8,7 +8,7 @@
 
             <a href="{{ route('subscribe') }}" class="text-gray-500 hover:underline">
                 <i class="fas fa-arrow-left mr-1"></i>
-                Back
+                {{ __('common.back') }}
             </a>
             <div class="flex justify-between items-end mb-4">
                 <h1 class="text-left text-3xl font-bold leading-tight w-100">{{ __('forms.subscribe_header') }}</h1>
@@ -30,7 +30,12 @@
 
             <div class="flex justify-between text-xl">
                 <p class="font-bold">{{ __('forms.basket_item') }}</p>
-                <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}<small class="ml-2 text-gray-300 font-bold">(+1 day)</small></p>
+                <p class="text-lg">
+                    {{ __('forms.basket_option', ['option' => 1]) }}
+                    <small class="ml-2 text-gray-300 font-bold">
+                        {{ __('forms.basket_option_bonus', ['option' => 1]) }}
+                    </small>
+                </p>
             </div>
             <div class="flex justify-between text-xl">
                 <p class="font-bold">{{ __('forms.basket_price') }}</p>
@@ -39,13 +44,11 @@
 
 
             <p class="text-gray-400 text-base mt-4 text-left my-4">
-                By clicking <b>Pay</b> you will be redirected to a checkout page hosted by Coinbase.
-                Subscription will be added to your account once the transaction has been processed and
-                received on our end.
+                {!! __('forms.subscribe_crypto_redirect') !!}
             </p>
 
             @if ($errors->any())
-                <p class="text-red-500 text italic message">Something went wrong!</p>
+                <p class="text-red-500 text italic message">{{ __('common.error_generic') }}</p>
             @endif
 
             <form class="w-full" method="POST" action="{{ route('subscribe.coinbase.checkout') }}">
@@ -57,7 +60,7 @@
             </form>
 
             <p class="text-gray-200 font-bold text-base mt-4 text-left my-4">
-                It is strongly recommended you pay using a cryptocurrency with a low network fee - Bitcoin's fees are high.
+                {{ __('forms.subscribe_crypto_fees') }}
             </p>
 
 
@@ -66,8 +69,7 @@
                 <i class="fas fa-exclamation-triangle text-5xl pl-0 px-4 py-3"></i>
 
                 <p class="text-gray-200 font-bold text-base mt-4 text-left my-4">
-                    If you are not paying through Coinbase, it is important you send the exact amount. Underpayments/Overpayments
-                    will have to be refunded manually, which may take up to a week!
+                    {{ __('forms.subscribe_crypto_no_coinbase') }}
                 </p>
             </div>
 
