@@ -4,7 +4,7 @@ return [
 
     'profile' => 'profil',
     'subscribe' => 'abonnement',
-    'subscribe-stripe' => 'abonnement/card',
+    'subscribe-stripe' => 'abonnement/carte',
     'subscribe-coinbase' => 'abonnement/crypto',
     'subscribe-coinbase-checkout' => 'abonnement/crypto/payement',
     'install' => 'installer',
