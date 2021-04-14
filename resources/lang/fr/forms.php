@@ -37,9 +37,14 @@ return [
     'subscribe_form_submit' => 'Payer :price',
     'subscribe_recurring' => 'Nous ne permettons pas les payements récurrents - vous devrez renouveller votre abonnement manuellement chaque mois.',
     'subscribe_info_saved' => 'Vos informations de payement ne sont pas enregistrées.',
+    'subscribe_crypto_redirect' => 'En cliquant <b>Payer</b> vous serez redirigé vers la page de payement Coinbase. L\'abonnement sera ajouté à votre compte une fois que la transaction est traitée et reçue par notre équipe.',
+    'subscribe_crypto_fees' => 'Il est fortement recommandé de payer en utilisant une cryptomonnaie avec un frais de réseau bas - Bitcoin a des frais élevés.',
+    'subscribe_crypto_no_coinbase' => 'Si vous ne payez pas à travers Coinbase, il est important d\'envoyer le montant exact. Les payements inférieurs/supérieurs au montant exact seront remboursés manuellement et peuvent prendre jusqu\'à une semaine!',
+
 
     'basket_item' => 'Objet:',
     'basket_option' => ':option mois d\'abonnement',
+    'basket_option_bonus' => '(+1 jour)',
     'basket_price' => 'Prix:',
     'basket_paid' => 'Montant paid:',
 
