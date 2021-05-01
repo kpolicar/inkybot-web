@@ -59,9 +59,11 @@
                                 </span>
                         </li>
                     @empty
-                        <li class="mb-6">
-                            {{ __('profile.activity_none') }}
-                        </li>
+                        @if (!$maging->expended)
+                            <li class="mb-6">
+                                {{ __('profile.activity_none') }}
+                            </li>
+                        @endif
                     @endforelse
                 </ul>
 
