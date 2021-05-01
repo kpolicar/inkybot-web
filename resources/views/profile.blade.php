@@ -41,7 +41,7 @@
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <div id='section2' class="p-8 mt-6 lg:mt-0 rounded border shadow-sm bg-white">
+            <div class="p-8 mt-6 lg:mt-0 rounded border shadow-sm bg-white">
                 <form action="{{ route('user-profile-information.update') }}#details" method="POST">
                     @csrf
                     <input type="hidden" name="_method" value="PUT">
@@ -189,70 +189,12 @@
 
                     <hr class="bg-gray-300 my-8">
 
-                    <div class="md:flex mb-6">
-                        <div class="md:w-1/5">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4">
-                                {{ __('profile.activity') }}
-                            </label>
-                        </div>
-                        <div class="md:w-3/5">
-                            <ul class="text-gray-800">
-                                @if($maging->expended)
-                                    <li class="w-1/2 flex flex-wrap items-center py-2 pt-0">
-                                        <div class="w-1/5 mr-2">
-                                            <img src="{{ asset('images/icons/kamas.png') }}" alt="Kamas"
-                                                 class="rounded object-contain h-8" title="Kamas"
-                                            >
-                                        </div>
-                                        <span class="4/5">
-                                                @if ($maging->expended >= 1000)
-                                                {{ round($maging->expended / 1000000, 2) }}mk
-                                            @else
-                                                {{ $maging->expended }}
-                                            @endif
-                                            </span>
-                                    </li>
-                                    <hr class="mt-3 mb-4">
-                                @endif
-                                @forelse(Arr::only($maging->exo_attempts ?? [], ['ap', 'mp', 'range']) as $rune => $attempts)
-                                    <li class="w-1/2 flex flex-wrap items-center py-2 pt-0">
-                                        <div class="w-1/5 mr-2">
-                                            <img src="{{ asset('images/icons/'.$rune.'.png') }}" alt=""
-                                                 class="rounded object-contain h-10"
-                                                 title="{{ __("runes.{$rune}") }}"
-                                                 style="background: no-repeat center center url('{{ asset('images/icons/rune_bg.jpg') }}'); background-size: contain">
-                                        </div>
-                                        <span class="4/5">
-                                            {{ __('profile.exo_attempts', ['number' => $attempts]) }}
-                                            @if(array_key_exists($rune, $maging->exo_successes ?? []))
-                                                <b class="mx-1">//</b>
-                                                <strong>
-                                                    {{ __('profile.exo_successes', ['number' => $maging->exo_successes[$rune]]) }}
-                                                </strong>
-                                            @endif
-                                        </span>
-                                    </li>
-                                @empty
-                                    {{ __('profile.activity_none') }}
-                                @endforelse
-                            </ul>
-                        </div>
-                    </div>
-
                     <div class="flex justify-between">
                         <div>
                             <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
                                 {{ __('forms.update_form_submit') }}
                             </button>
                         </div>
-                        @subscribed
-                        <div class="text-right">
-                            <a href="{{ route('export') }}"
-                               class="block mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded mb-6 mt-2 py-4 px-8 shadow-lg">
-                                Download Data
-                            </a>
-                        </div>
-                        @endsubscribed
                     </div>
                 </form>
 
@@ -261,7 +203,64 @@
 
     </section>
 
+    <style>
+
+    </style>
+
+    <div id="statistics" class="anchor"></div>
+
     <section class="bg-gray-100 border-b py-8">
+        <div class="container max-w-5xl mx-auto m-8">
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+                {{ __('profile.statistics') }}
+            </h2>
+            <div class="w-full mb-4">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+
+            <div class="mt-6 p-8 lg:mt-0 rounded border shadow-sm bg-white">
+                <div class="md:flex flex-wrap">
+                    <div class="md:w-1/5">
+                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4 md:text-left text-center">
+                            {{ __('profile.activity') }}
+                        </label>
+                    </div>
+                    <div class="md:w-4/5">
+                        @include('partials/statistics', ['maging' => $maging, 'title' => 'Session 20:58 - now', 'first' => true])
+                    </div>
+                    <div class="md:w-1/5"></div>
+                    <div class="md:w-4/5">
+                        @include('partials/statistics', ['maging' => $maging, 'title' => 'Session 00:00 - 20:58'])
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 mb-8 rounded border shadow-sm bg-white">
+                <div class="md:flex flex-wrap mt-8 mb-6">
+                    <div class="md:w-1/5 p-8">
+                        <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4 md:text-left text-center">
+                            {{ __('profile.activity_yesterday') }}
+                        </label>
+                    </div>
+                    <div class="md:w-4/5 p-8">
+                        @include('partials/statistics', ['maging' => $maging, 'single' => true])
+                    </div>
+                </div>
+            </div>
+
+            @subscribed
+            <div class="md:text-right text-center">
+                <a href="{{ route('export') }}"
+                   class="hover:underline gradient text-white font-bold rounded py-4 px-8 shadow-lg">
+                    Download Data
+                </a>
+            </div>
+            @endsubscribed
+        </div>
+
+    </section>
+
+    <section class="bg-white border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">Discord</h2>
             <div class="w-full mb-4">
