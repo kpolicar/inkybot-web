@@ -32,13 +32,22 @@ class Maging extends Model
         return $query->whereDate('created_at', Carbon::today());
     }
 
+    public function scopeLatest($query) {
+        return $query->orderByDesc('created_at');
+    }
+
+    public function scopeNotTodays($query) {
+        return $query->whereDate('created_at', '!=', Carbon::today());
+    }
+
     public static function Runes() {
         return require database_path('runes.php');
     }
 
-    public static function todaysForUser($user) {
+    public static function activeForUser($user) {
         return static::where('user_id', $user->id)
             ->todays()
+            ->latest()
             ->firstOrNew(['user_id' => $user->id]);
     }
 }

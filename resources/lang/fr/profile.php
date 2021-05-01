@@ -7,6 +7,7 @@ return [
     'subscribed_purchase' => 'Acheter un abonnement',
 
     'details' => 'Détails',
+    'statistics' => 'Statistiques',
 
     'referral' => 'Lien de parrainage',
     'referral_details' => 'chaque utilisateur parrainé qui s\'abonnera vous donnera :reward jours d\'abonnement additionnel',
@@ -19,8 +20,11 @@ return [
     'community_action' => 'Rejoindre maintenant',
 
     'activity' => 'Activité journalière',
+    'activity_previous' => 'Activité précédente',
     'notifications' => 'Notifications',
     'exo_attempts' => ':number tentatives',
     'exo_successes' => ':number succès',
     'activity_none' => 'Pas d\'activité',
+
+    'session_from' => 'La session puisque :time',
 ];
