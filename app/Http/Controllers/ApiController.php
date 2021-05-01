@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Image;
 use Storage;
 use OneSignal;
@@ -21,16 +23,14 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        if (\Request::segment(2) == 'v1.4') {
-            $this->middleware(Subscribed::class)
-                ->except(['Info', 'User']);
-            $this->middleware(EncryptApiResponse::class)
-                ->except('Info');
-            $this->middleware(DecryptApiRequest::class)
-                ->only('StatisticsUpdate');
-            $this->middleware(AuthenticateWithSignature::class)
-                ->only('StatisticsPublish');
-        }
+        $this->middleware(Subscribed::class)
+            ->except(['Info', 'User']);
+        $this->middleware(EncryptApiResponse::class)
+            ->except('Info', 'StatisticsView', 'StatisticsNewSession');
+        $this->middleware(DecryptApiRequest::class)
+            ->only('StatisticsUpdate');
+        $this->middleware(rAuthenticateWithSignature::class)
+            ->only('StatisticsPublish');
     }
 
     public function Info($code, ClientVersion $versions) {
@@ -65,8 +65,22 @@ class ApiController extends Controller
         $this->NotifyOneSignal($request, $message);
     }
 
+    public function StatisticsView($version)
+    {
+        return view('api/statistics', compact('version'));
+    }
+
+    public function StatisticsNewSession(Request $request, $version)
+    {
+        $current = Maging::activeForUser($request->user());
+        if ($current->expended || $current->exo_attempts || $current->exo_successes) {
+            $request->user()->maging()->create();
+        }
+        return $this->StatisticsView($version);
+    }
+
     public function StatisticsUpdate(Request $request) {
-        $maging = Maging::todaysForUser($request->user());
+        $maging = Maging::activeForUser($request->user());
         $expended = $request->input('expend', 0);
 
         if ($expended > 300000 || !$request->input('expended_enabled', false))

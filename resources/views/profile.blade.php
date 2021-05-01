@@ -203,10 +203,6 @@
 
     </section>
 
-    <style>
-
-    </style>
-
     <div id="statistics" class="anchor"></div>
 
     <section class="bg-gray-100 border-b py-8">
@@ -217,42 +213,11 @@
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-
-            <div class="mt-6 p-8 lg:mt-0 rounded border shadow-sm bg-white">
-                <div class="md:flex flex-wrap">
-                    <div class="md:w-1/5 pr-8">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 md:text-left text-center">
-                            {{ __('profile.activity') }}
-                        </label>
-                    </div>
-                    <div class="md:w-4/5">
-                        @include('partials/statistics', ['maging' => $maging, 'title' => 'Session 20:58 - now', 'code' => 'tab-1', 'first' => true, 'active' => true])
-                    </div>
-                    <div class="md:w-1/5"></div>
-                    <div class="md:w-4/5">
-                        @include('partials/statistics', ['maging' => $maging, 'title' => 'Session 00:00 - 20:58', 'code' => 'tab-2'])
-                    </div>
-                </div>
+            <div class="mt-6 lg:mt-0 rounded border shadow-sm bg-white">
+                @include('partials/statistics-today')
             </div>
-
-            <div class="p-8 my-8 rounded border shadow-sm bg-white">
-                <div class="md:flex flex-wrap">
-                    <div class="md:w-1/5 pr-8">
-                        <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 md:text-left text-center">
-                            {{ __('profile.activity_yesterday') }}
-                        </label>
-
-                        <div class="w-1/2 md:w-full m-auto">
-                            <input type="date"
-                                   value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-                                   class="mt-2 mb-4 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-white text-sm font-medium text-black hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" />
-
-                        </div>
-                    </div>
-                    <div class="md:w-4/5">
-                        @include('partials/statistics', ['maging' => $maging, 'title' => 'Session 20:58 - now', 'code' => 'tab-3', 'first' => true])
-                    </div>
-                </div>
+            <div class="my-6 rounded border shadow-sm bg-white">
+                @include('partials/statistics-previous')
             </div>
 
             @subscribed

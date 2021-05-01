@@ -1,20 +1,21 @@
 @php($first = $first ?? false)
 @php($active = $active ?? false)
+@php($htmlTabId = 'tab-'.$maging->id)
 
 <ul class="text-gray-800 flex flex-wrap">
     <li class="w-full mb-4 text-sm text-gray-600 md:text-left text-center">
 
         <div class="tab w-full">
-            <input class="absolute opacity-0" id="{{ $code }}" type="checkbox" name="tabs" @if($first) checked @endif>
+            <input class="absolute opacity-0" id="{{ $htmlTabId }}" type="checkbox" name="tabs" @if($first) checked @endif>
             <div class="flex md:justify-start justify-center items-center">
                 <div style="flex: 1;" class="border-gray-200 border-b-2 -mt-2 border-dashed mr-2 md:hidden"></div>
 
 
                 <label class="sm:-mx-1 mx-0 block pb-2 leading-normal cursor-pointer hover:underline"
-                       for="{{ $code }}">
+                       for="{{ $htmlTabId }}">
                     <span>
                         <i class="{{ $active ? 'far fa-clock' : 'fas fa-history' }} text-gray-800 mr-1"></i>
-                        {{ $title ?? '' }}
+                        {{ $title ?? __('profile.session_from', ['time' => $maging->created_at->format('H:i')]) }}
                         <i class="fas fa-angle-down pl-2"></i>
                     </span>
                 </label>

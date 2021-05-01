@@ -48,10 +48,9 @@ Route::group(
                 $message = __('forms.quick_verify_success');
             }
         }
-        $maging = Maging::todaysForUser($request->user());
 
         return view('profile')
-            ->with(compact('message', 'action', 'maging'));
+            ->with(compact('message', 'action'));
     })->middleware('auth')->name('profile');
 
     Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])

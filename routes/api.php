@@ -46,5 +46,9 @@ Route::middleware(['auth:api', 'throttle:3,1,notification'])->prefix('/notify')-
 
 Route::middleware('auth:api')->get('/user', [ApiController::class, 'User']);
 
+Route::middleware('auth:api')->get('/statistics', [ApiController::class, 'StatisticsView'])
+    ->name('statistics.view');
+Route::middleware('auth:api')->post('/statistics/newsession', [ApiController::class, 'StatisticsNewSession'])
+    ->name('statistics.newsession');
 Route::middleware('auth:api')->post('/statistics', [ApiController::class, "StatisticsUpdate"]);
 Route::middleware(['auth:api', 'throttle:3,60,publish'])->post('/publish', [ApiController::class, "StatisticsPublish"]);

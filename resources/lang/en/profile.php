@@ -20,9 +20,11 @@ return [
     'community_action' => 'Join now',
 
     'activity' => 'Today\'s activity',
-    'activity_yesterday' => 'Previous activity',
+    'activity_previous' => 'Previous activity',
     'notifications' => 'Notifications',
     'exo_attempts' => ':number attempts',
     'exo_successes' => ':number success',
     'activity_none' => 'No activity',
+
+    'session_from' => 'Session from :time',
 ];
