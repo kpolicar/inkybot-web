@@ -7,6 +7,7 @@ return [
     'subscribed_purchase' => 'Purchase subscription',
 
     'details' => 'Details',
+    'statistics' => 'Statistics',
 
     'referral' => 'Referral link',
     'referral_details' => 'each referred user that purchases subscription will grant you :reward extra days of subscription',
@@ -19,6 +20,7 @@ return [
     'community_action' => 'Join now',
 
     'activity' => 'Today\'s activity',
+    'activity_yesterday' => 'Yesterday\'s activity',
     'notifications' => 'Notifications',
     'exo_attempts' => ':number attempts',
     'exo_successes' => ':number success',

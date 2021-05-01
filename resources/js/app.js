@@ -31,3 +31,24 @@ dropdowns.forEach(dropdown => {
             dropdown.classList.add('hidden')
     })
 })
+
+var tabs = document.querySelectorAll("ul input[type=checkbox][data-tab]")
+
+tabs.forEach(tab => {
+    let parentLi = tab;
+    while ((parentLi = parentLi.parentNode) && parentLi.tagName != "LI") {
+    }
+    let parentUl = parentLi;
+    while ((parentUl = parentUl.parentNode) && parentUl.tagName != "UL") {
+    }
+    tab.addEventListener('change', () => {
+        parentUl.querySelectorAll("li").forEach(list => {
+            if (list == parentLi)
+                return;
+            if (tab.checked)
+                list.classList.remove('hidden');
+            else
+                list.classList.add('hidden');
+        })
+    })
+});
