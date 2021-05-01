@@ -11,7 +11,9 @@
             @forelse($magings as $maging)
                 @include('partials/statistics', ['maging' => $maging, 'first' => $loop->first, 'active' => $loop->first])
             @empty
-                empty
+                <p class="text-gray-800">
+                    {{ __('profile.activity_none') }}
+                </p>
             @endforelse
         </div>
     </div>
