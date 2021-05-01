@@ -28301,6 +28301,19 @@ html {
   filter: blur(5px);
 }
 
+/* Tab content - closed */
+
+.tab-content {
+  max-height: 0;
+  transition: max-height 0.35s;
+}
+
+/* :checked - resize to full height */
+
+.tab input:checked ~ .tab-content {
+  max-height: 100vh;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;

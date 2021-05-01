@@ -20,7 +20,7 @@ return [
     'community_action' => 'Join now',
 
     'activity' => 'Today\'s activity',
-    'activity_yesterday' => 'Yesterday\'s activity',
+    'activity_yesterday' => 'Previous activity',
     'notifications' => 'Notifications',
     'exo_attempts' => ':number attempts',
     'exo_successes' => ':number success',
