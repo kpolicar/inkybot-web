@@ -16,6 +16,8 @@
     @endsection
 @endif
 
+@php($formElementId="register-form")
+@include('partials/captcha', compact('formElementId'))
 
 @section('content')
     <x-main-hero>
@@ -28,7 +30,7 @@
             <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
-        <form class="w-full" method="POST" action="{{ route('register') }}">
+        <form class="w-full" method="POST" action="{{ route('register') }}" id="{{ $formElementId }}">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -67,11 +69,15 @@
                     @enderror
                 </div>
             </div>
-            <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
-                    type="submit">
+            <button class="g-recaptcha mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
+                    data-sitekey="{{ config('captcha.sitekey') }}" data-callback="onFormSubmit">
                 {{ __('forms.register_form_submit') }}
             </button>
         </form>
+
+        @error('g-recaptcha-response')
+            <p class="text-red-700 text-xs italic">{{ $message }}</p>
+        @enderror
 
         <p class="mt-3 text-gray-400 text-base lg:text-left text-center">
             <a href="{{ route('login') }}" class="text-white font-bold">

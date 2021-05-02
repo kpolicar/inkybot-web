@@ -1,5 +1,6 @@
 <?php
 
+use App\Rules\Captcha;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
@@ -29,6 +30,7 @@ $limiter = config('fortify.limiters.login');
 Route::post(LaravelLocalization::transRoute('routes.login'), [AuthenticatedSessionController::class, 'store'])
     ->middleware(array_filter([
         'guest',
+        Captcha::class,
         $limiter ? 'throttle:'.$limiter : null,
     ]));
 
@@ -42,7 +44,7 @@ if (Features::enabled(Features::resetPasswords())) {
         ->name('password.request');
 
     Route::post(LaravelLocalization::transRoute('routes.forgot-password'), [PasswordResetLinkController::class, 'store'])
-        ->middleware(['guest'])
+        ->middleware(['guest', Captcha::class])
         ->name('password.email');
 
     Route::get(LaravelLocalization::transRoute('routes.reset-password-token'), [NewPasswordController::class, 'create'])
@@ -61,7 +63,7 @@ if (Features::enabled(Features::registration())) {
         ->name('register');
 
     Route::post(LaravelLocalization::transRoute('routes.register'), [RegisteredUserController::class, 'store'])
-        ->middleware(['guest']);
+        ->middleware(['guest', Captcha::class]);
 }
 
 // Email Verification...

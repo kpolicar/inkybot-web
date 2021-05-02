@@ -1,4 +1,7 @@
-<form class="w-full" method="POST" action="{{  \LaravelLocalization::localizeURL('/login') }}">
+@php($formElementId="login-form")
+@include('partials/captcha', compact('formElementId'))
+
+<form class="w-full" method="POST" action="{{  \LaravelLocalization::localizeURL('/login') }}" id="{{ $formElementId }}">
     @csrf
     <input type="hidden" name="remember" value="1">
     <div class="flex flex-wrap -mx-3 mb-6">
@@ -25,8 +28,13 @@
             @enderror
         </div>
     </div>
-    <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
-            type="submit">
+
+    @error('g-recaptcha-response')
+        <p class="text-red-700 text-xs italic">{{ $message }}</p>
+    @enderror
+
+    <button class="g-recaptcha mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
+            data-sitekey="{{ config('captcha.sitekey') }}" data-callback="onFormSubmit">
         {{ __('forms.login_form_submit') }}
     </button>
 </form>
