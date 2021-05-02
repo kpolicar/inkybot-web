@@ -29,7 +29,7 @@ class ApiController extends Controller
             ->except('Info', 'StatisticsView', 'StatisticsNewSession');
         $this->middleware(DecryptApiRequest::class)
             ->only('StatisticsUpdate');
-        $this->middleware(rAuthenticateWithSignature::class)
+        $this->middleware(AuthenticateWithSignature::class)
             ->only('StatisticsPublish');
     }
 
