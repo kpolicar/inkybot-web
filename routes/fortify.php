@@ -1,6 +1,6 @@
 <?php
 
-use App\Rules\Captcha;
+use App\Http\Middleware\Captcha;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
