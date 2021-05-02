@@ -26,5 +26,5 @@ return [
     'exo_successes' => ':number succès',
     'activity_none' => 'Pas d\'activité',
 
-    'session_from' => 'La session puisque :time',
+    'session_from' => 'Votre session de :time',
 ];
