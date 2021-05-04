@@ -12,6 +12,9 @@
             </div>
 
             <form>
+
+                <input type="hidden" name="recurring" value="1">
+
                 <a href="{{ route('subscribe') }}" class="text-gray-500 hover:underline">
                     <i class="fas fa-arrow-left mr-1"></i>
                     {{ __('common.back') }}

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,15 +49,39 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_subscribed', 'is_free_trial', 'free_trial_available',
     ];
 
+    protected $hasUpdatedSubscribedToFromCashier = false;
+
     protected static function boot()
     {
         parent::boot();
 
-        parent::creating(function ($user) {
+        parent::creating(function (User $user) {
             $user->GenerateReferralCode();
 
             if ($referredBy = \Cookie::get('referral')) {
                 $user->referred_by = static::FindByReferral($referredBy)->id;
+            }
+        });
+        parent::saved(function (User $user) {
+            if ($user->wasChanged('subscribed_to') && $user->subscribed_to instanceof \DateTimeInterface) {
+                if ($user->hasUpdatedSubscribedToFromCashier)
+                    return;
+                $subscription = $user->subscription();
+                if (!$subscription || !$subscription->recurring())
+                    return;
+
+
+                $stripeSubscription = $subscription->asStripeSubscription();
+                $stripeSubscription->pause_collection = [
+                    'mark_uncollectible' => 'mark_uncollectible',
+                    'resumes_at' => $user->subscribed_to->getTimestamp(),
+                ];
+                $stripeSubscription->save();
+
+
+                $subscription
+                    ->anchorBillingCycleOn($user->subscribed_to)
+                    ->save();
             }
         });
     }
@@ -97,6 +122,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function GetFreeTrialAvailableAttribute() {
         $trial = optional($this->free_trial);
         return !$trial->exists || !$trial->expired;
+    }
+
+    public function ExtendedSubscriptionDate2(\DateInterval $interval) {
+        $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
+        $extendedDate = $extendedDate->maximum($this->freshTimestamp());
+        return $extendedDate->add($interval);
     }
 
     public function ExtendedSubscriptionDate($extraDays=0) {
