@@ -132,7 +132,8 @@ import {loadStripe} from '@stripe/stripe-js';
 
                 console.log("stripe result: ", result);
                 if (result.paymentMethod) {
-                    axios.post(paymentForm.getAttribute('data-handler')+'/'+result.paymentMethod.id)
+                    let data = new FormData(form)
+                    axios.post(paymentForm.getAttribute('data-handler')+'/'+result.paymentMethod.id, data)
                         .then(result => {
                             if (result.data.redirect) {
                                 window.location.href = result.data.redirect;

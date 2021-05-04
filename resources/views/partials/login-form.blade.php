@@ -34,7 +34,7 @@
     @enderror
 
     <button class="g-recaptcha mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
-            data-sitekey="{{ config('captcha.sitekey') }}" data-callback="onFormSubmit">
+            data-sitekey="{{ config('captcha.sitekey') }}" data-callback="onFormSubmit" data-badge="bottomleft">
         {{ __('forms.login_form_submit') }}
     </button>
 </form>

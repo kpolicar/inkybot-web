@@ -6,6 +6,7 @@ use App\Contracts\ApiEncrypter as ApiEncrypterContract;
 use App\Exports\MagingExport;
 use CoinbaseCommerce\ApiClient as CoinbaseClient;
 use Illuminate\Encryption\Encrypter;
+use Laravel\Cashier\Subscription;
 use Str;
 use App\ClientVersion;
 use Illuminate\Support\Facades\Blade;
@@ -55,5 +56,13 @@ class AppServiceProvider extends ServiceProvider
         $currentVersion = $this->app[ClientVersion::class]->latest();
         \View::share('download_password', "inkybot");
         \View::share('download_asset', "storage/Inkybot_{$currentVersion['code']}.zip");
+
+        Subscription::saved(function (Subscription $subscription) {
+            return;
+
+
+
+            $subscription->user->ExtendedSubscriptionDate2();
+        });
     }
 }
