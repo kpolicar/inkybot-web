@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\ApiEncrypter as ApiEncrypterContract;
 use App\Exports\MagingExport;
+use App\Models\User;
 use CoinbaseCommerce\ApiClient as CoinbaseClient;
 use Illuminate\Encryption\Encrypter;
 use Laravel\Cashier\Subscription;
@@ -45,7 +46,13 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::if('subscribed', function () {
-            return optional(auth()->user())->is_subscribed;
+            return optional(auth()->user())->is_subscribed ?? false;
+        });
+        Blade::if('verified', function () {
+            return optional(auth()->user())->hasVerifiedEmail() ?? false;
+        });
+        Blade::if('unverified', function () {
+            return !(optional(auth()->user())->hasVerifiedEmail() ?? false);
         });
 
         if (config('app.env') == 'production') {
@@ -56,13 +63,5 @@ class AppServiceProvider extends ServiceProvider
         $currentVersion = $this->app[ClientVersion::class]->latest();
         \View::share('download_password', "inkybot");
         \View::share('download_asset', "storage/Inkybot_{$currentVersion['code']}.zip");
-
-        Subscription::saved(function (Subscription $subscription) {
-            return;
-
-
-
-            $subscription->user->ExtendedSubscriptionDate2();
-        });
     }
 }

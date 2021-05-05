@@ -32,32 +32,40 @@
 
         <form class="w-full" method="POST" action="{{ route('register') }}" id="{{ $formElementId }}">
             @csrf
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap -mx-3">
+                <div class="w-full px-3 mb-6 md:mb-0">
                     <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="name">
                         {{ __('forms.name') }}
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border @error('name') border-red-500 @enderror border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border @error('name') border-red-500 @enderror border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                            id="name" name="name" type="text" placeholder="{{ __('forms.name_example') }}">
-
                     @error('name')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
+                    <p class="text-sm mt-2 text-gray-400">
+                        Your display name is visible to the public.
+                        Do <span class="underline">not</span> set it to your Dofus username.
+                    </p>
                 </div>
-                <div class="w-full md:w-1/2 px-3">
+                <div class="w-full px-3 my-3">
                     <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="email">
                         {{ __('forms.email') }}
                     </label>
 
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border @error('email') border-red-500 @enderror border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border @error('email') border-red-500 @enderror border-gray-200 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                            id="email" name="email" type="email" placeholder="{{ __('forms.email_example') }}">
+
                     @error('email')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
+
+                    <p class="text-sm mt-2 text-gray-400">
+                        Your email address is used for password recovery and billing related emails.
+                    </p>
                 </div>
             </div>
 
-            <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="flex flex-wrap my-3 -mx-3 mb-6">
                 <div class="w-full px-3">
                     <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="password">
                         {{ __('forms.password') }}

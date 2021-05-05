@@ -3,7 +3,6 @@
 return [
     'heading' => 'Prix',
     'description' => 'Les prix d\'Inkybot correspondent à un abonnement mensuel.',
-    'description_no_recurring_payments' => 'Nous ne permettons pas les payements récurrents - vous devrez renouveller votre abonnement manuellement chaque mois.',
     'description_thank_you' => 'Merci pour votre soutient!',
 
     'package_free' => 'Version d\'essai',
