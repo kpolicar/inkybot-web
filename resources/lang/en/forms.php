@@ -34,7 +34,7 @@ return [
     'subscribe_duration' => 'After completing the purchase, you will be subscribed until <strong>:date</strong>.',
     'subscribe_thanks' => 'We thank you for your support!',
     'subscribe_form_name' => 'Name',
-    'subscribe_form_submit' => 'Pay :price',
+    'subscribe_form_submit' => 'Pay',
     'subscribe_recurring' => 'We do not support recurring payments - you will have to renew your subscription manually each month.',
     'subscribe_info_saved' => 'Your payment information is not saved.',
     'subscribe_crypto_redirect' => 'By clicking <b>Pay</b> you will be redirected to a checkout page hosted by Coinbase. Subscription will be added to your account once the transaction has been processed and received on our end.',

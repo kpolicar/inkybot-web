@@ -19,22 +19,28 @@
             </p>
 
 
-            <a href="{{ route('subscribe') }}" class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
-                @subscribed
-                    {{ __('profile.subscribed_extend') }}
-                @else
+
+            @if (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail())
+                <a href="#pricing"
+                   @unverified onclick="event.preventDefault()" title="You must first verify your email address." @endunverified
+                   class="@unverified cursor-not-allowed @endunverified group mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                     {{ __('profile.subscribed_purchase') }}
-                @endsubscribed
-            </a>
+                    <i class="fas fa-angle-right text-lg ml-2 -mr-2 @verified transform group-hover:translate-x-2 duration-100 @endverified"></i>
+                </a>
+            @else
+                <x-billing-button class="group mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+                    {{ __('profile.subscribed_manage') }}
+                </x-billing-button>
+            @endif
         </div>
     </x-main-hero>
 @endsection
 
 @section('content')
-    <div id="details" class="anchor"></div>
-
     <section class="bg-white border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
+            <div id="details" class="anchor"></div>
+
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
                 {{ __('profile.details') }}
             </h2>

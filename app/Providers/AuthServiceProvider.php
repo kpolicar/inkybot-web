@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Http\Middleware\DecryptApiRequest;
 use App\Http\Middleware\EncryptApiResponse;
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
@@ -34,5 +35,9 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::tokensExpireIn(now()->addMinutes(2));
         Passport::refreshTokensExpireIn(now()->addMinutes(5));
+
+        Gate::define('purchase-subscription', function (User $user) {
+            return $user->hasVerifiedEmail() && (!$user->hasStripeId() || !$user->subscribed());
+        });
     }
 }

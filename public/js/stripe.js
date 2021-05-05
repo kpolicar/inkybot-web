@@ -1,97 +1,11 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
-/******/ })
-/************************************************************************/
-/******/ ({
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
 /***/ "./node_modules/@babel/runtime/regenerator/index.js":
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
 
@@ -102,12 +16,13 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 /*!***********************************************************!*\
   !*** ./node_modules/@stripe/stripe-js/dist/stripe.esm.js ***!
   \***********************************************************/
-/*! exports provided: loadStripe */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loadStripe", function() { return loadStripe; });
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "loadStripe": () => (/* binding */ loadStripe)
+/* harmony export */ });
 var V3_URL = 'https://js.stripe.com/v3';
 var V3_URL_REGEX = /^https:\/\/js\.stripe\.com\/v3\/?(\?.*)?$/;
 var EXISTING_SCRIPT_MESSAGE = 'loadStripe.setLoadParameters was called but an existing Stripe.js script already exists in the document; existing script parameters will be used';
@@ -148,7 +63,7 @@ var registerWrapper = function registerWrapper(stripe, startTime) {
 
   stripe._registerWrapper({
     name: 'stripe-js',
-    version: "1.11.0",
+    version: "1.14.0",
     startTime: startTime
   });
 };
@@ -245,8 +160,7 @@ var loadStripe = function loadStripe() {
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ ((module) => {
 
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -979,7 +893,7 @@ var runtime = (function (exports) {
   // as the regeneratorRuntime namespace. Otherwise create a new empty
   // object. Either way, the resulting object will be used to initialize
   // the regeneratorRuntime variable at the top of this file.
-   true ? module.exports : undefined
+   true ? module.exports : 0
 ));
 
 try {
@@ -998,16 +912,83 @@ try {
 }
 
 
-/***/ }),
+/***/ })
 
-/***/ "./resources/js/stripe.js":
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
 /*!********************************!*\
   !*** ./resources/js/stripe.js ***!
   \********************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
@@ -1020,221 +1001,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
   'use strict';
 
-  var stripe, registerElements, elements, elementStyles, elementClasses, cardNumber, cardExpiry, cardCvc;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+  var stripe;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          registerElements = function _registerElements(elements) {
-            var paymentForm = document.querySelector("#payment-form");
-            var form = paymentForm.querySelector('form');
-            var error = form.querySelector('.error');
-            var errorMessage = error.querySelector('.message');
+          _context.next = 2;
+          return (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__.loadStripe)("pk_test_51HcdZLDl3uJ5ENdaQX6KQHq8Ap4g4k7gWkdikvPfqw6U2lbnHuERwib5LOUpY0ZQ9IqbxTIvMVDPctHKAYdWkilM00qF8JOnAe");
 
-            function enableInputs() {
-              Array.prototype.forEach.call(form.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']"), function (input) {
-                input.removeAttribute('disabled');
-              });
-            }
-
-            function disableInputs() {
-              Array.prototype.forEach.call(form.querySelectorAll("input[type='text'], input[type='email'], input[type='tel']"), function (input) {
-                input.setAttribute('disabled', 'true');
-              });
-            }
-
-            function triggerBrowserValidation() {
-              // The only way to trigger HTML5 form validation UI is to fake a user submit
-              // event.
-              var submit = document.createElement('input');
-              submit.type = 'submit';
-              submit.style.display = 'none';
-              form.appendChild(submit);
-              submit.click();
-              submit.remove();
-            } // Listen for errors from each Element, and show error messages in the UI.
-
-
-            var savedErrors = {};
-            elements.forEach(function (element, idx) {
-              element.on('change', function (event) {
-                if (event.error) {
-                  error.classList.add('visible');
-                  savedErrors[idx] = event.error.message;
-                  errorMessage.innerText = event.error.message;
-                } else {
-                  savedErrors[idx] = null; // Loop over the saved errors and find the first one, if any.
-
-                  var nextError = Object.keys(savedErrors).sort().reduce(function (maybeFoundError, key) {
-                    return maybeFoundError || savedErrors[key];
-                  }, null);
-
-                  if (nextError) {
-                    // Now that they've fixed the current error, show another one.
-                    errorMessage.innerText = nextError;
-                  } else {
-                    // The user fixed the last error; no more errors.
-                    error.classList.remove('visible');
-                  }
-                }
-              });
-            }); // Listen on the form's 'submit' handler...
-
-            form.addEventListener('submit', function (e) {
-              e.preventDefault();
-              if (_.find(savedErrors, function (error) {
-                return error !== null;
-              })) return; // Trigger HTML5 validation UI on the form if any of the inputs fail
-              // validation.
-
-              var plainInputsValid = true;
-              Array.prototype.forEach.call(form.querySelectorAll('input'), function (input) {
-                if (input.checkValidity && !input.checkValidity()) {
-                  plainInputsValid = false;
-                  return;
-                }
-              });
-
-              if (!plainInputsValid) {
-                triggerBrowserValidation();
-                return;
-              } // Show a loading screen...
-
-
-              paymentForm.classList.add('submitting'); // Disable all inputs.
-
-              disableInputs(); // Gather additional customer data we may have collected in our form.
-
-              var name = form.querySelector('#name');
-              var email = form.querySelector('#email');
-              var paymentResponse = paymentForm.querySelector('#payment-response');
-              var additionalData = {
-                billing_details: {
-                  name: name ? name.value : undefined,
-                  email: email ? email.value : undefined
-                }
-              };
-
-              var handleError = function handleError(error) {
-                paymentForm.classList.remove('submitting');
-                enableInputs();
-              };
-
-              var handleErrorWithMessage = function handleErrorWithMessage(response) {
-                handleError();
-                error.classList.add('visible');
-                errorMessage.innerHTML = response.error.message;
-              };
-
-              stripe.createPaymentMethod('card', elements[0], additionalData).then(function (result) {
-                console.log("stripe result: ", result);
-
-                if (result.paymentMethod) {
-                  var data = new FormData(form);
-                  axios.post(paymentForm.getAttribute('data-handler') + '/' + result.paymentMethod.id, data).then(function (result) {
-                    if (result.data.redirect) {
-                      window.location.href = result.data.redirect;
-                    } else {
-                      paymentForm.classList.remove('submitting');
-                      paymentForm.classList.add('submitted');
-                      paymentResponse.innerHTML = result.data;
-                    }
-                  })["catch"](function (error) {
-                    return console.log("server error: ", error);
-                  });
-                } else {
-                  handleError();
-                }
-              })["catch"](handleErrorWithMessage);
-            });
-          };
-
-          _context.next = 3;
-          return Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__["loadStripe"])("pk_test_51HcdZLDl3uJ5ENdaQX6KQHq8Ap4g4k7gWkdikvPfqw6U2lbnHuERwib5LOUpY0ZQ9IqbxTIvMVDPctHKAYdWkilM00qF8JOnAe");
-
-        case 3:
+        case 2:
           stripe = _context.sent;
-          elements = stripe.elements({
-            fonts: [{
-              cssSrc: 'https://fonts.googleapis.com/css?family=Quicksand'
-            }],
-            // Stripe's examples are localized to specific languages, but if
-            // you wish to have Elements automatically detect your user's locale,
-            // use `locale: 'auto'` instead.
-            locale: 'auto'
+          Array.prototype.forEach.call(document.querySelectorAll("[data-checkout]"), function (input) {
+            input.addEventListener("click", function () {
+              axios.post(input.getAttribute('data-checkout')).then(function (response) {
+                return stripe.redirectToCheckout({
+                  sessionId: response.data.id
+                });
+              }).then(function (result) {
+                if (result.error) {
+                  alert(result.error.message);
+                }
+              })["catch"](function (error) {
+                console.error(error);
+              });
+            });
           });
-          elementStyles = {
-            base: {
-              color: '#4A5568',
-              fontWeight: 400,
-              fontFamily: 'Source Sans Pro", sans-serif',
-              fontSize: '16px',
-              fontSmoothing: 'antialiased',
-              iconColor: '#4A5568',
-              ':focus': {
-                color: '#4A5568'
-              },
-              '::placeholder': {
-                color: '#A3B0C2'
-              },
-              ':focus::placeholder': {
-                color: '#A0AEC0'
-              }
-            },
-            invalid: {
-              iconColor: '#9d2020',
-              color: '#9d2020',
-              '::placeholder': {
-                color: '#be5252'
-              }
-            }
-          };
-          elementClasses = {
-            focus: 'focus',
-            empty: 'empty',
-            invalid: 'invalid'
-          };
-          cardNumber = elements.create('cardNumber', {
-            showIcon: true,
-            style: elementStyles,
-            classes: elementClasses
-          });
-          cardNumber.mount('#card-number');
-          cardExpiry = elements.create('cardExpiry', {
-            style: elementStyles,
-            classes: elementClasses
-          });
-          cardExpiry.mount('#card-expiry');
-          cardCvc = elements.create('cardCvc', {
-            style: elementStyles,
-            classes: elementClasses
-          });
-          cardCvc.mount('#card-cvc');
-          registerElements([cardNumber, cardExpiry, cardCvc]);
 
-        case 14:
+        case 4:
         case "end":
           return _context.stop();
       }
     }
   }, _callee);
 }))();
+})();
 
-/***/ }),
-
-/***/ 1:
-/*!**************************************!*\
-  !*** multi ./resources/js/stripe.js ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! A:\Projects\PhpstormProjects\inkybot\resources\js\stripe.js */"./resources/js/stripe.js");
-
-
-/***/ })
-
-/******/ });
+/******/ })()
+;

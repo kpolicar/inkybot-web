@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Billing;
 use App\Events\CoinbaseWebhookReceived;
 use CoinbaseCommerce\Exceptions\InvalidResponseException;
 use CoinbaseCommerce\Exceptions\SignatureVerificationException;
@@ -69,13 +70,27 @@ class CoinbaseWebhookController extends Controller
     {
         $user = User::findOrFail($charge['metadata']['user_id']);
 
-        $success = $user
-            ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate(1)])
-            ->save();
+        $pricing = $charge['pricing']['local']['amount'];
+        $amount = str_replace('.', '', $pricing['amount']);
+        $currency = str_replace('.', '', $pricing['currency']);
 
-        if ($success) {
-            UserPurchasedSubscription::dispatch($user);
-            $user->notify(new CoinbaseChargeCompleted($charge));
-        }
+        if (strtolower($currency) != strtolower($user->preferredCurrency()))
+            throw new \InvalidArgumentException();
+
+        $customer = $user->asStripeCustomer();
+        $customer->balance += $amount;
+        $customer->save();
+
+        $user->newSubscription('default', Billing::resolvePlan($charge['metadata']['plan']))
+            ->noProrate()
+            ->withMetadata([
+                'coinbase_charge_id' => $charge->id
+            ])
+            ->create()
+            ->cancel();
+
+
+        UserPurchasedSubscription::dispatch($user);
+        $user->notify(new CoinbaseChargeCompleted($charge));
     }
 }
