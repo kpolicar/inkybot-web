@@ -36,6 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'card_last_four',
     ];
 
+    protected $with = [
+        'subscriptions'
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *

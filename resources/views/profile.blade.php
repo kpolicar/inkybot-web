@@ -16,11 +16,16 @@
                         {{ __('profile.subscribed_duration', ['date' => Auth::user()->subscription()->ends_at->format('d/m/Y H:i')]) }}
                     @else()
                         {{ __('profile.subscribed') }}
-                    @endif()
+                    @endif
+
+                    @if (Auth::user()->subscription()->quantity > 1)
+                        // <b>{{ Auth::user()->subscription()->quantity }} instances</b>
+                    @endif
                 @else
                     {{ __('profile.subscribed_false') }}
                 @endsubscribed
             </p>
+
             @if ($credit = Auth::user()->stripe_balance)
                 <p class="leading-normal text-2xl -mt-8 mb-8">
                     <b>€{{ number_format(-$credit/100, 2) }}</b> credit
