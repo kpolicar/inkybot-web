@@ -213,10 +213,9 @@
 
     </section>
 
-    <div id="statistics" class="anchor"></div>
-
-    <section class="bg-gray-100 border-b py-8">
+    <section class="bg-gray-100 py-8 pb-1">
         <div class="container max-w-5xl mx-auto m-8">
+            <div id="statistics" class="anchor"></div>
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
                 {{ __('profile.statistics') }}
             </h2>
@@ -239,10 +238,58 @@
                     </a>
                 </div>
             @else
-                @include('partials/statistics-locked')
+                @include('partials.feature-locked')
+            @endcan
+        </div>
+    </section>
+
+    <section class="bg-gray-100 border-b py-8 pt-1">
+        <div class="container max-w-5xl mx-auto m-8">
+            <div id="exos" class="anchor"></div>
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+                History
+            </h2>
+            <div class="w-full mb-4">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+
+
+            @can('view-exos')
+                <div class="flex flex-col text-gray-800 text-center {{ Auth::user()->publishes->isEmpty() ? 'py-10' : '' }}">
+                    <i class="fas {{ Auth::user()->can('view-exos') ? 'fa-trophy' : 'fa-lock' }} text-5xl"></i>
+                    <p class="mt-2">
+                        @if (Auth::user()->publishes->isEmpty())
+                            Your successful exo mages will appear here.
+                        @else
+                            So far you have successfully maged {{ Auth::user()->publishes->count() }} exos
+                        @endif
+                    </p>
+                </div>
+            @else
+                @include('partials.feature-locked')
             @endcan
         </div>
 
+        @can('view-exos')
+            @unless (Auth::user()->publishes->isEmpty())
+                <div style="width: calc(100vw - (100vw - 100%));" class="pb-8">
+                    <div id="swiper-exos" class="swiper-container text-gray-800 opacity-0" data-autoplay>
+                        <div class="swiper-wrapper flex items-center">
+                            @foreach(Auth::user()->publishes as $exo)
+                                <div class="swiper-slide">
+                                    <img class="swiper-lazy rounded-t-lg rounded"
+                                         data-src="{{ asset($exo->image_path) }}">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-black">
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endunless
+        @else
+            locked
+        @endcan
     </section>
 
     <section class="bg-white border-b py-8">
@@ -318,4 +365,9 @@
     @if (isset($message) && $message)
         @include('partials.notification')
     @endif
+@endsection
+
+@section('scripts')
+    @parent
+    <script src="{{ mix('js/profile.js') }}"></script>
 @endsection

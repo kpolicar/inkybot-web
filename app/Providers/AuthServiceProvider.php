@@ -44,5 +44,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('view-statistics', function (User $user) {
             return $user->subscribed() && !$user->subscribedToPlan(Billing::starterPlan());
         });
+
+        Gate::define('view-exos', function (User $user) {
+            return $user->subscribed() && !$user->subscribedToPlan(Billing::starterPlan());
+        });
     }
 }
