@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Billing;
 use App\Events\CoinbaseWebhookReceived;
+use App\Events\PaymentSucceeded;
 use CoinbaseCommerce\Exceptions\InvalidResponseException;
 use CoinbaseCommerce\Exceptions\SignatureVerificationException;
 use DB;
@@ -69,12 +70,14 @@ class CoinbaseWebhookController extends Controller
     public function handleChargeConfirmed(Charge $charge)
     {
         $user = User::findOrFail($charge['metadata']['user_id']);
+        PaymentSucceeded::dispatch($charge);
+
         if (!$user->hasStripeId())
             $user->createAsStripeCustomer();
 
-        $pricing = $charge['pricing']['local']['amount'];
+        $pricing = $charge['pricing']['local'];
         $amount = str_replace('.', '', $pricing['amount']);
-        $currency = str_replace('.', '', $pricing['currency']);
+        $currency = $pricing['currency'];
 
         if (strtolower($currency) != strtolower($user->preferredCurrency()))
             throw new \InvalidArgumentException();

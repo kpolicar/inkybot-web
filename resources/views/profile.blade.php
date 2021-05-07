@@ -12,7 +12,7 @@
             <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
-                    @if(optional(Auth::user()->subscription())->cancelled())
+                    @if (optional(Auth::user()->subscription())->cancelled())
                         {{ __('profile.subscribed_duration', ['date' => Auth::user()->subscription()->ends_at->format('d/m/Y H:i')]) }}
                     @else()
                         {{ __('profile.subscribed') }}
@@ -21,6 +21,11 @@
                     {{ __('profile.subscribed_false') }}
                 @endsubscribed
             </p>
+            @if ($credit = Auth::user()->stripe_balance)
+                <p class="leading-normal text-2xl -mt-8 mb-8">
+                    <b>€{{ number_format(-$credit/100, 2) }}</b> credit
+                </p>
+            @endif
 
 
 
