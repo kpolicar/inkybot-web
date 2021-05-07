@@ -38,17 +38,27 @@ Route::middleware('auth:api')->post('/trial/begin', function (Request $request) 
     return new ClientFreeTrialResource($freeTrial);
 });
 
-Route::middleware(['auth:api', 'throttle:3,1,notification'])->prefix('/notify')->group(function () {
-    Route::post('error', [ApiController::class, "NotifyError"]);
-    Route::post('runes', [ApiController::class, "NotifyRunes"]);
-    Route::post('finished', [ApiController::class, "NotifyFinished"]);
+Route::middleware(['auth:api', 'throttle:notification_rate_limit_per_minute,1,notification'])
+    ->prefix('/notify')
+    ->group(function () {
+        Route::post('error', [ApiController::class, "NotifyError"]);
+        Route::post('runes', [ApiController::class, "NotifyRunes"]);
+        Route::post('finished', [ApiController::class, "NotifyFinished"]);
 });
 
-Route::middleware('auth:api')->get('/user', [ApiController::class, 'User']);
+Route::middleware('auth:api')
+    ->get('/user', [ApiController::class, 'User']);
 
-Route::middleware('auth:api')->get('/statistics', [ApiController::class, 'StatisticsView'])
+Route::middleware('auth:api')
+    ->get('/statistics', [ApiController::class, 'StatisticsView'])
     ->name('statistics.view');
-Route::middleware('auth:api')->post('/statistics/newsession', [ApiController::class, 'StatisticsNewSession'])
+
+Route::middleware('auth:api')
+    ->post('/statistics/newsession', [ApiController::class, 'StatisticsNewSession'])
     ->name('statistics.newsession');
-Route::middleware('auth:api')->post('/statistics', [ApiController::class, "StatisticsUpdate"]);
-Route::middleware(['auth:api', 'throttle:3,60,publish'])->post('/publish', [ApiController::class, "StatisticsPublish"]);
+
+Route::middleware('auth:api')
+    ->post('/statistics', [ApiController::class, "StatisticsUpdate"]);
+
+Route::middleware(['auth:api', 'throttle:publish_rate_limit_per_hour,60,publish'])
+    ->post('/publish', [ApiController::class, "StatisticsPublish"]);
