@@ -5,18 +5,14 @@
 
 @section('hero')
     <x-main-hero invert>
-        <div class="py-20">
+        <div class="pb-20 pt-10">
             <p class="uppercase tracking-loose w-full">
                 {{ __('messages.category') }}
             </p>
             <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
-                    @if (optional(Auth::user()->subscription())->cancelled())
-                        {{ __('profile.subscribed_duration', ['date' => Auth::user()->subscription()->ends_at->format('d/m/Y H:i')]) }}
-                    @else()
-                        {{ __('profile.subscribed') }}
-                    @endif
+                    {{ __('profile.subscribed') }}
 
                     @if (Auth::user()->subscription()->quantity > 1)
                         // <b>{{ Auth::user()->subscription()->quantity }} instances</b>
@@ -26,9 +22,22 @@
                 @endsubscribed
             </p>
 
+            @php($subscriptionPeriodEnd = optional(Auth::user()->subscription())->current_period_end)
+            @php($subscriptionCancelledAt = Auth::user()->subscription()->ends_at)
+
+            @unless (!$subscriptionPeriodEnd && !$subscriptionCancelledAt)
+                <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
+                    @if ($subscriptionCancelledAt)
+                        Your billing period ends on the {{ $subscriptionCancelledAt->format('d.m.Y') }}
+                    @elseif($subscriptionPeriodEnd)
+                        Your next invoice will be on the {{ (new \Carbon\Carbon($subscriptionPeriodEnd))->format('d.m.Y') }}
+                    @endif
+                </p>
+            @endif
+
             @if ($credit = Auth::user()->stripe_balance)
-                <p class="leading-normal text-2xl -mt-8 mb-8">
-                    <b>€{{ number_format(-$credit/100, 2) }}</b> credit
+                <p class="leading-normal uppercase text-base text-gray-400 -mt-8 mb-8">
+                    <b>€{{ number_format(-$credit/100, 2) }}</b> <small>credit</small>
                 </p>
             @endif
 
