@@ -11,7 +11,7 @@ return [
     'statistics' => 'Statistics',
 
     'referral' => 'Referral link',
-    'referral_details' => 'There are currently no referral rewards. This is subject to change.',
+    'referral_details' => 'There are no referral rewards at this time.',
 
     'community' => 'Join the community!',
     'community_engage' => 'Your voice matters. Join our discord to stay up to date with the newest features and bugfixes.',
