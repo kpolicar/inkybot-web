@@ -2,7 +2,6 @@
 
 return [
     'subscribed' => 'Vous êtes abonné',
-    'subscribed_duration' => 'Vous êtes abonné jusqu\'au :date',
     'subscribed_false' => 'Vous n\'êtes pas abonné',
     'subscribed_extend' => 'Prolonger son abonnement',
     'subscribed_purchase' => 'Acheter un abonnement',

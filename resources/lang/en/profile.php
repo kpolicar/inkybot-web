@@ -2,7 +2,6 @@
 
 return [
     'subscribed' => 'You are subscribed',
-    'subscribed_duration' => 'You are subscribed until :date',
     'subscribed_false' => 'You are not subscribed',
     'subscribed_manage' => 'Manage subscription',
     'subscribed_purchase' => 'Purchase subscription',

@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use App\Billing;
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ClientUser extends JsonResource
@@ -17,27 +19,23 @@ class ClientUser extends JsonResource
      */
     public function toArray($request)
     {
+        try {
+            $periodEndsAt = $this->subscription()->current_period_end;
+            $subscribedTo = $periodEndsAt ? new Carbon($periodEndsAt) : now();
+        } catch (\Exception $e) {
+            $subscribedTo = now();
+        }
         return [
             'i30jfVx9krmacQH' => $this->name,
-            'name' => $this->name,
-
             'CXpD6X71WZhYsHf' => $this->email,
-            'email' => $this->email,
-
-            'rbvQL1e41MOgDLA' => $this->subscribed_to,
-            'subscribed_to' => $this->subscribed_to,
-
+            'rbvQL1e41MOgDLA' => $subscribedTo, //deprecated: subscribed_to
             'wVakGMaAnUQkCFZ' => $this->subscribed(),
-            'is_subscribed' => $this->subscribed(),
-
             'Sw6mNjvR0HZofKj' => $this->is_free_trial,
-            'is_free_trial' => $this->is_free_trial,
-
             'EbP8tMjESR6IGvi' => $this->free_trial_available,
-            'free_trial_available' => $this->free_trial_available,
-
             'OfHJ5MXIHDpJiL8' => $this->trial_ends_at,
-            'trial_ends_at' => $this->trial_ends_at,
+            'bP6Aa9RdmDlggKY' => $this->onPlan(Billing::starterPlan()),
+            'ls6uIocgdyUtp4c' => $this->onPlan(Billing::standardPlan()),
+            'SniDbUjb49VghoM' => $this->onPlan(Billing::unlimitedPlan()),
         ];
     }
 }

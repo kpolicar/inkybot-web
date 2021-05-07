@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\PaymentSucceeded;
 use App\Events\UserPurchasedSubscription;
+use Carbon\Carbon;
 use Laravel\Cashier\Http\Controllers\WebhookController as CashierController;
 
 class StripeWebhookController extends CashierController
@@ -14,8 +15,17 @@ class StripeWebhookController extends CashierController
 
         $user = $this->getUserByStripeId($payload['data']['object']['customer']);
         if ($user) {
+            $this->updateUserSubscriptionWithAdditionalValues($payload, $user);
             UserPurchasedSubscription::dispatch($user);
         }
+
+        return $response;
+    }
+
+    protected function handleCustomerSubscriptionUpdated(array $payload)
+    {
+        $response = parent::handleCustomerSubscriptionUpdated($payload);
+        $this->updateUserSubscriptionWithAdditionalValues($payload);
 
         return $response;
     }
@@ -50,5 +60,17 @@ class StripeWebhookController extends CashierController
         }
 
         return $this->successMethod();
+    }
+
+    protected function updateUserSubscriptionWithAdditionalValues($payload, $user=null)
+    {
+        $user = $user ?: $this->getUserByStripeId($payload['data']['object']['customer']);
+        if (!$user)
+            return;
+        $subscription = $user->subscriptions->where('stripe_id', $payload['data']['object']['id'])->first();
+        if ($subscription) {
+            $subscription->current_period_end = Carbon::createFromTimestamp($payload['data']['object']['current_period_end']);
+            $subscription->save();
+        }
     }
 }
