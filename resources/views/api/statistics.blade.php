@@ -17,7 +17,7 @@
     @can('view-statistics')
         @include('partials/statistics-today')
     @else
-        @include('partials/statistics-locked')
+        @include('partials.feature-locked')
     @endcan
 
     <div class="pb-8 mx-8 -mt-8">
