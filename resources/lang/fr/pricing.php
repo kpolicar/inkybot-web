@@ -5,6 +5,8 @@ return [
     'description' => 'Les prix d\'Inkybot correspondent à un abonnement mensuel.',
     'description_thank_you' => 'Merci pour votre soutient!',
 
+    'instances' => 'Multi-instance',
+
     'package_free' => 'Version d\'essai',
     'package_subscription' => 'Abonnement',
     'package_feature_usage_30' => '1 heure d\'utilisation',

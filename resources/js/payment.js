@@ -1,23 +1,26 @@
 import {createApp} from 'vue';
+import vueDebounce from 'vue-debounce'
 
-const form = document.querySelector('#coinbase-form');
+const form = document.querySelector('#payment-form');
 
 const data = {
     plan: form.dataset.plan,
     quantity: 1,
     price: form.dataset.price/1,
-    priceRefreshRequestsCount: 0
+    priceRefreshRequest: false,
 }
 
 const priceFetchUrl = form.dataset.priceUrl;
 const refreshPrice = function() {
-    this.priceRefreshRequestsCount++;
 
     axios.get(`${priceFetchUrl}?plan=${this.plan}&quantity=${this.quantity}`)
         .then(result => {
-            if (this.priceRefreshRequestsCount === 1)
-                this.price = result.data['amount'] / 100;
-        }).finally(() => this.priceRefreshRequestsCount--);
+            this.price = result.data['amount'] / 100;
+        }).finally(() => {
+            this.priceRefreshRequest = false;
+        });
+
+    this.priceRefreshRequest = true;
 }
 
 const app = createApp({
@@ -44,4 +47,6 @@ app.config.globalProperties.$filters = {
     }
 }
 
-app.mount('#coinbase-form');
+app.use(vueDebounce);
+
+app.mount(form);

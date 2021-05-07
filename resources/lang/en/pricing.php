@@ -9,6 +9,8 @@ return [
     'package_standard' => 'Standard',
     'package_unlimited' => 'Unlimited',
 
+    'instances' => 'Concurrent instances',
+
     'package_feature_maging_ai' => 'Advanced Maging AI',
     'package_feature_exos' => ':number exos',
     'package_feature_exos_unlimited' => 'Unlimited exos',

@@ -17,7 +17,9 @@ class CoinbaseController extends BillingController
     {
         $plan = $request->input('plan');
         $price = $this->price($request);
-        $quantity = $request->post('quantity', 1);
+        $quantity = $plan == Billing::$unlimitedPlanCode
+            ? $request->post('quantity', 1)
+            : 1;
 
         $description = __('pricing.package_'.$plan)." plan";
         if ($request->post('quantity', 1) > 1)

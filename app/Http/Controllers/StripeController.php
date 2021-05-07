@@ -15,22 +15,6 @@ use Stripe\Stripe;
 
 class StripeController extends Controller
 {
-    private function createNewSubscription(Request $request, User $user, PaymentMethod $paymentMethod)
-    {
-        $customer = $user->asStripeCustomer();
-        $customer->balance = 1500;
-        $customer->save();
-
-        $user->newSubscription('default', Billing::resolvePlan('standard'))
-            ->noProrate()
-            ->withMetadata([
-                'coinbase_charge_id' => 2
-            ])
-            ->withCoupon(config('cashier.coupon_paid_by_coinbase'))
-            ->create()
-            ->cancel();
-    }
-
     public function subscribe(Request $request, PaymentMethod $paymentMethodId) {
         $user = $request->user();
 
@@ -39,8 +23,8 @@ class StripeController extends Controller
 
 
         try {
-            //$paymentMethod = $this->uniqueCustomerPaymentMethod($user, $paymentMethodId);
-            $this->createNewSubscription($request, $user, $paymentMethod ?? null);
+            $paymentMethod = $this->uniqueCustomerPaymentMethod($user, $paymentMethodId);
+            $this->createNewSubscription($request, $user, $request->post('plan'), $paymentMethod ?? null);
 
         } catch (PaymentFailure $e) {
             dd($e);
@@ -58,6 +42,17 @@ class StripeController extends Controller
         }
 
         return response()->view('partials.payment.success');
+    }
+
+    private function createNewSubscription(Request $request, User $user, $plan, PaymentMethod $paymentMethod)
+    {
+        $customer = $user->asStripeCustomer();
+        $customer->balance = 1500;
+        $customer->save();
+
+        $user->newSubscription('default', Billing::resolvePlan($plan))
+            ->noProrate()
+            ->create($paymentMethod);
     }
 
     private function uniqueCustomerPaymentMethod(User $user, $paymentMethodId) {

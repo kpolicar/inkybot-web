@@ -12,8 +12,8 @@ return [
     'updates' => 'Mises à Jour Régulières',
     'updates_details' => 'Inkybot est en développement actif et continuera à s\'améliorer tous les jours. Nous sommes également des joueurs de Dofus donc nous sommes engagés à rendre la forgemagie avec Inkybot meilleure et plus efficace que la forgemagie manuelle - pour vous et pour nous!',
 
-    'community' => 'Communauté',
-    'community_details' => 'Construisons Inkybot ensemble! Nous sommes à votre écoute et encourageons les suggestions concernant l\'amélioration de nos services. Rejoignez notre serveur Discord maintenant!',
+    'statistics' => 'Statistiques',
+    'statistics_details' => 'Obtenez des statistiques détaillés en fonction du nombre de runes utilisées et sur la dépense de kamas effectuée lors de vos sessions. Augmentez vos bénéfices.',
 
     'scriptless' => 'Prêt à l\'emploi',
     'scriptless_details' => 'Vous n\'avez pas besoin d\'utiliser des scripts pour réussir votre forgemagie. Tout est compris dans le logiciel de base, et il fonctionne très bien ! Cependant, si vous souhaitez spécialiser l\'IA fournie pour un item spécifique, vous pouvez écrire votre propre script!',

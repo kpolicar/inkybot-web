@@ -4,20 +4,26 @@
 
 @section('content')
     <x-main-hero>
-        <div id="payment-form" class="stripe-payment-form" data-handler="{{ route('pay', ['paymentId' => '/']) }}">
 
-            <div class="flex flex-col lg:flex-row justify-around items-center loader">
+        <div id="payment-form"
+             data-price-url="{{ route('billing.price') }}"
+             data-plan="{{ Request::get('plan', 'standard') }}"
+             data-price="{{ \App\Billing::price(Request::get('plan', 'standard'), Request::user(), 1) / 100 }}"
+             class="stripe-payment-form"
+             data-handler="{{ route('pay', ['paymentId' => '/']) }}"
+             v-cloak>
+
+            <div class="flex flex-col lg:flex-row justify-around items-center loader hide-when-processing">
                 <p class="text-xl my-8">{{ __('forms.subscribe_processing') }}</p>
                 <i class="fas fa-spinner fa-spin text-6xl"></i>
             </div>
 
             <form>
 
-                <input type="hidden" name="recurring" value="0">
                 <input type="hidden" name="plan" value="starter">
 
-                <a href="{{ route('subscribe') }}" class="text-gray-500 hover:underline">
-                    <i class="fas fa-arrow-left mr-1"></i>
+                <a href="{{ route('subscribe') }}" class="group text-gray-500 hover:underline">
+                    <i class="fas fa-arrow-left mr-1 transform group-hover:-translate-x-1 duration-100"></i>
                     {{ __('common.back') }}
                 </a>
                 <div class="flex justify-between items-end mb-4">
@@ -28,6 +34,8 @@
                 <div class="w-full mb-4">
                     <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>
                 </div>
+
+                @include('partials/subscribe-pack-options')
 
                 <p class="text-gray-400 text-base mt-4 text-left my-4">
                     {{ __('forms.subscribe_option', ['option' => 1]) }}<br>
@@ -44,9 +52,14 @@
                 </div>
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">{{ __('forms.basket_price') }}</p>
-                    <p class="text-lg">@money(config('app.price')/100)</p>
+                    <p class="text-lg"
+                       v-show="!priceRefreshRequest"
+                       v-text="$filters.currency(price, '{{ Auth::user()->preferredCurrency() }}')">
+                    </p>
+                    <div class="loader mx-2" v-show="priceRefreshRequest">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
                 </div>
-
 
                 <div class="flex flex-wrap mt-3 -mx-3">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -75,24 +88,24 @@
                     <p class="text-red-500 text italic message"></p>
                 </div>
 
-                <button class="mx-auto lg:mx-0 hover:underline font-bold rounded mt-2 py-4 px-8 shadow-lg cursor-pointer uppercase btn-color-secondary w-full"
+                <button class="group mx-auto lg:mx-0 font-bold rounded mt-2 py-4 px-8 shadow-lg cursor-pointer uppercase btn-color-secondary w-full"
+                        v-bind:class="[priceRefreshRequest ? 'opacity-75 cursor-wait' : '']"
+                        v-bind:disabled="priceRefreshRequest"
                         type="submit">
-                    {{ __('forms.subscribe_form_submit', ['price' => (config('app.price')/100).'€']) }}
+                    {{ __('forms.subscribe_form_submit') }}
+                    <span v-text="$filters.currency(price, '{{ Auth::user()->preferredCurrency() }}', 0)"></span>
+                    <i class="fas fa-angle-right text-lg ml-4 -mr-2"
+                       v-bind:class="[!priceRefreshRequest ? 'transform group-hover:translate-x-2 duration-100' : '']">
+                    </i>
                 </button>
 
-
-                <div class="flex items-center">
-
-                    <i class="fas fa-info-circle text-5xl px-4 py-3"></i>
-
-                    <div>
-                        <p class="text-gray-400 text-base mt-4 text-left">
-                            {{ __('forms.subscribe_recurring') }}
-                        </p>
-                        <p class="text-gray-400 text-base text-left font-bold">
-                            {{ __('forms.subscribe_info_saved') }}
-                        </p>
-                    </div>
+                <div class="px-1 my-2">
+                    <input id="recurring" type="checkbox" name="recurring" checked>
+                    <label for="recurring" class="ml-2">Recurring subscription</label>
+                    <p class="text-sm text-gray-500 mx-1">
+                        If selected, your card will automatically be billed monthly at the end of your billing period. You
+                        can change this at any time.
+                    </p>
                 </div>
             </form>
 
@@ -106,4 +119,5 @@
 @section('scripts')
     @parent
     <script src="{{ mix('js/stripe.js') }}"></script>
+    <script src="{{ mix('js/payment.js') }}"></script>
 @endsection

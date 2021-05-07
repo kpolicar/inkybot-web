@@ -17,7 +17,7 @@
     &.submitted form {
         display: none;
     }
-    .loader {
+    .loader.hide-when-processing {
         display: none;
     }
     &.submitting {
