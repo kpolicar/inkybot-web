@@ -26,18 +26,18 @@
                 {{ __('features.human_like_details') }}
             </x-feature-card>
 
+            <x-feature-card icon="chart-bar">
+                <x-slot name="title">
+                    {{ __('features.statistics') }}
+                </x-slot>
+                {{ __('features.statistics_details') }}
+            </x-feature-card>
+
             <x-feature-card icon="sync">
                 <x-slot name="title">
                     {{ __('features.updates') }}
                 </x-slot>
                 {{ __('features.updates_details') }}
-            </x-feature-card>
-
-            <x-feature-card icon="comments">
-                <x-slot name="title">
-                    {{ __('features.community') }}
-                </x-slot>
-                {{ __('features.community_details') }}
             </x-feature-card>
 
             <x-feature-card icon="code">

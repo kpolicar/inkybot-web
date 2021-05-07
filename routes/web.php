@@ -66,20 +66,7 @@ Route::group(
             ->name('subscribe')
             ->middleware(['verified', PlanExists::class]);
 
-        //Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
-        Route::post(LaravelLocalization::transRoute('routes.subscribe-stripe'), function (Request $request) {
-            $price = \App\Billing::resolvePlan(
-                $request->get('plan', \App\Billing::$standardPlanCode)
-            );
-
-            return $request->user()
-                ->checkout($price, [
-                    'mode' => 'subscription',
-                    'payment_method_types' => ['card'],
-                    'success_url' => route('profile', ['checkout' => true]),
-                    'cancel_url' => url()->previous(),
-                ])->asStripeCheckoutSession();
-        })
+        Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
             ->name('subscribe.stripe')
             ->middleware(['verified', 'can:purchase-subscription', PlanExists::class]);
 
@@ -90,6 +77,10 @@ Route::group(
         Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
             ->name('subscribe.coinbase.checkout')
             ->middleware(['verified', 'can:purchase-subscription', PlanExists::class]);
+
+        Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
+            ->middleware(['auth', 'verified'])
+            ->name('pay');
 
         Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
             return view('install');

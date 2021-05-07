@@ -4,7 +4,7 @@
 
 @section('content')
     <x-main-hero>
-        <div id="coinbase-form"
+        <div id="payment-form"
              data-price-url="{{ route('billing.price') }}"
              data-plan="{{ Request::get('plan', 'standard') }}"
              data-price="{{ \App\Billing::price(Request::get('plan', 'standard'), Request::user(), 1) / 100 }}"
@@ -26,31 +26,7 @@
 
             <form class="w-full" method="POST" action="{{ route('subscribe.coinbase.checkout') }}">
 
-                <div>
-                    <label for="plan" class="mr-2">Subscription pack:</label>
-
-                    <select name="plan" id="plan" class="text-gray-900 px-4 pl-3 py-1 rounded" v-model="plan">
-                        <option value="starter">
-                            {{ __('pricing.package_starter') }}
-                        </option>
-                        <option value="standard">
-                            {{ __('pricing.package_standard') }}
-                        </option>
-                        <option value="unlimited">
-                            {{ __('pricing.package_unlimited') }}
-                        </option>
-                    </select>
-                </div>
-
-                <div class="my-2" v-if="plan == 'unlimited'">
-                    <label for="plan" class="mr-2">Concurrent instances:</label>
-                    <input name="quantity"
-                           class="text-gray-900 px-4 pl-3 py-1 rounded w-16"
-                           type="number"
-                           v-model="quantity"
-                           min="1"
-                           max="10">
-                </div>
+                @include('partials/subscribe-pack-options')
 
                 <p class="text-gray-400 text-base mt-4 text-left my-4">
                     {{ __('forms.subscribe_option', ['option' => 1]) }}<br>
@@ -63,20 +39,15 @@
 
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">{{ __('forms.basket_item') }}</p>
-                    <p class="text-lg">
-                        {{ __('forms.basket_option', ['option' => 1]) }}
-                        <small class="ml-2 text-gray-300 font-bold">
-                            {{ __('forms.basket_option_bonus', ['option' => 1]) }}
-                        </small>
-                    </p>
+                    <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}</p>
                 </div>
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">{{ __('forms.basket_price') }}</p>
                     <p class="text-lg"
-                       v-show="priceRefreshRequestsCount <= 0"
+                       v-show="!priceRefreshRequest"
                        v-text="$filters.currency(price, '{{ Auth::user()->preferredCurrency() }}')">
                     </p>
-                    <div class="loader mx-2" v-show="priceRefreshRequestsCount > 0">
+                    <div class="loader mx-2" v-show="priceRefreshRequest">
                         <i class="fas fa-spinner fa-spin"></i>
                     </div>
                 </div>
@@ -91,14 +62,15 @@
                 @endif
 
                 @csrf
+
                 <button class="group mx-auto lg:mx-0 font-bold rounded mt-2 py-4 px-8 shadow-lg cursor-pointer uppercase btn-color-secondary w-full"
-                        v-bind:class="[priceRefreshRequestsCount > 0 ? 'opacity-75 cursor-not-allowed' : '']"
-                        v-bind:disabled="priceRefreshRequestsCount > 0"
+                        v-bind:class="[priceRefreshRequest ? 'opacity-75 cursor-wait' : '']"
+                        v-bind:disabled="priceRefreshRequest"
                         type="submit">
                     {{ __('forms.subscribe_form_submit') }}
                     <span v-text="$filters.currency(price, '{{ Auth::user()->preferredCurrency() }}', 0)"></span>
                     <i class="fas fa-angle-right text-lg ml-4 -mr-2"
-                        v-bind:class="[priceRefreshRequestsCount <= 0 ? 'transform group-hover:translate-x-2 duration-100' : '']">
+                       v-bind:class="[!priceRefreshRequest ? 'transform group-hover:translate-x-2 duration-100' : '']">
                     </i>
                 </button>
             </form>
@@ -124,5 +96,5 @@
 
 @section('scripts')
     @parent
-    <script src="{{ mix('js/coinbase.js') }}"></script>
+    <script src="{{ mix('js/payment.js') }}"></script>
 @endsection

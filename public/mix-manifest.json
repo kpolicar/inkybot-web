@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js?id=b1796f80bf17a45788e7",
-    "/js/stripe.js": "/js/stripe.js?id=2bb517ff4739e1f23157",
-    "/js/coinbase.js": "/js/coinbase.js?id=392d23da426b4a6b9e98",
-    "/css/app.css": "/css/app.css?id=b96ac6b88119c7fcdee6",
+    "/js/stripe.js": "/js/stripe.js?id=9911ce199c14412b3913",
+    "/js/payment.js": "/js/payment.js?id=3a8d38e9ddc051131bb9",
+    "/css/app.css": "/css/app.css?id=d885adca77456cd8f41e",
     "/fonts/fa-brands-400.eot": "/fonts/fa-brands-400.eot?id=94c52b85b8727f78760e",
     "/fonts/fa-brands-400.svg": "/fonts/fa-brands-400.svg?id=ba7ed552362f64d30f6d",
     "/fonts/fa-brands-400.ttf": "/fonts/fa-brands-400.ttf?id=623b08743e12b2ff1fc2",
