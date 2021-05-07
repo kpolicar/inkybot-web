@@ -18,4 +18,9 @@ class StripeWebhookController extends CashierController
 
         return $response;
     }
+
+    public function handlePaymentIntentSucceeded()
+    {
+        
+    }
 }

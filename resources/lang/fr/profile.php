@@ -11,7 +11,7 @@ return [
     'statistics' => 'Statistiques',
 
     'referral' => 'Lien de parrainage',
-    'referral_details' => 'Il n\'y a actuellement aucune récompense de parrainage. Ceci est sujet à changement.',
+    'referral_details' => 'Il n\'y a pas de récompense de parrainage pour le moment.',
 
     'community' => 'Rejoindre la communauté!',
     'community_engage' => 'Votre voix compte! Rejoignez notre discord pour rester à jour avec les dernières fonctions et bugfixes.',
