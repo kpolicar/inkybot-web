@@ -8,6 +8,7 @@ return [
     'package_starter' => 'Starter',
     'package_standard' => 'Standard',
     'package_unlimited' => 'Unlimited',
+    'plan' => ':package plan|:package plan * :quantity',
 
     'instances' => 'Concurrent instances',
 

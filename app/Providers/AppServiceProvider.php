@@ -2,12 +2,10 @@
 
 namespace App\Providers;
 
+use App\Billing;
 use App\Contracts\ApiEncrypter as ApiEncrypterContract;
-use App\Exports\MagingExport;
-use App\Models\User;
 use CoinbaseCommerce\ApiClient as CoinbaseClient;
 use Illuminate\Encryption\Encrypter;
-use Laravel\Cashier\Subscription;
 use Str;
 use App\ClientVersion;
 use Illuminate\Support\Facades\Blade;
@@ -46,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::if('subscribed', function () {
-            return optional(auth()->user())->is_subscribed ?? false;
+            return optional(auth()->user())->subscribed() ?? false;
         });
         Blade::if('verified', function () {
             return optional(auth()->user())->hasVerifiedEmail() ?? false;

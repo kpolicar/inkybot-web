@@ -1091,6 +1091,8 @@ _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MOD
 
               var name = form.querySelector('#name');
               var email = form.querySelector('#email');
+              var quantity = form.querySelector('#quantity');
+              var plan = form.querySelector('#plan');
               var paymentResponse = paymentForm.querySelector('#payment-response');
               var additionalData = {
                 billing_details: {
@@ -1110,11 +1112,15 @@ _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MOD
                 errorMessage.innerHTML = response.error.message;
               };
 
+              var data = {
+                quantity: quantity ? quantity.value : 1,
+                plan: plan.value
+              };
               stripe.createPaymentMethod('card', elements[0], additionalData).then(function (result) {
                 console.log("stripe result: ", result);
 
                 if (result.paymentMethod) {
-                  axios.post(paymentForm.getAttribute('data-handler') + '/' + result.paymentMethod.id).then(function (result) {
+                  axios.post(paymentForm.getAttribute('data-handler') + '/' + result.paymentMethod.id, data).then(function (result) {
                     if (result.data.redirect) {
                       window.location.href = result.data.redirect;
                     } else {

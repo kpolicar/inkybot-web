@@ -10,7 +10,7 @@ return [
     'human_like_details' => 'Une simulation de clics de souris et clavier supprimant toutes différences entre le bot ou de réels humains. Votre sécurité est notre priorité!',
 
     'updates' => 'Mises à Jour Régulières',
-    'updates_details' => 'Inkybot est en développement actif et continuera à s\'améliorer tous les jours. Nous sommes également des joueurs de Dofus donc nous sommes engagés à rendre la forgemagie avec Inkybot meilleure et plus efficace que la forgemagie manuelle - pour vous et pour nous!',
+    'updates_details' => 'Inkybot est testé et fonctionnel et nous nous améliorons toujours activement. Nous sommes également des joueurs de Dofus donc nous sommes engagés à rendre la forgemagie avec Inkybot meilleure et plus efficace que la forgemagie manuelle - pour vous et pour nous!',
 
     'statistics' => 'Statistiques',
     'statistics_details' => 'Obtenez des statistiques détaillés en fonction du nombre de runes utilisées et sur la dépense de kamas effectuée lors de vos sessions. Augmentez vos bénéfices.',

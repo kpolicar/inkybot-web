@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'subscribed' => 'You are subscribed',
     'subscribed_duration' => 'You are subscribed until :date',
     'subscribed_false' => 'You are not subscribed',
     'subscribed_manage' => 'Manage subscription',
@@ -10,8 +11,7 @@ return [
     'statistics' => 'Statistics',
 
     'referral' => 'Referral link',
-    'referral_details' => 'each referred user that purchases subscription will grant you :reward extra days of subscription',
-    'referral_details_early' => 'early referral bonus',
+    'referral_details' => 'There are currently no referral rewards. This is subject to change.',
 
     'community' => 'Join the community!',
     'community_engage' => 'Your voice matters. Join our discord to stay up to date with the newest features and bugfixes.',

@@ -27,7 +27,7 @@ class SendUserSubscriptionStatusToDiscord
         }
 
         if ($id = $user->discord_id) {
-            $command = $user->is_subscribed
+            $command = $user->subscribed()
                 ? "subscribe"
                 : "unsubscribe";
             $content = "!$command {$id}";

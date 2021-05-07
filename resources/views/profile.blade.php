@@ -12,7 +12,11 @@
             <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
-                    {{ __('profile.subscribed_duration', ['date' => Auth::user()->subscribed_to->format('d/m/Y H:i')]) }}
+                    @if(optional(Auth::user()->subscription())->cancelled())
+                        {{ __('profile.subscribed_duration', ['date' => Auth::user()->subscription()->ends_at->format('d/m/Y H:i')]) }}
+                    @else()
+                        {{ __('profile.subscribed') }}
+                    @endif()
                 @else
                     {{ __('profile.subscribed_false') }}
                 @endsubscribed
@@ -67,7 +71,7 @@
                             @enderror
 
                             <p class="py-2 text-sm text-gray-600">
-                                {{ __('forms.update_form_name_comment') }}
+                                {!! __('forms.update_form_name_comment') !!}
                             </p>
                         </div>
                     </div>
@@ -219,21 +223,24 @@
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <div class="mt-6 lg:mt-0 rounded border shadow-sm bg-white">
-                @include('partials/statistics-today')
-            </div>
-            <div class="my-6 rounded border shadow-sm bg-white">
-                @include('partials/statistics-previous')
-            </div>
 
-            @subscribed
-            <div class="md:text-right text-center">
-                <a href="{{ route('export') }}"
-                   class="hover:underline gradient text-white font-bold rounded py-4 px-8 shadow-lg">
-                    Download Data
-                </a>
-            </div>
-            @endsubscribed
+            @can('view-statistics')
+                <div class="mt-6 lg:mt-0 rounded border shadow-sm bg-white">
+                    @include('partials/statistics-today')
+                </div>
+                <div class="my-6 rounded border shadow-sm bg-white">
+                    @include('partials/statistics-previous')
+                </div>
+
+                <div class="md:text-right text-center">
+                    <a href="{{ route('export') }}"
+                       class="hover:underline gradient text-white font-bold rounded py-4 px-8 shadow-lg">
+                        Download Data
+                    </a>
+                </div>
+            @else
+                @include('partials/statistics-locked')
+            @endcan
         </div>
 
     </section>

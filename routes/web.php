@@ -58,7 +58,7 @@ Route::group(
 
         Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
             if (!$request->user()->can('purchase-subscription')) {
-                return $request->user()->redirectToBillingPortal();
+                return $request->user()->redirectToBillingPortal(url()->previous());
             } else {
                 return view('subscribe');
             }

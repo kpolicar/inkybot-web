@@ -15,15 +15,14 @@ class CoinbaseController extends BillingController
 {
     public function subscribe(Request $request)
     {
+        $this->validateQuantity($request);
+
         $plan = $request->input('plan');
         $price = $this->price($request);
-        $quantity = $plan == Billing::$unlimitedPlanCode
-            ? $request->post('quantity', 1)
-            : 1;
+        $quantity = $this->quantityFromPost($request);
 
-        $description = __('pricing.package_'.$plan)." plan";
-        if ($request->post('quantity', 1) > 1)
-            $description .= ' * '.$quantity;
+        $package = __('pricing.package_'.$plan);
+        $description = trans_choice('pricing.plan', $quantity, compact('quantity', 'package'));
 
         $charge = new Charge(
             [

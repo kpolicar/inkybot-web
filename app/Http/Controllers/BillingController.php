@@ -19,8 +19,22 @@ class BillingController extends Controller
         $amount = Billing::price(
             $request->input('plan'),
             $request->user(),
-            $request->post('quantity', 1));
+            $this->quantityFromPost($request));
 
         return compact('amount', 'currency');
+    }
+
+    protected function quantityFromPost(Request $request)
+    {
+        return $request->post('plan') == Billing::$unlimitedPlanCode
+            ? min(10, max(1, $request->post('quantity', 1)))
+            : 1;
+    }
+
+    protected function validateQuantity(Request $request)
+    {
+        $request->validate([
+            'quantity' => 'nullable|numeric|between:1,10'
+        ]);
     }
 }

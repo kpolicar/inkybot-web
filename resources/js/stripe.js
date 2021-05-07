@@ -108,6 +108,8 @@ import {loadStripe} from '@stripe/stripe-js';
             // Gather additional customer data we may have collected in our form.
             var name = form.querySelector('#name');
             var email = form.querySelector('#email');
+            var quantity = form.querySelector('#quantity');
+            var plan = form.querySelector('#plan');
             var paymentResponse = paymentForm.querySelector('#payment-response');
             var additionalData = {
                 billing_details: {
@@ -127,12 +129,16 @@ import {loadStripe} from '@stripe/stripe-js';
                 errorMessage.innerHTML = response.error.message;
             }
 
+            let data = {
+                quantity: quantity ? quantity.value : 1,
+                plan: plan.value,
+            };
             stripe.createPaymentMethod('card', elements[0], additionalData)
                 .then(function(result) {
 
                     console.log("stripe result: ", result);
                     if (result.paymentMethod) {
-                        axios.post(paymentForm.getAttribute('data-handler')+'/'+result.paymentMethod.id)
+                        axios.post(paymentForm.getAttribute('data-handler')+'/'+result.paymentMethod.id, data)
                             .then(result => {
                                 if (result.data.redirect) {
                                     window.location.href = result.data.redirect;

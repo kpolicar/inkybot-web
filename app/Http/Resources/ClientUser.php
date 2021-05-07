@@ -27,8 +27,8 @@ class ClientUser extends JsonResource
             'rbvQL1e41MOgDLA' => $this->subscribed_to,
             'subscribed_to' => $this->subscribed_to,
 
-            'wVakGMaAnUQkCFZ' => $this->is_subscribed,
-            'is_subscribed' => $this->is_subscribed,
+            'wVakGMaAnUQkCFZ' => $this->subscribed(),
+            'is_subscribed' => $this->subscribed(),
 
             'Sw6mNjvR0HZofKj' => $this->is_free_trial,
             'is_free_trial' => $this->is_free_trial,
