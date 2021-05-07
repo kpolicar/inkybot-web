@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'subscribed' => 'Vous êtes abonné',
     'subscribed_duration' => 'Vous êtes abonné jusqu\'au :date',
     'subscribed_false' => 'Vous n\'êtes pas abonné',
     'subscribed_extend' => 'Prolonger son abonnement',
@@ -10,8 +11,7 @@ return [
     'statistics' => 'Statistiques',
 
     'referral' => 'Lien de parrainage',
-    'referral_details' => 'chaque utilisateur parrainé qui s\'abonnera vous donnera :reward jours d\'abonnement additionnel',
-    'referral_details_early' => 'bonus de parrainage',
+    'referral_details' => 'Il n\'y a actuellement aucune récompense de parrainage. Ceci est sujet à changement.',
 
     'community' => 'Rejoindre la communauté!',
     'community_engage' => 'Votre voix compte! Rejoignez notre discord pour rester à jour avec les dernières fonctions et bugfixes.',

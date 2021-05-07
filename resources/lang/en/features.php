@@ -10,7 +10,7 @@ return [
     'human_like_details' => 'Simulating mouse and keyboard strokes makes the bot indistinguishable from human players. Your safety is our number one priority!',
 
     'updates' => 'Regular Updates',
-    'updates_details' => 'Inkybot is under active development and will continue to be improved long after the official release. We play Dofus too, so we are committed to make maging with Inkybot better than maging by yourself in every way - for you and for us!',
+    'updates_details' => 'Inkybot is battle-tested and functional and we\'re still actively improving. We play Dofus too, so we are committed to make maging with Inkybot better than maging by yourself in every way - for you and for us!',
 
     'statistics' => 'Statistics',
     'statistics_details' => 'Get detailed statistics about how many runes the bot is using and how much kamas has been spent on your item. Maximize profitability.',

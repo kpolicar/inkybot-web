@@ -11,7 +11,7 @@
              class="coinbase-payment-form"
              v-cloak>
 
-            <a href="{{ route('subscribe') }}" class="group text-gray-500 hover:underline">
+            <a href="{{ route('subscribe', Request::only('plan')) }}" class="group text-gray-500 hover:underline">
                 <i class="fas fa-arrow-left mr-1 transform group-hover:-translate-x-1 duration-100"></i>
                 {{ __('common.back') }}
             </a>
@@ -30,7 +30,7 @@
 
                 <p class="text-gray-400 text-base mt-4 text-left my-4">
                     {{ __('forms.subscribe_option', ['option' => 1]) }}<br>
-                    {!! __('forms.subscribe_duration', ['date' => Auth::user()->ExtendedSubscriptionDate(1)->format('d/m/Y')]) !!}<br>
+                    {!! __('forms.subscribe_duration', ['date' => now()->format('d/m/Y')]) !!}<br>
                     {{ __('forms.subscribe_thanks') }}
                 </p>
                 <div class="w-full mb-4">

@@ -84,9 +84,6 @@ return [
 
     'locale' => 'en',
 
-
-    'referrer_reward_days' => 2,
-
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

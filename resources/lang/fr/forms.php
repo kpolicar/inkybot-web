@@ -33,7 +33,7 @@ return [
     'subscribe_option' => 'Vous êtes sur le point d\'acheter :option mois d\'abonnement à Inkybot.',
     'subscribe_duration' => 'Après votre achat, vous serez abonné jusqu\'au <strong>:date</strong>.',
     'subscribe_thanks' => 'Nous vous remerçions pour votre soutient!',
-    'subscribe_form_name' => 'Nom',
+    'subscribe_form_name' => 'Nom sur la carte',
     'subscribe_form_submit' => 'Payer',
     'subscribe_recurring' => 'Nous ne permettons pas les payements récurrents - vous devrez renouveller votre abonnement manuellement chaque mois.',
     'subscribe_info_saved' => 'Vos informations de payement ne sont pas enregistrées.',

@@ -13,14 +13,16 @@ use Stripe\InvoiceItem;
 use Stripe\PaymentMethod;
 use Stripe\Stripe;
 
-class StripeController extends Controller
+class StripeController extends BillingController
 {
-    public function subscribe(Request $request, PaymentMethod $paymentMethodId) {
+    public function subscribe(Request $request, $paymentMethodId) {
+        $this->validateQuantity($request);
+
         $user = $request->user();
+        $totalCost = $this->price($request);
 
         if (!$user->hasStripeId())
             $user->createAsStripeCustomer();
-
 
         try {
             $paymentMethod = $this->uniqueCustomerPaymentMethod($user, $paymentMethodId);
@@ -41,18 +43,23 @@ class StripeController extends Controller
             // Todo
         }
 
-        return response()->view('partials.payment.success');
+
+        $plan = $request->input('plan');
+        $quantity = $this->quantityFromPost($request);
+
+        $package = __('pricing.package_'.$plan);
+        $description = trans_choice('pricing.plan', $quantity, compact('quantity', 'package'));
+
+        return response()->view('partials.payment.success', compact('totalCost', 'description'));
     }
 
     private function createNewSubscription(Request $request, User $user, $plan, PaymentMethod $paymentMethod)
     {
-        $customer = $user->asStripeCustomer();
-        $customer->balance = 1500;
-        $customer->save();
-
-        $user->newSubscription('default', Billing::resolvePlan($plan))
+        $subscription = $user->newSubscription('default', Billing::resolvePlan($plan))
             ->noProrate()
             ->create($paymentMethod);
+        if (!$request->post('recurring', false))
+            $subscription->cancel();
     }
 
     private function uniqueCustomerPaymentMethod(User $user, $paymentMethodId) {

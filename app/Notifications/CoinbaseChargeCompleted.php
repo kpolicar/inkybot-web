@@ -9,19 +9,23 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\HtmlString;
+use Laravel\Cashier\Subscription;
 
 class CoinbaseChargeCompleted extends Notification
 {
     private $charge;
+    private $subscription;
 
     /**
      * Create a new notification instance.
      *
      * @param Charge $charge
+     * @param Subscription $subscription
      */
-    public function __construct(Charge $charge)
+    public function __construct(Charge $charge, Subscription $subscription)
     {
         $this->charge = $charge;
+        $this->subscription = $subscription;
     }
 
     /**
@@ -43,11 +47,15 @@ class CoinbaseChargeCompleted extends Notification
      */
     public function toMail($notifiable)
     {
+        $endsAt = $this->subscription->cancelled()
+            ? $this->subscription->ends_at
+            : now()->addMonth();
+
         return (new MailMessage)
             ->subject('Payment status updated #'.$this->charge['code'])
                     ->line(new HtmlString('The crypto payment with code <strong>'.$this->charge['code'].'</strong> has been successfully processed.'))
                     ->line('The purchased subscription has been added to your account.')
                     ->action('View profile', route('profile'))
-                    ->line(new HtmlString('You are now subscribed until <strong>'.$notifiable->subscribed_to->format('d/m/Y').'</strong>.'));
+                    ->line(new HtmlString('You are now subscribed until <strong>'.$endsAt.'</strong>.'));
     }
 }

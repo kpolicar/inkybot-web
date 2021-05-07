@@ -14,7 +14,11 @@
 
 <body class="leading-normal tracking-normal text-white bg-gray-100" style="font-family: 'Source Sans Pro', sans-serif;">
 <main class="relative z-10 bg-gray-100">
-    @include('partials/statistics-today')
+    @can('view-statistics')
+        @include('partials/statistics-today')
+    @else
+        @include('partials/statistics-locked')
+    @endcan
 
     <div class="pb-8 mx-8 -mt-8">
         <form action="{{ route('statistics.newsession', compact('version')) }}"

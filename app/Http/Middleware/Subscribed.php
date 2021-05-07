@@ -16,7 +16,7 @@ class Subscribed
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->user()->is_subscribed && !$request->user()->is_free_trial)
+        if (!$request->user()->subscribed() && !$request->user()->is_free_trial)
             abort(404);
         return $next($request);
     }

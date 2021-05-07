@@ -69,6 +69,8 @@ class CoinbaseWebhookController extends Controller
     public function handleChargeConfirmed(Charge $charge)
     {
         $user = User::findOrFail($charge['metadata']['user_id']);
+        if (!$user->hasStripeId())
+            $user->createAsStripeCustomer();
 
         $pricing = $charge['pricing']['local']['amount'];
         $amount = str_replace('.', '', $pricing['amount']);
@@ -78,10 +80,10 @@ class CoinbaseWebhookController extends Controller
             throw new \InvalidArgumentException();
 
         $customer = $user->asStripeCustomer();
-        $customer->balance += $amount;
+        $customer->balance -= $amount;
         $customer->save();
 
-        $user->newSubscription('default', Billing::resolvePlan($charge['metadata']['plan']))
+        $subscription = $user->newSubscription('default', Billing::resolvePlan($charge['metadata']['plan']))
             ->noProrate()
             ->withMetadata([
                 'coinbase_charge_id' => $charge->id
@@ -91,6 +93,6 @@ class CoinbaseWebhookController extends Controller
 
 
         UserPurchasedSubscription::dispatch($user);
-        $user->notify(new CoinbaseChargeCompleted($charge));
+        $user->notify(new CoinbaseChargeCompleted($charge, $subscription));
     }
 }

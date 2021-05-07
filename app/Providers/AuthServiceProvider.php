@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Billing;
 use App\Http\Middleware\DecryptApiRequest;
 use App\Http\Middleware\EncryptApiResponse;
 use App\Models\User;
@@ -38,6 +39,10 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('purchase-subscription', function (User $user) {
             return $user->hasVerifiedEmail() && (!$user->hasStripeId() || !$user->subscribed());
+        });
+
+        Gate::define('view-statistics', function (User $user) {
+            return $user->subscribed() && !$user->subscribedToPlan(Billing::starterPlan());
         });
     }
 }

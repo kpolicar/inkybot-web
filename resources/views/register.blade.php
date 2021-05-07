@@ -43,8 +43,7 @@
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
                     <p class="text-sm mt-2 text-gray-400">
-                        Your display name is visible to the public.
-                        Do <span class="underline">not</span> set it to your Dofus username.
+                        {!! __('forms.update_form_name_comment') !!}
                     </p>
                 </div>
                 <div class="w-full px-3 my-3">
@@ -60,7 +59,7 @@
                     @enderror
 
                     <p class="text-sm mt-2 text-gray-400">
-                        Your email address is used for password recovery and billing related emails.
+                        {{ __('forms.update_form_email_comment') }}
                     </p>
                 </div>
             </div>
