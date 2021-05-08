@@ -28,19 +28,18 @@ class StripeController extends BillingController
             $paymentMethod = $this->uniqueCustomerPaymentMethod($user, $paymentMethodId);
             $this->createNewSubscription($request, $user, $request->post('plan'), $paymentMethod ?? null);
 
-        } catch (PaymentFailure $e) {
-            dd($e);
+        } catch (PaymentFailure $exception) {
+            return response()->view('partials.payment.failed', compact('exception'));
             // Todo
-        } catch (PaymentActionRequired $e) {
+        } catch (PaymentActionRequired $exception) {
             return [
                 "redirect" => route(
                     'cashier.payment',
-                    [$e->payment->id, 'redirect' => route('profile')],
+                    [$exception->payment->id, 'redirect' => route('profile')],
                 )
             ];
-        } catch (ApiErrorException $e) {
-            dd($e);
-            // Todo
+        } catch (ApiErrorException $exception) {
+            return response()->view('partials.payment.failed', compact('exception'));
         }
 
 

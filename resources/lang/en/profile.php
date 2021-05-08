@@ -4,6 +4,7 @@ return [
     'subscribed' => 'You are subscribed',
     'subscribed_false' => 'You are not subscribed',
     'subscribed_manage' => 'Manage subscription',
+    'subscribed_finish_incomplete' => 'Confirm Payment',
     'subscribed_purchase' => 'Purchase subscription',
 
     'details' => 'Details',

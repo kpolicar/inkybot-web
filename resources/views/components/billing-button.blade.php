@@ -5,12 +5,16 @@
     </a>
 @else
 
+    @php($willRedirectToIncompletePaymentPayPage = Auth::user()->hasIncompletePayment() && $incompletePaymentRedirect)
+    @php($disabled = !Auth::user()->hasVerifiedEmail() || !$willRedirectToIncompletePaymentPayPage && Auth::user()->hasIncompletePayment())
 
     <a href="{{ route('subscribe', array_filter(compact('plan'))) }}"
-       @unverified
+       @if(!$willRedirectToIncompletePaymentPayPage && Auth::user()->hasIncompletePayment())
+       onclick="event.preventDefault()" title="You must first finish an incomplete payment."
+       @elseif(!Auth::user()->hasVerifiedEmail())
        onclick="event.preventDefault()" title="You must first verify your email address."
-       @endunverified
-       class="group @unverified cursor-not-allowed @endunverified {{ $class }}">
+       @endif
+       class="group @if($disabled) cursor-not-allowed @endif {{ $class }}">
 
         @if (trim($slot))
             {{ $slot }}
@@ -26,6 +30,6 @@
             @endif
         @endif
 
-        <i class="fas fa-angle-right text-lg ml-2 -mr-2 @verified transform group-hover:translate-x-2 duration-100 @endverified"></i>
+        <i class="fas fa-angle-right text-lg ml-2 -mr-2 @if(!$disabled) transform group-hover:translate-x-2 duration-100 @endif"></i>
     </a>
 @endguest

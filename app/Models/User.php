@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
+use Stripe\Invoice;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -112,5 +113,13 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->forceFill([
             'discord_id' => $id
         ])->save();
+    }
+
+    public function incompletePaymentHostedUrl()
+    {
+        return Invoice::retrieve(
+            $this->subscription()->asStripeSubscription()->latest_invoice,
+            $this->stripeOptions()
+        )->hosted_invoice_url;
     }
 }
