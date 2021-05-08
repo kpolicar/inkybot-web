@@ -10,7 +10,7 @@
                 </svg> INKYBOT
             </a>
             <p class="text-gray-700 px-3">
-                {{ __('messages.copyright') }}<br>
+                {{ __('messages.copyright', ['year' => now()->format('Y')]) }}<br>
                 {{ __('messages.affiliation') }}
             </p>
         </div>
