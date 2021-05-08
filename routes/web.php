@@ -14,8 +14,10 @@ use App\Http\Middleware\SetLocaleFromSession;
 use App\Http\Middleware\Subscribed;
 use App\Models\Maging;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PaypalController;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -37,7 +39,20 @@ Route::group(
     ], function() {
 
     Route::get('/', function () {
-        return view('welcome');
+        $gameVersion = Cache::get('game_version', function () {
+            $response = rescue(function () {
+               return Http::get('https://launcher.cdn.ankama.com/cytrus.json')->json();
+            }, []);
+
+            $gameVersion = Str::after(
+                data_get($response, 'games.dofus.platforms.windows.main', config('app.latest_dofus_version')),
+                '_');
+
+            Cache::put('game_version', $gameVersion, now()->addDay());
+            return $gameVersion;
+        });
+
+        return view('welcome', compact('gameVersion'));
     })->name('home');
 
     Route::get(LaravelLocalization::transRoute('routes.profile'), function (Request $request) {

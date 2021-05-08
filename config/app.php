@@ -17,6 +17,8 @@ return [
 
     'price' => 800,
 
+    'latest_dofus_version' => env('DOFUS_VERSION', '2.59'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
