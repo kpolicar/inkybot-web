@@ -11,6 +11,7 @@ class BillingButton extends Component
     public $class = "";
     public $stripeKey = "";
     public $plan = "";
+    public $incompletePaymentRedirect = true;
 
 
     /**
@@ -18,10 +19,11 @@ class BillingButton extends Component
      *
      * @return void
      */
-    public function __construct($class="", $plan="")
+    public function __construct($class="", $plan="", $incompletePaymentRedirect=true)
     {
         $this->class = $class;
         $this->plan = $plan;
+        $this->incompletePaymentRedirect = $incompletePaymentRedirect;
     }
 
     /**

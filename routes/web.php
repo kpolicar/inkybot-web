@@ -12,6 +12,7 @@ use App\Http\Middleware\NotSubscribed;
 use App\Http\Middleware\PlanExists;
 use App\Http\Middleware\SetLocaleFromSession;
 use App\Http\Middleware\Subscribed;
+use App\Http\Middleware\SubscriptionNotIncomplete;
 use App\Models\Maging;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -79,19 +80,19 @@ Route::group(
             }
         })
             ->name('subscribe')
-            ->middleware(['verified', PlanExists::class]);
+            ->middleware(['verified', SubscriptionNotIncomplete::class, PlanExists::class]);
 
         Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
             ->name('subscribe.stripe')
-            ->middleware(['verified', 'can:purchase-subscription', PlanExists::class]);
+            ->middleware(['verified', SubscriptionNotIncomplete::class, 'can:purchase-subscription', PlanExists::class]);
 
         Route::view(LaravelLocalization::transRoute('routes.subscribe-coinbase'), 'subscribe-coinbase')
             ->name('subscribe.coinbase')
-            ->middleware(['verified', 'can:purchase-subscription', PlanExists::class]);
+            ->middleware(['verified', SubscriptionNotIncomplete::class, 'can:purchase-subscription', PlanExists::class]);
 
         Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
             ->name('subscribe.coinbase.checkout')
-            ->middleware(['verified', 'can:purchase-subscription', PlanExists::class]);
+            ->middleware(['verified', SubscriptionNotIncomplete::class, 'can:purchase-subscription', PlanExists::class]);
 
         Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
             ->middleware(['auth', 'verified'])
