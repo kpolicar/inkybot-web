@@ -104,6 +104,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return !$trial->exists || !$trial->expired;
     }
 
+    public function GetTrialEndsAtAttribute()
+    {
+        return optional($this->free_trial)->expires_at;
+    }
+
     public static function FindByReferral($code) {
         return optional(static::firstWhere('referral_code', $code));
     }
