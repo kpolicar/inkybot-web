@@ -61,12 +61,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('view-statistics', function (User $user) {
             return $user->subscribed()
-                && $user->subscribedToPlan(Billing::starterPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan());
+                && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
         });
 
         Gate::define('view-exos', function (User $user) {
             return $user->subscribed()
-                && $user->subscribedToPlan(Billing::starterPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan());
+                && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
         });
 
         Gate::define('mage-exos', function (User $user) {
@@ -75,7 +75,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('custom-maging-ai', function (User $user) {
             return $user->subscribed()
-                && $user->subscribedToPlan(Billing::starterPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan());
+                && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
         });
     }
 }
