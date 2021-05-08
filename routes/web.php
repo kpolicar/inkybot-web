@@ -12,7 +12,7 @@ use App\Http\Middleware\NotSubscribed;
 use App\Http\Middleware\PlanExists;
 use App\Http\Middleware\SetLocaleFromSession;
 use App\Http\Middleware\Subscribed;
-use App\Http\Middleware\SubscriptionNotIncomplete;
+use App\Http\Middleware\RedirectToInvoicePageIfIncompletePayment;
 use App\Models\Maging;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -72,31 +72,36 @@ Route::group(
             ->with(compact('message', 'action'));
     })->middleware('auth')->name('profile');
 
-        Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
-            if (!$request->user()->can('purchase-subscription')) {
-                return $request->user()->redirectToBillingPortal(url()->previous());
-            } else {
-                return view('subscribe');
-            }
-        })
-            ->name('subscribe')
-            ->middleware(['verified', SubscriptionNotIncomplete::class, PlanExists::class]);
+        Route::middleware(['auth', 'verified', RedirectToInvoicePageIfIncompletePayment::class, PlanExists::class])
+            ->group(function () {
 
-        Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
-            ->name('subscribe.stripe')
-            ->middleware(['verified', SubscriptionNotIncomplete::class, 'can:purchase-subscription', PlanExists::class]);
+                Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
+                    if (!$request->user()->can('purchase-subscription')) {
+                        return $request->user()->redirectToBillingPortal(url()->previous());
+                    } else {
+                        return view('subscribe');
+                    }
+                })
+                    ->name('subscribe');
 
-        Route::view(LaravelLocalization::transRoute('routes.subscribe-coinbase'), 'subscribe-coinbase')
-            ->name('subscribe.coinbase')
-            ->middleware(['verified', SubscriptionNotIncomplete::class, 'can:purchase-subscription', PlanExists::class]);
 
-        Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
-            ->name('subscribe.coinbase.checkout')
-            ->middleware(['verified', SubscriptionNotIncomplete::class, 'can:purchase-subscription', PlanExists::class]);
+                Route::middleware('can:purchase-subscription')->group(function () {
 
-        Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
-            ->middleware(['auth', 'verified'])
-            ->name('pay');
+                    Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
+                        ->name('subscribe.stripe');
+
+                    Route::view(LaravelLocalization::transRoute('routes.subscribe-coinbase'), 'subscribe-coinbase')
+                        ->name('subscribe.coinbase');
+
+                    Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
+                        ->name('subscribe.coinbase.checkout');
+
+                    Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
+                        ->name('pay');
+
+                });
+
+            });
 
         Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
             return view('install');
