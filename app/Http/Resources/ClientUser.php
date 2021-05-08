@@ -33,9 +33,9 @@ class ClientUser extends JsonResource
             'Sw6mNjvR0HZofKj' => $this->is_free_trial,
             'EbP8tMjESR6IGvi' => $this->free_trial_available,
             'OfHJ5MXIHDpJiL8' => $this->trial_ends_at,
-            'bP6Aa9RdmDlggKY' => $this->onPlan(Billing::starterPlan()),
-            'ls6uIocgdyUtp4c' => $this->onPlan(Billing::standardPlan()),
-            'SniDbUjb49VghoM' => $this->onPlan(Billing::unlimitedPlan()),
+            'bP6Aa9RdmDlggKY' => $this->subscribedToPlan(Billing::starterPlan()),
+            'ls6uIocgdyUtp4c' => $this->subscribedToPlan(Billing::standardPlan()),
+            'SniDbUjb49VghoM' => $this->subscribedToPlan(Billing::unlimitedPlan()),
         ];
     }
 }
