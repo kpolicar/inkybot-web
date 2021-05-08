@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\ClientStatisticsController;
 use App\Http\Controllers\DiscordController;
-use App\Http\Controllers\NotificationController;
+use App\Http\Middleware\EncryptApiResponse;
 use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
 use App\Models\FreeTrial;
 use Illuminate\Http\Request;
@@ -30,7 +29,7 @@ Route::prefix('/discord')->group(function () {
 
 Route::get('/', [ApiController::class, 'Info']);
 
-Route::middleware('auth:api')->post('/trial/begin', function (Request $request) {
+Route::middleware(['auth:api', EncryptApiResponse::class])->post('/trial/begin', function (Request $request) {
     $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
         ->orWhere('ip_address', $ip_address = $request->ip())
         ->updateOrCreate([], compact('user_id', 'ip_address'));
