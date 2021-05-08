@@ -27,6 +27,7 @@ class ClientUser extends JsonResource
         }
         return [
             'i30jfVx9krmacQH' => $this->name,
+            'rGEFoEUizObjmwg' => $this->number_of_exo_mages_left_in_plan ?: 0,
             'CXpD6X71WZhYsHf' => $this->email,
             'rbvQL1e41MOgDLA' => $subscribedTo, //deprecated: subscribed_to
             'wVakGMaAnUQkCFZ' => $this->subscribed(),
