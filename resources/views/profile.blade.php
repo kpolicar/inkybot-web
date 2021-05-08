@@ -23,7 +23,7 @@
             </p>
 
             @php($subscriptionPeriodEnd = optional(Auth::user()->subscription())->current_period_end)
-            @php($subscriptionCancelledAt = Auth::user()->subscription()->ends_at)
+            @php($subscriptionCancelledAt = optional(Auth::user()->subscription())->ends_at)
 
             @unless (!$subscriptionPeriodEnd && !$subscriptionCancelledAt)
                 <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
