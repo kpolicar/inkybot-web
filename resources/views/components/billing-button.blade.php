@@ -5,13 +5,16 @@
     </a>
 @else
 
+
     <a href="{{ route('subscribe', array_filter(compact('plan'))) }}"
-       @unverified onclick="event.preventDefault()" title="You must first verify your email address." @endunverified
+       @unverified
+       onclick="event.preventDefault()" title="You must first verify your email address."
+       @endunverified
        class="group @unverified cursor-not-allowed @endunverified {{ $class }}">
 
         @if (trim($slot))
             {{ $slot }}
-        @elseif (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail())
+        @elseif (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail() && !\Auth::user()->subscribed())
             {{ __('common.purchase') }}
         @elseif($plan && Auth::user()->subscribedToPlan(\App\Billing::resolvePlan($plan)))
             {{ __('common.manage') }}
