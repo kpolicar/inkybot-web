@@ -43,7 +43,7 @@
 
 
 
-            @if (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail())
+            @if (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail() && !\Auth::user()->subscribed())
                 <a href="{{ Auth::user()->hasVerifiedEmail() ? '#pricing' : '#' }}"
                    @unverified onclick="event.preventDefault()" title="You must first verify your email address." @endunverified
                    class="@unverified cursor-not-allowed @endunverified group mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">

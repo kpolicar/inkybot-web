@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,7 +51,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
     public function validate($user, $input) {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:100'],
+            'name' => ['required', 'string', 'max:100', Rule::unique(User::class)->ignore($user->id)],
             'password' => ['nullable', 'string', new Password],
             'current_password' => ['required_with:password', 'nullable', 'string'],
             'optin_web_notifications' => 'boolean',
