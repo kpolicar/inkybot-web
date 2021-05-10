@@ -10,6 +10,6 @@ trait UserThrottles
 
     public function getNotificationRatePerMinuteLimitAttribute()
     {
-        return optional($this->subscription())->quantity ?? 1; // 1 per minute for each subscription
+        return 5 * optional($this->subscription())->quantity ?? 1; // 5 per minute for each subscription
     }
 }
