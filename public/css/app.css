@@ -22300,20 +22300,6 @@ video {
   }
 }
 
-@-webkit-keyframes bounce{
-  0%, 100%{
-    transform: translateY(-25%);
-    -webkit-animation-timing-function: cubic-bezier(0.8,0,1,1);
-            animation-timing-function: cubic-bezier(0.8,0,1,1);
-  }
-
-  50%{
-    transform: none;
-    -webkit-animation-timing-function: cubic-bezier(0,0,0.2,1);
-            animation-timing-function: cubic-bezier(0,0,0.2,1);
-  }
-}
-
 @keyframes bounce{
   0%, 100%{
     transform: translateY(-25%);
@@ -28642,6 +28628,39 @@ html {
 
 .tab input:checked ~ .tab-content {
   max-height: 100vh;
+}
+
+.bounce {
+  -webkit-animation: bounce 3s infinite;
+  animation: bounce 3s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(0);
+  }
+
+  40% {
+    transform: translateX(-15px);
+  }
+
+  60% {
+    transform: translateX(-7px);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(0);
+  }
+
+  40% {
+    transform: translateX(-15px);
+  }
+
+  60% {
+    transform: translateX(-7px);
+  }
 }
 
 @media (min-width: 640px){
