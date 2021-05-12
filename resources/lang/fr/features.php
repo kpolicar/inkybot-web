@@ -3,11 +3,11 @@
 return [
 
     'heading' => 'Caractéristiques',
-    'ocr' => 'Collecte de donnée ROC',
+    'ocr' => 'Sécurité - Collecte de donnée ROC',
     'ocr_details' => 'Les données sont collectées en prenant une capture d\'écran du client et les données requises sont analysées en utilisant une technologie ROC puissante. Ceci permet d\'être totalement indétectable et de garantir la compatibilité avec les prochaines mises à jour Dofus.',
 
     'human_like' => 'Comportement Humain',
-    'human_like_details' => 'Une simulation de clics de souris et clavier supprimant toutes différences entre le bot ou de réels humains. Votre sécurité est notre priorité!',
+    'human_like_details' => 'Une simulation de clics de souris et clavier supprimant toutes différences entre le bot ou de réels humains. Le bot fonctionne à un rythme ordinaire et humain. Votre sécurité est notre priorité!',
 
     'updates' => 'Mises à Jour Régulières',
     'updates_details' => 'Inkybot est testé et fonctionnel et nous nous améliorons toujours activement. Nous sommes également des joueurs de Dofus donc nous sommes engagés à rendre la forgemagie avec Inkybot meilleure et plus efficace que la forgemagie manuelle - pour vous et pour nous!',

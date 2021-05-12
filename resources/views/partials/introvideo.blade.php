@@ -1,5 +1,5 @@
 <div class="anchor" id="presentation"></div>
-<section class="bg-gray-100 py-8 pb-12 border-b">
+<section class="bg-white py-8 pb-12 border-b">
     <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         {{ __('presentation.header') }}
     </h2>

@@ -3,11 +3,11 @@
 return [
 
     'heading' => 'Features',
-    'ocr' => 'OCR Data Gathering',
+    'ocr' => 'Safety - OCR Data Gathering',
     'ocr_details' => 'Data is collected by taking a screenshot of the client and parsing necessary information using powerful OCR technologies. This ensures complete undetectability and stability throughout Dofus updates.',
 
-    'human_like' => 'Human-like Behavior',
-    'human_like_details' => 'Simulating mouse and keyboard strokes makes the bot indistinguishable from human players. Your safety is our number one priority!',
+    'human_like' => 'Human-like Behavior & Speed',
+    'human_like_details' => 'Simulating mouse and keyboard strokes makes the bot indistinguishable from human players. The bot works at an ordinary, human-like pace. Your safety is our number one priority!',
 
     'updates' => 'Regular Updates',
     'updates_details' => 'Inkybot is battle-tested and functional and we\'re still actively improving. We play Dofus too, so we are committed to make maging with Inkybot better than maging by yourself in every way - for you and for us!',
