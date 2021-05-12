@@ -71,3 +71,57 @@ html {
 .tab input:checked ~ .tab-content {
     max-height: 100vh;
 }
+
+.bounce {
+    -moz-animation: bounce 3s infinite;
+    -webkit-animation: bounce 3s infinite;
+    animation: bounce 3s infinite;
+}
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateX(0);
+        transform: translateX(0);
+    }
+    40% {
+        -moz-transform: translateX(-15px);
+        transform: translateX(-15px);
+    }
+    60% {
+        -moz-transform: translateX(-7px);
+        transform: translateX(-7px);
+    }
+}
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    40% {
+        -webkit-transform: translateX(-15px);
+        transform: translateX(-15px);
+    }
+    60% {
+        -webkit-transform: translateX(-7px);
+        transform: translateX(-7px);
+    }
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    40% {
+        -moz-transform: translateX(-15px);
+        -ms-transform: translateX(-15px);
+        -webkit-transform: translateX(-15px);
+        transform: translateX(-15px);
+    }
+    60% {
+        -moz-transform: translateX(-7px);
+        -ms-transform: translateX(-7px);
+        -webkit-transform: translateX(-7px);
+        transform: translateX(-7px);
+    }
+}
