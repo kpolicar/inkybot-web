@@ -12,7 +12,7 @@
         </div>
 
         <div class="-mx-3 flex flex-wrap">
-            <x-feature-card icon="expand">
+            <x-feature-card icon="shield-alt">
                 <x-slot name="title">
                     {{ __('features.ocr') }}
                 </x-slot>
