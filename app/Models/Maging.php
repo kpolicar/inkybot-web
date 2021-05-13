@@ -17,6 +17,7 @@ class Maging extends Model
     ];
 
     protected $casts = [
+        'attempts' => 'array',
         'exo_attempts' => 'array',
         'exo_successes' => 'array',
     ];
