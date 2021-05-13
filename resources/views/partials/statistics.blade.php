@@ -39,7 +39,7 @@
                                 </span>
                         </li>
                     @endif
-                    @forelse(Arr::only($maging->exo_attempts ?? [], ['ap', 'mp', 'range']) as $rune => $attempts)
+                    @forelse(Arr::only($maging->exo_attempts ?? [], ['ap', 'mp', 'range', 'summons']) as $rune => $attempts)
                         <li class="w-1/2 sm:w-1/3 flex flex-wrap items-center py-2 pt-0 m-0 sm:ml-2 mb-6">
                             <div class="mr-2 w-full">
                                 <img src="{{ asset('images/icons/'.$rune.'.png') }}" alt=""

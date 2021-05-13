@@ -131,17 +131,21 @@ class User extends Authenticatable implements MustVerifyEmail
     public function numberOfExoMagesLeftInPlan()
     {
         $exoMagesInPlan = $this->numberOfExoMagesInPricingPlan();
-        if ($this->subscribedToPlan(Billing::unlimitedPlan()))
+        if (!$this->subscribed() || $this->subscribedToPlan(Billing::unlimitedPlan()))
             return $exoMagesInPlan;
 
+        $currentPeriodEnd = $this->subscription()->asDateTime(
+            $this->subscription()->current_period_end
+        );
+
         $magings = $this->maging()
-            ->whereDate('updated_at', '>', $this->freshTimestamp()->subMonth())
+            ->whereDate('updated_at', '>', $currentPeriodEnd->subMonth())
             ->get();
 
         $exoMagesSoFar = $magings
             ->pluck('exo_successes')
             ->mapInto(Collection::class)
-            ->map->only(['ap', 'mp', 'range'])
+            ->map->only(['ap', 'mp', 'range', 'summons'])
             ->map->sum()->sum();
 
         return max(0, $exoMagesInPlan-$exoMagesSoFar);
