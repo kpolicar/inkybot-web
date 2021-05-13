@@ -2,19 +2,22 @@
 
 namespace App\Models;
 
+use App\Billing;
+use App\Models\Traits\UserCacheAttributes;
 use App\Models\Traits\UserThrottles;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Cashier\Billable;
 use Laravel\Passport\HasApiTokens;
 use Stripe\Invoice;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasApiTokens, Billable, UserThrottles;
+    use HasFactory, Notifiable, HasApiTokens, Billable, UserThrottles, UserCacheAttributes;
 
     /**
      * The attributes that are mass assignable.
@@ -70,6 +73,18 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public function numberOfExoMagesInPricingPlan()
+    {
+        if ($this->subscribedToPlan(Billing::unlimitedPlan()))
+            return config('cashier.product_price_unlimited_exo_mages');
+        else if ($this->subscribedToPlan(Billing::standardPlan()))
+            return config('cashier.product_price_standard_exo_mages');
+        else if ($this->subscribedToPlan(Billing::starterPlan()))
+            return config('cashier.product_price_starter_exo_mages');
+        else
+            return 0;
+    }
+
     public function referrer() {
         return $this->belongsTo(User::class, 'referred_by', 'id');
     }
@@ -113,9 +128,23 @@ class User extends Authenticatable implements MustVerifyEmail
         return optional(static::firstWhere('referral_code', $code));
     }
 
-    public function getNumberOfExoMagesLeftInPlanAttribute()
+    public function numberOfExoMagesLeftInPlan()
     {
-        return 3;
+        $exoMagesInPlan = $this->numberOfExoMagesInPricingPlan();
+        if ($this->subscribedToPlan(Billing::unlimitedPlan()))
+            return $exoMagesInPlan;
+
+        $magings = $this->maging()
+            ->whereDate('updated_at', '>', $this->freshTimestamp()->subMonth())
+            ->get();
+
+        $exoMagesSoFar = $magings
+            ->pluck('exo_successes')
+            ->mapInto(Collection::class)
+            ->map->only(['ap', 'mp', 'range'])
+            ->map->sum()->sum();
+
+        return max(0, $exoMagesInPlan-$exoMagesSoFar);
     }
 
     public function linkDiscord($id)

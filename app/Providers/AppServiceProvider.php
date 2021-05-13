@@ -54,6 +54,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('unverified', function () {
             return !(optional(auth()->user())->hasVerifiedEmail() ?? false);
         });
+        Subscription::saved(function ($model) {
+            optional($model->user)->userCacheAttributesNumberOfExoMagesLeftInPlanClearCache();
+        });
 
         if (config('app.env') == 'production') {
             \URL::forceScheme('https');
