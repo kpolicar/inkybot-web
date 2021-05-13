@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\View\Engine;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Maging extends Model
 {
@@ -23,6 +24,14 @@ class Maging extends Model
     protected $attributes = [
         'expended' => 0,
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::saved(function($model) {
+            optional($model->user)->userCacheAttributesNumberOfExoMagesLeftInPlanClearCache();
+        });
+    }
 
     public function user() {
         return $this->belongsTo(User::class);

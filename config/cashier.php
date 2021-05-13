@@ -19,12 +19,15 @@ return [
 
     'product_starter_id' => env('STRIPE_PRODUCT_STARTER_ID'),
     'product_price_starter_id' => env('STRIPE_PRICE_STARTER_ID'),
+    'product_price_starter_exo_mages' => 5,
 
     'product_standard_id' => env('STRIPE_PRODUCT_STANDARD_ID'),
     'product_price_standard_id' => env('STRIPE_PRICE_STANDARD_ID'),
+    'product_price_standard_exo_mages' => 15,
 
     'product_unlimited_id' => env('STRIPE_PRODUCT_UNLIMITED_ID'),
     'product_price_unlimited_id' => env('STRIPE_PRICE_UNLIMITED_ID'),
+    'product_price_unlimited_exo_mages' => PHP_INT_MAX,
 
     'coupon_paid_by_coinbase' => env('STRIPE_COUPON_PAID_BY_COINBASE'),
 

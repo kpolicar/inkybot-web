@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use App\Billing;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Cache;
 
 class ClientUser extends JsonResource
 {
@@ -41,5 +42,15 @@ class ClientUser extends JsonResource
             'ls6uIocgdyUtp4c' => $this->subscribedToPlan(Billing::standardPlan()),
             'SniDbUjb49VghoM' => $this->subscribedToPlan(Billing::unlimitedPlan()),
         ];
+    }
+
+    protected function getNumberOfExoMagesLeftInPlan()
+    {
+        $cacheKey = 'user_'.$this->id.'_number_of_exo_mages_left_in_plan';
+        $numberOfExosLeft = Cache::get($cacheKey, function () use ($cacheKey) {
+
+            Cache::put($cacheKey, $this->number_of_exo_mages_left_in_plan, now()->addHour());
+            return $gameVersion;
+        });
     }
 }
