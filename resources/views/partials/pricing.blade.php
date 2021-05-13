@@ -32,7 +32,7 @@
                         <x-billing-button
                             plan="starter"
                             :incomplete-payment-redirect="false"
-                            class="inline-block mx-auto lg:mx-0 gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg">
+                            class="inline-block mx-auto lg:mx-0 gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg {{ Auth::check() ? '' : 'hover:underline' }}">
                         </x-billing-button>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                         <x-billing-button
                             plan="standard"
                             :incomplete-payment-redirect="false"
-                            class="inline-block mx-auto lg:mx-0 gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg">
+                            class="inline-block mx-auto lg:mx-0 gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg {{ Auth::check() ? '' : 'hover:underline' }}">
                         </x-billing-button>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <x-billing-button
                             plan="unlimited"
                             :incomplete-payment-redirect="false"
-                            class="inline-block mx-auto lg:mx-0 gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg">
+                            class="inline-block mx-auto lg:mx-0 gradient text-white font-bold rounded my-6 py-4 px-8 shadow-lg {{ Auth::check() ? '' : 'hover:underline' }}">
                         </x-billing-button>
                     </div>
                 </div>

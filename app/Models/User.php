@@ -113,6 +113,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return optional(static::firstWhere('referral_code', $code));
     }
 
+    public function getNumberOfExoMagesLeftInPlanAttribute()
+    {
+        return 3;
+    }
+
     public function linkDiscord($id)
     {
         $this->forceFill([
