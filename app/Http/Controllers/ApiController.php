@@ -121,26 +121,32 @@ class ApiController extends Controller
 
     private function NotifyOneSignal(Request $request, $message)
     {
-        if ($request->user()->optin_web_notifications) {
-            \OneSignal::sendNotificationToExternalUser(
-                $message,
-                $request->user()->id,
-                $url = null,
-                $data = null,
-                $buttons = null,
-                $schedule = null,
-            );
+        try {
+            if ($request->user()->optin_web_notifications) {
+                \OneSignal::sendNotificationToExternalUser(
+                    $message,
+                    (string) $request->user()->id,
+                    $url = null,
+                    $data = null,
+                    $buttons = null,
+                    $schedule = null,
+                );
+            }
+        } catch (\Throwable $t) {
         }
     }
 
     private function NotifyDiscord(Request $request, $message)
     {
-        if ($request->user()->optin_discord_notifications) {
-            $content = "!notify {$request->user()->discord_id} \":bell: $message\"";
-            \Http::post(
-                config('discord.webhook_url'),
-                compact('content')
-            );
+        try {
+            if ($request->user()->optin_discord_notifications && $request->user()->discord_id) {
+                $content = "!notify {$request->user()->discord_id} \":bell: $message\"";
+                \Http::post(
+                    config('discord.webhook_url'),
+                    compact('content')
+                );
+            }
+        } catch (\Throwable $t) {
         }
     }
 }
