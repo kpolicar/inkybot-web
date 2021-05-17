@@ -20,34 +20,80 @@
                 <ul class="text-black">
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">Added <strong>multiple sessions</strong> for
-                            statistics to better group maging data
-                            (see your <a class="underline" href="{{ route('profile') }}#statistics">Profile</a>)
+                        <span class="pt-1">
+                            Added <strong>new priority setup option</strong>, so users may specify in what order stats should be improved
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Bug fixes for the <strong>exo mage AI</strong> - wasn't using the remaining sink
-                            for the exo
+                            Added <strong>new configuration options</strong> to enable or disable the use of specific runes (SM, PA, RA)
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Fixed inability to mage items with <strong>% Melee Resistance</strong> stat
+                            Improved OCR accuracy on <strong>low & very high resolutions</strong>
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Improvements to <strong>rune quantity monitoring</strong>
+                            Improved <strong>user interfaces</strong>: added <strong>refresh</strong> buttons, <strong>hide advanced configuration</strong> options by default
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Fixed instances where the bot would stop <strong>without notifying</strong> the user
+                            Added <strong>run out of runes notification</strong> even when the option: "Monitor Rune Quantity" is not enabled
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Added support for purchasing <strong>multiple instances</strong> on the same Inkybot account (check out your <a class="underline" href="{{ route('subscribe') }}">Subscription Page</a>)
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Added <strong>new statistic</strong>: count all the runes used during the bots operation (not just exo attempts) (check out your <a class="underline" href="{{ route('profile') }}#statistics">Profile Page</a>)
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Added preview of all <strong>successfully maged exos</strong> (check out your <a class="underline" href="{{ route('profile') }}#exos">Profile Page</a>)
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Added safeguard: it is <strong>no longer possible</strong> to use Inkybot on an item that has a <strong>high-value exo stat</strong> (AP, MP, Range, Summon). These items will need to be broken by hand first.
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Fixed bug: the bot would be <strong>interrupted by a warning prompt</strong> when maging unsupported items (>= 13 stats)
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Fixed bug: the bot would <strong>keep trying to put an exo rune</strong>, even when user ran out of runes in inventory
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Fixed bug: the <strong>client randomly crashes</strong> when opening statistics
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Fixed bug: <strong>maging weapons</strong> was no longer possible (broken)
                         </span>
                     </li>
                 </ul>
@@ -61,13 +107,23 @@
                 <ul class="text-black">
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Improve OCR accuracy on <strong>low resolutions</strong>
-                        </span>
+                        <span class="pt-1">More <strong>Bug fixes</strong></span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">Begin work on <strong>Magus profession leveling bot</strong></span>
+                        <span class="pt-1">Publish a <strong>tutorial video</strong> explaining the basics as well as the advanced features of Inkybot</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Add official <strong>prebuilt item configurations</strong> # priced separately</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Begin work on <strong>Inkybot Retro</strong> # priced separately</span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-clock text-3xl mr-3"></i>
+                        <span class="pt-1">Begin work on <strong>Magus profession leveling bot</strong> # priced separately</span>
                     </li>
                 </ul>
 
