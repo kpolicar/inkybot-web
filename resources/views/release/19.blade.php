@@ -129,7 +129,7 @@
 
             </div>
 
-            <x-limitations :restrictions="['administrator', 'minimized']" />
+            <x-limitations :restrictions="['administrator', 'minimized', 'no-fullscreen']" />
         </div>
 
     </section>
