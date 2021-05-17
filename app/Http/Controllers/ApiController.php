@@ -86,6 +86,14 @@ class ApiController extends Controller
         if ($expended > 300000 || !$request->input('expended_enabled', false))
             $expended = 0;
         $maging->expended += $expended;
+        foreach (json_decode($request->input('attempts', "{}"), true) as $stat => $runeTypeAttempts) {
+            $magingAttempts = $maging->attempts ?? [];
+
+            foreach ($runeTypeAttempts as $runeType => $attempts) {
+                $magingAttempts[$stat][$runeType] = $attempts + ((int) data_get("$stat.$runeType", $magingAttempts, 0));
+            }
+            $maging->attempts = $magingAttempts;
+        }
         foreach (json_decode($request->input('attempts_exo', "{}"), true) as $stat => $attempts) {
             $exoAttempts = $maging->exo_attempts ?? [];
             $exoAttempts[$stat] = $attempts + ($exoAttempts[$stat] ?? 0);

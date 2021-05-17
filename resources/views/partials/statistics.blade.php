@@ -1,6 +1,8 @@
 @php($first = $first ?? false)
 @php($active = $active ?? false)
 @php($htmlTabId = 'tab-'.$maging->id)
+@php($htmlChartId = 'chart-'.$maging->id)
+@php($chart=isset($chart) ? $chart : false)
 
 <ul class="text-gray-800 flex flex-wrap">
     <li class="w-full mb-4 text-sm text-gray-600 md:text-left text-center">
@@ -66,6 +68,23 @@
                         @endif
                     @endforelse
                 </ul>
+
+
+                @php ($magingSummedByStat = collect($maging->attempts)->sortKeys()->mapWithKeys(function ($value, $key) { return [Str::title(__('runes.'.$key)) => collect($value)->sortKeysDesc()->mapWithKeys(function ($value, $key) { return [Str::title($key) => $value];})];  }))
+                @if ($chart && $maging->attempts)
+                    <div class="relative max-w-lg">
+                        <canvas id="{{ $htmlChartId }}"
+                                class="data-chart"
+                                data-title="Chart for # Runes used"
+                                data-dataset="{{ json_encode($magingSummedByStat) }}"></canvas>
+                        @if($first)
+                        <aside class="text-xs mt-6 px-6 border-dashed">
+                            <i class="fas fa-lightbulb text-gray-800 text-sm mr-1"></i>
+                            This diagram can help you understand how many of each rune to purchase
+                        </aside>
+                        @endif
+                    </div>
+                @endif
 
 
             </div>

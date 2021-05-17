@@ -246,7 +246,7 @@
 
             @can('view-statistics')
                 <div class="mt-6 lg:mt-0 rounded border shadow-sm bg-white">
-                    @include('partials/statistics-today')
+                    @include('partials/statistics-today', ['chart' => true])
                 </div>
                 <div class="my-6 rounded border shadow-sm bg-white">
                     @include('partials/statistics-previous')
