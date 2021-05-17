@@ -69,12 +69,6 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added safeguard: it is <strong>no longer possible</strong> to use Inkybot on an item that has a <strong>high-value exo stat</strong> (AP, MP, Range, Summon). These items will need to be broken by hand first.
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
                             Fixed bug: the bot would be <strong>interrupted by a warning prompt</strong> when maging unsupported items (>= 13 stats)
                         </span>
                     </li>
