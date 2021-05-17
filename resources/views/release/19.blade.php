@@ -1,7 +1,7 @@
 @extends('layouts.release')
 
-@section('date', '31st May 2021')
-@section('welcome', 'Welcome to the first release of this series!')
+@section('date', '1st June 2021')
+@section('welcome', 'Welcome to the second major release of Inkybot!')
 
 @section('content')
 
