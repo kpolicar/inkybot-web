@@ -34,7 +34,7 @@
     @endif
 
     @if(in_array('minimized', $restrictions))
-    <h2 class="text-black text-xl font-bold"><i class="fas fa-window-maximize text-3xl mr-3"></i> Do not minimize</h2>
+    <h2 class="text-black text-xl font-bold"><i class="far fa-window-maximize text-3xl mr-3"></i> Do not minimize</h2>
     <p class="text-black my-3">
         You can run Inkybot under other applications, however it must not be minimized.
         This is due to how Windows works: it does not draw windows that are minimized.
@@ -42,7 +42,7 @@
     @endif
 
     @if(in_array('no-fullscreen', $restrictions))
-    <h2 class="text-black text-xl font-bold"><i class="fas fa-compress-arrows-alt text-3xl mr-3"></i> Do not run other programs "Fullscreen"</h2>
+    <h2 class="text-black text-xl font-bold"><i class="far fa-window-restore text-3xl mr-3"></i> Do not run other programs "Fullscreen"</h2>
     <p class="text-black my-3">
         You must <span class="underline">not</span> run other applications (notably, games) in <strong>exclusive-fullscreen mode</strong>!<br>
         Make sure you are running them in <strong>borderless-fullscreen mode</strong>.<br>
