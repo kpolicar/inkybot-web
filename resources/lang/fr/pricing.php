@@ -17,5 +17,5 @@ return [
     'package_feature_overmaging' => 'Forgemagie avec overs',
     'package_feature_leveling' => 'XP votre métier de FM',
 
-    'package_feature_in_development' => 'Sont des fonction sous développement et ne sont pas encore disponible',
+    'package_feature_exos_description' => 'La limite d\'exo correspond uniquement aux objets magés avec succès avec un PA, un PM, une portée ou une invocation.',
 ];

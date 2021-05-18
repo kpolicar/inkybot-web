@@ -3,7 +3,7 @@
 return [
 
     'heading' => 'Features',
-    'ocr' => 'Safety - OCR Data Gathering',
+    'ocr' => 'Safety - Optical Character Recognition',
     'ocr_details' => 'Data is collected by taking a screenshot of the client and parsing necessary information using powerful OCR technologies. This ensures complete undetectability and stability throughout Dofus updates.',
 
     'human_like' => 'Human-like Behavior & Speed',

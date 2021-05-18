@@ -12,7 +12,7 @@
         <h1 class="my-4 text-5xl font-bold leading-tight">{{ __('messages.heading') }}</h1>
         <p class="leading-normal text-2xl mb-8">{{ __('messages.subheading') }}</p>
         <p class="leading-normal uppercase text-sm pb-2">
-            Compatible with Dofus <b>{{ $gameVersion }}</b> <small class="text-xs">(latest version)</small>
+            {!! __('common.compatible', ['version' => $gameVersion]) !!}
         </p>
         <a href="{{ asset($download_asset) }}"
            download

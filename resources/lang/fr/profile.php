@@ -3,6 +3,7 @@
 return [
     'subscribed' => 'Vous êtes abonné',
     'subscribed_false' => 'Vous n\'êtes pas abonné',
+    'subscribed_manage' => 'Gérer l\'abonnement',
     'subscribed_extend' => 'Prolonger son abonnement',
     'subscribed_purchase' => 'Acheter un abonnement',
 
@@ -26,4 +27,10 @@ return [
     'activity_none' => 'Pas d\'activité',
 
     'session_from' => 'Votre session de :time',
+
+    'billing_ends' => 'Votre période de facturation se termine le :date',
+    'next_invoice' => 'Votre prochaine facture sera sur le :date',
+
+    'statistics_chart_title' => '# Runes utilisées pendant la session',
+    'statistics_chart_tip' => 'Ce diagramme peut vous aider à comprendre combien de chaque rune acheter',
 ];
