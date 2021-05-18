@@ -27,9 +27,7 @@ return [
 
     'product_unlimited_id' => env('STRIPE_PRODUCT_UNLIMITED_ID'),
     'product_price_unlimited_id' => env('STRIPE_PRICE_UNLIMITED_ID'),
-    'product_price_unlimited_exo_mages' => PHP_INT_MAX,
-
-    'coupon_paid_by_coinbase' => env('STRIPE_COUPON_PAID_BY_COINBASE'),
+    'product_price_unlimited_exo_mages' => 50000,
 
     /*
     |--------------------------------------------------------------------------
