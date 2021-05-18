@@ -23817,7 +23817,7 @@ if (swiperElement) {
   swiperElement.classList.remove('opacity-0');
 }
 
-var chartElements = document.querySelectorAll('.data-chart');
+var chartElements = document.querySelectorAll('.data-chart:not(.lazy)');
 
 if (chartElements) {
   chartElements.forEach(function (chartElement) {
@@ -23834,7 +23834,7 @@ if (chartElements) {
               return a + b;
             }, 0);
           }),
-          backgroundColor: google_palette__WEBPACK_IMPORTED_MODULE_3___default()('cb-Dark2', Object.keys(chartData).length).map(function (hex) {
+          backgroundColor: google_palette__WEBPACK_IMPORTED_MODULE_3___default()('cb-Pastel1', Object.keys(chartData).length).map(function (hex) {
             return '#' + hex;
           }),
           borderColor: 'rgb(0,0,0,0.4)',

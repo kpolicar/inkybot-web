@@ -27,7 +27,7 @@ if (swiperElement) {
     swiperElement.classList.remove('opacity-0')
 }
 
-let chartElements = document.querySelectorAll('.data-chart');
+let chartElements = document.querySelectorAll('.data-chart:not(.lazy)');
 if (chartElements) {
     chartElements.forEach(chartElement => {
 
@@ -41,7 +41,7 @@ if (chartElements) {
                 labels: Object.keys(chartData),
                 datasets: [{
                     data: Object.values(chartData).map(a => Object.values(a).reduce((a, b) => a + b, 0)),
-                    backgroundColor: palette('cb-Dark2', Object.keys(chartData).length).map(function(hex) {
+                    backgroundColor: palette('cb-Pastel1', Object.keys(chartData).length).map(function(hex) {
                         return '#' + hex;
                     }),
                     borderColor: 'rgb(0,0,0,0.4)',

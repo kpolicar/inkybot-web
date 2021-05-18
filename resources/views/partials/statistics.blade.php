@@ -26,8 +26,10 @@
             </div>
 
             <div class="tab-content overflow-hidden md:border-l-2 border-l-0 border-dashed border-gray-200 leading-normal">
+                @php($showChart = $chart && $maging->attempts)
 
-                <ul class="p-5 text-gray-800 flex flex-wrap">
+                @if ($maging->expended || $maging->exo_attempts || !$showChart)
+                <ul class="px-5 pt-5 text-gray-800 flex flex-wrap">
                     @if($maging->expended)
                         <li class="w-full flex flex-wrap justify-center md:justify-start items-center py-2 mb-4 pt-0 m-auto m-0 sm:ml-2">
                             <div class="mr-6">
@@ -61,27 +63,28 @@
                                 </span>
                         </li>
                     @empty
-                        @if (!$maging->expended)
+                        @if (!$showChart)
                             <li class="mb-6">
                                 {{ __('profile.activity_none') }}
                             </li>
                         @endif
                     @endforelse
                 </ul>
+                @endif
 
 
                 @php ($magingSummedByStat = collect($maging->attempts)->sortKeys()->mapWithKeys(function ($value, $key) { return [Str::title(__('runes.'.$key)) => collect($value)->sortKeysDesc()->mapWithKeys(function ($value, $key) { return [Str::title($key) => $value];})];  }))
-                @if ($chart && $maging->attempts)
+                @if ($showChart)
                     <div class="relative max-w-lg">
                         <canvas id="{{ $htmlChartId }}"
-                                class="data-chart"
-                                data-title="Chart for # Runes used"
+                                class="data-chart hidden"
+                                data-title="# Runes used"
                                 data-dataset="{{ json_encode($magingSummedByStat) }}"></canvas>
-                        @if($first)
-                        <aside class="text-xs mt-6 px-6 border-dashed">
-                            <i class="fas fa-lightbulb text-gray-800 text-sm mr-1"></i>
-                            This diagram can help you understand how many of each rune to purchase
-                        </aside>
+                        @if ($first)
+                            <aside class="text-xs mt-6 px-6 border-dashed">
+                                <i class="fas fa-lightbulb text-gray-800 text-sm mr-1"></i>
+                                This diagram can help you understand how many of each rune to purchase
+                            </aside>
                         @endif
                     </div>
                 @endif

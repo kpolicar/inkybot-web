@@ -20,7 +20,7 @@
         </div>
         <div class="md:w-4/5">
             @forelse($magingsOnSameDay as $maging)
-                @include('partials/statistics', ['maging' => $maging])
+                @include('partials/statistics', ['maging' => $maging, 'chart' => true])
             @empty
                 <p class="text-gray-800">
                     {{ __('profile.activity_none') }}
