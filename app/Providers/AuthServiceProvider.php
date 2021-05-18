@@ -41,7 +41,7 @@ class AuthServiceProvider extends ServiceProvider
             'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class]
         ]);
 
-        Passport::tokensExpireIn(now()->addMinutes(2));
+        Passport::tokensExpireIn(now()->addMinutes(5));
         Passport::refreshTokensExpireIn(now()->addMinutes(5));
 
         Token::creating(function (Token $token) {
