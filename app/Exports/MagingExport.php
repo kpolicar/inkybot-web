@@ -37,7 +37,7 @@ class MagingExport implements FromCollection, Responsable, WithHeadings
     public function headings(): array
     {
         return [
-            'date', 'kamas', 'exo_attempts', 'exo_successes'
+            'date', 'kamas', 'attempts', 'exo_attempts', 'exo_successes'
         ];
     }
 }

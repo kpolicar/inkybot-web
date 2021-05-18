@@ -23817,86 +23817,122 @@ if (swiperElement) {
   swiperElement.classList.remove('opacity-0');
 }
 
-var chartElements = document.querySelectorAll('.data-chart:not(.lazy)');
+var previousActivity = document.querySelector('#previous-activity');
+var previousActivityContent = document.querySelector('#previous-activity-content');
+var previousActivityDatepicker = document.querySelector('#previous-activity-dateselector');
 
-if (chartElements) {
-  chartElements.forEach(function (chartElement) {
-    var ctx = chartElement.getContext('2d');
-    var chartData = JSON.parse(chartElement.dataset.dataset);
-    var chart = new chart_js_auto__WEBPACK_IMPORTED_MODULE_1__.default(ctx, {
-      plugins: [(chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_2___default())],
-      type: 'pie',
-      data: {
-        labels: Object.keys(chartData),
-        datasets: [{
-          data: Object.values(chartData).map(function (a) {
-            return Object.values(a).reduce(function (a, b) {
-              return a + b;
-            }, 0);
-          }),
-          backgroundColor: google_palette__WEBPACK_IMPORTED_MODULE_3___default()('cb-Pastel1', Object.keys(chartData).length).map(function (hex) {
-            return '#' + hex;
-          }),
-          borderColor: 'rgb(0,0,0,0.4)',
-          borderWidth: 1,
-          cake: chartData
-        }]
-      },
-      options: {
-        layout: {
-          padding: 0
-        },
-        aspectRatio: 2,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'right'
-          },
-          tooltip: {
-            enabled: true,
-            callbacks: {
-              footer: function footer(context) {
-                var txt = '';
-                var first = true;
-
-                for (var _i = 0, _Object$entries = Object.entries(context[0].dataset.cake[context[0].label]); _i < _Object$entries.length; _i++) {
-                  var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
-                      key = _Object$entries$_i[0],
-                      value = _Object$entries$_i[1];
-
-                  if (!first) {
-                    txt += '\n';
-                  }
-
-                  txt += key + ": " + value;
-                  first = false;
-                }
-
-                return txt;
-              }
-            }
-          },
-          title: {
-            display: true,
-            text: chartElement.dataset.title
-          },
-          datalabels: {
-            formatter: function formatter(value, ctx) {
-              var sum = 0;
-              var dataArr = ctx.chart.data.datasets[0].data;
-              dataArr.map(function (data) {
-                sum += data;
-              });
-              var percentage = (value * 100 / sum).toFixed(0) + "%";
-              return percentage;
-            },
-            color: '#000'
-          }
-        }
-      }
+if (previousActivityDatepicker && previousActivity) {
+  previousActivityDatepicker.addEventListener('change', function () {
+    if (previousActivityDatepicker.value === previousActivityDatepicker.dataset.notallowed) return;
+    previousActivity.classList.add('opacity-50');
+    previousActivity.classList.add('pointer-events-none');
+    previousActivity.querySelector('.loader').classList.remove('hidden');
+    previousActivityDatepicker.classList.add('cursor-wait');
+    previousActivityDatepicker.classList.add('pointer-events-none');
+    var params = {
+      date: previousActivityDatepicker.value
+    };
+    axios.get(previousActivityDatepicker.dataset.dataHandler, {
+      params: params
+    }).then(function (result) {
+      previousActivityContent.innerHTML = result.data;
+      loadDataCharts();
+    })["finally"](function () {
+      previousActivity.classList.remove('opacity-50');
+      previousActivity.classList.remove('pointer-events-none');
+      previousActivity.querySelector('.loader').classList.add('hidden');
+      previousActivityDatepicker.removeAttribute('disabled');
+      previousActivityDatepicker.classList.remove('cursor-wait');
+      previousActivityDatepicker.classList.remove('pointer-events-none');
     });
   });
 }
+
+var loadDataCharts = function loadDataCharts() {
+  var chartElements = document.querySelectorAll('.data-chart:not(.loaded)');
+
+  if (chartElements) {
+    chartElements.forEach(function (chartElement) {
+      var ctx = chartElement.getContext('2d');
+      var chartData = JSON.parse(chartElement.dataset.dataset);
+      var chart = new chart_js_auto__WEBPACK_IMPORTED_MODULE_1__.default(ctx, {
+        plugins: [(chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_2___default())],
+        type: 'pie',
+        data: {
+          labels: Object.keys(chartData),
+          datasets: [{
+            data: Object.values(chartData).map(function (a) {
+              return Object.values(a).reduce(function (a, b) {
+                return a + b;
+              }, 0);
+            }),
+            backgroundColor: google_palette__WEBPACK_IMPORTED_MODULE_3___default()('cb-Pastel1', Object.keys(chartData).length).map(function (hex) {
+              return '#' + hex;
+            }),
+            borderColor: 'rgb(0,0,0,0.4)',
+            borderWidth: 1,
+            cake: chartData
+          }]
+        },
+        options: {
+          layout: {
+            padding: 0
+          },
+          aspectRatio: 2,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'right'
+            },
+            tooltip: {
+              enabled: true,
+              callbacks: {
+                footer: function footer(context) {
+                  var txt = '';
+                  var first = true;
+
+                  for (var _i = 0, _Object$entries = Object.entries(context[0].dataset.cake[context[0].label]); _i < _Object$entries.length; _i++) {
+                    var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+                        key = _Object$entries$_i[0],
+                        value = _Object$entries$_i[1];
+
+                    if (!first) {
+                      txt += '\n';
+                    }
+
+                    txt += key + ": " + value;
+                    first = false;
+                  }
+
+                  return txt;
+                }
+              }
+            },
+            title: {
+              display: true,
+              text: chartElement.dataset.title
+            },
+            datalabels: {
+              formatter: function formatter(value, ctx) {
+                var sum = 0;
+                var dataArr = ctx.chart.data.datasets[0].data;
+                dataArr.map(function (data) {
+                  sum += data;
+                });
+                var percentage = (value * 100 / sum).toFixed(0) + "%";
+                return percentage;
+              },
+              color: '#000'
+            }
+          }
+        }
+      });
+      chartElement.classList.add('loaded');
+    });
+  }
+};
+
+loadDataCharts();
 })();
 
 /******/ })()

@@ -20,6 +20,7 @@ class ExportMaging extends JsonResource
         return [
             'date' => $this->created_at,
             'kamas' => $this->expended,
+            'attempts' => $this->attempts,
             'exo_attempts' => $this->exo_attempts,
             'exo_successes' => $this->exo_successes,
         ];
