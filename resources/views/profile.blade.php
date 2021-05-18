@@ -28,9 +28,9 @@
             @unless (!$subscriptionPeriodEnd && !$subscriptionCancelledAt)
                 <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
                     @if ($subscriptionCancelledAt)
-                        Your billing period ends on the {{ $subscriptionCancelledAt->format('d.m.Y') }}
+                        {{ __('profile.billing_ends', ['date' => $subscriptionCancelledAt->format('d.m.Y')]) }}
                     @elseif($subscriptionPeriodEnd)
-                        Your next invoice will be on the {{ (new \Carbon\Carbon($subscriptionPeriodEnd))->format('d.m.Y') }}
+                        {{ __('profile.next_invoice', ['date' => (new \Carbon\Carbon($subscriptionPeriodEnd))->format('d.m.Y')]) }}
                     @endif
                 </p>
             @endif
@@ -255,7 +255,7 @@
                 <div class="md:text-right text-center">
                     <a href="{{ route('export') }}"
                        class="hover:underline gradient text-white font-bold rounded py-4 px-8 shadow-lg">
-                        Download Data
+                        {{ __('forms.update_form_download_data') }}
                     </a>
                 </div>
             @else

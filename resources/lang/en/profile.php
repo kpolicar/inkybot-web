@@ -27,4 +27,10 @@ return [
     'activity_none' => 'No activity',
 
     'session_from' => 'Session from :time',
+
+    'billing_ends' => 'Your billing period ends on the :date',
+    'next_invoice' => 'Your next invoice will be on the :date',
+
+    'statistics_chart_title' => '# Runes used during session',
+    'statistics_chart_tip' => 'This diagram can help you understand how many of each rune to purchase',
 ];

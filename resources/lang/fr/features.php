@@ -3,10 +3,10 @@
 return [
 
     'heading' => 'Caractéristiques',
-    'ocr' => 'Sécurité - Collecte de donnée ROC',
+    'ocr' => 'Sécurité - Reconnaissance optique de caractères',
     'ocr_details' => 'Les données sont collectées en prenant une capture d\'écran du client et les données requises sont analysées en utilisant une technologie ROC puissante. Ceci permet d\'être totalement indétectable et de garantir la compatibilité avec les prochaines mises à jour Dofus.',
 
-    'human_like' => 'Comportement Humain',
+    'human_like' => 'Comportement & Vitesse de type humain',
     'human_like_details' => 'Une simulation de clics de souris et clavier supprimant toutes différences entre le bot ou de réels humains. Le bot fonctionne à un rythme ordinaire et humain. Votre sécurité est notre priorité!',
 
     'updates' => 'Mises à Jour Régulières',

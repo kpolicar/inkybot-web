@@ -78,12 +78,11 @@
                     <div class="relative max-w-lg">
                         <canvas id="{{ $htmlChartId }}"
                                 class="data-chart hidden"
-                                data-title="# Runes used"
+                                data-title="{{ __('profile.statistics_chart_title') }}"
                                 data-dataset="{{ json_encode($magingSummedByStat) }}"></canvas>
                         @if ($first)
                             <aside class="text-xs mt-6 px-6 border-dashed">
-                                <i class="fas fa-lightbulb text-gray-800 text-sm mr-1"></i>
-                                This diagram can help you understand how many of each rune to purchase
+                                <i class="fas fa-lightbulb text-gray-800 text-sm mr-1"></i>{{ __('profile.statistics_chart_tip') }}
                             </aside>
                         @endif
                     </div>
