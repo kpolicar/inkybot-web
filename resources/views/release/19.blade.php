@@ -33,18 +33,6 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Improved OCR accuracy on <strong>low & very high resolutions</strong>
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Improved <strong>user interfaces</strong>: added <strong>refresh</strong> buttons, <strong>hide advanced configuration</strong> options by default
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
                             Added <strong>run out of runes notification</strong> even when the option: "Monitor Rune Quantity" is not enabled
                         </span>
                     </li>
@@ -64,6 +52,18 @@
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
                             Added preview of all <strong>successfully maged exos</strong> (check out your <a class="underline" href="{{ route('profile') }}#exos">Profile Page</a>)
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Improved OCR accuracy on <strong>low & very high resolutions</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Improved <strong>user interfaces</strong>: added <strong>refresh</strong> buttons, <strong>hide advanced configuration</strong> options by default
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
