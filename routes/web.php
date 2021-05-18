@@ -5,6 +5,7 @@ use App\Exports\MagingExport;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CoinbaseController;
 use App\Http\Controllers\CoinbaseWebhookController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\LinkDiscordController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\StripeWebhookController;
@@ -125,6 +126,10 @@ Route::group(
     Route::view(LaravelLocalization::transRoute('routes.login-discord'), 'discord-link')
         ->middleware(['guest'])
         ->name('login.discord');
+
+    Route::get(LaravelLocalization::transRoute('routes.statistics_activity'), [Controller::class, 'activity'])
+        ->middleware('auth')
+        ->name('statistics.activity');
 });
 
 Route::prefix('discord')->group(function () {
@@ -132,6 +137,7 @@ Route::prefix('discord')->group(function () {
         ->middleware([SetLocaleFromSession::class, 'auth', 'signed', 'throttle:3,1'])
         ->name('discord.link');
 });
+
 
 Route::get('price', [BillingController::class, 'price'])
     ->name('billing.price');

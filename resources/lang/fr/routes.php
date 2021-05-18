@@ -19,4 +19,5 @@ return [
     'email-verify-id-hash' => 'email/verifier/{id}/{hash}',
     'email-verification-notification' => 'email/renvoyer',
     'export' => 'donnees/exporter',
+    'statistics_activity' => 'statistiques/activite',
 ];
