@@ -82,11 +82,16 @@ class ApiController extends Controller
     public function StatisticsUpdate(Request $request) {
         $maging = Maging::activeForUser($request->user());
         $expended = $request->input('expend', 0);
+        $timeMaging = $request->input('time_maging', 0);
 
         if ($expended > 300000 || !$request->input('expended_enabled', false))
             $expended = 0;
-        $maging->expended += $expended;
-        $maging->time_maging += $request->input('time_maging', 0);
+        if ($timeMaging > 300)
+            $timeMaging = 0;
+
+        $maging->expended += max(0, $expended);
+        $maging->time_maging += max(0, $timeMaging);
+
         foreach (json_decode($request->input('attempts', "{}"), true) as $stat => $runeTypeAttempts) {
             $magingAttempts = $maging->attempts ?? [];
 

@@ -14,7 +14,7 @@ class UpdateMagingsTableAddTimeMaging extends Migration
     public function up()
     {
         Schema::table('magings', function (Blueprint $table) {
-            $table->integer('time_maging')->after('expended')->default(0);
+            $table->unsignedInteger('time_maging')->after('expended')->default(0);
         });
     }
 
