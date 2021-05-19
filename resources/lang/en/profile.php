@@ -29,6 +29,7 @@ return [
     'session_from' => 'Session from :time',
 
     'billing_ends' => 'Your billing period ends on the :date',
+    'subscription_ends' => 'Your subscription ends on the :date',
     'next_invoice' => 'Your next invoice will be on the :date',
 
     'statistics_chart_title' => '# Runes used during session',
