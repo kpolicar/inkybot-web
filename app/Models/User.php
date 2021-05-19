@@ -12,12 +12,17 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Cashier\Billable;
+use Laravel\Cashier\Subscription;
 use Laravel\Passport\HasApiTokens;
 use Stripe\Invoice;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasApiTokens, Billable, UserThrottles, UserCacheAttributes;
+    use HasFactory, Notifiable, HasApiTokens, Billable, UserThrottles, UserCacheAttributes {
+        subscription as cashierSubscription;
+        subscribed as cashierSubscribed;
+        subscribedToPlan as cashierSubscribedToPlan;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -58,7 +63,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'is_free_trial', 'free_trial_available',
     ];
 
-    protected $hasUpdatedSubscribedToFromCashier = false;
 
     protected static function boot()
     {
@@ -149,6 +153,46 @@ class User extends Authenticatable implements MustVerifyEmail
             ->map->sum()->sum();
 
         return max(0, $exoMagesInPlan-$exoMagesSoFar);
+    }
+
+    public function subscribedDeprecated()
+    {
+        return !!optional($this->subscribed_to)->isAfter(now());
+    }
+
+    public function subscription($name = 'default')
+    {
+        if ($this->subscribedDeprecated()) {
+
+            $dummySubscription = $this->subscriptions()->make([
+                'name' => $name,
+                'stripe_status' => 'cancelled',
+                'stripe_plan' => Billing::unlimitedPlan(),
+                'quantity' => 1,
+                'current_period_end' => $this->subscribed_to,
+                'ends_at' => $this->subscribed_to,
+            ]);
+
+            return $dummySubscription;
+        }
+
+        return $this->cashierSubscription($name);
+    }
+
+    public function subscribed($name = 'default', $plan = null)
+    {
+        if ($this->subscribedDeprecated())
+            return true;
+
+        return $this->cashierSubscribed($name, $plan);
+    }
+
+    public function subscribedToPlan($plans, $name = 'default')
+    {
+        if ($plans == Billing::unlimitedPlan() && $this->subscribedDeprecated())
+            return true;
+
+        return $this->cashierSubscribedToPlan($plans, $name);
     }
 
     public function linkDiscord($id)

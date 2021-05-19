@@ -20,17 +20,11 @@ class ClientUser extends JsonResource
      */
     public function toArray($request)
     {
-        try {
-            $periodEndsAt = $this->subscription()->current_period_end;
-            $subscribedTo = $periodEndsAt ? new Carbon($periodEndsAt) : now();
-        } catch (\Exception $e) {
-            $subscribedTo = now();
-        }
         return [
             'i30jfVx9krmacQH' => $this->name,
             'rGEFoEUizObjmwg' => $this->number_of_exo_mages_left_in_plan ?: 0,
             'CXpD6X71WZhYsHf' => $this->email,
-            'rbvQL1e41MOgDLA' => $subscribedTo, //deprecated: subscribed_to
+            'rbvQL1e41MOgDLA' => optional($this->subscription())->current_period_end ?: $this->subscribed_to, //deprecated: subscribed_to
             'wVakGMaAnUQkCFZ' => $this->subscribed(),
             'Sw6mNjvR0HZofKj' => $this->is_free_trial,
             'EbP8tMjESR6IGvi' => $this->free_trial_available,
@@ -42,15 +36,5 @@ class ClientUser extends JsonResource
             'ls6uIocgdyUtp4c' => $this->subscribedToPlan(Billing::standardPlan()),
             'SniDbUjb49VghoM' => $this->subscribedToPlan(Billing::unlimitedPlan()),
         ];
-    }
-
-    protected function getNumberOfExoMagesLeftInPlan()
-    {
-        $cacheKey = 'user_'.$this->id.'_number_of_exo_mages_left_in_plan';
-        $numberOfExosLeft = Cache::get($cacheKey, function () use ($cacheKey) {
-
-            Cache::put($cacheKey, $this->number_of_exo_mages_left_in_plan, now()->addHour());
-            return $gameVersion;
-        });
     }
 }

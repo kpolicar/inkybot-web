@@ -48,7 +48,7 @@ Route::middleware(['auth:api', 'throttle:notification_rate_limit_per_minute,1,no
 Route::middleware('auth:api')
     ->get('/user', [ApiController::class, 'User']);
 
-Route::middleware('auth:api')
+Route::middleware(['auth:api', 'can:view-statistics'])
     ->get('/statistics', [ApiController::class, 'StatisticsView'])
     ->name('statistics.view');
 

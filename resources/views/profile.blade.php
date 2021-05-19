@@ -29,7 +29,9 @@
 
             @unless (!$subscriptionPeriodEnd && !$subscriptionCancelledAt)
                 <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
-                    @if ($subscriptionCancelledAt)
+                    @if (Auth::user()->subscribedDeprecated())
+                        {{ __('profile.subscription_ends', ['date' => (new \Carbon\Carbon($subscriptionPeriodEnd))->format('d.m.Y')]) }}
+                    @elseif($subscriptionCancelledAt)
                         {{ __('profile.billing_ends', ['date' => $subscriptionCancelledAt->format('d.m.Y')]) }}
                     @elseif($subscriptionPeriodEnd)
                         {{ __('profile.next_invoice', ['date' => (new \Carbon\Carbon($subscriptionPeriodEnd))->format('d.m.Y')]) }}
