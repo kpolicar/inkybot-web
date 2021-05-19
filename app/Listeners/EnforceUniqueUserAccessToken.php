@@ -26,9 +26,7 @@ class EnforceUniqueUserAccessToken
             $user->tokens()
                 ->where('revoked', 0)
                 ->where('id', '!=', $event->tokenId)
-                ->update([
-                    'revoked' => true
-                ]);
+                ->delete();
             return;
         }
 
@@ -46,9 +44,7 @@ class EnforceUniqueUserAccessToken
                 ->where('revoked', 0)
                 ->where('id', '!=', $event->tokenId)
                 ->whereIn('name', $tokensToDelete->keys())
-                ->update([
-                    'revoked' => true
-                ]);
+                ->delete();
         }
     }
 }
