@@ -13,7 +13,7 @@ class Maging extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'expended'
+        'user_id', 'expended', 'time_maging'
     ];
 
     protected $casts = [
@@ -23,6 +23,7 @@ class Maging extends Model
     ];
 
     protected $attributes = [
+        'time_maging' => 0,
         'expended' => 0,
     ];
 
