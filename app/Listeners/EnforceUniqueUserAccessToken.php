@@ -19,8 +19,6 @@ class EnforceUniqueUserAccessToken
         DB::table('oauth_access_tokens')
             ->where('user_id', $event->userId)
             ->where('id', '!=', $event->tokenId)
-            ->update([
-                'revoked' => 1
-            ]);
+            ->delete();
     }
 }
