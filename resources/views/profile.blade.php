@@ -9,7 +9,9 @@
             <p class="uppercase tracking-loose w-full">
                 {{ __('messages.category') }}
             </p>
-            <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
+            <h1 class="my-4 text-5xl font-bold leading-tight">
+                {{ Auth::user()->name }}
+            </h1>
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
                     {{ __('profile.subscribed') }}
