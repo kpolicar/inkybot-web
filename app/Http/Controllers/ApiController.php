@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\ViewErrorBag;
+use LaravelLocalization;
+use Validator;
 use Image;
 use Storage;
 use OneSignal;
@@ -65,18 +71,48 @@ class ApiController extends Controller
         $this->NotifyOneSignal($request, $message);
     }
 
-    public function StatisticsView($version)
+    public function StatisticsView($version, $errors=[])
     {
-        return view('api/statistics', compact('version'));
+        $this->setLocaleFromInputParam();
+        $errorBag = new ViewErrorBag;
+        if ($errors)
+            $errorBag->put('default', $errors);
+
+        return view('api/statistics', compact('version') + ['errors' => $errorBag]);
     }
 
     public function StatisticsNewSession(Request $request, $version)
     {
-        $current = Maging::activeForUser($request->user());
-        if ($current->expended || $current->exo_attempts || $current->exo_successes) {
-            $request->user()->maging()->create();
+        $this->setLocaleFromInputParam();
+        $validator = Validator::make($request->all(), [
+            'label' => 'nullable|string|max:50'
+        ]);
+        if ($validator->fails()) {
+            return $this->StatisticsView($version, $validator->errors());
         }
-        return $this->StatisticsView($version);
+
+        $current = Maging::activeForUser($request->user());
+        if ($current->expended || $current->exo_attempts || $current->exo_successes || !$current->exists) {
+            $request->user()->maging()->create(
+                $request->only('label')
+            );
+        } else if ($current->exists) {
+            if ($current->label != $request->input('label')) {
+                $current->update($request->only('label'));
+            } else {
+                $errors = new MessageBag([
+                    'default' => __('validation.session_in_progress')
+                ]);
+            }
+        }
+        return $this->StatisticsView($version, isset($errors) ? $errors : []);
+    }
+
+    protected function setLocaleFromInputParam()
+    {
+        app()->setLocale(
+            request()->input('locale', $locale = LaravelLocalization::getDefaultLocale())
+        );
     }
 
     public function StatisticsUpdate(Request $request) {

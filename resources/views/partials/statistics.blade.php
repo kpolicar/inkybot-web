@@ -17,7 +17,10 @@
                        for="{{ $htmlTabId }}">
                     <span>
                         <i class="{{ $active ? 'far fa-clock' : 'fas fa-history' }} tab-rotate--360 text-gray-800 mr-1 transition duration-700"></i>
-                        {{ $title ?? __('profile.session_from', ['time' => $maging->created_at->format('H:i')]) }}
+                        {{ __('profile.session_from', ['time' => $maging->created_at->format('H:i')]) }}
+                        @if ($maging->label)
+                            <strong> # {{ $maging->label }}</strong>
+                         @endif
                         <i class="fas fa-angle-down pl-2"></i>
                     </span>
                 </label>

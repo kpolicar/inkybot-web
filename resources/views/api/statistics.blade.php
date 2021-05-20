@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ LaravelLocalization::getCurrentLocale() }}">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,15 +19,33 @@
         @include('partials.feature-locked')
     @endcan
 
-    <div class="pb-8 mx-8 -mt-8">
+    <div class="pb-8 mx-8">
         <form action="{{ route('statistics.newsession', compact('version')) }}"
-              method="POST">
+              class="flex justify-around items-start text-sm"
+              method="GET">
             @csrf
+            <div class="w-full">
+                <input type="text"
+                       name="label"
+                       maxlength="50"
+                       class="w-full bg-gray-200 text-gray-700 border @error('label') border-red-500 @enderror border-gray-200 rounded py-4 px-4 focus:outline-none focus:bg-gray-100 focus:border-gray-500"
+                       placeholder="{{ __('profile.statistics_new_session_label') }}">
+                @error('label')
+                    <small class="text-red-500 text-xs italic">
+                        {{ $message }}
+                    </small>
+                @enderror
+            </div>
             <button type="submit"
-               class="hover:underline gradient text-white font-bold rounded py-4 px-8 shadow-lg">
-                Begin new Session
+               class="w-full hover:underline gradient text-white font-bold rounded py-4 px-6 shadow-lg ml-4">
+                {{ __('profile.statistics_new_session') }}
             </button>
         </form>
+        @error('default')
+        <small class="text-red-500 text-xs italic">
+            {{ $message }}
+        </small>
+        @enderror
     </div>
 </main>
 </body>
