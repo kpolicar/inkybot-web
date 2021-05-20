@@ -34,4 +34,6 @@ return [
 
     'statistics_chart_title' => '# Runes utilisées pendant la session',
     'statistics_chart_tip' => 'Ce diagramme peut vous aider à comprendre combien de chaque rune acheter',
+    'statistics_new_session_label' => 'Label personnalisée',
+    'statistics_new_session' => 'Commencer une nouvelle session',
 ];

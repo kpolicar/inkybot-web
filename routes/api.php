@@ -3,10 +3,15 @@
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\DiscordController;
 use App\Http\Middleware\EncryptApiResponse;
+use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\RedirectFromPublicUriMiddleware;
 use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
 use App\Models\FreeTrial;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Http\Request;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +52,7 @@ Route::middleware(['auth:api', 'throttle:notification_rate_limit_per_minute,1,no
 
 Route::middleware('auth:api')
     ->get('/user', [ApiController::class, 'User']);
+
 
 Route::middleware(['auth:api', 'can:view-statistics'])
     ->get('/statistics', [ApiController::class, 'StatisticsView'])
