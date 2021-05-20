@@ -41,7 +41,7 @@
                                      title="Kamas"/>
                             </div>
                             <span class="font-bold">
-                                    @if ($maging->expended >= 1000) {{ round($maging->expended / 1000000, 2) }}
+                                    @if ($maging->expended >= 10000) {{ round($maging->expended / 1000000, 2) }}
                                 mk @else {{ $maging->expended }} @endif
                                 </span>
                         </li>
