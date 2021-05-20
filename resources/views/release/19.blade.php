@@ -63,7 +63,25 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
+                            Added <strong>custom labels</strong> to maging sessions
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Added <strong>kamas used</strong> label on client sidebar
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
                             Improved OCR accuracy on <strong>low & very high resolutions</strong>
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Improved the <strong>AI's sink usage</strong> to better prioritize over/exomaging
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
