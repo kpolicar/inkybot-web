@@ -6,7 +6,7 @@
 @else
 
     @php($willRedirectToIncompletePaymentPayPage = Auth::user()->hasIncompletePayment() && $incompletePaymentRedirect)
-    @php($disabled = !Auth::user()->hasVerifiedEmail() || !$willRedirectToIncompletePaymentPayPage && Auth::user()->hasIncompletePayment() || Auth::user()->subscribedDeprecated())
+    @php($disabled = !Auth::user()->hasVerifiedEmail() || !$willRedirectToIncompletePaymentPayPage && Auth::user()->hasIncompletePayment() || (Auth::user()->subscribedDeprecated() && !Auth::user()->cashierSubscribed()))
 
     <a href="{{ route('subscribe', array_filter(compact('plan'))) }}"
 
@@ -14,7 +14,7 @@
        title="You must first finish an incomplete payment."
        @elseif(!Auth::user()->hasVerifiedEmail())
        title="You must first verify your email address."
-       @elseif(Auth::user()->subscribedDeprecated())
+       @elseif(Auth::user()->subscribedDeprecated() && !Auth::user()->cashierSubscribed())
        title="You must wait for your active subscription to expire."
        @endif
        @if($disabled) onclick="event.preventDefault()" @endif
