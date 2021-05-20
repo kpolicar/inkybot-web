@@ -28651,6 +28651,10 @@ input[type=color]:focus,
   max-height: 100vh;
 }
 
+.tab input:checked ~ .tab-title .tab-rotate--360 {
+  transform: rotate(-360deg);
+}
+
 .bounce {
   -webkit-animation: bounce 3s infinite;
   animation: bounce 3s infinite;

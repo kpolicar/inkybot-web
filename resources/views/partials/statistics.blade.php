@@ -9,14 +9,14 @@
 
         <div class="tab w-full">
             <input class="absolute opacity-0" id="{{ $htmlTabId }}" type="checkbox" name="tabs" @if($first) checked @endif>
-            <div class="flex md:justify-start justify-center items-center">
+            <div class="flex md:justify-start justify-center items-center tab-title">
                 <div style="flex: 1;" class="border-gray-200 border-b-2 -mt-2 border-dashed mr-2 md:hidden"></div>
 
 
                 <label class="sm:-mx-1 mx-0 block pb-2 leading-normal cursor-pointer hover:underline"
                        for="{{ $htmlTabId }}">
                     <span>
-                        <i class="{{ $active ? 'far fa-clock' : 'fas fa-history' }} text-gray-800 mr-1"></i>
+                        <i class="{{ $active ? 'far fa-clock' : 'fas fa-history' }} tab-rotate--360 text-gray-800 mr-1 transition duration-700"></i>
                         {{ $title ?? __('profile.session_from', ['time' => $maging->created_at->format('H:i')]) }}
                         <i class="fas fa-angle-down pl-2"></i>
                     </span>
