@@ -21,6 +21,7 @@ class CreateReportsTable extends Migration
             $table->unsignedInteger('time_maging');
             $table->unsignedInteger('exo_attempts');
             $table->unsignedInteger('exo_successes');
+            $table->unsignedInteger('new_users');
             $table->timestamps();
         });
     }
