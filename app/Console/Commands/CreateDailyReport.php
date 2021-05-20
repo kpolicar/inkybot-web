@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use DB;
+use Validator;
 use App\Models\Maging;
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Laravel\Cashier\Subscription;
 
@@ -15,7 +18,7 @@ class CreateDailyReport extends Command
      *
      * @var string
      */
-    protected $signature = 'report:create {--save}';
+    protected $signature = 'report:create {date?} {--save}';
 
     /**
      * The console command description.
@@ -41,8 +44,17 @@ class CreateDailyReport extends Command
      */
     public function handle()
     {
-        $now = now();
-        $todaysDate = $now->subDay()->toDateString();
+        $customDate = $this->argument('date');
+        if ($customDate) {
+            try {
+                $date = new Carbon($customDate);
+            } catch (\Exception $e) {
+                $this->error('The date is not a valid date.');
+                return 1;
+            }
+        }
+        $date = $date ?? now();
+        $dateString = $date->toDateString();
 
         $magings = Maging::todays()->get();
         $exoAttempts = $magings->pluck('exo_attempts')
@@ -57,10 +69,11 @@ class CreateDailyReport extends Command
             ->sum();
 
         $timeMaging = $magings->pluck('time_maging')->sum();
-        $payments = DB::table('payments')->whereDate('created_at', '>', $todaysDate)->get();
+        $payments = DB::table('payments')->whereDate('created_at', $dateString)->get();
         $paymentCount = $payments->count();
-        $subscriptions = Subscription::whereDate('created_at', '>', $todaysDate)->count();
+        $subscriptions = Subscription::whereDate('created_at', $dateString)->count();
         $revenue = $payments->pluck('amount')->sum();
+        $newUsers = User::whereDate('created_at', $dateString)->count();
 
         $timeMagingInMinutes = $timeMaging/60;
         $revenueInEuros = $revenue/100;
@@ -70,7 +83,8 @@ class CreateDailyReport extends Command
             "Subscriptions: $subscriptions, ".
             "Time Maging: $timeMagingInMinutes minutes, ".
             "Attempts: $exoAttempts, ".
-            "Successes: $exoSuccesses");
+            "Successes: $exoSuccesses, ".
+            "New users: $newUsers");
 
         if ($this->option('save')) {
             DB::table('reports')->insert([
@@ -80,8 +94,9 @@ class CreateDailyReport extends Command
                 'time_maging' => $timeMaging,
                 'exo_attempts' => $exoAttempts,
                 'exo_successes' => $exoSuccesses,
-                'updated_at' => $now,
-                'created_at' => $now,
+                'new_users' => $newUsers,
+                'updated_at' => now(),
+                'created_at' => $dateString,
             ]);
         }
 
