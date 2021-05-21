@@ -5,6 +5,7 @@ use App\Http\Controllers\DiscordController;
 use App\Http\Middleware\EncryptApiResponse;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectFromPublicUriMiddleware;
+use App\Http\Middleware\Subscribed;
 use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
 use App\Models\FreeTrial;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -34,36 +35,39 @@ Route::prefix('/discord')->group(function () {
 
 Route::get('/', [ApiController::class, 'Info']);
 
-Route::middleware(['auth:api', EncryptApiResponse::class])->post('/trial/begin', function (Request $request) {
-    $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
-        ->orWhere('ip_address', $ip_address = $request->ip())
-        ->updateOrCreate([], compact('user_id', 'ip_address'));
+Route::middleware('auth:api')->group(function () {
 
-    return new ClientFreeTrialResource($freeTrial);
+    Route::middleware(EncryptApiResponse::class)->post('/trial/begin', function (Request $request) {
+        $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
+            ->orWhere('ip_address', $ip_address = $request->ip())
+            ->updateOrCreate([], compact('user_id', 'ip_address'));
+
+        return new ClientFreeTrialResource($freeTrial);
+    });
+
+    Route::middleware('throttle:notification_rate_limit_per_minute,1,notification')
+        ->prefix('/notify')
+        ->group(function () {
+            Route::post('error', [ApiController::class, "NotifyError"]);
+            Route::post('runes', [ApiController::class, "NotifyRunes"]);
+            Route::post('finished', [ApiController::class, "NotifyFinished"]);
+        });
+
+    Route::get('/user', [ApiController::class, 'User']);
+
+    Route::middleware(['can:view-statistics', 'throttle:view_statistics_rate_limit_per_minute,1,statistics_view'])
+        ->get('/statistics', [ApiController::class, 'StatisticsView'])
+        ->name('statistics.view');
+
+    Route::middleware(['can:create-statistics', 'throttle:create_statistics_rate_limit_per_minute,1,statistics_new_session'])
+        ->post('/statistics/newsession', [ApiController::class, 'StatisticsNewSession'])
+        ->name('statistics.newsession');
+
+    Route::middleware(['can:create-statistics', 'throttle:create_statistics_rate_limit_per_minute,1,statistics_create'])
+        ->post('/statistics', [ApiController::class, "StatisticsUpdate"]);
+
+    Route::middleware(['can:publish-exos', 'throttle:publish_rate_limit_per_hour,60,publish'])
+        ->post('/publish', [ApiController::class, "StatisticsPublish"]);
+
 });
 
-Route::middleware(['auth:api', 'throttle:notification_rate_limit_per_minute,1,notification'])
-    ->prefix('/notify')
-    ->group(function () {
-        Route::post('error', [ApiController::class, "NotifyError"]);
-        Route::post('runes', [ApiController::class, "NotifyRunes"]);
-        Route::post('finished', [ApiController::class, "NotifyFinished"]);
-});
-
-Route::middleware('auth:api')
-    ->get('/user', [ApiController::class, 'User']);
-
-
-Route::middleware(['auth:api', 'can:view-statistics'])
-    ->get('/statistics', [ApiController::class, 'StatisticsView'])
-    ->name('statistics.view');
-
-Route::middleware('auth:api')
-    ->post('/statistics/newsession', [ApiController::class, 'StatisticsNewSession'])
-    ->name('statistics.newsession');
-
-Route::middleware('auth:api')
-    ->post('/statistics', [ApiController::class, "StatisticsUpdate"]);
-
-Route::middleware(['auth:api', 'throttle:publish_rate_limit_per_hour,60,publish'])
-    ->post('/publish', [ApiController::class, "StatisticsPublish"]);
