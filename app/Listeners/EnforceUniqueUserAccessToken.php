@@ -24,7 +24,6 @@ class EnforceUniqueUserAccessToken
         $token = $user->tokens()->firstWhere('id', $event->tokenId);
         if ($token->name == null) {
             $user->tokens()
-                ->where('revoked', 0)
                 ->where('id', '!=', $event->tokenId)
                 ->delete();
             return;
@@ -32,7 +31,6 @@ class EnforceUniqueUserAccessToken
 
         $skip = max(optional($user->subscription())->quantity - 1, 0);
         $tokensToDelete = $user->tokens()
-            ->where('revoked', 0)
             ->where('id', '!=', $event->tokenId)
             ->get()
             ->groupBy('name')
@@ -41,7 +39,6 @@ class EnforceUniqueUserAccessToken
 
         if (!empty($tokensToDelete)) {
             $user->tokens()
-                ->where('revoked', 0)
                 ->where('id', '!=', $event->tokenId)
                 ->whereIn('name', $tokensToDelete->keys())
                 ->delete();
