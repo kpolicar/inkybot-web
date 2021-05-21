@@ -38,6 +38,11 @@
                     @endif
                 </p>
             @endif
+            @if (Auth::user()->subscribed() && !Auth::user()->subscribedToPlan(App\Billing::unlimitedPlan()))
+                <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
+                    You have <b>{{ Auth::user()->number_of_exo_mages_left_in_plan }} exos</b> left in your plan
+                </p>
+            @endif
 
             @if ($credit = Auth::user()->stripe_balance)
                 <p class="leading-normal uppercase text-base text-gray-400 -mt-8 mb-8">

@@ -65,6 +65,14 @@ class AuthServiceProvider extends ServiceProvider
                 && !$user->hasIncompletePayment();
         });
 
+        $isSubscribed = function (User $user) {
+            return $user->subscribed();
+        };
+
+        Gate::define('create-statistics', $isSubscribed);
+        Gate::define('publish-exos', $isSubscribed);
+        Gate::define('mage-exos', $isSubscribed);
+
         Gate::define('view-statistics', function (User $user) {
             return $user->subscribed()
                 && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
@@ -75,9 +83,6 @@ class AuthServiceProvider extends ServiceProvider
                 && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
         });
 
-        Gate::define('mage-exos', function (User $user) {
-            return $user->subscribed();
-        });
 
         Gate::define('custom-maging-ai', function (User $user) {
             return $user->subscribed()

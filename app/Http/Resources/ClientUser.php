@@ -31,6 +31,8 @@ class ClientUser extends JsonResource
             'xXTPOXHgAlFoCHx' => optional($this->trial_ends_at)->format('H:i'),
             'GIZiGvqAkMRUyZc' => $this->can('custom-maging-ai'),
             'aloThuYtoJVqZYK' => $this->can('view-statistics'),
+            'OfGoZPnBHQxneiN' => $this->can('create-statistics'),
+            'BwgdubYTUtyRdER' => $this->can('publish-exos'),
             'jINhXckEVJaciuq' => $this->can('mage-exos'),
             'bP6Aa9RdmDlggKY' => $this->subscribedToPlan(Billing::starterPlan()),
             'ls6uIocgdyUtp4c' => $this->subscribedToPlan(Billing::standardPlan()),
