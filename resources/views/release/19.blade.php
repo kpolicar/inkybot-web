@@ -75,6 +75,12 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
+                            Added <strong>automatic shutdown</strong> configuration option
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
                             Improved OCR accuracy on <strong>low & very high resolutions</strong>
                         </span>
                     </li>
