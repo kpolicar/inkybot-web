@@ -32,6 +32,17 @@ return [
     'subscription_ends' => 'Votre abonnement prend fin le :date',
     'next_invoice' => 'Votre prochaine facture sera sur le :date',
 
+    'history' => 'Histoire',
+
+    'billing_complete_payment' => 'Terminer le paiement',
+    'billing_verify_email' => 'Vous devez d\'abord vérifier votre adresse e-mail.',
+
+    'instances' => ':number instances',
+    'credit' => 'crédit',
+    'exo_mages_left_in_plan' => 'Il vous reste <b>:number exos</b> dans votre plan',
+    'exo_mages_empty' => 'Vos mages exo réussis apparaîtront ici.',
+    'exo_mages' => 'Jusqu\'à présent, vous avez réussi à maged :number exos',
+
     'statistics_chart_title' => '# Runes utilisées pendant la session',
     'statistics_chart_tip' => 'Ce diagramme peut vous aider à comprendre combien de chaque rune acheter',
     'statistics_new_session_label' => 'Label personnalisée',

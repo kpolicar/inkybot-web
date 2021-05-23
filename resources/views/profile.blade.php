@@ -17,7 +17,7 @@
                     {{ __('profile.subscribed') }}
 
                     @if (Auth::user()->subscription()->quantity > 1)
-                        // <b>{{ Auth::user()->subscription()->quantity }} instances</b>
+                        // <b>{{ __('profile.instances', ['number' => Auth::user()->subscription()->quantity ]) }}</b>
                     @endif
                 @else
                     {{ __('profile.subscribed_false') }}
@@ -40,19 +40,19 @@
             @endif
             @if (Auth::user()->subscribed() && !Auth::user()->subscribedToPlan(App\Billing::unlimitedPlan()))
                 <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
-                    You have <b>{{ Auth::user()->number_of_exo_mages_left_in_plan }} exos</b> left in your plan
+                    {!! __('profile.exo_mages_left_in_plan', ['number' => Auth::user()->number_of_exo_mages_left_in_plan]) !!}
                 </p>
             @endif
 
             @if ($credit = Auth::user()->stripe_balance)
                 <p class="leading-normal uppercase text-base text-gray-400 -mt-8 mb-8">
-                    <b>€{{ number_format(-$credit/100, 2) }}</b> <small>credit</small>
+                    <b>€{{ number_format(-$credit/100, 2) }}</b> <small>{{ __('profile.credit') }}</small>
                 </p>
             @endif
 
             @if (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail() && !\Auth::user()->subscribed())
                 <a href="{{ Auth::user()->hasVerifiedEmail() ? '#pricing' : '#' }}"
-                   @unverified onclick="event.preventDefault()" title="You must first verify your email address." @endunverified
+                   @unverified onclick="event.preventDefault()" title="{{ __('profile.billing_verify_email') }}" @endunverified
                    class="@unverified cursor-not-allowed @endunverified group mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                     {{ __('profile.subscribed_purchase') }}
                     <i class="fas fa-angle-right text-lg ml-2 -mr-2 @verified transform group-hover:translate-x-2 duration-100 @endverified"></i>
@@ -60,7 +60,7 @@
             @else
                 <x-billing-button class="group mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                     @if (Auth::user()->hasIncompletePayment())
-                        Complete Payment
+                        {{ __('profile.billing_complete_payment') }}
                     @else
                         {{ __('profile.subscribed_manage') }}
                     @endif
@@ -277,7 +277,7 @@
         <div class="container max-w-5xl mx-auto m-8">
             <div id="exos" class="anchor"></div>
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                History
+                {{ __('profile.history') }}
             </h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -289,9 +289,9 @@
                     <i class="fas {{ Auth::user()->can('view-exos') ? 'fa-trophy' : 'fa-lock' }} text-5xl"></i>
                     <p class="mt-2">
                         @if (Auth::user()->publishes->isEmpty())
-                            Your successful exo mages will appear here.
+                            {{ __('profile.exo_mages_empty') }}
                         @else
-                            So far you have successfully maged {{ Auth::user()->publishes->count() }} exos
+                            {{ __('profile.exo_mages', ['number' => Auth::user()->publishes->count()]) }}
                         @endif
                     </p>
                 </div>
@@ -303,7 +303,7 @@
         @can('view-exos')
             @unless (Auth::user()->publishes->isEmpty())
                 <div style="width: calc(100vw - (100vw - 100%));" class="pb-8">
-                    <div id="swiper-exos" class="swiper-container text-gray-800 opacity-0" data-autoplay>
+                    <div id="swiper-exos" class="swiper-container text-gray-800 opacity-0 h-40" data-autoplay>
                         <div class="swiper-wrapper flex items-center">
                             @foreach(Auth::user()->publishes as $exo)
                                 <div class="swiper-slide">

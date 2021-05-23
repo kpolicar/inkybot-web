@@ -132,7 +132,7 @@ class ApiController extends Controller
             $magingAttempts = $maging->attempts ?? [];
 
             foreach ($runeTypeAttempts as $runeType => $attempts) {
-                $magingAttempts[$stat][$runeType] = $attempts + ((int) data_get("$stat.$runeType", $magingAttempts, 0));
+                $magingAttempts[$stat][$runeType] = $attempts + ((int) data_get($magingAttempts, "$stat.$runeType", 0));
             }
             $maging->attempts = $magingAttempts;
         }

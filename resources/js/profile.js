@@ -8,7 +8,7 @@ import palette from 'google-palette';
 let swiperElement = document.querySelector('#swiper-exos');
 
 if (swiperElement) {
-    let swiper = new Swiper(swiperElement, {
+    var swiper = new Swiper(swiperElement, {
         slidesPerView: 2,
         lazy: true,
         spaceBetween: 5,
