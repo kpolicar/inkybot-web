@@ -1,14 +1,18 @@
 import Swiper, { Autoplay, Lazy } from 'swiper';
 // import Swiper styles
 import 'swiper/swiper-bundle.css';
+
 import Chart from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import palette from 'google-palette';
 
+Swiper.use(Autoplay);
+Swiper.use(Lazy);
+
 let swiperElement = document.querySelector('#swiper-exos');
 
 if (swiperElement) {
-    var swiper = new Swiper(swiperElement, {
+    let swiper = new Swiper(swiperElement, {
         slidesPerView: 2,
         lazy: true,
         spaceBetween: 5,
