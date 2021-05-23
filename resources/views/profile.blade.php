@@ -303,7 +303,7 @@
         @can('view-exos')
             @unless (Auth::user()->publishes->isEmpty())
                 <div style="width: calc(100vw - (100vw - 100%));" class="pb-8">
-                    <div id="swiper-exos" class="swiper-container text-gray-800 opacity-0 h-40" data-autoplay>
+                    <div id="swiper-exos" class="swiper-container text-gray-800 opacity-0" data-autoplay>
                         <div class="swiper-wrapper flex items-center">
                             @foreach(Auth::user()->publishes as $exo)
                                 <div class="swiper-slide">
