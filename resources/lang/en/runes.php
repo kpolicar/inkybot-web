@@ -12,7 +12,7 @@ return [
     'chance' => 'cha',
     'strength' => 'stre',
     'intelligence' => 'int',
-    'power' => 'power',
+    'power' => 'pow',
     'critical' => 'crit',
     'wisdom' => 'wis',
 
