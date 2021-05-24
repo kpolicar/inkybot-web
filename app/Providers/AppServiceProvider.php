@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
             optional($model->user)->userCacheAttributesNumberOfExoMagesLeftInPlanClearCache();
         });
 
-        if (config('app.env') == 'production') {
+        if (app()->environment('production')) {
             \URL::forceScheme('https');
         }
         \URL::forceRootUrl(\Config::get('app.url'));

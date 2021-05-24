@@ -17,7 +17,7 @@ class Captcha
      */
     public function handle(Request $request, Closure $next)
     {
-        if (config('app.env') == 'production') {
+        if (app()->environment('production')) {
             $request->validate([
                 'g-recaptcha-response' => new CaptchaRule($request->ip())
             ]);

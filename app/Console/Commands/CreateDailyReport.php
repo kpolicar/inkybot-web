@@ -68,7 +68,9 @@ class CreateDailyReport extends Command
             ->map->sum()
             ->sum();
 
-        $timeMaging = $magings->pluck('time_maging')->sum();
+        $timeMaging = $magings->pluck('time_maging')->sum(function ($timeMaging) {
+            return $timeMaging / 1000; // from milliseconds to seconds
+        });
         $payments = DB::table('payments')->whereDate('created_at', $dateString)->get();
         $paymentCount = $payments->count();
         $subscriptions = Subscription::whereDate('created_at', $dateString)->count();

@@ -84,7 +84,7 @@ if (Features::enabled(Features::emailVerification())) {
 // Profile Information...
 if (Features::enabled(Features::updateProfileInformation())) {
     Route::put(LaravelLocalization::transRoute('routes.profile'), [ProfileInformationController::class, 'update'])
-        ->middleware(['auth'])
+        ->middleware(['auth', 'throttle:6,1'])
         ->name('user-profile-information.update');
 }
 
