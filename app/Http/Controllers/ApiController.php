@@ -122,7 +122,7 @@ class ApiController extends Controller
 
         if ($expended > 300000 || !$request->input('expended_enabled', false))
             $expended = 0;
-        if ($timeMaging > 300)
+        if ($timeMaging > 300 * 1000)
             $timeMaging = 0;
 
         $maging->expended += max(0, $expended);
