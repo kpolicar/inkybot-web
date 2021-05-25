@@ -20,7 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens, Billable, UserThrottles, UserCacheAttributes {
         subscription as cashierSubscription;
-        subscribed as cashierSubscribed;
+        subscribed as cashierSubscribedOriginal;
         subscribedToPlan as cashierSubscribedToPlan;
     }
 
@@ -184,7 +184,7 @@ class User extends Authenticatable implements MustVerifyEmail
         if ($this->subscribedDeprecated())
             return true;
 
-        return $this->cashierSubscribed($name, $plan);
+        return $this->cashierSubscribedOriginal($name, $plan);
     }
 
     public function subscribedToPlan($plans, $name = 'default')
@@ -193,6 +193,17 @@ class User extends Authenticatable implements MustVerifyEmail
             return true;
 
         return $this->cashierSubscribedToPlan($plans, $name);
+    }
+
+    public function cashierSubscribed($name = 'default', $plan = null)
+    {
+        $subscription = $this->cashierSubscription($name);
+
+        if (! $subscription || ! $subscription->valid()) {
+            return false;
+        }
+
+        return $plan ? $subscription->hasPlan($plan) : true;
     }
 
     public function linkDiscord($id)
