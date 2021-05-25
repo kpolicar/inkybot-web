@@ -37,6 +37,10 @@ class AuthServiceProvider extends ServiceProvider
     protected function registerPassport()
     {
         Passport::routes(null, [
+            'prefix' => 'oauth-v3',
+            'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class]
+        ]);
+        Passport::routes(null, [
             'prefix' => 'oauth-v2',
             'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class]
         ]);
