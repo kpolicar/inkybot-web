@@ -22,7 +22,7 @@ class StorePayment
         $data = [];
         if ($event->payment instanceof Charge) {
             $data = [
-                'user_id' => User::find($event->payment['metadata']['user_id']),
+                'user_id' => $event->payment['metadata']['user_id'],
                 'source' => 'coinbase',
                 'transaction_id' => $event->payment['code'],
                 'amount' => (int)str_replace('.', '', $event->payment['pricing']['local']['amount']),
