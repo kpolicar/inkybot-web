@@ -25,7 +25,7 @@ class StorePayment
                 'user_id' => User::find($event->payment['metadata']['user_id']),
                 'source' => 'coinbase',
                 'transaction_id' => $event->payment['code'],
-                'amount' => str_replace('.', '', $event->payment['pricing']['local']['amount']),
+                'amount' => (int)str_replace('.', '', $event->payment['pricing']['local']['amount']),
                 'currency' => $event->payment['pricing']['local']['currency'],
             ];
         } else if (is_array($event->payment)) {
