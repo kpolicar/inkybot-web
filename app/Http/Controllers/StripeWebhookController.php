@@ -35,7 +35,7 @@ class StripeWebhookController extends CashierController
         $response = parent::handleCustomerUpdated($payload);
 
         if ($user = $this->getUserByStripeId($payload['data']['object']['id'])) {
-            $user->stripe_balance = $payload['data']['object']['balance'];
+            $user->stripe_balance = (int)$payload['data']['object']['balance'];
             $user->save();
         }
 

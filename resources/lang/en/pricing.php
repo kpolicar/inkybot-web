@@ -19,15 +19,7 @@ return [
     'package_feature_scripts' => 'Custom Scripts',
     'package_feature_statistics' => 'Maging Statistics',
 
-
-    'package_subscription' => 'Subscription',
-    'package_feature_usage_30' => '1 hour use',
-    'package_feature_usage_unlimited' => 'Unlimited exos',
-    'package_feature_maging_basic' => 'Basic Maging',
-    'package_feature_exo' => 'Exomaging',
-    'package_feature_overmaging' => 'Overmaging',
-    'package_feature_magus_leveling' => 'Magus leveling',
-    'package_feature_leveling' => 'Magus profession leveling',
+    'restricted' => 'This feature is restricted to users subscribed to the <a href="#pricing" class="font-bold hover:underline">Standard</a> or <a href="#pricing" class="font-bold hover:underline">Unlimited</a> pack',
 
     'package_feature_exos_description' => 'The exo limit corresponds only to items successfully maged with an AP, MP, Range, or Summon.',
 ];
