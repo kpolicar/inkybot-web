@@ -2,17 +2,24 @@
 
 use App\ClientVersion;
 use App\Exports\MagingExport;
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CoinbaseController;
 use App\Http\Controllers\CoinbaseWebhookController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\LinkDiscordController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Middleware\NotSubscribed;
+use App\Http\Middleware\PlanExists;
 use App\Http\Middleware\SetLocaleFromSession;
 use App\Http\Middleware\Subscribed;
+use App\Http\Middleware\RedirectToInvoicePageIfIncompletePayment;
 use App\Models\Maging;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PaypalController;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -34,7 +41,20 @@ Route::group(
     ], function() {
 
     Route::get('/', function () {
-        return view('welcome');
+        $gameVersion = Cache::get('game_version', function () {
+            $response = rescue(function () {
+               return Http::get('https://launcher.cdn.ankama.com/cytrus.json')->json();
+            }, []);
+
+            $gameVersion = Str::after(
+                data_get($response, 'games.dofus.platforms.windows.main', config('app.latest_dofus_version')),
+                '_');
+
+            Cache::put('game_version', $gameVersion, now()->addDay());
+            return $gameVersion;
+        });
+
+        return view('welcome', compact('gameVersion'));
     })->name('home');
 
     Route::get(LaravelLocalization::transRoute('routes.profile'), function (Request $request) {
@@ -53,25 +73,38 @@ Route::group(
             ->with(compact('message', 'action'));
     })->middleware('auth')->name('profile');
 
-    Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
-        ->middleware(['auth', 'verified'])
-        ->name('pay');
+        Route::middleware(['auth', 'verified', RedirectToInvoicePageIfIncompletePayment::class, PlanExists::class])
+            ->group(function () {
 
-        Route::view(LaravelLocalization::transRoute('routes.subscribe'), 'subscribe')
-            ->name('subscribe')
-            ->middleware('verified');
+                Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
+                    if (!$request->user()->can('purchase-subscription')) {
+                        if ($request->user()->subscribedDeprecated() && !!$request->user()->cashierSubscribed())
+                            abort(403);
+                        return $request->user()->redirectToBillingPortal(url()->previous());
+                    } else {
+                        return view('subscribe');
+                    }
+                })
+                    ->name('subscribe');
 
-        Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
-            ->name('subscribe.stripe')
-            ->middleware('verified');
 
-        Route::view(LaravelLocalization::transRoute('routes.subscribe-coinbase'), 'subscribe-coinbase')
-            ->name('subscribe.coinbase')
-            ->middleware('verified');
+                Route::middleware('can:purchase-subscription')->group(function () {
 
-        Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
-            ->name('subscribe.coinbase.checkout')
-            ->middleware('verified');
+                    Route::view(LaravelLocalization::transRoute('routes.subscribe-stripe'), 'subscribe-stripe')
+                        ->name('subscribe.stripe');
+
+                    Route::view(LaravelLocalization::transRoute('routes.subscribe-coinbase'), 'subscribe-coinbase')
+                        ->name('subscribe.coinbase');
+
+                    Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
+                        ->name('subscribe.coinbase.checkout');
+
+                    Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
+                        ->name('pay');
+
+                });
+
+            });
 
         Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
             return view('install');
@@ -95,13 +128,24 @@ Route::group(
     Route::view(LaravelLocalization::transRoute('routes.login-discord'), 'discord-link')
         ->middleware(['guest'])
         ->name('login.discord');
+
+    Route::get(LaravelLocalization::transRoute('routes.statistics_activity'), [Controller::class, 'activity'])
+        ->middleware('auth')
+        ->name('statistics.activity');
 });
 
 Route::prefix('discord')->group(function () {
+    Route::get('/', function () {
+        return redirect()->to('https://discord.gg/ueutfe8');
+    })->name('discord');
+
     Route::get('link/{id}', [LinkDiscordController::class, '__invoke'])
         ->middleware([SetLocaleFromSession::class, 'auth', 'signed', 'throttle:3,1'])
         ->name('discord.link');
 });
 
+
+Route::get('price', [BillingController::class, 'price'])
+    ->name('billing.price');
 Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 Route::post('coinbase/webhook', [CoinbaseWebhookController::class, 'handleWebhook']);

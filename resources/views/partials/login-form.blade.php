@@ -5,7 +5,7 @@
     @csrf
     <input type="hidden" name="remember" value="1">
     <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full px-3">
+        <div class="w-full md:w-3/5 px-3">
             <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="grid-password">
                 {{ __('forms.email') }}
             </label>
@@ -15,9 +15,8 @@
             <p class="text-red-500 text-xs italic">{{ $message }}</p>
             @enderror
         </div>
-    </div>
-    <div class="flex flex-wrap -mx-3 mb-6">
-        <div class="w-full px-3">
+
+        <div class="w-full md:w-2/5 px-3">
             <label class="block uppercase tracking-wide text-xs font-bold mb-2" for="password">
                 {{ __('forms.password') }}
             </label>
@@ -34,7 +33,7 @@
     @enderror
 
     <button class="g-recaptcha mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg"
-            data-sitekey="{{ config('captcha.sitekey') }}" data-callback="onFormSubmit">
+            data-sitekey="{{ config('captcha.sitekey') }}" data-callback="onFormSubmit" data-badge="bottomleft">
         {{ __('forms.login_form_submit') }}
     </button>
 </form>

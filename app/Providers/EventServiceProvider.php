@@ -4,14 +4,15 @@ namespace App\Providers;
 
 use App\Events\CoinbaseWebhookReceived;
 use App\Events\MagePublishUploaded;
+use App\Events\PaymentSucceeded;
 use App\Events\UserPurchasedSubscription;
 use App\Events\UserSyncedWithDiscord;
 use App\Listeners\EnforceUniqueUserAccessToken;
 use App\Listeners\PostMagePublishToForum;
-use App\Listeners\RewardUserReferrer;
 use App\Listeners\SaveCoinbaseWebhook;
 use App\Listeners\SendMagePublishToDiscord;
 use App\Listeners\SendUserSubscriptionStatusToDiscord;
+use App\Listeners\StorePayment;
 use App\Models\MagePublish;
 use App\Models\User;
 use App\Observers\MagePublishObserver;
@@ -20,6 +21,7 @@ use Illuminate\Auth\Events\Authenticated;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Laravel\Cashier\Subscription;
 use Laravel\Passport\Events\AccessTokenCreated;
 
 class EventServiceProvider extends ServiceProvider
@@ -37,7 +39,6 @@ class EventServiceProvider extends ServiceProvider
             EnforceUniqueUserAccessToken::class,
         ],
         UserPurchasedSubscription::class => [
-            RewardUserReferrer::class,
             SendUserSubscriptionStatusToDiscord::class,
         ],
         UserSyncedWithDiscord::class => [
@@ -49,6 +50,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         CoinbaseWebhookReceived::class => [
             SaveCoinbaseWebhook::class
+        ],
+        PaymentSucceeded::class => [
+            StorePayment::class
         ],
     ];
 

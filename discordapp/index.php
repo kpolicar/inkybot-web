@@ -13,6 +13,7 @@ use Discord\Parts\Guild\Guild;
 include __DIR__.'/../vendor/autoload.php';
 const GUILD_ID = 764510615049076797;
 const WEBHOOK_USER_ID = 795037986592391178;
+const BOT_USER_ID = 764562527752290316;
 const REACTION_MESSAGE_ID = 826110239035621387;
 
 $discord = new \Discord\Discord([
@@ -43,9 +44,10 @@ $discord->on('ready', function (\Discord\Discord $discord) {
 
 
         $discord->on(Event::MESSAGE_REACTION_ADD, function (MessageReaction $reaction, Discord $discord) use ($guild) {
-            if ($reaction->message_id != REACTION_MESSAGE_ID)
+            if ($reaction->message_id != REACTION_MESSAGE_ID || $reaction->user_id == BOT_USER_ID)
                 return;
-            $reaction->message->deleteReaction(Message::REACT_DELETE_ID, $reaction->emoji, $reaction->user_id);
+            if ($reaction->message->reactions->count() > 1)
+                $reaction->message->deleteReaction(Message::REACT_DELETE_ID, $reaction->emoji, $reaction->user_id);
 
             $discord->users->fetch($reaction->user_id)->then(function ($user) use ($guild, $reaction) {
                 return (new ReactionController($guild))->handle($user, $reaction);

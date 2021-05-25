@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Billing;
 use App\Contracts\ApiEncrypter as ApiEncrypterContract;
-use App\Exports\MagingExport;
+use Carbon\Carbon;
 use CoinbaseCommerce\ApiClient as CoinbaseClient;
 use Illuminate\Encryption\Encrypter;
+use Laravel\Cashier\Subscription;
 use Str;
 use App\ClientVersion;
 use Illuminate\Support\Facades\Blade;
@@ -44,10 +46,19 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::if('subscribed', function () {
-            return optional(auth()->user())->is_subscribed;
+            return optional(auth()->user())->subscribed() ?? false;
+        });
+        Blade::if('verified', function () {
+            return optional(auth()->user())->hasVerifiedEmail() ?? false;
+        });
+        Blade::if('unverified', function () {
+            return !(optional(auth()->user())->hasVerifiedEmail() ?? false);
+        });
+        Subscription::saved(function ($model) {
+            optional($model->user)->userCacheAttributesNumberOfExoMagesLeftInPlanClearCache();
         });
 
-        if (config('app.env') == 'production') {
+        if (app()->environment('production')) {
             \URL::forceScheme('https');
         }
         \URL::forceRootUrl(\Config::get('app.url'));

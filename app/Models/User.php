@@ -2,16 +2,27 @@
 
 namespace App\Models;
 
+use App\Billing;
+use App\Models\Traits\UserCacheAttributes;
+use App\Models\Traits\UserThrottles;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Cashier\Billable;
+use Laravel\Cashier\Subscription;
 use Laravel\Passport\HasApiTokens;
+use Stripe\Invoice;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable, HasApiTokens, Billable;
+    use HasFactory, Notifiable, HasApiTokens, Billable, UserThrottles, UserCacheAttributes {
+        subscription as cashierSubscription;
+        subscribed as cashierSubscribed;
+        subscribedToPlan as cashierSubscribedToPlan;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -34,6 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'card_last_four',
     ];
 
+    protected $with = [
+        'subscriptions'
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -45,20 +60,33 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     protected $appends = [
-        'is_subscribed', 'is_free_trial', 'free_trial_available',
+        'is_free_trial', 'free_trial_available',
     ];
+
 
     protected static function boot()
     {
         parent::boot();
 
-        parent::creating(function ($user) {
+        parent::creating(function (User $user) {
             $user->GenerateReferralCode();
 
             if ($referredBy = \Cookie::get('referral')) {
                 $user->referred_by = static::FindByReferral($referredBy)->id;
             }
         });
+    }
+
+    public function numberOfExoMagesInPricingPlan()
+    {
+        if ($this->subscribedToPlan(Billing::unlimitedPlan()))
+            return config('cashier.product_price_unlimited_exo_mages');
+        else if ($this->subscribedToPlan(Billing::standardPlan()))
+            return config('cashier.product_price_standard_exo_mages');
+        else if ($this->subscribedToPlan(Billing::starterPlan()))
+            return config('cashier.product_price_starter_exo_mages');
+        else
+            return 0;
     }
 
     public function referrer() {
@@ -83,12 +111,8 @@ class User extends Authenticatable implements MustVerifyEmail
         } while (static::FindByReferral($referralCode)->exists);
     }
 
-    public function GetIsSubscribedAttribute() {
-        return $this->freshTimestamp()->isBefore($this->subscribed_to);
-    }
-
     public function GetIsFreeTrialAttribute() {
-        if ($this->is_subscribed)
+        if ($this->subscribed())
             return false;
         $trial = optional($this->free_trial);
         return $trial->exists && !$trial->expired;
@@ -99,21 +123,76 @@ class User extends Authenticatable implements MustVerifyEmail
         return !$trial->exists || !$trial->expired;
     }
 
-    public function ExtendedSubscriptionDate($extraDays=0) {
-        $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
-        $extendedDate = $extendedDate->maximum($this->freshTimestamp());
-        $extendedDate->addDays($extraDays);
-        return $extendedDate->addMonth();
-    }
-
-    public function ExtendedSubscriptionDateForReferral() {
-        $extendedDate = $this->subscribed_to ?? $this->freshTimestamp();
-        $extendedDate = $extendedDate->maximum($this->freshTimestamp());
-        return $extendedDate->addDays(config('app.referrer_reward_days'));
+    public function GetTrialEndsAtAttribute()
+    {
+        return optional($this->free_trial)->expires_at;
     }
 
     public static function FindByReferral($code) {
         return optional(static::firstWhere('referral_code', $code));
+    }
+
+    public function numberOfExoMagesLeftInPlan()
+    {
+        $exoMagesInPlan = $this->numberOfExoMagesInPricingPlan();
+        if (!$this->subscribed() || $this->subscribedToPlan(Billing::unlimitedPlan()))
+            return $exoMagesInPlan;
+
+        $currentPeriodEnd = $this->subscription()->asDateTime(
+            $this->subscription()->current_period_end
+        );
+
+        $magings = $this->maging()
+            ->whereDate('updated_at', '>', $currentPeriodEnd->subMonth())
+            ->get();
+
+        $exoMagesSoFar = $magings
+            ->pluck('exo_successes')
+            ->mapInto(Collection::class)
+            ->map->only(['ap', 'mp', 'range', 'summons'])
+            ->map->sum()->sum();
+
+        return max(0, $exoMagesInPlan-$exoMagesSoFar);
+    }
+
+    public function subscribedDeprecated()
+    {
+        return !!optional($this->subscribed_to)->isAfter(now());
+    }
+
+    public function subscription($name = 'default')
+    {
+        if ($this->subscribedDeprecated()) {
+
+            $dummySubscription = $this->subscriptions()->make([
+                'name' => $name,
+                'stripe_status' => 'cancelled',
+                'stripe_plan' => Billing::unlimitedPlan(),
+                'quantity' => 1,
+                'current_period_end' => $this->subscribed_to,
+                'ends_at' => $this->subscribed_to,
+            ]);
+
+            return $dummySubscription;
+        }
+
+        return $this->cashierSubscription($name);
+    }
+
+    public function subscribed($name = 'default', $plan = null)
+    {
+        if ($this->subscribedDeprecated())
+            return true;
+
+        return $this->cashierSubscribed($name, $plan);
+    }
+
+    public function subscribedToPlan($plans, $name = 'default')
+    {
+        if ($plans == Billing::unlimitedPlan() && $this->subscribedDeprecated())
+            return true;
+
+        return $this->cashierSubscribedToPlan($plans, $name);
     }
 
     public function linkDiscord($id)
@@ -121,5 +200,13 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->forceFill([
             'discord_id' => $id
         ])->save();
+    }
+
+    public function incompletePaymentHostedUrl()
+    {
+        return Invoice::retrieve(
+            $this->subscription()->asStripeSubscription()->latest_invoice,
+            $this->stripeOptions()
+        )->hosted_invoice_url;
     }
 }

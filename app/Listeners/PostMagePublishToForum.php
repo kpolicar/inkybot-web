@@ -12,7 +12,7 @@ class PostMagePublishToForum
 {
     public function handle(MagePublishUploaded $event)
     {
-        if ($event->magePublish->dont_publish_to_forum)
+        if ($event->magePublish->dont_publish_to_forum || !app()->environment('production'))
             return;
 
         $existing = $event->magePublish->user->publishes()->postedOnForum()->first();

@@ -8,9 +8,9 @@
     <img src="{{ asset('item_after.png') }}"
          class="w-1/2 inline-block shadow-lg rounded my-4"
          alt="Your item after using Inkybot" />
-    <div class="w-full text-center xl:-mt-48 mt-0">
+    <div class="w-full text-center xl:-mt-48 lg:-mt-40 md:-mt-32 mt-0">
         <img src="{{ asset('item_config.gif') }}"
-             class="m-auto shadow-lg rounded-t rounded-b-xl my-4"
+             class="m-auto shadow-lg rounded-t rounded-b-xl my-4 sm:max-w-lg"
              alt="The stats configuration that was used to mage the item" />
     </div>
 </div>

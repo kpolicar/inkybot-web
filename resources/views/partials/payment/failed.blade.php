@@ -1,4 +1,9 @@
-<div class="flex justify-between items-end my-4">
+<a href="{{ route('subscribe', Request::only('plan')) }}" class="group text-gray-500 hover:underline">
+    <i class="fas fa-arrow-left mr-1 transform group-hover:-translate-x-1 duration-100"></i>
+    {{ __('common.back') }}
+</a>
+
+<div class="flex justify-between items-end mb-4">
     <h3 class="text-3xl font-bold leading-tight align-middle">
         {{ __('payment.failed', ['reason' => __('payment.failed_reason_card_error')]) }}
     </h3>
@@ -11,7 +16,7 @@
     {{ __('payment.failed_description') }}
 </p>
 
-@if ($code = $exception->getDeclineCode())
+@if ($code = optional($exception)->getDeclineCode())
 <p class="text-gray-200 text-sm mt-5">
     {!! __('payment.failed_error_code', ['code' => $code]) !!}
 </p>

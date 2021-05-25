@@ -38,10 +38,10 @@
 @section('engage_comingfrom', '#ffffff')
 @section('content')
 
-    <div class="anchor" id="usage"></div>
     <section class="bg-white py-8 pb-12">
 
         <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
+            <div class="anchor" id="usage"></div>
 
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
                 {{ __('install.steps') }}

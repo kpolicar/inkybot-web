@@ -17,12 +17,14 @@
 
         <div class="flex">
 
-            <a href="{{ route('subscribe.stripe') }}" class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 mr-2 shadow-lg rounded">
+            <a href="{{ route('subscribe.stripe', request()->only('plan')) }}"
+               class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 mr-2 shadow-lg rounded">
                 <i class="far fa-credit-card text-4xl mb-1"></i><br>
                 {{ __('subscribe.method_card') }}
             </a>
 
-            <a href="{{ route('subscribe.coinbase') }}" class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 ml-2 shadow-lg rounded relative">
+            <a href="{{ route('subscribe.coinbase', request()->only('plan')) }}"
+               class="w-full text-center hover:underline bg-white text-gray-800 font-bold my-6 py-4 ml-2 shadow-lg rounded relative">
                 <i class="fab fa-bitcoin text-4xl mb-1"></i><br>
                 {{ __('subscribe.method_crypto') }}
                 <aside class="absolute top-0 right-0 pt-3">
