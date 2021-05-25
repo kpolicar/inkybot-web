@@ -2,11 +2,7 @@
     <div class="p-16 text-center text-gray-800 flex flex-col">
         <i class="fas fa-lock text-5xl"></i>
         <p class="my-3">
-            This feature is restricted to users subscribed to the
-            <a href="#pricing" class="font-bold hover:underline">Standard</a>
-            or
-            <a href="#pricing" class="font-bold hover:underline">Unlimited</a>
-            pack
+            {!! __('pricing.restricted') !!}
         </p>
     </div>
 </div>
