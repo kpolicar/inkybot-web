@@ -11,11 +11,11 @@
     <a href="{{ route('subscribe', array_filter(compact('plan'))) }}"
 
        @if(!$willRedirectToIncompletePaymentPayPage && Auth::user()->hasIncompletePayment())
-       title="You must first finish an incomplete payment."
+       title="{{ __('payment.not_allowed_incomplete') }}"
        @elseif(!Auth::user()->hasVerifiedEmail())
-       title="You must first verify your email address."
+       title="{{ __('payment.not_allowed_verify') }}"
        @elseif(Auth::user()->subscribedDeprecated() && !Auth::user()->cashierSubscribed())
-       title="You must wait for your active subscription to expire."
+       title="{{ __('payment.not_allowed_notfinished') }}"
        @endif
        @if($disabled) onclick="event.preventDefault()" @endif
 

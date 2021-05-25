@@ -10,4 +10,8 @@ return [
     'success' => 'Payement réussi!',
     'success_description' => 'Votre payement à bien été reçu. Votre abonnement va être ajoutée à votre compte sous peu.',
     'success_unexpected' => 'Si vous ne recevez pas votre abonnement mais avez payé le montant, envoyez nous un email à :link',
+
+    'not_allowed_incomplete' => 'Vous devez d\'abord terminer un paiement incomplet.',
+    'not_allowed_verify' => 'Vous devez d\'abord vérifier votre adresse e-mail.',
+    'not_allowed_notfinished' => 'Vous devez attendre l\'expiration de votre abonnement actif.',
 ];
