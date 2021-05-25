@@ -3,8 +3,9 @@
 return [
     'heading' => 'Prix',
     'description' => 'Les prix d\'Inkybot correspondent à un abonnement mensuel.',
-    'description_no_recurring_payments' => 'Nous ne permettons pas les payements récurrents - vous devrez renouveller votre abonnement manuellement chaque mois.',
     'description_thank_you' => 'Merci pour votre soutient!',
+
+    'instances' => 'Multi-instance',
 
     'package_free' => 'Version d\'essai',
     'package_subscription' => 'Abonnement',
@@ -16,5 +17,5 @@ return [
     'package_feature_overmaging' => 'Forgemagie avec overs',
     'package_feature_leveling' => 'XP votre métier de FM',
 
-    'package_feature_in_development' => 'Sont des fonction sous développement et ne sont pas encore disponible',
+    'package_feature_exos_description' => 'La limite d\'exo correspond uniquement aux objets magés avec succès avec un PA, un PM, une portée ou une invocation.',
 ];

@@ -13,11 +13,15 @@ return [
     'signup' => 'Sign up',
     'signout' => 'Sign out',
     'purchase' => 'Purchase',
+    'manage' => 'Manage',
+    'downgrade' => 'Downgrade',
+    'upgrade' => 'Upgrade',
     'download' => 'Download',
     'forum' => 'Forum',
     'month' => 'month',
     'translated_credits' => 'translated by :name',
     'back' => 'Back',
+    'compatible' => 'Compatible with Dofus <b>:version</b> <small class="text-xs">(latest version)</small>',
 
     'error_generic' => 'Something went wrong!',
 ];

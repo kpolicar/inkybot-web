@@ -13,11 +13,16 @@ return [
     'signup' => 'Inscription',
     'signout' => 'Déconnexion',
     'purchase' => 'Achat',
+    'manage' => 'Gérer',
+    'downgrade' => 'Rétrograder',
+    'upgrade' => 'Améliorer',
     'download' => 'Téléchargement',
     'forum' => 'Forum',
     'month' => 'mois',
     'translated_credits' => 'traduit par :name',
     'back' => 'Retour',
+
+    'compatible' => 'Compatible avec Dofus <b>:version</b> <small class="text-xs">(dernière version)</small>',
 
     'error_generic' => 'Une erreur s\'est produite!',
 ];

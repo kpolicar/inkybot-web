@@ -15,10 +15,35 @@ const tailwindcss = require('tailwindcss');
 
 mix.js('resources/js/app.js', 'public/js')
     .version()
+
     .js('resources/js/stripe.js', 'public/js')
     .version()
+
+    .js('resources/js/profile.js', 'public/js')
+    .version()
+
     .sass('resources/sass/app.scss', 'public/css')
     .version()
+
+    .js('resources/js/payment.js', 'public/js')
+    .vue()
+    .webpackConfig((webpack) => {
+        return {
+            plugins: [
+                new webpack.DefinePlugin({
+                    __VUE_OPTIONS_API__: true,
+                    __VUE_PROD_DEVTOOLS__: false,
+                }),
+            ],
+            resolve:  {
+                alias: {
+                    vue: "vue/dist/vue.esm-bundler.js"
+                },
+            },
+        };
+    })
+    .version()
+
     .copy('node_modules/@fortawesome/fontawesome-free/webfonts', 'public/fonts')
     .options({
         processCssUrls: false,

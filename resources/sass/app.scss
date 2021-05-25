@@ -16,6 +16,10 @@
     }
 }
 
+[v-cloak] {
+    display: none;
+}
+
 html {
     background: white;
 }
@@ -31,6 +35,27 @@ html {
 
 .bg-gray-200 {
     background: #EFEFEF;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+    border-color: rgba(0,0,0, 0.4);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(21, 24, 29, 0.3);
+    outline: 0 none;
 }
 
 .anchor {
@@ -66,4 +91,62 @@ html {
 /* :checked - resize to full height */
 .tab input:checked ~ .tab-content {
     max-height: 100vh;
+}
+
+.tab input:checked ~ .tab-title .tab-rotate--360 {
+    transform: rotate(-360deg);
+}
+
+.bounce {
+    -moz-animation: bounce 3s infinite;
+    -webkit-animation: bounce 3s infinite;
+    animation: bounce 3s infinite;
+}
+@-moz-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateX(0);
+        transform: translateX(0);
+    }
+    40% {
+        -moz-transform: translateX(-15px);
+        transform: translateX(-15px);
+    }
+    60% {
+        -moz-transform: translateX(-7px);
+        transform: translateX(-7px);
+    }
+}
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    40% {
+        -webkit-transform: translateX(-15px);
+        transform: translateX(-15px);
+    }
+    60% {
+        -webkit-transform: translateX(-7px);
+        transform: translateX(-7px);
+    }
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    40% {
+        -moz-transform: translateX(-15px);
+        -ms-transform: translateX(-15px);
+        -webkit-transform: translateX(-15px);
+        transform: translateX(-15px);
+    }
+    60% {
+        -moz-transform: translateX(-7px);
+        -ms-transform: translateX(-7px);
+        -webkit-transform: translateX(-7px);
+        transform: translateX(-7px);
+    }
 }

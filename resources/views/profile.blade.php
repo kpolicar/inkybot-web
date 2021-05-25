@@ -5,36 +5,76 @@
 
 @section('hero')
     <x-main-hero invert>
-        <div class="py-20">
+        <div class="pb-20 pt-10">
             <p class="uppercase tracking-loose w-full">
                 {{ __('messages.category') }}
             </p>
-            <h1 class="my-4 text-5xl font-bold leading-tight">{{ Auth::user()->name }}</h1>
+            <h1 class="my-4 text-5xl font-bold leading-tight">
+                {{ Auth::user()->name }}
+            </h1>
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
-                    {{ __('profile.subscribed_duration', ['date' => Auth::user()->subscribed_to->format('d/m/Y H:i')]) }}
+                    {{ __('profile.subscribed') }}
+
+                    @if (Auth::user()->subscription()->quantity > 1)
+                        // <b>{{ __('profile.instances', ['number' => Auth::user()->subscription()->quantity ]) }}</b>
+                    @endif
                 @else
                     {{ __('profile.subscribed_false') }}
                 @endsubscribed
             </p>
 
+            @php($subscriptionPeriodEnd = optional(Auth::user()->subscription())->current_period_end)
+            @php($subscriptionCancelledAt = optional(Auth::user()->subscription())->ends_at)
 
-            <a href="{{ route('subscribe') }}" class="mx-auto cursor-pointer lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
-                @subscribed
-                    {{ __('profile.subscribed_extend') }}
-                @else
+            @unless (!$subscriptionPeriodEnd && !$subscriptionCancelledAt)
+                <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
+                    @if (Auth::user()->subscribedDeprecated() && !Auth::user()->cashierSubscribed())
+                        {{ __('profile.subscription_ends', ['date' => (new \Carbon\Carbon($subscriptionPeriodEnd))->format('d.m.Y')]) }}
+                    @elseif($subscriptionCancelledAt)
+                        {{ __('profile.billing_ends', ['date' => $subscriptionCancelledAt->format('d.m.Y')]) }}
+                    @elseif($subscriptionPeriodEnd)
+                        {{ __('profile.next_invoice', ['date' => (new \Carbon\Carbon($subscriptionPeriodEnd))->format('d.m.Y')]) }}
+                    @endif
+                </p>
+            @endif
+            @if (Auth::user()->subscribed() && !Auth::user()->subscribedToPlan(App\Billing::unlimitedPlan()))
+                <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
+                    {!! __('profile.exo_mages_left_in_plan', ['number' => Auth::user()->number_of_exo_mages_left_in_plan]) !!}
+                </p>
+            @endif
+
+            @if ($credit = Auth::user()->stripe_balance)
+                <p class="leading-normal uppercase text-base text-gray-400 -mt-8 mb-8">
+                    <b>€{{ number_format(-$credit/100, 2) }}</b> <small>{{ __('profile.credit') }}</small>
+                </p>
+            @endif
+
+            @if (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail() && !\Auth::user()->subscribed())
+                <a href="{{ Auth::user()->hasVerifiedEmail() ? '#pricing' : '#' }}"
+                   @unverified onclick="event.preventDefault()" title="{{ __('profile.billing_verify_email') }}" @endunverified
+                   class="@unverified cursor-not-allowed @endunverified group mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
                     {{ __('profile.subscribed_purchase') }}
-                @endsubscribed
-            </a>
+                    <i class="fas fa-angle-right text-lg ml-2 -mr-2 @verified transform group-hover:translate-x-2 duration-100 @endverified"></i>
+                </a>
+            @else
+                <x-billing-button class="group mx-auto lg:mx-0 bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
+                    @if (Auth::user()->hasIncompletePayment())
+                        {{ __('profile.billing_complete_payment') }}
+                    @else
+                        {{ __('profile.subscribed_manage') }}
+                    @endif
+                </x-billing-button>
+            @endif
         </div>
     </x-main-hero>
 @endsection
 
 @section('content')
-    <div id="details" class="anchor"></div>
-
     <section class="bg-white border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
+            <div id="details" class="anchor"></div>
+
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
                 {{ __('profile.details') }}
             </h2>
@@ -61,7 +101,7 @@
                             @enderror
 
                             <p class="py-2 text-sm text-gray-600">
-                                {{ __('forms.update_form_name_comment') }}
+                                {!! __('forms.update_form_name_comment') !!}
                             </p>
                         </div>
                     </div>
@@ -203,33 +243,83 @@
 
     </section>
 
-    <div id="statistics" class="anchor"></div>
-
-    <section class="bg-gray-100 border-b py-8">
+    <section class="bg-gray-100 py-8 pb-1">
         <div class="container max-w-5xl mx-auto m-8">
+            <div id="statistics" class="anchor"></div>
             <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
                 {{ __('profile.statistics') }}
             </h2>
             <div class="w-full mb-4">
                 <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
-            <div class="mt-6 lg:mt-0 rounded border shadow-sm bg-white">
-                @include('partials/statistics-today')
-            </div>
-            <div class="my-6 rounded border shadow-sm bg-white">
-                @include('partials/statistics-previous')
+
+            @can('view-statistics')
+                <div class="mt-6 lg:mt-0 rounded border shadow-sm bg-white">
+                    @include('partials/statistics-today', ['chart' => true])
+                </div>
+                <div class="my-6 rounded border shadow-sm bg-white">
+                    @include('partials/statistics-previous')
+                </div>
+
+                <div class="md:text-right text-center">
+                    <a href="{{ route('export') }}"
+                       class="hover:underline gradient text-white font-bold rounded py-4 px-8 shadow-lg">
+                        {{ __('forms.update_form_download_data') }}
+                    </a>
+                </div>
+            @else
+                @include('partials.feature-locked')
+            @endcan
+        </div>
+    </section>
+
+    <section class="bg-gray-100 border-b py-8 pt-1">
+        <div class="container max-w-5xl mx-auto m-8">
+            <div id="exos" class="anchor"></div>
+            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+                {{ __('profile.history') }}
+            </h2>
+            <div class="w-full mb-4">
+                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
 
-            @subscribed
-            <div class="md:text-right text-center">
-                <a href="{{ route('export') }}"
-                   class="hover:underline gradient text-white font-bold rounded py-4 px-8 shadow-lg">
-                    Download Data
-                </a>
-            </div>
-            @endsubscribed
+
+            @can('view-exos')
+                <div class="flex flex-col text-gray-800 text-center {{ Auth::user()->publishes->isEmpty() ? 'py-10' : '' }}">
+                    <i class="fas {{ Auth::user()->can('view-exos') ? 'fa-trophy' : 'fa-lock' }} text-5xl"></i>
+                    <p class="mt-2">
+                        @if (Auth::user()->publishes->isEmpty())
+                            {{ __('profile.exo_mages_empty') }}
+                        @else
+                            {{ __('profile.exo_mages', ['number' => Auth::user()->publishes->count()]) }}
+                        @endif
+                    </p>
+                </div>
+            @else
+                @include('partials.feature-locked')
+            @endcan
         </div>
 
+        @can('view-exos')
+            @unless (Auth::user()->publishes->isEmpty())
+                <div style="width: calc(100vw - (100vw - 100%));" class="pb-8">
+                    <div id="swiper-exos" class="swiper-container text-gray-800 opacity-0" data-autoplay>
+                        <div class="swiper-wrapper flex items-center">
+                            @foreach(Auth::user()->publishes as $exo)
+                                <div class="swiper-slide">
+                                    <img class="swiper-lazy rounded-t-lg rounded"
+                                         data-src="{{ asset($exo->image_path) }}">
+                                    <div class="swiper-lazy-preloader swiper-lazy-preloader-black">
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endunless
+        @else
+            locked
+        @endcan
     </section>
 
     <section class="bg-white border-b py-8">
@@ -305,4 +395,9 @@
     @if (isset($message) && $message)
         @include('partials.notification')
     @endif
+@endsection
+
+@section('scripts')
+    @parent
+    <script src="{{ mix('js/profile.js') }}"></script>
 @endsection

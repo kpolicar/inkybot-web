@@ -1,4 +1,9 @@
-<div class="flex justify-between items-end my-4">
+<a href="{{ route('profile') }}" class="group text-gray-500 hover:underline">
+    <i class="fas fa-arrow-left mr-1 transform group-hover:-translate-x-1 duration-100"></i>
+    {{ __('common.home') }}
+</a>
+
+<div class="flex justify-between items-end mb-4">
     <h3 class="text-3xl font-bold leading-tight align-middle">
         {{ __('payment.success') }}
     </h3>
@@ -9,11 +14,11 @@
 </div>
 <div class="flex justify-between my-4 text-xl">
     <p class="font-bold">{{ __('forms.basket_item') }}</p>
-    <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}</p>
+    <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }} ({{ $description }})</p>
 </div>
 <div class="flex justify-between my-4 text-xl">
     <p class="font-bold">{{ __('forms.basket_paid') }}</p>
-    <p class="text-lg">@money(config('app.price')/100)</p>
+    <p class="text-lg">@money($totalCost['amount']/100)</p>
 </div>
 <p class="text-gray-400 text-base mt-16">
     {{ __('payment.success_description') }}

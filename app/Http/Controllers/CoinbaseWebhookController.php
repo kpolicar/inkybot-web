@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Billing;
 use App\Events\CoinbaseWebhookReceived;
+use App\Events\PaymentSucceeded;
 use CoinbaseCommerce\Exceptions\InvalidResponseException;
 use CoinbaseCommerce\Exceptions\SignatureVerificationException;
 use DB;
@@ -68,14 +70,33 @@ class CoinbaseWebhookController extends Controller
     public function handleChargeConfirmed(Charge $charge)
     {
         $user = User::findOrFail($charge['metadata']['user_id']);
+        PaymentSucceeded::dispatch($charge);
 
-        $success = $user
-            ->forceFill(['subscribed_to' => $user->ExtendedSubscriptionDate(1)])
-            ->save();
+        if (!$user->hasStripeId())
+            $user->createAsStripeCustomer();
 
-        if ($success) {
-            UserPurchasedSubscription::dispatch($user);
-            $user->notify(new CoinbaseChargeCompleted($charge));
-        }
+        $pricing = $charge['pricing']['local'];
+        $amount = str_replace('.', '', $pricing['amount']);
+        $currency = $pricing['currency'];
+
+        if (strtolower($currency) != strtolower($user->preferredCurrency()))
+            throw new \InvalidArgumentException();
+
+        $customer = $user->asStripeCustomer();
+        $customer->balance -= $amount;
+        $customer->save();
+
+        $subscription = $user->newSubscription('default', Billing::resolvePlan($charge['metadata']['plan']))
+            ->quantity($charge['metadata']['quantity'])
+            ->noProrate()
+            ->withMetadata([
+                'coinbase_charge_id' => $charge->id
+            ])
+            ->create()
+            ->cancel();
+
+
+        UserPurchasedSubscription::dispatch($user);
+        $user->notify(new CoinbaseChargeCompleted($charge, $subscription));
     }
 }
