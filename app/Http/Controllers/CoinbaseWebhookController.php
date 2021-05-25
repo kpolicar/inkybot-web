@@ -76,7 +76,7 @@ class CoinbaseWebhookController extends Controller
             $user->createAsStripeCustomer();
 
         $pricing = $charge['pricing']['local'];
-        $amount = str_replace('.', '', $pricing['amount']);
+        $amount = (int)str_replace('.', '', $pricing['amount']);
         $currency = $pricing['currency'];
 
         if (strtolower($currency) != strtolower($user->preferredCurrency()))
