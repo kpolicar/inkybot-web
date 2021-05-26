@@ -317,8 +317,6 @@
                     </div>
                 </div>
             @endunless
-        @else
-            locked
         @endcan
     </section>
 

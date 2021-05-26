@@ -13,14 +13,18 @@ let swiperElement = document.querySelector('#swiper-exos');
 
 if (swiperElement) {
     let swiper = new Swiper(swiperElement, {
-        slidesPerView: 2,
+        slidesPerView: 1,
         lazy: true,
-        spaceBetween: 5,
+        spaceBetween: 2,
         grabCursor: true,
         autoplay: {
             delay: 5000,
         },
         breakpoints: {
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 5
+            },
             1280: {
                 slidesPerView: 3,
                 spaceBetween: 10

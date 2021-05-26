@@ -120,6 +120,13 @@
                             Fixed bug: <strong>maging weapons</strong> was no longer possible (broken)
                         </span>
                     </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Removed the configuration option for maging on <strong>Temporis servers</strong>
+                            (it now works on all servers by default)
+                        </span>
+                    </li>
                 </ul>
 
 
