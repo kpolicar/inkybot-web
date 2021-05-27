@@ -55,6 +55,7 @@ class StripeController extends BillingController
     private function createNewSubscription(Request $request, User $user, $plan, PaymentMethod $paymentMethod)
     {
         $subscription = $user->newSubscription('default', Billing::resolvePlan($plan))
+            ->quantity($this->quantityFromPost($request))
             ->noProrate()
             ->create($paymentMethod);
         if (!$request->post('recurring', false))
