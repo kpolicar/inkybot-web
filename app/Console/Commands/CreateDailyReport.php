@@ -93,7 +93,7 @@ class CreateDailyReport extends Command
                 'revenue' => $revenue,
                 'payments' => $paymentCount,
                 'subscriptions' => $subscriptions,
-                'time_maging' => $timeMaging,
+                'time_maging' => (int)$timeMaging,
                 'exo_attempts' => $exoAttempts,
                 'exo_successes' => $exoSuccesses,
                 'new_users' => $newUsers,
