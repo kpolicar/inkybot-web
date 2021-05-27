@@ -30,10 +30,12 @@ class DecryptApiRequest
      */
     public function handle(Request $request, Closure $next)
     {
-        $decrypted = $this->crypt->decryptString($request->getContent());
-        $message = json_decode($decrypted, true);
+        if ($request->getContent() !== "") {
+            $decrypted = $this->crypt->decryptString($request->getContent());
+            $message = json_decode($decrypted, true);
 
-        $request->merge($message);
+            $request->merge($message);
+        }
         return $next($request);
     }
 }
