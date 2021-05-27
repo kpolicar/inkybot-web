@@ -77,7 +77,7 @@ class CreateDailyReport extends Command
         $revenue = $payments->pluck('amount')->sum();
         $newUsers = User::whereDate('created_at', $dateString)->count();
 
-        $timeMagingInMinutes = $timeMaging/60;
+        $timeMagingInMinutes = (int)($timeMaging/60);
         $revenueInEuros = $revenue/100;
         $this->info(
             "Revenue: €$revenueInEuros, ".
