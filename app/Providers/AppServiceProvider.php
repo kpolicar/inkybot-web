@@ -4,10 +4,14 @@ namespace App\Providers;
 
 use App\Billing;
 use App\Contracts\ApiEncrypter as ApiEncrypterContract;
+use App\RefreshTokenRepository;
+use App\TokenRepository;
 use Carbon\Carbon;
 use CoinbaseCommerce\ApiClient as CoinbaseClient;
 use Illuminate\Encryption\Encrypter;
 use Laravel\Cashier\Subscription;
+use Laravel\Passport\RefreshTokenRepository as PassportRefreshTokenRepository;
+use Laravel\Passport\TokenRepository as PassportTokenRepository;
 use Str;
 use App\ClientVersion;
 use Illuminate\Support\Facades\Blade;
@@ -22,7 +26,25 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerPassport();
+        $this->registerCrypt();
         $this->app->instance(ClientVersion::class, new ClientVersion);
+        if ($key=config('services.coinbase.key'))
+            CoinbaseClient::init($key);
+    }
+
+    private function registerPassport()
+    {
+        $this->app->singleton(PassportRefreshTokenRepository::class, function () {
+            return new RefreshTokenRepository();
+        });
+        $this->app->singleton(PassportTokenRepository::class, function () {
+            return new TokenRepository();
+        });
+    }
+
+    private function registerCrypt()
+    {
         $this->app->bind(ApiEncrypterContract::class, function () {
             $key = config('app.api_key');
             if (Str::startsWith($key, 'base64:')) {
@@ -30,8 +52,6 @@ class AppServiceProvider extends ServiceProvider
             }
             return new Encrypter($key, config('app.cipher'));
         });
-        if ($key=config('services.coinbase.key'))
-            CoinbaseClient::init($key);
     }
 
     /**
