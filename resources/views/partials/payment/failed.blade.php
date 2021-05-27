@@ -16,17 +16,17 @@
     {{ __('payment.failed_description') }}
 </p>
 
-@if ($code = optional($exception)->getDeclineCode())
-<p class="text-gray-200 text-sm mt-5">
-    {!! __('payment.failed_error_code', ['code' => $code]) !!}
-</p>
+@if ($exception instanceof \Stripe\Exception\CardException && ($code = $exception->getDeclineCode()))
+    <p class="text-gray-200 text-sm mt-5">
+        {!! __('payment.failed_error_code', ['code' => $code]) !!}
+    </p>
 @endif
 
 @if ($message = $exception->getMessage())
-<h4 class="text-gray-200 text-sm font-bold">
-    {!! __('payment.failed_error_message') !!}
-</h4>
-<p class="text-gray-200 text-sm">
-    {{ $message }}
-</p>
+    <h4 class="text-gray-200 text-sm font-bold">
+        {!! __('payment.failed_error_message') !!}
+    </h4>
+    <p class="text-gray-200 text-sm">
+        {{ $message }}
+    </p>
 @endif
