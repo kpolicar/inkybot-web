@@ -24245,15 +24245,13 @@ var __webpack_exports__ = {};
   !*** ./resources/js/profile.js ***!
   \*********************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/core/core-class.js");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/autoplay/autoplay.js");
-/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/lazy/lazy.js");
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/core/core-class.js");
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/autoplay/autoplay.js");
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/esm/components/lazy/lazy.js");
 /* harmony import */ var swiper_swiper_bundle_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper/swiper-bundle.css */ "./node_modules/swiper/swiper-bundle.css");
 /* harmony import */ var chart_js_auto__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js/auto */ "./node_modules/chart.js/auto/auto.esm.js");
 /* harmony import */ var chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chartjs-plugin-datalabels */ "./node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js");
 /* harmony import */ var chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var google_palette__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! google-palette */ "./node_modules/google-palette/palette.js");
-/* harmony import */ var google_palette__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(google_palette__WEBPACK_IMPORTED_MODULE_3__);
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -24272,12 +24270,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-swiper__WEBPACK_IMPORTED_MODULE_4__.default.use(swiper__WEBPACK_IMPORTED_MODULE_5__.default);
-swiper__WEBPACK_IMPORTED_MODULE_4__.default.use(swiper__WEBPACK_IMPORTED_MODULE_6__.default);
+var palette = __webpack_require__(/*! google-palette */ "./node_modules/google-palette/palette.js");
+
+swiper__WEBPACK_IMPORTED_MODULE_3__.default.use(swiper__WEBPACK_IMPORTED_MODULE_4__.default);
+swiper__WEBPACK_IMPORTED_MODULE_3__.default.use(swiper__WEBPACK_IMPORTED_MODULE_5__.default);
 var swiperElement = document.querySelector('#swiper-exos');
 
 if (swiperElement) {
-  var swiper = new swiper__WEBPACK_IMPORTED_MODULE_4__.default(swiperElement, {
+  var swiper = new swiper__WEBPACK_IMPORTED_MODULE_3__.default(swiperElement, {
     slidesPerView: 1,
     lazy: true,
     spaceBetween: 2,
@@ -24350,7 +24350,7 @@ var loadDataCharts = function loadDataCharts() {
                 return a + b;
               }, 0);
             }),
-            backgroundColor: google_palette__WEBPACK_IMPORTED_MODULE_3___default()('cb-Pastel1', keys.length).map(function (hex) {
+            backgroundColor: palette('cb-Pastel1', keys.length).map(function (hex) {
               return '#' + hex;
             }),
             borderColor: 'rgb(0,0,0,0.4)',
