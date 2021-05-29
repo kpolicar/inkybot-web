@@ -24337,23 +24337,25 @@ var loadDataCharts = function loadDataCharts() {
     chartElements.forEach(function (chartElement) {
       var ctx = chartElement.getContext('2d');
       var chartData = JSON.parse(chartElement.dataset.dataset);
+      var keys = Object.keys(chartData);
+      var values = Object.values(chartData);
       var chart = new chart_js_auto__WEBPACK_IMPORTED_MODULE_1__.default(ctx, {
         plugins: [(chartjs_plugin_datalabels__WEBPACK_IMPORTED_MODULE_2___default())],
         type: 'pie',
         data: {
-          labels: Object.keys(chartData),
+          labels: keys,
           datasets: [{
-            data: Object.values(chartData).map(function (a) {
+            data: values.map(function (a) {
               return Object.values(a).reduce(function (a, b) {
                 return a + b;
               }, 0);
             }),
-            backgroundColor: google_palette__WEBPACK_IMPORTED_MODULE_3___default()('cb-Pastel1', Object.keys(chartData).length).map(function (hex) {
+            backgroundColor: google_palette__WEBPACK_IMPORTED_MODULE_3___default()('cb-Pastel1', keys.length).map(function (hex) {
               return '#' + hex;
             }),
             borderColor: 'rgb(0,0,0,0.4)',
             borderWidth: 1,
-            cake: chartData
+            chartData: chartData
           }]
         },
         options: {
@@ -24373,7 +24375,7 @@ var loadDataCharts = function loadDataCharts() {
                   var txt = '';
                   var first = true;
 
-                  for (var _i = 0, _Object$entries = Object.entries(context[0].dataset.cake[context[0].label]); _i < _Object$entries.length; _i++) {
+                  for (var _i = 0, _Object$entries = Object.entries(context[0].dataset.chartData[context[0].label]); _i < _Object$entries.length; _i++) {
                     var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
                         key = _Object$entries$_i[0],
                         value = _Object$entries$_i[1];

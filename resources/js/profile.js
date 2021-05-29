@@ -79,20 +79,22 @@ let loadDataCharts = () => {
 
             let ctx = chartElement.getContext('2d');
             let chartData = JSON.parse(chartElement.dataset.dataset);
+            let keys = Object.keys(chartData);
+            let values = Object.values(chartData);
 
             let chart = new Chart(ctx, {
                 plugins: [ChartDataLabels],
                 type: 'pie',
                 data: {
-                    labels: Object.keys(chartData),
+                    labels: keys,
                     datasets: [{
-                        data: Object.values(chartData).map(a => Object.values(a).reduce((a, b) => a + b, 0)),
-                        backgroundColor: palette('cb-Pastel1', Object.keys(chartData).length).map(function(hex) {
+                        data: values.map(a => Object.values(a).reduce((a, b) => a + b, 0)),
+                        backgroundColor: palette('cb-Pastel1', keys.length).map(function(hex) {
                             return '#' + hex;
                         }),
                         borderColor: 'rgb(0,0,0,0.4)',
                         borderWidth: 1,
-                        cake: chartData
+                        chartData: chartData
                     }],
                 },
                 options: {
@@ -112,7 +114,7 @@ let loadDataCharts = () => {
                                     let txt = ''
                                     let first = true;
 
-                                    for (let [key, value] of Object.entries(context[0].dataset.cake[context[0].label])){
+                                    for (let [key, value] of Object.entries(context[0].dataset.chartData[context[0].label])){
                                         if (!first) {
                                             txt += '\n';
                                         }
