@@ -397,6 +397,5 @@
 
 @section('scripts')
     @parent
-    <script src="{{ mix('js/palette.js') }}"></script>
     <script src="{{ mix('js/profile.js') }}"></script>
 @endsection

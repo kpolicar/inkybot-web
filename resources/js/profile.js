@@ -2,6 +2,7 @@ import Swiper, { Autoplay, Lazy } from 'swiper';
 // import Swiper styles
 import 'swiper/swiper-bundle.css';
 
+import palette from 'google-palette';
 import Chart from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
@@ -88,7 +89,7 @@ let loadDataCharts = () => {
                     labels: keys,
                     datasets: [{
                         data: values.map(a => Object.values(a).reduce((a, b) => a + b, 0)),
-                        backgroundColor: palette('cb-Pastel1', keys.length).map(function(hex) {
+                        backgroundColor: palette('tol-rainbow', keys.length).map(function(hex) {
                             return '#' + hex;
                         }),
                         borderColor: 'rgb(0,0,0,0.4)',

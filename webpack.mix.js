@@ -22,9 +22,6 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/profile.js', 'public/js')
     .version()
 
-    .copy('node_modules/google-palette/palette.js', 'public/js')
-    .version()
-
     .sass('resources/sass/app.scss', 'public/css')
     .version()
 
