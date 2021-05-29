@@ -4,7 +4,6 @@ import 'swiper/swiper-bundle.css';
 
 import Chart from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-let palette = require('google-palette');
 
 Swiper.use(Autoplay);
 Swiper.use(Lazy);
