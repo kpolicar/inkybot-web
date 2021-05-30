@@ -1,5 +1,7 @@
 <div>
-    <label for="plan" class="mr-2">Subscription pack:</label>
+    <label for="plan" class="mr-2">
+        {{ __('subscribe.package') }}:
+    </label>
 
     <select id="plan" name="plan" class="text-gray-900 px-4 pl-3 py-1 rounded" v-model="plan">
         <option value="starter">
