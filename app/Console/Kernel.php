@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('passport:purge')->dailyAt('3:00');
         $schedule->command('report:create --save')->dailyAt('23:58');
+        $schedule->command('report:notify')->dailyAt('10:00');
     }
 
     /**
