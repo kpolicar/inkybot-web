@@ -99,10 +99,11 @@
 
                 <div class="px-1 my-2">
                     <input id="recurring" type="checkbox" name="recurring" checked>
-                    <label for="recurring" class="ml-2">Recurring subscription</label>
+                    <label for="recurring" class="ml-2">
+                        {{ __('subscribe.recurring') }}
+                    </label>
                     <p class="text-sm text-gray-500 mx-1">
-                        If selected, your card will automatically be billed monthly at the end of your billing period. You
-                        can change this at any time.
+                        {{ __('subscribe.recurring_description') }}
                     </p>
                 </div>
             </form>
