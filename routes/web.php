@@ -68,6 +68,9 @@ Route::group(
                 $message = __('forms.quick_verify_success');
             }
         }
+        $request->user()->loadMissing(['publishes' => function ($query) {
+            $query->orderByDesc('created_at');
+        }]);
 
         return view('profile')
             ->with(compact('message', 'action'));
