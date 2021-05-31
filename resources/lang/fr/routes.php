@@ -20,4 +20,5 @@ return [
     'email-verification-notification' => 'email/renvoyer',
     'export' => 'donnees/exporter',
     'statistics_activity' => 'statistiques/activite',
+    'download' => 'telecharger',
 ];

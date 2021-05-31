@@ -26,8 +26,8 @@
             {{ __('install.refer_release_notes') }}
             <a class="font-bold text-gray-500" href="{{ route('release', ['version' => 'latest']) }}">{{ __('install.refer_release_notes_link') }}</a>.
         </p>
-        <a href="{{ asset($download_asset) }}"
-           download
+        <a href="{{ route('download') }}"
+           rel="nofollow"
            class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
             {{ __('common.download') }}
         </a>

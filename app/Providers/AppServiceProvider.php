@@ -82,9 +82,6 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
         \URL::forceRootUrl(\Config::get('app.url'));
-
-        $currentVersion = $this->app[ClientVersion::class]->latest();
         \View::share('download_password', "inkybot");
-        \View::share('download_asset', "storage/Inkybot_{$currentVersion['code']}.zip");
     }
 }

@@ -57,6 +57,12 @@ Route::group(
         return view('welcome', compact('gameVersion'));
     })->name('home');
 
+    Route::middleware('auth')
+        ->get(LaravelLocalization::transRoute('routes.download'), function (ClientVersion $version) {
+            $currentVersion = $version->latest();
+            return response()->download("storage/Inkybot_{$currentVersion['code']}.zip");
+    })->name('download');
+
     Route::get(LaravelLocalization::transRoute('routes.profile'), function (Request $request) {
         $message = $request->getSession()->get('notification');
         $action = "";
