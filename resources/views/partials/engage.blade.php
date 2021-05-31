@@ -35,8 +35,8 @@
         {!! __('engage.subheading', ['link' => 'https://forum.cheat-gam3.com/forums/hall-of-fame.1714/']) !!}
     </h4>
 
-    <a href="{{ asset($download_asset) }}"
-       download
+    <a href="{{ route('download') }}"
+       rel="nofollow"
         class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
         {{ __('engage.download') }}
     </a>
