@@ -36,6 +36,7 @@
     </h4>
 
     <a href="{{ route('download') }}"
+       data-download
        rel="nofollow"
         class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
         {{ __('engage.download') }}

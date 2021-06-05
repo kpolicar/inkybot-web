@@ -15,7 +15,7 @@ document.addEventListener('download', () =>
     document.querySelector('#download-notification').classList.remove('hidden'))
 
 
-var downloadLinks = document.querySelectorAll("a[download]:not([data-external])")
+var downloadLinks = document.querySelectorAll("a[data-download]:not([data-external])")
 downloadLinks.forEach(downloadLink => {
     downloadLink.addEventListener('click', () => document.dispatchEvent(new Event('download')))
 })
