@@ -87,14 +87,17 @@ Route::group(
 
                 Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
                     if (!$request->user()->can('purchase-subscription')) {
-                        if ($request->user()->subscribedDeprecated() && !!$request->user()->cashierSubscribed())
-                            abort(403);
-                        return $request->user()->redirectToBillingPortal(url()->previous());
+                        return redirect(route('subscribe-manage'));
                     } else {
                         return view('subscribe');
                     }
-                })
-                    ->name('subscribe');
+                })->name('subscribe');
+
+                Route::get(LaravelLocalization::transRoute('routes.subscribe-manage'), function (Request $request) {
+                    if (!$request->user()->cashierSubscribed())
+                        abort(403);
+                    return $request->user()->redirectToBillingPortal(url()->previous());
+                })->middleware('throttle:3,1')->name('subscribe-manage');
 
 
                 Route::middleware('can:purchase-subscription')->group(function () {
@@ -106,6 +109,7 @@ Route::group(
                         ->name('subscribe.coinbase');
 
                     Route::post(LaravelLocalization::transRoute('routes.subscribe-coinbase-checkout'), [CoinbaseController::class, 'subscribe'])
+                        ->middleware('throttle:2,1')
                         ->name('subscribe.coinbase.checkout');
 
                     Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
