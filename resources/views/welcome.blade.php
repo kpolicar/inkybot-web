@@ -15,6 +15,7 @@
             {!! __('common.compatible', ['version' => $gameVersion]) !!}
         </p>
         <a href="{{ route('download') }}"
+           data-download
            rel="nofollow"
            class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg">
             {{ __('common.download') }}
