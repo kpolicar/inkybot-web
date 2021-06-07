@@ -1,4 +1,4 @@
-import Swiper, { Autoplay, Lazy } from 'swiper';
+import Swiper, { Autoplay, Lazy, Navigation, Keyboard } from 'swiper';
 // import Swiper styles
 import 'swiper/swiper-bundle.css';
 
@@ -8,6 +8,8 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Swiper.use(Autoplay);
 Swiper.use(Lazy);
+Swiper.use(Navigation);
+Swiper.use(Keyboard);
 
 let swiperElement = document.querySelector('#swiper-exos');
 
@@ -20,6 +22,9 @@ if (swiperElement) {
         autoplay: {
             delay: 5000,
         },
+        keyboard: {
+            enabled: true,
+        },
         breakpoints: {
             768: {
                 slidesPerView: 2,
@@ -29,7 +34,11 @@ if (swiperElement) {
                 slidesPerView: 3,
                 spaceBetween: 10
             },
-        }
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
     });
 
     swiperElement.classList.remove('opacity-0')
