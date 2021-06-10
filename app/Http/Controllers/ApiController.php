@@ -49,8 +49,28 @@ class ApiController extends Controller
         ];
     }
 
-    public function User(Request $request) {
+    public function User($code, Request $request, ClientVersion $versions) {
+        $version = $versions->firstWhere('code', $code);
+        if ($version['number'] < 19) {
+            return $this->UserForRequestBeforeV2($request);
+        }
         return new ClientUserResource($request->user());
+    }
+
+    private function UserForRequestBeforeV2(Request $request)
+    {
+        $user = $request->user();
+        if ($user->subscribed() && $user->number_of_exo_mages_left_in_plan <= 0) {
+            $user->subscription()->ends_at = now()->subDay();
+            $user->free_trial = $user->free_trial()->make()->forceFill([
+                'expires_at' => now()->subDay(),
+                'updated_at' => now()->subDay(),
+                'created_at' => now()->subDay(),
+            ]);
+            $user->free_trial->exists = true;
+            return new ClientUserResource($user);
+        }
+        return new ClientUserResource($user);
     }
 
     public function NotifyError(Request $request) {
