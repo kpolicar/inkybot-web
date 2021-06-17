@@ -52,7 +52,7 @@
                 <a href="{{ route('home') }}" class="text-gray-700 font-bold hover:underline">https://inkybot.me</a>
                 website as well as any other media form,
                 media channel, mobile website or mobile application related, linked, or otherwise connected thereto
-                (collectively, the “Site”). You agree that by accessing the Site, you have read, understood, and agree
+                (collectively, the "Site"). You agree that by accessing the Site, you have read, understood, and agree
                 to be bound by all of these Terms of Use. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS OF USE, THEN YOU
                 ARE EXPRESSLY PROHIBITED FROM USING THE SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY.
             </p>
@@ -61,7 +61,7 @@
                 Supplemental terms and conditions or documents that may be posted on the Site from time to time are
                 hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make
                 changes or modifications to these Terms of Use at any time and for any reason. We will alert you about
-                any changes by updating the “Last updated” date of these Terms of Use, and you waive any right to
+                any changes by updating the "Last updated" date of these Terms of Use, and you waive any right to
                 receive specific notice of each such change. It is your responsibility to periodically review these
                 Terms of Use to stay informed of updates. You will be subject to, and will be deemed to have been made
                 aware of and to have accepted, the changes in any revised Terms of Use by your continued use of the Site
@@ -90,11 +90,11 @@
             <p class="my-2">
                 Unless otherwise indicated, the Site is our proprietary property and all source code, databases,
                 functionality, software, website designs, audio, video, text, photographs, and graphics on the Site
-                (collectively, the “Content”) and the trademarks, service marks, and logos contained therein (the
-                “Marks”) are owned or controlled by us or licensed to us, and are protected by copyright and trademark
+                (collectively, the "Content") and the trademarks, service marks, and logos contained therein (the
+                "Marks") are owned or controlled by us or licensed to us, and are protected by copyright and trademark
                 laws and various other intellectual property rights and unfair competition laws of the United States,
                 international copyright laws, and international conventions. The Content and the Marks are provided on
-                the Site “AS IS” for your information and personal use only. Except as expressly provided in these Terms
+                the Site "AS IS" for your information and personal use only. Except as expressly provided in these Terms
                 of Use, no part of the Site and no Content or Marks may be copied, reproduced, aggregated, republished,
                 uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or
                 otherwise exploited for any commercial purpose whatsoever, without our express prior written permission.
@@ -197,12 +197,20 @@
 
             <p class="my-2">
                 All purchases are non-refundable. You can cancel your subscription at any time by logging into your
-                account. Your cancellation will take effect at the end of the current paid term.
+                account and visiting the billing portal, accessible via your profile page. Your cancellation will take
+                effect at the end of the current paid term.
             </p>
 
 
             <p class="my-2">
-                If you are unsatisfied with our services, please email us at support@inkybot.me.
+                If you are unsure as to how you can cancel your subscription, please email us at
+                <a href="mailto:payment@inkybot.me" class="font-bold">payment@inkybot.me</a>.
+            </p>
+
+
+            <p class="my-2">
+                If you are unsatisfied with our services, please email us at
+                <a href="mailto:support@inkybot.me" class="font-bold">support@inkybot.me</a>.
             </p>
 
             <h3 class="font-bold text-lg mt-6">
@@ -212,10 +220,10 @@
 
             <p class="my-2">
                 We may include software for use in connection with our services. If such software is accompanied by an
-                end user license agreement (“EULA”), the terms of the EULA will govern your use of the software. If such
+                end user license agreement ("EULA"), the terms of the EULA will govern your use of the software. If such
                 software is not accompanied by a EULA, then we grant to you a non-exclusive, revocable, personal, and
                 non-transferable license to use such software solely in connection with our services and in accordance
-                with these Terms of Use. Any Software and any related documentation is provided “as is” without warranty
+                with these Terms of Use. Any Software and any related documentation is provided "as is" without warranty
                 of any kind, either express or implied, including, without limitation, the implied warranties of
                 merchantability, fitness for a particular purpose, or non-infringement. You accept any and all risk
                 arising out of use or performance of any Software. You may not reproduce or redistribute any software
@@ -300,8 +308,8 @@
                 <li>
                     Upload or transmit (or attempt to upload or to transmit) any material that acts as a passive or
                     active information collection or transmission mechanism, including without limitation, clear
-                    graphics interchange formats (“gifs”), 1×1 pixels, web bugs, cookies, or other similar devices
-                    (sometimes referred to as “spyware” or “passive collection mechanisms” or “pcms”).
+                    graphics interchange formats ("gifs"), 1×1 pixels, web bugs, cookies, or other similar devices
+                    (sometimes referred to as "spyware" or "passive collection mechanisms" or "pcms").
                 </li>
                 <li>
                     Disparage, tarnish, or otherwise harm, in our opinion, us and/or the Site.
@@ -501,7 +509,7 @@
             <p class="my-2">
                 We respect the intellectual property rights of others. If you believe that any material available on or
                 through the Site infringes upon any copyright you own or control, please immediately notify us using the
-                contact information provided below (a “Notification”). A copy of your Notification will be sent to the
+                contact information provided below (a "Notification"). A copy of your Notification will be sent to the
                 person who posted or stored the material addressed in the Notification. Please be advised that pursuant
                 to applicable law you may be held liable for damages if you make material misrepresentations in a
                 Notification. Thus, if you are not sure that material located on or linked to by the Site infringes your
@@ -566,8 +574,8 @@
 
             <p class="my-2">
                 To expedite resolution and control the cost of any dispute, controversy, or claim related to these Terms
-                of Use (each "Dispute" and collectively, the “Disputes”) brought by either you or us (individually, a
-                “Party” and collectively, the “Parties”), the Parties agree to first attempt to negotiate any Dispute
+                of Use (each "Dispute" and collectively, the "Disputes") brought by either you or us (individually, a
+                "Party" and collectively, the "Parties"), the Parties agree to first attempt to negotiate any Dispute
                 (except those Disputes expressly provided below) informally for at least thirty (30) days before
                 initiating arbitration. Such informal negotiations commence upon written notice from one Party to the
                 other Party.
