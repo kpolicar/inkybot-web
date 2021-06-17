@@ -6,7 +6,8 @@ return [
     'subheading' => 'Dites nous quelles statistiques vous voulez sur vos items et nous ferons le reste!',
     'install_instructions' => 'Instruction d\'installation',
 
-    'copyright' => 'Copyright © :year Inkybot, Dofus® est une marque déposée d\'Ankama © 2021',
+    'copyright' => 'Copyright © :year Inkybot',
+    'dofus_trademark' => 'Dofus® est une marque déposée d\'Ankama © 2021',
     'affiliation' => 'Inkybot n\'est en aucun cas affilié à Ankama SAS.',
 
     'download_started' => 'Votre téléchargement à commencé. Vous devrez dézipper le fichier compressé en utilisant le mot de passe :password',

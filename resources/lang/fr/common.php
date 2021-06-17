@@ -18,6 +18,7 @@ return [
     'upgrade' => 'Améliorer',
     'download' => 'Téléchargement',
     'forum' => 'Forum',
+    'terms' => 'Conditions d\'utilisation',
     'month' => 'mois',
     'translated_credits' => 'traduit par :name',
     'back' => 'Retour',

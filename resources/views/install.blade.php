@@ -5,7 +5,7 @@
 @section('hero')
     <x-main-hero>
 
-        <h2 class="uppercase tracking-loose w-full">
+        <h2 class="uppercase tracking-loose w-full text-center lg:text-left">
             {{ __('install.subheader') }}
         </h2>
 

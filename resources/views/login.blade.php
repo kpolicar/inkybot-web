@@ -5,7 +5,7 @@
 
 @section('content')
     <x-main-hero>
-        <h2 class="uppercase tracking-loose w-full">
+        <h2 class="uppercase tracking-loose w-full text-center lg:text-left">
             {{ __('forms.login_subheader') }}
         </h2>
         <div class="flex justify-center lg:justify-between">

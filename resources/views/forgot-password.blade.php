@@ -7,7 +7,7 @@
 
 @section('content')
     <x-main-hero>
-        <h2 class="uppercase tracking-loose w-full">{{ __('forms.forgot_subheader') }}</h2>
+        <h2 class="uppercase tracking-loose w-full text-center lg:text-left">{{ __('forms.forgot_subheader') }}</h2>
         <div class="flex justify-center lg:justify-between">
             <h1 class="my-4 text-3xl font-bold leading-tight">{{ __('forms.forgot_header') }}</h1>
             <i class="fas fa-user-lock text-4xl p-3"></i>
