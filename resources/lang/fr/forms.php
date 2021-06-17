@@ -7,6 +7,7 @@ return [
     'name' => 'Afficher son nom',
     'name_example' => 'John Doe',
     'password' => 'Mot de passe',
+    'terms_link' => 'J\'ai lu et j\'accepte les :link.',
 
     'verify_subheader' => 'Protéger son compte',
     'verify_header' => 'Vérifier son adresse email',

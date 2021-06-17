@@ -18,6 +18,7 @@ return [
     'upgrade' => 'Upgrade',
     'download' => 'Download',
     'forum' => 'Forum',
+    'terms' => 'Terms of Service',
     'month' => 'month',
     'translated_credits' => 'translated by :name',
     'back' => 'Back',

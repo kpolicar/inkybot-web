@@ -132,6 +132,9 @@ Route::group(
         return view("release.$view", ['version' => $versionDetails]);
     })->name('release');
 
+    Route::view('terms', 'terms')
+        ->name('terms');
+
     Route::get(LaravelLocalization::transRoute('routes.export'), function (Request $request) {
         return new MagingExport($request->user());
     })->name('export')->middleware(['auth', Subscribed::class, 'throttle:1,10,export']);

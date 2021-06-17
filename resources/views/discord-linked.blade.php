@@ -17,7 +17,7 @@
                 <i class="fab fa-discord text-5xl p-2"></i>
             </div>
 
-            <h2 class="uppercase tracking-loose w-full">
+            <h2 class="uppercase tracking-loose w-full text-center lg:text-left">
                 {{ __('discord.main_subheader') }}
             </h2>
         </div>

@@ -18,7 +18,7 @@
                 <i class="fab fa-discord text-4xl p-3"></i>
             </div>
 
-            <h2 class="uppercase tracking-loose w-full">
+            <h2 class="uppercase tracking-loose w-full text-center lg:text-left">
                 {{ __('forms.discord-login_subheader') }}
             </h2>
         </div>

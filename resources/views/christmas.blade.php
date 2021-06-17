@@ -7,7 +7,7 @@
     <x-main-hero>
         <div style="background-image: url('{{ asset('images/gift.gif') }}'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
 
-            <h2 class="uppercase tracking-loose w-full">It's Christmas time!</h2>
+            <h2 class="uppercase tracking-loose w-full text-center lg:text-left">It's Christmas time!</h2>
             <div class="flex justify-center lg:justify-between">
                 <h1 class="my-4 text-3xl font-bold leading-tight">Claim your Inkybot gift!</h1>
             </div>
