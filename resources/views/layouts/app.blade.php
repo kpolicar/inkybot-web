@@ -66,6 +66,24 @@
     @include('partials.footer')
 @show
 
+<aside id="notification-discord" class="text-white pr-6 py-4 border-0 rounded-lg m-2 bg-black fixed bottom-0 right-0 w-auto z-10 opacity-75">
+    <span class="inline-block align-middle mx-5 mr-8 font-bold max-w-xl">
+        {{ __('common.discord_ban') }}
+
+        <hr>
+        @section('ban_link')
+            <a href="{{ route('discord') }}" target="_blank" class="font-bold hover:underline">{{ __('common.discord_ban_new_server') }}</a>
+        @endsection
+
+        <span class="font-normal text-sm">
+        {!! __('common.discord_ban_details', ['link' => View::getSection('ban_link')]) !!}
+        </span>
+    </span>
+    <button id="notification-close" data-hide="#notification-discord"  class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
+        <span>×</span>
+    </button>
+</aside>
+
 @include('partials.notification-download')
 
 @section('scripts')
