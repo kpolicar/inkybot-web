@@ -152,7 +152,7 @@ Route::group(
 
 Route::prefix('discord')->group(function () {
     Route::get('/', function () {
-        return redirect()->to('https://discord.gg/ueutfe8');
+        return redirect()->to('https://discord.gg/Fkg37XTtq2');
     })->name('discord');
 
     Route::get('link/{id}', [LinkDiscordController::class, '__invoke'])
