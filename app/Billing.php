@@ -53,7 +53,7 @@ class Billing
     private static function resolveAmountForTieredPrice(User $user, Price $price, $quantity)
     {
         $amount = 0;
-        $count = optional($user->subscription())->quantity ?: 0;
+        $count = optional($user->validSubscription())->quantity ?: 0;
 
         while ($quantity > 0) {
             $nextTier = collect($price->tiers)->sortBy(function ($tier) {

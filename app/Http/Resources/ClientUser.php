@@ -24,7 +24,7 @@ class ClientUser extends JsonResource
             'i30jfVx9krmacQH' => $this->name,
             'rGEFoEUizObjmwg' => $this->number_of_exo_mages_left_in_plan ?: 0,
             'CXpD6X71WZhYsHf' => $this->email,
-            'rbvQL1e41MOgDLA' => optional($this->subscription())->current_period_end ?: $this->subscribed_to, //deprecated: subscribed_to
+            'rbvQL1e41MOgDLA' => optional($this->validSubscription())->current_period_end ?: $this->subscribed_to, //deprecated: subscribed_to
             'wVakGMaAnUQkCFZ' => $this->subscribed(),
             'Sw6mNjvR0HZofKj' => $this->is_free_trial,
             'EbP8tMjESR6IGvi' => $this->free_trial_available,

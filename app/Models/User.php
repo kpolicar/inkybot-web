@@ -89,6 +89,11 @@ class User extends Authenticatable implements MustVerifyEmail
             return 0;
     }
 
+    public function validSubscription()
+    {
+        return optional($this->subscription())->valid() ? $this->subscription() : null;
+    }
+
     public function referrer() {
         return $this->belongsTo(User::class, 'referred_by', 'id');
     }
