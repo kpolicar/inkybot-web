@@ -16,16 +16,16 @@
                 @subscribed
                     {{ __('profile.subscribed') }}
 
-                    @if (Auth::user()->subscription()->quantity > 1)
-                        // <b>{{ __('profile.instances', ['number' => Auth::user()->subscription()->quantity ]) }}</b>
+                    @if (Auth::user()->validSubscription()->quantity > 1)
+                        // <b>{{ __('profile.instances', ['number' => Auth::user()->validSubscription()->quantity ]) }}</b>
                     @endif
                 @else
                     {{ __('profile.subscribed_false') }}
                 @endsubscribed
             </p>
 
-            @php($subscriptionPeriodEnd = optional(Auth::user()->subscription())->current_period_end)
-            @php($subscriptionCancelledAt = optional(Auth::user()->subscription())->ends_at)
+            @php($subscriptionPeriodEnd = optional(Auth::user()->validSubscription())->current_period_end)
+            @php($subscriptionCancelledAt = optional(Auth::user()->validSubscription())->ends_at)
 
             @unless (!$subscriptionPeriodEnd && !$subscriptionCancelledAt)
                 <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
