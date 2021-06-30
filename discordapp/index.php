@@ -27,7 +27,7 @@ $discord->on('ready', function (\Discord\Discord $discord) {
 
         $discord->on(Event::MESSAGE_CREATE, function (Message $message, Discord $discord) use ($guild) {
             try {
-                if ($message->channel_id->id == WEBHOOK_INTEGRATION_CHANNEL_ID && str_starts_with($message->content, "!"))
+                if ($message->channel_id == WEBHOOK_INTEGRATION_CHANNEL_ID && str_starts_with($message->content, "!"))
                     return (new WebhookController($guild))->handleMessage($message);
 
                 if ($discord->username == $message->author->username ||
