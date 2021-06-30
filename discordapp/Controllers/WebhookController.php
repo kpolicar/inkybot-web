@@ -10,7 +10,7 @@ use Discord\Parts\User\Member;
 
 class WebhookController
 {
-    const ROLE_SUBSCRIBER_ID = 764527915467276288;
+    const ROLE_SUBSCRIBER_ID = 859779072589955122;
     /**
      * @var Guild
      */
