@@ -16,9 +16,11 @@ use App\Http\Middleware\Subscribed;
 use App\Http\Middleware\RedirectToInvoicePageIfIncompletePayment;
 use App\Models\Maging;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -165,3 +167,34 @@ Route::get('price', [BillingController::class, 'price'])
     ->name('billing.price');
 Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 Route::post('coinbase/webhook', [CoinbaseWebhookController::class, 'handleWebhook']);
+
+Route::get('/mailable', function () {
+
+
+    $notification = new class extends \Illuminate\Notifications\Notification {
+        public function toMail($notifiable) {
+            return $mail = (new MailMessage)
+                ->subject('New Discord Server - Status Update')
+                ->line('You are receiving this email because you have registered an account on Inkybot.')
+                ->line(new HtmlString('Inkybot\'s discord server has recently been shut down due to violating the '.
+                    '<a href="https://discord.com/terms">terms of service</a>. '.
+                    'You have been invited to join the new discord server by clicking the button below.'))
+                ->action('Join New Discord', route('discord'))
+                ->line(new HtmlString('I am considering switching communication platforms and will notify you of any changes. '
+                    .'You will have to re-link your Discord account to receive notifications as you have previously'.
+                    ' - this is done in the <strong>#welcome</strong> channel.'))
+                ->line(new HtmlString('<hr>'))
+                ->line(new HtmlString('<strong>Additionally, I suggest users switch to cryptocurrency payments.</strong>'))
+                ->line(new HtmlString('It\'s entirely possible Ankama Games will eventually contact Stripe and have them disable our payment solution, '
+                    .'as they have done previously to <a href="https://flatybot.net/">Flatybot</a>. '.
+                    'If this happens, it could take up to a week to implement a new payment solution that accepts credit cards.'))
+                ->line(new HtmlString('If anyone would like to preemptively protect themselves from this, '.
+                    'you can also contact me to purchase <strong>credit</strong> on your Inkybot account.'));
+        }
+        public function via($notifiable)
+        {
+            return ['mail'];
+        }
+    };
+    return $mail;
+});
