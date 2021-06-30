@@ -11,13 +11,13 @@ use Discord\Parts\Channel\Message;
 use Discord\Parts\Guild\Guild;
 
 include __DIR__.'/../vendor/autoload.php';
-const GUILD_ID = 764510615049076797;
-const WEBHOOK_USER_ID = 795037986592391178;
-const BOT_USER_ID = 764562527752290316;
-const REACTION_MESSAGE_ID = 826110239035621387;
+const GUILD_ID = 859753112923013130;
+const WEBHOOK_INTEGRATION_CHANNEL_ID = 859773765868191744;
+const BOT_USER_ID = 859774039269834782;
+const REACTION_MESSAGE_ID = 859776364697485312;
 
 $discord = new \Discord\Discord([
-    'token' => 'NzY0NTYyNTI3NzUyMjkwMzE2.X4IEVw.d7ncwQTjpOirR7QrmqQ1yoipLEs',
+    'token' => 'ODU5Nzc0MDM5MjY5ODM0Nzgy.YNxk-A.hfiACu10JzxSGMPxoOMe-uRSRAg',
     'loadAllMembers' => true,
 ]);
 
@@ -27,7 +27,7 @@ $discord->on('ready', function (\Discord\Discord $discord) {
 
         $discord->on(Event::MESSAGE_CREATE, function (Message $message, Discord $discord) use ($guild) {
             try {
-                if ($message->author->id == WEBHOOK_USER_ID && str_starts_with($message->content, "!"))
+                if ($message->channel_id->id == WEBHOOK_INTEGRATION_CHANNEL_ID && str_starts_with($message->content, "!"))
                     return (new WebhookController($guild))->handleMessage($message);
 
                 if ($discord->username == $message->author->username ||
@@ -46,8 +46,6 @@ $discord->on('ready', function (\Discord\Discord $discord) {
         $discord->on(Event::MESSAGE_REACTION_ADD, function (MessageReaction $reaction, Discord $discord) use ($guild) {
             if ($reaction->message_id != REACTION_MESSAGE_ID || $reaction->user_id == BOT_USER_ID)
                 return;
-            if ($reaction->message->reactions->count() > 1)
-                $reaction->message->deleteReaction(Message::REACT_DELETE_ID, $reaction->emoji, $reaction->user_id);
 
             $discord->users->fetch($reaction->user_id)->then(function ($user) use ($guild, $reaction) {
                 return (new ReactionController($guild))->handle($user, $reaction);
