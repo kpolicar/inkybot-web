@@ -26,8 +26,4 @@ return [
     'compatible' => 'Compatible avec Dofus <b>:version</b> <small class="text-xs">(dernière version)</small>',
 
     'error_generic' => 'Une erreur s\'est produite!',
-
-    'discord_ban' => 'Le Discord Inkybot a été banni pour avoir enfreint les conditions d\'utilisation.',
-    'discord_ban_details' => 'En conséquence, nous avons ouvert un :link. Nous passerons bientôt à une autre plate-forme et nous informerons tous les utilisateurs des détails par e-mail.',
-    'discord_ban_new_server' => 'nouveau serveur Discord',
 ];
