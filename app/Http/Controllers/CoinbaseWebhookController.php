@@ -91,7 +91,7 @@ class CoinbaseWebhookController extends Controller
         if (app('cryptoPromo')) {
             $subscription->trialDays(3);
         }
-        $subscription->quantity($charge['metadata']['quantity'])
+        $subscription = $subscription->quantity($charge['metadata']['quantity'])
             ->noProrate()
             ->withMetadata([
                 'coinbase_charge_id' => $charge->id
