@@ -44,7 +44,7 @@ return [
 
     'basket_item' => 'Item:',
     'basket_option' => ':option month subscription',
-    'basket_option_bonus' => '(+1 day)',
+    'basket_option_bonus' => '(+3 days)',
     'basket_price' => 'Price:',
     'basket_paid' => 'Amount paid:',
 

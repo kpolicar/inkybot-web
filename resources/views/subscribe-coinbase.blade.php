@@ -30,7 +30,7 @@
 
                 <p class="text-gray-400 text-base mt-4 text-left my-4">
                     {{ __('forms.subscribe_option', ['option' => 1]) }}<br>
-                    {!! __('forms.subscribe_duration', ['date' => now()->addMonth()->format('d.m.Y')]) !!}<br>
+                    {!! __('forms.subscribe_duration', ['date' => now()->addMonth()->addDays($cryptoPromo ? 3 : 0)->format('d.m.Y')]) !!}<br>
                     {{ __('forms.subscribe_thanks') }}
                 </p>
                 <div class="w-full mb-4">
@@ -39,7 +39,7 @@
 
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">{{ __('forms.basket_item') }}</p>
-                    <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}</p>
+                    <p class="text-lg">{{ __('forms.basket_option', ['option' => 1]) }}@if ($cryptoPromo) <strong class="text-green-300">{{ __('forms.basket_option_bonus') }}</strong>@endif</p>
                 </div>
                 <div class="flex justify-between text-xl">
                     <p class="font-bold">{{ __('forms.basket_price') }}</p>
