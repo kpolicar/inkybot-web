@@ -495,10 +495,10 @@
             <p class="my-2">
                 We care about data privacy and security. By using the Site, you agree to be bound by our Privacy Policy
                 posted on the Site, which is incorporated into these Terms of Use. Please be advised the Site is hosted
-                in France. If you access the Site from any other region of the world with laws or other requirements
-                governing personal data collection, use, or disclosure that differ from applicable laws in France, then
-                through your continued use of the Site, you are transferring your data to France, and you agree to have
-                your data transferred to and processed in France.
+                in the European Union. If you access the Site from any other region of the world with laws or other requirements
+                governing personal data collection, use, or disclosure that differ from applicable laws in the European Union, then
+                through your continued use of the Site, you are transferring your data to the European Union, and you agree to have
+                your data transferred to and processed in the European Union.
             </p>
 
             <h3 class="font-bold text-lg mt-6">
