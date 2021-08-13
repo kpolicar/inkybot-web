@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Billing;
+use App\Events\UserLinkedWithDiscord;
 use App\Models\Traits\UserCacheAttributes;
 use App\Models\Traits\UserThrottles;
 use Carbon\Carbon;
@@ -213,9 +214,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function linkDiscord($id)
     {
-        $this->forceFill([
+        $success = $this->forceFill([
             'discord_id' => $id
         ])->save();
+        if ($success)
+            UserLinkedWithDiscord::dispatch($this);
     }
 
     public function incompletePaymentHostedUrl()

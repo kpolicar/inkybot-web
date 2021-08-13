@@ -34,13 +34,20 @@ class WebhookController
         echo "Executed command: $message->content\n";
     }
 
+    public function linked(Message $message, $id)
+    {
+        $this->guild->members->fetch($id)->then(function (Member $member) {
+            $member->user->sendMessage("You have successfully linked Discord with your Inkybot account.");
+        });
+    }
+
     public function subscribe(Message $message, $id) {
-        $this->guild->members->fetch($id)->then(function (Member $member) use($message) {
+        $this->guild->members->fetch($id)->then(function (Member $member) {
             if ($member->roles->has(WebhookController::ROLE_SUBSCRIBER_ID))
                 return;
 
             $member->addRole(WebhookController::ROLE_SUBSCRIBER_ID)
-                ->then(function () use ($member, $message) {
+                ->then(function () use ($member) {
                     $member->user->sendMessage("Your discord role on has been updated to: **Subscriber**.");
                 });
         });

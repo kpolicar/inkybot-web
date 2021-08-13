@@ -5,11 +5,13 @@ namespace App\Providers;
 use App\Events\CoinbaseWebhookReceived;
 use App\Events\MagePublishUploaded;
 use App\Events\PaymentSucceeded;
+use App\Events\UserLinkedWithDiscord;
 use App\Events\UserPurchasedSubscription;
 use App\Events\UserSyncedWithDiscord;
 use App\Listeners\EnforceUniqueUserAccessToken;
 use App\Listeners\PostMagePublishToForum;
 use App\Listeners\SaveCoinbaseWebhook;
+use App\Listeners\SendLinkSuccessfulToDiscord;
 use App\Listeners\SendMagePublishToDiscord;
 use App\Listeners\SendUserSubscriptionStatusToDiscord;
 use App\Listeners\StorePayment;
@@ -40,6 +42,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserPurchasedSubscription::class => [
             SendUserSubscriptionStatusToDiscord::class,
+        ],
+        UserLinkedWithDiscord::class => [
+            SendLinkSuccessfulToDiscord::class,
         ],
         UserSyncedWithDiscord::class => [
             SendUserSubscriptionStatusToDiscord::class,
