@@ -96,8 +96,7 @@ class CoinbaseWebhookController extends Controller
             ->withMetadata([
                 'coinbase_charge_id' => $charge->id
             ])
-            ->create()
-            ->cancel();
+            ->create();
 
 
         UserPurchasedSubscription::dispatch($user);
