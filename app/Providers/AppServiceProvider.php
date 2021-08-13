@@ -78,10 +78,15 @@ class AppServiceProvider extends ServiceProvider
             optional($model->user)->userCacheAttributesNumberOfExoMagesLeftInPlanClearCache();
         });
 
+        $this->app->singleton('cryptoPromo', function () {
+            return now()->isBefore('2021-09-01');
+        });
+
         if (app()->environment('production')) {
             \URL::forceScheme('https');
         }
         \URL::forceRootUrl(\Config::get('app.url'));
         \View::share('download_password', "inkybot");
+        \View::share('cryptoPromo', $this->app['cryptoPromo']);
     }
 }

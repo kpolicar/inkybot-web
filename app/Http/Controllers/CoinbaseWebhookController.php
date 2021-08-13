@@ -86,8 +86,12 @@ class CoinbaseWebhookController extends Controller
         $customer->balance -= $amount;
         $customer->save();
 
-        $subscription = $user->newSubscription('default', Billing::resolvePlan($charge['metadata']['plan']))
-            ->quantity($charge['metadata']['quantity'])
+        $subscription = $user->newSubscription('default', Billing::resolvePlan($charge['metadata']['plan']));
+        // Todo: Temporary sale
+        if (app('cryptoPromo')) {
+            $subscription->trialDays(3);
+        }
+        $subscription->quantity($charge['metadata']['quantity'])
             ->noProrate()
             ->withMetadata([
                 'coinbase_charge_id' => $charge->id
