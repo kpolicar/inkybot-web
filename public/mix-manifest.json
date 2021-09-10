@@ -1,9 +1,8 @@
 {
-    "/js/app.js": "/js/app.js?id=d80f077f46313db0df4f",
-    "/js/stripe.js": "/js/stripe.js?id=02e23fdae79fa0ce4bf7",
-    "/js/profile.js": "/js/profile.js?id=fa326e847fdf884532e0",
-    "/js/payment.js": "/js/payment.js?id=1a1e29b3cc7dd795f2e6",
-    "/css/app.css": "/css/app.css?id=facf7c13a1e081d36658",
+    "/js/app.js": "/js/app.js?id=72b31961bd3b1be60974",
+    "/js/stripe.js": "/js/stripe.js?id=0afd1c412bbca646351f",
+    "/js/profile.js": "/js/profile.js?id=537e94c2f624094abdd6",
+    "/js/payment.js": "/js/payment.js?id=c8c342675ab2375d30ae",
     "/fonts/fa-brands-400.eot": "/fonts/fa-brands-400.eot?id=94c52b85b8727f78760e",
     "/fonts/fa-brands-400.svg": "/fonts/fa-brands-400.svg?id=ba7ed552362f64d30f6d",
     "/fonts/fa-brands-400.ttf": "/fonts/fa-brands-400.ttf?id=623b08743e12b2ff1fc2",
@@ -18,5 +17,6 @@
     "/fonts/fa-solid-900.svg": "/fonts/fa-solid-900.svg?id=376c1f97f6553dea1ca9",
     "/fonts/fa-solid-900.ttf": "/fonts/fa-solid-900.ttf?id=1828deab434c894cf16e",
     "/fonts/fa-solid-900.woff": "/fonts/fa-solid-900.woff?id=2cd966756e4b2e254242",
-    "/fonts/fa-solid-900.woff2": "/fonts/fa-solid-900.woff2?id=fc56faf526ca07331a77"
+    "/fonts/fa-solid-900.woff2": "/fonts/fa-solid-900.woff2?id=fc56faf526ca07331a77",
+    "/css/app.css": "/css/app.css?id=0a068aba229b14f8980a"
 }
