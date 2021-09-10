@@ -16,7 +16,7 @@
     </select>
 </div>
 
-<div class="my-2 flex items-start" v-if="plan == 'unlimited'">
+<div class="my-2 flex items-start md:justify-start justify-center" v-if="plan == 'unlimited'">
     <label for="quantity" class="mr-2">{!! __('pricing.instances') !!}:</label>
     <input name="quantity"
            id="quantity"
