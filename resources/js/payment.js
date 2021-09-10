@@ -6,6 +6,7 @@ const form = document.querySelector('#payment-form');
 const data = {
     plan: form.dataset.plan,
     quantity: 1,
+    queue: false,
     price: form.dataset.price/1,
     priceRefreshRequest: false,
 }
@@ -13,7 +14,7 @@ const data = {
 const priceFetchUrl = form.dataset.priceUrl;
 const refreshPrice = function() {
 
-    axios.get(`${priceFetchUrl}?plan=${this.plan}&quantity=${this.quantity}`)
+    axios.get(`${priceFetchUrl}?plan=${this.plan}&quantity=${this.quantity}&queue=${this.queue}`)
         .then(result => {
             this.price = result.data['amount'] / 100;
         }).finally(() => {
@@ -30,6 +31,7 @@ const app = createApp({
     watch: {
         plan: refreshPrice,
         quantity: refreshPrice,
+        queue: refreshPrice,
     },
 })
 

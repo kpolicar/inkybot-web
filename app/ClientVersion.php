@@ -108,6 +108,11 @@ class ClientVersion
                 'code' => 'v2',
                 'name' => 'v2.0',
             ],
+            20 => [
+                'number' => 20,
+                'code' => 'v2.1',
+                'name' => 'v2.1',
+            ],
         ]);
     }
 

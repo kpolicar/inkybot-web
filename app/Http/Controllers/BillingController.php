@@ -17,7 +17,9 @@ class BillingController extends Controller
     {
         $currency = $request->user()->preferredCurrency();
         $amount = Billing::price(
-            $request->input('plan'),
+            $request->input('queue') && $request->input('plan') == Billing::$unlimitedWithQueuePlanCode
+                ? Billing::$unlimitedWithQueuePlanCode
+                : $request->input('plan'),
             $request->user(),
             $this->quantityFromPost($request));
 
@@ -26,7 +28,7 @@ class BillingController extends Controller
 
     protected function quantityFromPost(Request $request)
     {
-        return $request->post('plan') == Billing::$unlimitedPlanCode
+        return in_array($request->post('plan'), [Billing::$unlimitedPlanCode, Billing::$unlimitedWithQueuePlanCode])
             ? min(10, max(1, $request->post('quantity', 1)))
             : 1;
     }

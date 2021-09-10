@@ -79,18 +79,29 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('view-statistics', function (User $user) {
             return $user->subscribed()
-                && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
+                && ($user->subscribedToPlan(Billing::standardPlan())
+                    || $user->subscribedToPlan(Billing::unlimitedPlan())
+                    || $user->subscribedToPlan(Billing::unlimitedWithQueuePlan()));
         });
 
         Gate::define('view-exos', function (User $user) {
             return $user->subscribed()
-                && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
+                && ($user->subscribedToPlan(Billing::standardPlan())
+                    || $user->subscribedToPlan(Billing::unlimitedPlan())
+                    || $user->subscribedToPlan(Billing::unlimitedWithQueuePlan()));
         });
 
 
         Gate::define('custom-maging-ai', function (User $user) {
             return $user->subscribed()
-                && ($user->subscribedToPlan(Billing::standardPlan()) || $user->subscribedToPlan(Billing::unlimitedPlan()));
+                && ($user->subscribedToPlan(Billing::standardPlan())
+                    || $user->subscribedToPlan(Billing::unlimitedPlan())
+                    || $user->subscribedToPlan(Billing::unlimitedWithQueuePlan()));
+        });
+
+
+        Gate::define('maging-queue', function (User $user) {
+            return $user->subscribed() && $user->subscribedToPlan(Billing::unlimitedWithQueuePlan());
         });
     }
 }

@@ -82,6 +82,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         if ($this->subscribedToPlan(Billing::unlimitedPlan()))
             return config('cashier.product_price_unlimited_exo_mages');
+        else if ($this->subscribedToPlan(Billing::unlimitedWithQueuePlan()))
+            return config('cashier.product_price_unlimited_with_queue_exo_mages');
         else if ($this->subscribedToPlan(Billing::standardPlan()))
             return config('cashier.product_price_standard_exo_mages');
         else if ($this->subscribedToPlan(Billing::starterPlan()))
@@ -141,7 +143,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function numberOfExoMagesLeftInPlan()
     {
         $exoMagesInPlan = $this->numberOfExoMagesInPricingPlan();
-        if (!$this->subscribed() || $this->subscribedToPlan(Billing::unlimitedPlan()))
+        if (!$this->subscribed()
+            || $this->subscribedToPlan(Billing::unlimitedPlan())
+            || $this->subscribedToPlan(Billing::unlimitedWithQueuePlan()))
             return $exoMagesInPlan;
 
         $currentPeriodEnd = $this->subscription()->asDateTime(
@@ -173,7 +177,7 @@ class User extends Authenticatable implements MustVerifyEmail
             $dummySubscription = $this->subscriptions()->make([
                 'name' => $name,
                 'stripe_status' => 'cancelled',
-                'stripe_plan' => Billing::unlimitedPlan(),
+                'stripe_plan' => Billing::unlimitedWithQueuePlan(),
                 'quantity' => 1,
                 'current_period_end' => $this->subscribed_to,
                 'ends_at' => $this->subscribed_to,
@@ -195,7 +199,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function subscribedToPlan($plans, $name = 'default')
     {
-        if ($plans == Billing::unlimitedPlan() && $this->subscribedDeprecated())
+        if ($plans == Billing::unlimitedWithQueuePlan() && $this->subscribedDeprecated())
             return true;
 
         return $this->cashierSubscribedToPlan($plans, $name);

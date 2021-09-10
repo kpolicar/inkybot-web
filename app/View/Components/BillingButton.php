@@ -45,9 +45,11 @@ class BillingButton extends Component
                 return Auth::user()->subscribedToPlan(Billing::starterPlan());
             case Billing::$standardPlanCode:
                 return !Auth::user()->subscribedToPlan(Billing::standardPlan()) &&
-                    !Auth::user()->subscribedToPlan(Billing::unlimitedPlan());
+                    !Auth::user()->subscribedToPlan(Billing::unlimitedPlan()) &&
+                    !Auth::user()->subscribedToPlan(Billing::unlimitedWithQueuePlan());
             case Billing::$unlimitedPlanCode:
-                return !Auth::user()->subscribedToPlan(Billing::unlimitedPlan());
+                return !Auth::user()->subscribedToPlan(Billing::unlimitedPlan())
+                    && !Auth::user()->subscribedToPlan(Billing::unlimitedWithQueuePlan());
         }
         if (Auth::user()->subscribedToPlan(Billing::starterPlan())) {
             return false;
