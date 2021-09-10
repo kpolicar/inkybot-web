@@ -5,10 +5,12 @@ return [
     'description' => 'Les prix d\'Inkybot correspondent à un abonnement mensuel.',
     'description_thank_you' => 'Merci pour votre soutient!',
 
-    'package_starter' => 'Starter',
-    'package_standard' => 'Standard',
-    'package_unlimited' => 'Illimité',
-    'plan' => ':package plan|:package plan * :quantity',
+    'name' => '1 mois d\'abonnement sur Inkybot',
+    'package_starter' => 'Starter plan',
+    'package_standard' => 'Standard plan',
+    'package_unlimited' => 'Illimité plan',
+    'package_unlimited_with_queue' => 'Illimité plan + File d\'attente pour la forgemagie',
+    'plan' => ':package|:package * :quantity',
 
     'instances' => 'Multi-instance:<br>(+1 instance / 10€)',
     'queues' => 'Fonctionnalité: File d\'attente pour la forgemagie (5€)',

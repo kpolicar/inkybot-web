@@ -5,10 +5,12 @@ return [
     'description' => 'Inkybot pricing follows a typical monthly subscription based model.',
     'description_thank_you' => 'Thank you for your support.',
 
-    'package_starter' => 'Starter',
-    'package_standard' => 'Standard',
-    'package_unlimited' => 'Unlimited',
-    'plan' => ':package plan|:package plan * :quantity',
+    'name' => '1 month subscription on Inkybot',
+    'package_starter' => 'Starter plan',
+    'package_standard' => 'Standard plan',
+    'package_unlimited' => 'Unlimited plan',
+    'package_unlimited_with_queue' => 'Unlimited plan + Maging Queue',
+    'plan' => ':package|:package * :quantity',
 
     'instances' => 'Concurrent instances:<br>(+1 instance / 10€)',
     'queues' => 'Feature: Maging Queue (5€)',

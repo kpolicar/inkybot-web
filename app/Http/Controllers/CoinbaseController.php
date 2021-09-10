@@ -17,7 +17,9 @@ class CoinbaseController extends BillingController
     {
         $this->validateQuantity($request);
 
-        $plan = $request->input('plan');
+        $plan = $request->boolean('queue') && $request->input('plan') == Billing::$unlimitedPlanCode
+            ? Billing::$unlimitedWithQueuePlanCode
+            : $request->input('plan');
         $price = $this->price($request);
         $quantity = $this->quantityFromPost($request);
 
@@ -26,7 +28,7 @@ class CoinbaseController extends BillingController
 
         $charge = new Charge(
             [
-                "name" => '1 month subscription on Inkybot',
+                "name" => __('pricing.name'),
                 "description" => $description,
                 "metadata" => [
                     "user_id" => $request->user()->id,
