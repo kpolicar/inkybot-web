@@ -38,7 +38,7 @@
                     @endif
                 </p>
             @endif
-            @if (Auth::user()->subscribed() && !Auth::user()->subscribedToPlan(App\Billing::unlimitedPlan()))
+            @if (Auth::user()->subscribed() && !Auth::user()->subscribedToPlan(App\Billing::unlimitedPlan()) && !Auth::user()->subscribedToPlan(App\Billing::unlimitedWithQueuePlan()))
                 <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
                     {!! __('profile.exo_mages_left_in_plan', ['number' => Auth::user()->number_of_exo_mages_left_in_plan]) !!}
                 </p>

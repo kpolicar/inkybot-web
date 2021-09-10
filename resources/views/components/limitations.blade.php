@@ -46,7 +46,7 @@
     <p class="text-black my-3">
         You must <span class="underline">not</span> run other applications (notably, games) in <strong>exclusive-fullscreen mode</strong>!<br>
         Make sure you are running them in <strong>borderless-fullscreen mode</strong>.<br>
-        Due to how Windows works, it can interfere with Inkybot's operation.
+        Because of how Windows works, it can interfere with Inkybot's operation.
     </p>
     @endif
 

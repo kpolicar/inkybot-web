@@ -25,7 +25,7 @@
             {{ $slot }}
         @elseif (Auth::user()->can('purchase-subscription') || !\Auth::user()->hasVerifiedEmail() && !\Auth::user()->subscribed())
             {{ __('common.purchase') }}
-        @elseif($plan && Auth::user()->subscribedToPlan(\App\Billing::resolvePlan($plan)))
+        @elseif($plan && (Auth::user()->subscribedToPlan(\App\Billing::resolvePlan($plan)) || ($plan == \App\Billing::$unlimitedPlanCode && Auth::user()->subscribedToPlan(\App\Billing::unlimitedWithQueuePlan()))))
             {{ __('common.manage') }}
         @else
             @if ($isUpgradedPlan())

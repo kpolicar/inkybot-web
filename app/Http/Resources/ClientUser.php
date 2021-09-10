@@ -36,7 +36,7 @@ class ClientUser extends JsonResource
             'jINhXckEVJaciuq' => $this->can('mage-exos'),
             'bP6Aa9RdmDlggKY' => $this->subscribedToPlan(Billing::starterPlan()),
             'ls6uIocgdyUtp4c' => $this->subscribedToPlan(Billing::standardPlan()),
-            'SniDbUjb49VghoM' => $this->subscribedToPlan(Billing::unlimitedPlan()),
+            'SniDbUjb49VghoM' => $this->subscribedToPlan(Billing::unlimitedPlan()) || $this->subscribedToPlan(Billing::unlimitedWithQueuePlan()),
         ];
     }
 }

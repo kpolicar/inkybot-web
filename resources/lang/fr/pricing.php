@@ -10,7 +10,8 @@ return [
     'package_unlimited' => 'Illimité',
     'plan' => ':package plan|:package plan * :quantity',
 
-    'instances' => 'Multi-instance',
+    'instances' => 'Multi-instance:<br>(+1 instance / 10€)',
+    'queues' => 'Fonctionnalité: File d\'attente pour la forgemagie (5€)',
 
     'package_feature_maging_ai' => 'IA de Forgemagie Avancée',
     'package_feature_exos' => ':number exos',
@@ -18,6 +19,7 @@ return [
     'package_feature_multiple_instances' => 'Plusieurs instances simultanées <br>+1 instance / €10',
     'package_feature_scripts' => 'Scripts personnalisés',
     'package_feature_statistics' => 'Statistiques de forgemagie',
+    'package_feature_queues' => 'File d\'attente pour la forgemagie / 5€',
 
     'restricted' => 'Cette option est limitée aux utilisateurs abonnés au pack <a href="#pricing" class="font-bold hover:underline">Standard</a> ou <a href="#pricing" class="font-bold hover:underline">Illimité</a',
 

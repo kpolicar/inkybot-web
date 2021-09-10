@@ -71,6 +71,7 @@
                         <li class="border-b py-4">{{ __('pricing.package_feature_maging_ai') }}</li>
                         <li class="border-b py-4">{{ __('pricing.package_feature_scripts') }}</li>
                         <li class="border-b py-4">{{ __('pricing.package_feature_statistics') }}</li>
+                        <li class="border-b py-4">{{ __('pricing.package_feature_queues') }}</li>
                         <li class="border-b py-4">{!! __('pricing.package_feature_multiple_instances') !!}</li>
                     </ul>
                 </div>

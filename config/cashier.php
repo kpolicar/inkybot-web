@@ -29,6 +29,10 @@ return [
     'product_price_unlimited_id' => env('STRIPE_PRICE_UNLIMITED_ID'),
     'product_price_unlimited_exo_mages' => 50000,
 
+    'product_unlimited_with_queue_id' => env('STRIPE_PRODUCT_UNLIMITED_ID'),
+    'product_price_unlimited_with_queue_id' => env('STRIPE_PRICE_UNLIMITED_WITH_QUEUE_ID'),
+    'product_price_unlimited_with_queue_exo_mages' => 50000,
+
     /*
     |--------------------------------------------------------------------------
     | Cashier Path

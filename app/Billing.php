@@ -10,6 +10,7 @@ class Billing
     public static $starterPlanCode = 'starter';
     public static $standardPlanCode = 'standard';
     public static $unlimitedPlanCode = 'unlimited';
+    public static $unlimitedWithQueuePlanCode = 'unlimited_with_queue';
 
 
     public static function resolvePlan($plan)
@@ -20,6 +21,8 @@ class Billing
             return static::standardPlan();
         if ($plan == static::$unlimitedPlanCode)
             return static::unlimitedPlan();
+        if ($plan == static::$unlimitedWithQueuePlanCode)
+            return static::unlimitedWithQueuePlan();
 
         throw new \InvalidArgumentException();
     }
@@ -34,6 +37,10 @@ class Billing
 
     public static function unlimitedPlan() {
         return config('cashier.product_price_unlimited_id');
+    }
+
+    public static function unlimitedWithQueuePlan() {
+        return config('cashier.product_price_unlimited_with_queue_id');
     }
 
     public static function price($plan, $user, $quantity=1)

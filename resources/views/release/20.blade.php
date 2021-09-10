@@ -1,7 +1,7 @@
 @extends('layouts.release')
 
-@section('date', '25th May 2021')
-@section('welcome', 'Welcome to the second major release of Inkybot!')
+@section('date', '20th September 2021')
+@section('welcome', 'Welcome to the second release of this series!')
 
 @section('content')
 
@@ -21,110 +21,19 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added <strong>new priority setup option</strong>, so users may specify in what order stats should be improved
+                            Added <strong>maging queues</strong>
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added <strong>new configuration options</strong> to enable or disable the use of specific runes (SM, PA, RA)
+                            Changed <strong>user interface layout</strong> so the Inkybot client doesn't cover Dofus
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added <strong>run out of runes notification</strong> even when the option: "Monitor Rune Quantity" is not enabled
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Added support for purchasing <strong>multiple instances</strong> on the same Inkybot account (check out your <a class="underline" href="{{ route('subscribe') }}">Subscription Page</a>)
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Added <strong>new statistic</strong>: count all the runes used during the bots operation (not just exo attempts) (check out your <a class="underline" href="{{ route('profile') }}#statistics">Profile Page</a>)
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Added preview of all <strong>successfully maged exos</strong> (check out your <a class="underline" href="{{ route('profile') }}#exos">Profile Page</a>)
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Added datepicker to <strong>view past statistics</strong> (check out your <a class="underline" href="{{ route('profile') }}#statistics">Profile Page</a>)
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Added <strong>custom labels</strong> to maging sessions
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Added <strong>kamas used</strong> label on client sidebar
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Added <strong>automatic shutdown</strong> configuration option
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Improved OCR accuracy on <strong>low & very high resolutions</strong>
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Improved the <strong>AI's sink usage</strong> to better prioritize over/exomaging
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Improved <strong>user interfaces</strong>: added <strong>refresh</strong> buttons, <strong>hide advanced configuration</strong> options by default
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Fixed bug: the bot would be <strong>interrupted by a warning prompt</strong> when maging unsupported items (>= 13 stats)
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Fixed bug: the bot would <strong>keep trying to put an exo rune</strong>, even when user ran out of runes in inventory
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Fixed bug: the <strong>client randomly crashes</strong> when opening statistics
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Fixed bug: <strong>maging weapons</strong> was no longer possible (broken)
-                        </span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-plus text-3xl mr-3"></i>
-                        <span class="pt-1">
-                            Removed the configuration option for maging on <strong>Temporis servers</strong>
-                            (it now works on all servers by default)
+                            <strong>Improved maging AI</strong> behavior when trying to reach minimums
                         </span>
                     </li>
                 </ul>
@@ -143,10 +52,6 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">Publish a <strong>tutorial video</strong> explaining the basics as well as the advanced features of Inkybot</span>
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">Add <strong>maging queues</strong> # priced separately</span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>

@@ -16,6 +16,16 @@
     }
 }
 
+
+.toggle-checkbox:checked {
+    @apply right-0 border-gray-600;
+    right: 0;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+    @apply bg-gray-600;
+}
+
 [v-cloak] {
     display: none;
 }
