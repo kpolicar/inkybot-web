@@ -17,7 +17,7 @@ class BillingController extends Controller
     {
         $currency = $request->user()->preferredCurrency();
         $amount = Billing::price(
-            $request->input('queue') && $request->input('plan') == Billing::$unlimitedWithQueuePlanCode
+            $request->boolean('queue') && $request->input('plan') == Billing::$unlimitedPlanCode
                 ? Billing::$unlimitedWithQueuePlanCode
                 : $request->input('plan'),
             $request->user(),
