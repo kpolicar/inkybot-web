@@ -12,14 +12,16 @@
 
 @section('hero')
     <x-main-hero>
-        <h2 class="uppercase tracking-loose w-full text-center lg:text-left">
-            Legal
-        </h2>
-        <div class="flex justify-center lg:justify-between">
-            <h1 class="my-4 text-3xl font-bold leading-tight">
-                Terms of Service
-            </h1>
-            <i class="fas fa-balance-scale text-4xl p-3"></i>
+        <div class="flex flex-col-reverse">
+            <div class="flex justify-center lg:justify-between">
+                <h1 class="my-4 text-3xl font-bold leading-tight">
+                    Terms of Service
+                </h1>
+                <i class="fas fa-balance-scale text-4xl p-3"></i>
+            </div>
+            <h2 class="uppercase tracking-loose w-full text-center lg:text-left">
+                Legal
+            </h2>
         </div>
 
         <div class="w-full mb-4">

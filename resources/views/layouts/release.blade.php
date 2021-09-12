@@ -12,8 +12,10 @@
 @section('hero')
     <x-main-hero>
 
-        <h2 class="tracking-loose text-xl w-full font">{{ $version['name'] }}</h2>
-        <h1 class="mb-0 text-5xl font-bold leading-tight">Release notes</h1>
+        <div class="flex flex-col-reverse">
+            <h1 class="mb-0 text-5xl font-bold leading-tight">Release notes</h1>
+            <h2 class="tracking-loose text-xl w-full font">{{ $version['name'] }}</h2>
+        </div>
         @if ('date')
         <h2 class="mb-4 font-bold tracking-loose text-lg w-full font">@yield('date')</h2>
         @endif

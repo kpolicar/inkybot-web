@@ -21,10 +21,12 @@
 
 @section('content')
     <x-main-hero>
-        <h2 class="uppercase tracking-loose w-full text-center lg:text-left">{{ __('forms.register_subheader') }}</h2>
-        <div class="flex justify-center lg:justify-between">
-            <h1 class="my-4 text-3xl font-bold leading-tight">{{ __('forms.register_header') }}</h1>
-            <i class="fas fa-user-plus text-4xl p-3"></i>
+        <div class="flex flex-col-reverse">
+            <div class="flex justify-center lg:justify-between">
+                <h1 class="my-4 text-3xl font-bold leading-tight">{{ __('forms.register_header') }}</h1>
+                <i class="fas fa-user-plus text-4xl p-3"></i>
+            </div>
+            <h2 class="uppercase tracking-loose w-full text-center lg:text-left">{{ __('forms.register_subheader') }}</h2>
         </div>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto bg-white opacity-25 my-0 py-0 rounded-t"></div>

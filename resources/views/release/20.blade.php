@@ -21,19 +21,32 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added <strong>maging queues</strong>
+                            Added <strong>maging queues</strong> to enable users to place items in a queue to be maged
+                            consecutively
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Changed <strong>user interface layout</strong> so the Inkybot client doesn't cover Dofus
+                            Added <strong>config presets</strong> which save rune thresholds and custom scripts
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Changed <strong>user interface layout</strong> so the Inkybot client doesn't cover the Dofus client
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
                             <strong>Improved maging AI</strong> behavior when trying to reach minimums
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Various <strong>user interface</strong> bug fixes and improvements
                         </span>
                     </li>
                 </ul>
