@@ -21,6 +21,7 @@ use App\Http\Middleware\DecryptApiRequest;
 use App\Http\Middleware\EncryptApiResponse;
 use App\Http\Middleware\Subscribed;
 use App\Http\Resources\ClientUser as ClientUserResource;
+use App\Http\Resources\ClientUserV20 as ClientUserResourceV20;
 use App\Models\Maging;
 use Illuminate\Http\Request;
 
@@ -53,6 +54,9 @@ class ApiController extends Controller
         $version = $versions->firstWhere('code', $code);
         if ($version['number'] < 19) {
             return $this->UserForRequestBeforeV2($request);
+        }
+        if ($version['number'] <= 20) {
+            return new ClientUserResourceV20($request->user());
         }
         return new ClientUserResource($request->user());
     }
