@@ -50,6 +50,7 @@ Route::middleware('auth:api')->group(function () {
         ->group(function () {
             Route::post('error', [ApiController::class, "NotifyError"]);
             Route::post('runes', [ApiController::class, "NotifyRunes"]);
+            Route::post('actionneeded', [ApiController::class, "NotifyFinished"]);
             Route::post('finished', [ApiController::class, "NotifyFinished"]);
         });
 
