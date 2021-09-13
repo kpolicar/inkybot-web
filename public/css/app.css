@@ -10114,6 +10114,10 @@ video {
   cursor: not-allowed;
 }
 
+.cursor-zoom-in{
+  cursor: zoom-in;
+}
+
 .block{
   display: block;
 }
@@ -37996,6 +38000,10 @@ input[type=color]:focus,
     cursor: not-allowed;
   }
 
+  .sm\:cursor-zoom-in{
+    cursor: zoom-in;
+  }
+
   .sm\:block{
     display: block;
   }
@@ -59458,6 +59466,10 @@ input[type=color]:focus,
 
   .md\:cursor-not-allowed{
     cursor: not-allowed;
+  }
+
+  .md\:cursor-zoom-in{
+    cursor: zoom-in;
   }
 
   .md\:block{
@@ -80924,6 +80936,10 @@ input[type=color]:focus,
     cursor: not-allowed;
   }
 
+  .lg\:cursor-zoom-in{
+    cursor: zoom-in;
+  }
+
   .lg\:block{
     display: block;
   }
@@ -102386,6 +102402,10 @@ input[type=color]:focus,
 
   .xl\:cursor-not-allowed{
     cursor: not-allowed;
+  }
+
+  .xl\:cursor-zoom-in{
+    cursor: zoom-in;
   }
 
   .xl\:block{

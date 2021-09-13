@@ -23,6 +23,7 @@
            disablePictureInPicture>
         <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
     </video>
+
     <p class="text-xs text-gray-600 text-center">
         {!! __('presentation.note') !!}
     </p>
