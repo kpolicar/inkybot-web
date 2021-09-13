@@ -28,7 +28,7 @@
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
-                            Added <strong>config presets</strong> which save rune thresholds and custom scripts
+                            Added <strong>config presets</strong> which save rune configuration and custom scripts
                         </span>
                     </li>
                     <li class="p-3 pl-0 flex">
@@ -47,6 +47,12 @@
                         <i class="fas fa-plus text-3xl mr-3"></i>
                         <span class="pt-1">
                             Various <strong>user interface</strong> bug fixes and improvements
+                        </span>
+                    </li>
+                    <li class="p-3 pl-0 flex">
+                        <i class="fas fa-plus text-3xl mr-3"></i>
+                        <span class="pt-1">
+                            Improved <strong>french translations</strong> on client
                         </span>
                     </li>
                 </ul>

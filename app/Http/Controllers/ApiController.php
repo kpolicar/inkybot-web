@@ -89,6 +89,12 @@ class ApiController extends Controller
         $this->NotifyOneSignal($request, $message);
     }
 
+    public function NotifyActionNeeded(Request $request) {
+        $message = "The bot has been interrupted and requires user interaction!";
+        $this->NotifyDiscord($request, $message);
+        $this->NotifyOneSignal($request, $message);
+    }
+
     public function NotifyFinished(Request $request) {
         $message = "Your item is complete! The bot has finished maging.";
         $this->NotifyDiscord($request, $message);

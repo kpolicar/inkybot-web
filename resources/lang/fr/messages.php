@@ -3,7 +3,7 @@
 return [
     'category' => 'Le bot de Forgemagie Dofus 2',
     'heading' => 'Personnalisez vos équipements comme vous le souhaitez!',
-    'subheading' => 'Dites nous quelles statistiques vous voulez sur vos items et nous ferons le reste!',
+    'subheading' => 'Dites nous quelles caractéristiques vous voulez sur vos items et nous ferons le reste!',
     'install_instructions' => 'Instruction d\'installation',
 
     'copyright' => 'Copyright © :year Inkybot',
