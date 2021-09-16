@@ -43,7 +43,7 @@
 
         <div class="flex flex-wrap mx-auto px-6">
             <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
-                <img src="setup.png"
+                <img src="{{ asset('images/features/setup.png') }}"
                      alt="Setup form for Alliance Gloursonne"
                      id="what1"
                      class="rounded rounded-t-none transform duration-300 scale-100">
@@ -61,7 +61,7 @@
                 </video>--}}
             </div>
             <div class="w-1/2 mx-auto px-3 mt-8 my-6 mb-3 z-10 cursor-zoom-in flex items-center justify-center">
-                <img src="inky.png"
+                <img src="{{ asset('images/features/client.png') }}"
                      alt="Preview of the Inkybot client with a successful MP exotic mage of Alliance Gloursonne"
                      id="what2"
                      class="rounded rounded-t-none transform duration-300 scale-100 scale-110 shadow-2xl">
@@ -80,7 +80,7 @@
                 </video>--}}
             </div>
             <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
-                <img src="config.png"
+                <img src="{{ asset('images/features/config.png') }}"
                      alt="Configuration form for Alliance Gloursonne"
                      id="what3"
                      class="rounded rounded-t-none transform duration-300 scale-100">
@@ -99,7 +99,7 @@
                 </video>--}}
             </div>
             <div class="w-full cursor-zoom-in flex justify-center pt-5 z-0 duration-300">
-                <img src="queue.png"
+                <img src="{{ asset('images/features/queue.png') }}"
                      alt="The maging queue with 3 items ready to be maged"
                      id="what4"
                      class="rounded rounded-t-none w-1/4 transform translate-y-2 duration-300">
