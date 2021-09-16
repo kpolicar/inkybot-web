@@ -32,7 +32,7 @@
     @include('partials.features')
 
     <div class="anchor" id="features"></div>
-    <section class="bg-gray-100 py-8 pb-12 border-b">
+    <section class="bg-gray-100 py-8 pb-12 border-b" id="features-section">
         <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
             Features
         </h2>
@@ -44,6 +44,7 @@
         <div class="flex flex-wrap mx-auto px-6">
             <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
                 <img src="setup.png"
+                     alt="Setup form for Alliance Gloursonne"
                      id="what1"
                      class="rounded rounded-t-none transform duration-300 scale-100">
                 {{--<video title="{{ __('presentation.video_alt') }}"
@@ -61,6 +62,7 @@
             </div>
             <div class="w-1/2 mx-auto px-3 mt-8 my-6 mb-3 z-10 cursor-zoom-in flex items-center justify-center">
                 <img src="inky.png"
+                     alt="Preview of the Inkybot client with a successful MP exotic mage of Alliance Gloursonne"
                      id="what2"
                      class="rounded rounded-t-none transform duration-300 scale-100 scale-110 shadow-2xl">
                 {{--<video title="{{ __('presentation.video_alt') }}"
@@ -79,6 +81,7 @@
             </div>
             <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
                 <img src="config.png"
+                     alt="Configuration form for Alliance Gloursonne"
                      id="what3"
                      class="rounded rounded-t-none transform duration-300 scale-100">
 
@@ -95,13 +98,15 @@
                     <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
                 </video>--}}
             </div>
-            <div class="w-full flex justify-center mt-5 z-0 duration-300 -my-64">
+            <div class="w-full cursor-zoom-in flex justify-center pt-5 z-0 duration-300">
                 <img src="queue.png"
+                     alt="The maging queue with 3 items ready to be maged"
                      id="what4"
-                     class="rounded rounded-t-none w-1/4 opacity-0 transform duration-300 -translate-y-64">
+                     class="rounded rounded-t-none w-1/4 transform translate-y-2 duration-300">
             </div>
         </div>
         <script>
+            let f = document.querySelector("#features-section");
             let a = document.querySelector("#what1");
             let b = document.querySelector("#what2");
             let c = document.querySelector("#what3");
@@ -129,6 +134,25 @@
                 this.classList.add('scale-110')
                 this.classList.add('shadow-2xl')
                 this.parentNode.classList.add('z-20')
+                // this.play();
+                // a.pause();
+                // c.pause();
+                a.classList.remove('scale-110')
+                a.parentNode.classList.remove('z-20')
+                a.classList.remove('shadow-2xl')
+                c.classList.remove('scale-110')
+                c.classList.remove('shadow-2xl')
+                c.parentNode.classList.remove('z-20')
+                d.classList.add('translate-y-2')
+                d.classList.add('opacity-100')
+                d.classList.remove('opacity-0')
+                d.classList.remove('-translate-y-64')
+                d.parentNode.classList.remove('-my-64')
+            })
+            f.addEventListener('mouseleave', function () {
+                b.classList.add('scale-110')
+                b.classList.add('shadow-2xl')
+                b.parentNode.classList.add('z-20')
                 // this.play();
                 // a.pause();
                 // c.pause();
