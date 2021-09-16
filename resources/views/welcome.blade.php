@@ -37,7 +37,7 @@
             Features
         </h2>
         <div class="w-full mb-4">
-            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            <div class="h-1 mx-auto gradient w-40 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
 
 
@@ -102,7 +102,7 @@
                 <img src="{{ asset('images/features/queue.png') }}"
                      alt="The maging queue with 3 items ready to be maged"
                      id="what4"
-                     class="rounded rounded-t-none w-1/4 transform translate-y-2 duration-300">
+                     class="rounded rounded-t-none w-1/4 transform translate-y-2 duration-300 shadow-2xl">
             </div>
         </div>
         <script>
@@ -127,8 +127,17 @@
                 d.classList.remove('translate-y-2')
                 d.classList.remove('opacity-100')
                 d.classList.add('opacity-0')
-                d.classList.add('-translate-y-64')
-                d.parentNode.classList.add('-my-64')
+                d.classList.add('xl:-translate-y-40')
+                d.classList.add('-translate-y-16')
+                d.classList.add('sm:-translate-y-20')
+                d.classList.add('md:-translate-y-32')
+                d.classList.add('lg:-translate-y-40')
+                d.classList.remove('shadow-2xl')
+                d.parentNode.classList.add('xl:-my-40')
+                d.parentNode.classList.add('-my-16')
+                d.parentNode.classList.add('sm:-my-20')
+                d.parentNode.classList.add('md:-my-32')
+                d.parentNode.classList.add('lg:-my-40')
             })
             b.addEventListener('mouseover', function () {
                 this.classList.add('scale-110')
@@ -146,8 +155,17 @@
                 d.classList.add('translate-y-2')
                 d.classList.add('opacity-100')
                 d.classList.remove('opacity-0')
-                d.classList.remove('-translate-y-64')
-                d.parentNode.classList.remove('-my-64')
+                d.classList.remove('xl:-translate-y-40')
+                d.classList.remove('-translate-y-16')
+                d.classList.remove('sm:-translate-y-20')
+                d.classList.remove('md:-translate-y-32')
+                d.classList.remove('lg:-translate-y-40')
+                d.classList.add('shadow-2xl')
+                d.parentNode.classList.remove('xl:-my-40')
+                d.parentNode.classList.remove('-my-16')
+                d.parentNode.classList.remove('sm:-my-20')
+                d.parentNode.classList.remove('md:-my-32')
+                d.parentNode.classList.remove('lg:-my-40')
             })
             f.addEventListener('mouseleave', function () {
                 b.classList.add('scale-110')
@@ -165,8 +183,17 @@
                 d.classList.add('translate-y-2')
                 d.classList.add('opacity-100')
                 d.classList.remove('opacity-0')
-                d.classList.remove('-translate-y-64')
-                d.parentNode.classList.remove('-my-64')
+                d.classList.add('shadow-2xl')
+                d.classList.remove('xl:-translate-y-40')
+                d.classList.remove('-translate-y-16')
+                d.classList.remove('sm:-translate-y-20')
+                d.classList.remove('md:-translate-y-32')
+                d.classList.remove('lg:-translate-y-40')
+                d.parentNode.classList.remove('xl:-my-40')
+                d.parentNode.classList.remove('-my-16')
+                d.parentNode.classList.remove('sm:-my-20')
+                d.parentNode.classList.remove('md:-my-32')
+                d.parentNode.classList.remove('lg:-my-40')
             })
             c.addEventListener('mouseover', function () {
                 this.classList.add('scale-110')
@@ -184,8 +211,17 @@
                 d.classList.remove('translate-y-2')
                 d.classList.remove('opacity-100')
                 d.classList.add('opacity-0')
-                d.classList.add('-translate-y-64')
-                d.parentNode.classList.add('-my-64')
+                d.classList.add('xl:-translate-y-40')
+                d.classList.add('-translate-y-16')
+                d.classList.add('sm:-translate-y-20')
+                d.classList.add('md:-translate-y-32')
+                d.classList.add('lg:-translate-y-40')
+                d.classList.remove('shadow-2xl')
+                d.parentNode.classList.add('xl:-my-40')
+                d.parentNode.classList.add('-my-16')
+                d.parentNode.classList.add('sm:-my-20')
+                d.parentNode.classList.add('md:-my-32')
+                d.parentNode.classList.add('lg:-my-40')
             })
         </script>
     </section>
