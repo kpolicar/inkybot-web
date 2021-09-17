@@ -98,8 +98,8 @@ class ApiController extends Controller
     public function NotifyFinished(Request $request) {
         $message = "Your item is complete!";
         $message .= $request->boolean('continueQueue', false)
-            ? "The bot has continued on to the next item in the queue."
-            : "The bot has finished maging.";
+            ? " The bot has begun maging the next item in the queue."
+            : " The bot has finished maging.";
         $this->NotifyDiscord($request, $message);
         $this->NotifyOneSignal($request, $message);
     }
