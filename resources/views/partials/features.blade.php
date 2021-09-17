@@ -1,60 +1,195 @@
-<section class="bg-white border-b py-8">
-
-
-    <div class="container mx-auto pt-4 pb-12">
-        <div class="anchor" id="whyus"></div>
-
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-            Why us?
-        </h2>
-        <div class="w-full mb-4">
-            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
-
-        <div class="-mx-3 flex flex-wrap">
-            <x-feature-card icon="shield-alt">
-                <x-slot name="title">
-                    {{ __('features.ocr') }}
-                </x-slot>
-                {!! __('features.ocr_details') !!}
-            </x-feature-card>
-
-            <x-feature-card icon="mouse-pointer">
-                <x-slot name="title">
-                    {{ __('features.human_like') }}
-                </x-slot>
-                {!! __('features.human_like_details') !!}
-            </x-feature-card>
-
-            <x-feature-card icon="chart-bar">
-                <x-slot name="title">
-                    {{ __('features.statistics') }}
-                </x-slot>
-                {!! __('features.statistics_details') !!}
-            </x-feature-card>
-
-            <x-feature-card icon="sync">
-                <x-slot name="title">
-                    {{ __('features.updates') }}
-                </x-slot>
-                {!! __('features.updates_details') !!}
-            </x-feature-card>
-
-            <x-feature-card icon="code">
-                <x-slot name="title">
-                    {{ __('features.scriptless') }}
-                </x-slot>
-                {!! __('features.scriptless_details') !!}
-            </x-feature-card>
-
-            <x-feature-card icon="bell">
-                <x-slot name="title">
-                    {{ __('features.notifications') }}
-                </x-slot>
-                {!! __('features.notifications_details') !!}
-            </x-feature-card>
-
-        </div>
+<div class="anchor" id="features"></div>
+<section class="bg-gray-100 py-8 pb-12 border-b" id="features-section">
+    <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        {{ __('features.heading') }}
+    </h2>
+    <div class="w-full mb-4">
+        <div class="h-1 mx-auto gradient w-40 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
+
+    <div class="flex flex-wrap mx-auto px-6">
+        <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
+            <img src="{{ asset('images/features/setup.png') }}"
+                 alt="{{ __('features.setup_alt') }}"
+                 id="imgSetupForm"
+                 class="rounded rounded-t-none transform duration-300 scale-100">
+            {{--<video title="{{ __('presentation.video_alt') }}"
+                   id="imgSetupForm"
+                   poster="{{ asset('images/poster_inkybot_intro.png') }}"
+                   class="rounded transform duration-300 scale-100 border-r border-l"
+                   height="1920"
+                   width="1080"
+                   preload="metadata"
+                   muted
+                   controlslist="nodownload"
+                   disablePictureInPicture>
+                <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
+            </video>--}}
+        </div>
+        <div class="w-1/2 mx-auto px-3 mt-8 my-6 mb-3 z-10 cursor-zoom-in flex items-center justify-center">
+            <img src="{{ asset('images/features/client.png') }}"
+                 alt="{{ __('features.client_alt') }}"
+                 id="imgClientForm"
+                 class="rounded rounded-t-none transform duration-300 scale-100 scale-110 shadow-2xl">
+            {{--<video title="{{ __('presentation.video_alt') }}"
+                   id="imgClientForm"
+                   poster="{{ asset('images/poster_inkybot_intro.png') }}"
+                   class="rounded transform duration-300 scale-100 scale-110 shadow-2xl border-l border-r"
+                   height="1920"
+                   width="1080"
+                   preload="metadata"
+                   autoplay
+                   muted
+                   controlslist="nodownload"
+                   disablePictureInPicture>
+                <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
+            </video>--}}
+        </div>
+        <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
+            <img src="{{ asset('images/features/config.png') }}"
+                 alt="{{ __('features.config_alt') }}"
+                 id="imgConfigForm"
+                 class="rounded rounded-t-none transform duration-300 scale-100">
+
+            {{--<video title="{{ __('presentation.video_alt') }}"
+                   id="imgConfigForm"
+                   poster="{{ asset('images/poster_inkybot_intro.png') }}"
+                   class="rounded transform duration-300 scale-100 border-l border-r"
+                   height="1920"
+                   width="1080"
+                   preload="metadata"
+                   muted
+                   controlslist="nodownload"
+                   disablePictureInPicture>
+                <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
+            </video>--}}
+        </div>
+        <div class="w-full cursor-zoom-in flex justify-center pt-5 z-0 duration-300">
+            <img src="{{ asset('images/features/queue.png') }}"
+                 alt="{{ __('features.queue_alt') }}"
+                 id="imgQueueForm"
+                 class="rounded rounded-t-none w-1/4 transform translate-y-2 duration-300 shadow-2xl">
+        </div>
+    </div>
+    <script>
+        let f = document.querySelector("#features-section");
+        let a = document.querySelector("#imgSetupForm");
+        let b = document.querySelector("#imgClientForm");
+        let c = document.querySelector("#imgConfigForm");
+        let d = document.querySelector("#imgQueueForm");
+        a.addEventListener('mouseover', function () {
+            this.classList.add('scale-110')
+            this.classList.add('shadow-2xl')
+            this.parentNode.classList.add('z-20')
+            // this.play();
+            // b.pause();
+            // c.pause();
+            b.classList.remove('scale-110')
+            b.classList.remove('shadow-2xl')
+            b.parentNode.classList.remove('z-20')
+            c.classList.remove('scale-110')
+            c.classList.remove('shadow-2xl')
+            c.parentNode.classList.remove('z-20')
+            d.classList.remove('translate-y-2')
+            d.classList.remove('opacity-100')
+            d.classList.add('opacity-0')
+            d.classList.add('xl:-translate-y-40')
+            d.classList.add('-translate-y-16')
+            d.classList.add('sm:-translate-y-20')
+            d.classList.add('md:-translate-y-32')
+            d.classList.add('lg:-translate-y-40')
+            d.classList.remove('shadow-2xl')
+            d.parentNode.classList.add('xl:-my-40')
+            d.parentNode.classList.add('-my-16')
+            d.parentNode.classList.add('sm:-my-20')
+            d.parentNode.classList.add('md:-my-32')
+            d.parentNode.classList.add('lg:-my-40')
+        })
+        b.addEventListener('mouseover', function () {
+            this.classList.add('scale-110')
+            this.classList.add('shadow-2xl')
+            this.parentNode.classList.add('z-20')
+            // this.play();
+            // a.pause();
+            // c.pause();
+            a.classList.remove('scale-110')
+            a.parentNode.classList.remove('z-20')
+            a.classList.remove('shadow-2xl')
+            c.classList.remove('scale-110')
+            c.classList.remove('shadow-2xl')
+            c.parentNode.classList.remove('z-20')
+            d.classList.add('translate-y-2')
+            d.classList.add('opacity-100')
+            d.classList.remove('opacity-0')
+            d.classList.remove('xl:-translate-y-40')
+            d.classList.remove('-translate-y-16')
+            d.classList.remove('sm:-translate-y-20')
+            d.classList.remove('md:-translate-y-32')
+            d.classList.remove('lg:-translate-y-40')
+            d.classList.add('shadow-2xl')
+            d.parentNode.classList.remove('xl:-my-40')
+            d.parentNode.classList.remove('-my-16')
+            d.parentNode.classList.remove('sm:-my-20')
+            d.parentNode.classList.remove('md:-my-32')
+            d.parentNode.classList.remove('lg:-my-40')
+        })
+        f.addEventListener('mouseleave', function () {
+            b.classList.add('scale-110')
+            b.classList.add('shadow-2xl')
+            b.parentNode.classList.add('z-20')
+            // this.play();
+            // a.pause();
+            // c.pause();
+            a.classList.remove('scale-110')
+            a.parentNode.classList.remove('z-20')
+            a.classList.remove('shadow-2xl')
+            c.classList.remove('scale-110')
+            c.classList.remove('shadow-2xl')
+            c.parentNode.classList.remove('z-20')
+            d.classList.add('translate-y-2')
+            d.classList.add('opacity-100')
+            d.classList.remove('opacity-0')
+            d.classList.add('shadow-2xl')
+            d.classList.remove('xl:-translate-y-40')
+            d.classList.remove('-translate-y-16')
+            d.classList.remove('sm:-translate-y-20')
+            d.classList.remove('md:-translate-y-32')
+            d.classList.remove('lg:-translate-y-40')
+            d.parentNode.classList.remove('xl:-my-40')
+            d.parentNode.classList.remove('-my-16')
+            d.parentNode.classList.remove('sm:-my-20')
+            d.parentNode.classList.remove('md:-my-32')
+            d.parentNode.classList.remove('lg:-my-40')
+        })
+        c.addEventListener('mouseover', function () {
+            this.classList.add('scale-110')
+            this.classList.add('shadow-2xl')
+            this.parentNode.classList.add('z-20')
+            // this.play();
+            // a.pause();
+            // b.pause();
+            a.classList.remove('scale-110')
+            a.classList.remove('shadow-2xl')
+            a.parentNode.classList.remove('z-20')
+            b.classList.remove('scale-110')
+            b.classList.remove('shadow-2xl')
+            b.parentNode.classList.remove('z-20')
+            d.classList.remove('translate-y-2')
+            d.classList.remove('opacity-100')
+            d.classList.add('opacity-0')
+            d.classList.add('xl:-translate-y-40')
+            d.classList.add('-translate-y-16')
+            d.classList.add('sm:-translate-y-20')
+            d.classList.add('md:-translate-y-32')
+            d.classList.add('lg:-translate-y-40')
+            d.classList.remove('shadow-2xl')
+            d.parentNode.classList.add('xl:-my-40')
+            d.parentNode.classList.add('-my-16')
+            d.parentNode.classList.add('sm:-my-20')
+            d.parentNode.classList.add('md:-my-32')
+            d.parentNode.classList.add('lg:-my-40')
+        })
+    </script>
 </section>
+
