@@ -125,14 +125,21 @@ Route::group(
             return view('install');
         })->name('install');
 
-    Route::get('/release/{version?}', function (ClientVersion $versions, $version) {
-        $versionDetails = $version == "latest" ?
-            $versions->latest() :
-            $versions->firstWhere('code', $version);
-        $view = $versionDetails['number'] ?? abort(404);
+    Route::prefix('/release/{version?}')->group(function () {
 
-        return view("release.$view", ['version' => $versionDetails]);
-    })->name('release');
+        Route::get('/', function (ClientVersion $versions, $version){
+            $versionDetails = $version == "latest" ?
+                $versions->latest() :
+                $versions->firstWhere('code', $version);
+            $view = $versionDetails['number'] ?? abort(404);
+            return view("release.$view", ['version' => $versionDetails]);
+        })->name('release');
+
+        Route::get('/usage', function (...$args) {
+            return redirect()->to(route('release', $args).'#usage', 307);
+        })->name('release.usage');
+
+    });
 
     Route::view('terms', 'terms')
         ->name('terms');
