@@ -101,7 +101,11 @@ class AuthServiceProvider extends ServiceProvider
 
 
         Gate::define('maging-queue', function (User $user) {
-            return $user->subscribed() && $user->subscribedToPlan(Billing::unlimitedWithQueuePlan());
+            return $user->subscribed() &&
+                ($user->subscribedToPlan(Billing::unlimitedWithQueuePlan())
+                || ($user->subscribedToPlan(Billing::unlimitedPlan())
+                        && $user->subscription()->created_at->isBefore('2021-09-18')
+                        && now()->isBefore('2021-10-01')));
         });
     }
 }
