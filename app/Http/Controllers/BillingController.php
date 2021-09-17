@@ -17,13 +17,18 @@ class BillingController extends Controller
     {
         $currency = $request->user()->preferredCurrency();
         $amount = Billing::price(
-            $request->boolean('queue') && $request->input('plan') == Billing::$unlimitedPlanCode
-                ? Billing::$unlimitedWithQueuePlanCode
-                : $request->input('plan'),
+            $this->plan($request),
             $request->user(),
             $this->quantityFromPost($request));
 
         return compact('amount', 'currency');
+    }
+
+    protected function plan(Request $request)
+    {
+        return $request->boolean('queue') && $request->input('plan') == Billing::$unlimitedPlanCode
+            ? Billing::$unlimitedWithQueuePlanCode
+            : $request->input('plan');
     }
 
     protected function quantityFromPost(Request $request)
