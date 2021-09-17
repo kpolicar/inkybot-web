@@ -17,9 +17,7 @@ class CoinbaseController extends BillingController
     {
         $this->validateQuantity($request);
 
-        $plan = $request->boolean('queue') && $request->input('plan') == Billing::$unlimitedPlanCode
-            ? Billing::$unlimitedWithQueuePlanCode
-            : $request->input('plan');
+        $plan = $this->plan($request);
         $price = $this->price($request);
         $quantity = $this->quantityFromPost($request);
 

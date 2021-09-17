@@ -24,9 +24,11 @@ class StripeController extends BillingController
         if (!$user->hasStripeId())
             $user->createAsStripeCustomer();
 
+        $plan = $this->plan($request);
+
         try {
             $paymentMethod = $this->uniqueCustomerPaymentMethod($user, $paymentMethodId);
-            $this->createNewSubscription($request, $user, $request->post('plan'), $paymentMethod ?? null);
+            $this->createNewSubscription($request, $user, $plan, $paymentMethod ?? null);
 
         } catch (PaymentFailure $exception) {
             return response()->view('partials.payment.failed', compact('exception'));
@@ -43,7 +45,6 @@ class StripeController extends BillingController
         }
 
 
-        $plan = $request->input('plan');
         $quantity = $this->quantityFromPost($request);
 
         $package = __('pricing.package_'.$plan);
