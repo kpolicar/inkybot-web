@@ -54,6 +54,9 @@ class Billing
             ? static::resolveAmountForTieredPrice($user, $price, $quantity)
             : $price->unit_amount;
 
+        $amount += $user->stripe_balance;
+        $amount = max(0, $amount);
+
         return $amount;
     }
 
