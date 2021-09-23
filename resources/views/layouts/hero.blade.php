@@ -42,6 +42,7 @@
 
     @stack('head')
     @include('partials.onesignal')
+    @include('partials.analytics')
 </head>
 
 <body class="leading-normal tracking-normal text-white bg-white" style="font-family: 'Source Sans Pro', sans-serif;">
@@ -65,7 +66,6 @@
 @section('scripts')
     <script src="{{ mix('js/app.js') }}"></script>
 @show
-@include('partials.analytics')
 </body>
 
 </html>
