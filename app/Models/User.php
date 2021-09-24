@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Cache;
 use App\Billing;
 use App\Events\UserLinkedWithDiscord;
 use App\Models\Traits\UserCacheAttributes;
@@ -90,6 +91,16 @@ class User extends Authenticatable implements MustVerifyEmail
             return config('cashier.product_price_starter_exo_mages');
         else
             return 0;
+    }
+
+    public function mageDatesNotFromToday()
+    {
+        return Cache::remember(
+            'user-'.$this->id.'-magings',
+            $this->freshTimestamp()->endOfDay(),
+            function () {
+                return $this->maging()->notTodays()->latest()->pluck('created_at');
+            });
     }
 
     public function validSubscription()

@@ -10,7 +10,11 @@
 
             @if ($maging)
             <div class="w-1/2 md:w-full m-auto">
-                <input type="date"
+                <input type="text"
+                       readonly
+                       data-flatpickr-locale="{{ LaravelLocalization::getCurrentLocale() }}"
+                       data-flatpickr
+                       data-flatpickr-enable="{{ Auth::user()->mageDatesNotFromToday()->toJson() }}"
                        data-notallowed="{{ now()->toDateString() }}"
                        min="{{ Auth::user()->created_at->toDateString() }}"
                        max="{{ now()->subDay()->toDateString() }}"
