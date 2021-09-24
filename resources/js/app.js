@@ -1,3 +1,6 @@
+import flatpickr from "flatpickr";
+import { French } from "flatpickr/dist/l10n/fr.js"
+
 require('./bootstrap');
 require('./nav');
 require('./noise');
@@ -61,4 +64,22 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
+});
+
+var datePickers = document.querySelectorAll("[data-flatpickr]")
+
+datePickers.forEach(datepicker => {
+    let config = {
+        altInput: true,
+        altFormat: "F j, Y",
+        dateFormat: "Y-m-d",
+        defaultDate: datepicker.value
+    };
+    if (datepicker.dataset.flatpickrLocale === 'fr') {
+        config['locale'] = French;
+    }
+    if (datepicker.dataset.flatpickrEnable) {
+        config['enable'] = JSON.parse(datepicker.dataset.flatpickrEnable);
+    }
+    flatpickr(datepicker, config);
 });
