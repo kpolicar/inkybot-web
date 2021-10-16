@@ -110,6 +110,7 @@ import {loadStripe} from '@stripe/stripe-js';
             var email = form.querySelector('#email');
             var quantity = form.querySelector('#quantity');
             var recurring = form.querySelector('#recurring');
+            var queue = form.querySelector('#queue');
             var plan = form.querySelector('#plan');
             var paymentResponse = paymentForm.querySelector('#payment-response');
             var additionalData = {
@@ -133,7 +134,8 @@ import {loadStripe} from '@stripe/stripe-js';
             let data = {
                 quantity: quantity ? quantity.value : 1,
                 plan: plan.value,
-                recurring: recurring.checked
+                recurring: recurring.checked,
+                queue: queue.checked
             };
             stripe.createPaymentMethod('card', elements[0], additionalData)
                 .then(function(result) {
