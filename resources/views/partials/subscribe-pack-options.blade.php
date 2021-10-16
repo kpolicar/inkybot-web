@@ -35,7 +35,7 @@
     @enderror
 </div>
 
-<div class="my-2" v-if="plan == 'unlimited'">
+<div class="my-2" v-show="plan == 'unlimited'">
     <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
         <input
             type="checkbox"
