@@ -62,7 +62,7 @@ Route::group(
     Route::middleware('auth')
         ->get(LaravelLocalization::transRoute('routes.download'), function (ClientVersion $version) {
             $currentVersion = $version->latest();
-            return redirect(asset("storage/Inkybot_{$currentVersion['code']}patch1.zip"));
+            return redirect(asset("storage/Inkybot_{$currentVersion['code']}patch2.zip"));
     })->name('download');
 
     Route::get(LaravelLocalization::transRoute('routes.profile'), function (Request $request) {
