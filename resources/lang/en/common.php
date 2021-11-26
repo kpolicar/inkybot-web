@@ -25,4 +25,11 @@ return [
     'compatible' => 'Compatible with Dofus <b>:version</b> <small class="text-xs">(latest version)</small>',
 
     'error_generic' => 'Something went wrong!',
+    'blackfriday' => 'Black friday',
+    'usingpromo' => 'using promo code',
+    'applycoupon' => 'Apply coupon',
+    'applycoupon_invalid' => 'The promocode is invalid or expired.',
+    'applycoupon_success' => 'You have successfully applied the Black Friday discount.',
+    'applycoupon_action' => 'Apply Black Friday Discount',
+    'applycoupon_validity' => 'This offer is valid from the 26th November to the 3rd of December 2021',
 ];

@@ -80,6 +80,23 @@
                     <div class="w-1/2 md:w-1/5 px-3">
                         <div id="card-cvc" class="stripe-field"></div>
                     </div>
+
+                </div>
+                <div class="flex flex-wrap mt-3 -mx-3">
+                    <div class="w-full md:w-3/5 px-3 mb-0">
+                        <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                               id="coupon" name="coupon" type="text" placeholder="{{ __('forms.subscribe_promocode') }}">
+                        <input type="hidden" id="coupon-applied" name="coupon-applied" v-model="promocode">
+                    </div>
+                    <div class="w-full md:w-2/5 pl-3 lg:pl-0 px-3">
+                        <button class="appearance-none block w-full bg-red-300 text-gray-700 border border-red-200 rounded py-3 px-4 mb-3 leading-tight hover:bg-red-400 hover:border-red-400 hover:text-gray-200 transition duration-75 focus:outline-none focus:text-gray-200 focus:bg-red-400 focus:border-red-500"
+                               id="apply-coupon"
+                                data-apply-coupon="#coupon"
+                                data-handler="{{ route('billing.promocode') }}"
+                                data-invalid-code-message="{{ __('common.applycoupon_invalid') }}">
+                            {{ __('common.applycoupon') }}
+                        </button>
+                    </div>
                 </div>
 
                 <div class="error" role="alert">

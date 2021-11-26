@@ -41,6 +41,7 @@ return [
     'subscribe_crypto_redirect' => 'By clicking <b>Pay</b> you will be redirected to a checkout page hosted by Coinbase. Subscription will be added to your account once the transaction has been processed and received on our end.',
     'subscribe_crypto_fees' => 'It is strongly recommended you pay using a cryptocurrency with a low network fee - Bitcoin\'s fees are high.',
     'subscribe_crypto_no_coinbase' => 'If you are not paying through Coinbase, it is important you send the exact amount. Underpayments/Overpayments will have to be refunded manually, which may take up to a week!',
+    'subscribe_promocode' => 'Promo code',
 
     'basket_item' => 'Item:',
     'basket_option' => ':option month subscription',

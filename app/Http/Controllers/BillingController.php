@@ -19,9 +19,19 @@ class BillingController extends Controller
         $amount = Billing::price(
             $this->plan($request),
             $request->user(),
-            $this->quantityFromPost($request));
+            $this->quantityFromPost($request),
+            $request->post('promocode'));
 
         return compact('amount', 'currency');
+    }
+
+    public function checkPromoCode(Request $request)
+    {
+        return in_array($request->post('promocode'), [
+            'STARTERBLACKFRIDAY2021',
+            'STANDARDBLACKFRIDAY2021',
+            'UNLIMITEDBLACKFRIDAY2021',
+        ]);
     }
 
     protected function plan(Request $request)
