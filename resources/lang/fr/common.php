@@ -26,4 +26,11 @@ return [
     'compatible' => 'Compatible avec Dofus <b>:version</b> <small class="text-xs">(dernière version)</small>',
 
     'error_generic' => 'Une erreur s\'est produite!',
+    'blackfriday' => 'Vendredi noir',
+    'usingpromo' => 'en utilisant le code promo',
+    'applycoupon' => 'Appliquer Coupon',
+    'applycoupon_invalid' => 'Le code promotionnel est invalide ou a expiré.',
+    'applycoupon_success' => 'Vous avez appliqué avec succès la remise du Vendredi Noir.',
+    'applycoupon_action' => 'Appliquer la remise du Vendredi Noir',
+    'applycoupon_validity' => 'Cette offre est valable du 26 novembre au 3 décembre 2021',
 ];

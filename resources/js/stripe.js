@@ -119,6 +119,8 @@ import {loadStripe} from '@stripe/stripe-js';
                     email: email ? email.value : undefined,
                 }
             };
+            var couponEl = document.querySelector('#coupon');
+            var couponApplyButtonEl = document.querySelector('#apply-coupon');
 
             var handleError = function(error) {
                 paymentForm.classList.remove('submitting');
@@ -135,7 +137,8 @@ import {loadStripe} from '@stripe/stripe-js';
                 quantity: quantity ? quantity.value : 1,
                 plan: plan.value,
                 recurring: recurring.checked,
-                queue: queue.checked
+                queue: queue.checked,
+                promocode: couponEl.value
             };
             stripe.createPaymentMethod('card', elements[0], additionalData)
                 .then(function(result) {
@@ -158,6 +161,38 @@ import {loadStripe} from '@stripe/stripe-js';
                 }).catch(handleErrorWithMessage);
 
         });
+
+        let couponEl = document.querySelector('#coupon');
+        let couponApplyButtonEl = document.querySelector('#apply-coupon');
+
+        couponEl.addEventListener('input', function (event) {
+            couponEl.classList.remove('border-red-400');
+            couponEl.classList.remove('text-red-600');
+            couponEl.classList.remove('font-bold');
+        });
+
+        couponApplyButtonEl
+            .addEventListener('click', function (event) {
+                event.preventDefault();
+                let handler = couponApplyButtonEl.dataset.handler;
+                axios.post(handler, {promocode: couponEl.value})
+                    .then(result => {
+                        if (result.data) {
+                            VueAppSetPromoCode(couponEl.value);
+                            couponEl.classList.add('border-red-400');
+                            couponEl.classList.add('text-red-600');
+                            couponEl.classList.add('font-bold');
+                            error.classList.remove('visible');
+                        } else {
+                            error.classList.add('visible');
+                            errorMessage.innerHTML = couponApplyButtonEl.dataset.invalidCodeMessage;
+                        }
+                    })
+                    .catch(message => {
+                        error.classList.add('visible');
+                        errorMessage.innerHTML = message;
+                    });
+            })
     }
 
 
