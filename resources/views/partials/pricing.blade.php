@@ -3,16 +3,7 @@
     <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
         <div class="anchor" id="pricing"></div>
 
-        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-            <span class="relative">
-                {{ __('pricing.heading') }}
-                <aside class="absolute top-0 right-0 -mr-16 uppercase shadow-lg text-sm">
-                    <span class="p-2 bg-red-300 rounded-full">
-                        -10%
-                    </span>
-                </aside>
-            </span>
-        </h2>
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">{{ __('pricing.heading') }}</h2>
         <div class="w-full mb-4">
             <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
@@ -34,15 +25,8 @@
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="w-full pt-6 text-3xl text-gray-700 font-bold text-center leading-none">
-                        <span class="line-through">€8</span>
-                    </div>
-                    <div class="w-full text-3xl font-bold text-center leading-none mb-2 text-red-600">
-                        €7.20
-                        <small class="text-sm">1 {{ __('common.month') }}</small>
-                    </div>
-                    <div class="w-full text-xs font-bold text-center leading-none mb-2 text-gray-700">
-                        {{ __('common.usingpromo') }} <br>STARTERBLACKFRIDAY2021
+                    <div class="w-full pt-6 text-3xl text-gray-700 font-bold text-center leading-none mb-2">
+                        €8 <small class="text-sm">/ {{ __('common.month') }}</small>
                     </div>
                     <div class="flex items-center justify-center">
                         <x-billing-button
@@ -65,15 +49,8 @@
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-10">
-                    <div class="w-full pt-6 text-3xl text-gray-700 font-bold text-center leading-none">
-                        <span class="line-through">€15</span>
-                    </div>
-                    <div class="w-full text-3xl font-bold text-center leading-none mb-2 text-red-600">
-                        €13.50
-                        <small class="text-sm">1 {{ __('common.month') }}</small>
-                    </div>
-                    <div class="w-full text-xs font-bold text-center leading-none mb-2 text-gray-700">
-                        {{ __('common.usingpromo') }} <br>STANDARDBLACKFRIDAY2021
+                    <div class="w-full pt-6 text-3xl font-bold text-center leading-none mb-2">
+                        €15 <small class="text-sm">/ {{ __('common.month') }}</small>
                     </div>
                     <div class="flex items-center justify-center">
                         <x-billing-button
@@ -99,15 +76,8 @@
                     </ul>
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                    <div class="w-full pt-6 text-3xl text-gray-700 font-bold text-center leading-none">
-                        <span class="line-through">€20</span>
-                    </div>
-                    <div class="w-full text-3xl font-bold text-center leading-none mb-2 text-red-600">
-                        €18
-                        <small class="text-sm">1 {{ __('common.month') }}</small>
-                    </div>
-                    <div class="w-full text-xs font-bold text-center leading-none mb-2 text-gray-700">
-                        {{ __('common.usingpromo') }} <br>UNLIMITEDBLACKFRIDAY2021
+                    <div class="w-full pt-6 text-3xl text-gray-700 font-bold text-center leading-none mb-2">
+                        €20 <small class="text-sm">/ {{ __('common.month') }}</small>
                     </div>
                     <div class="flex items-center justify-center">
                         <x-billing-button
@@ -123,9 +93,6 @@
         </div>
     </div>
 
-    <p class="w-full my-4 leading-tight text-center text-red-600 font-bold">
-        {{ __('common.applycoupon_validity') }}
-    </p>
     <p class="w-full my-4 leading-tight text-center text-gray-800">{{ __('pricing.package_feature_exos_description') }}</p>
 
 

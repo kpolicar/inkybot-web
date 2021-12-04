@@ -9,31 +9,22 @@ const data = {
     queue: false,
     price: form.dataset.price/1,
     priceRefreshRequest: false,
-    promocode: '',
 }
 
 const priceFetchUrl = form.dataset.priceUrl;
 const refreshPrice = function() {
 
-    axios.get(`${priceFetchUrl}?plan=${this.plan}&quantity=${this.quantity}&queue=${this.queue}&promocode=${this.promocode}`)
+    axios.get(`${priceFetchUrl}?plan=${this.plan}&quantity=${this.quantity}&queue=${this.queue}`)
         .then(result => {
             this.price = result.data['amount'] / 100;
         }).finally(() => {
             this.priceRefreshRequest = false;
-            document.querySelector('.error').classList.remove('visible');
         });
 
     this.priceRefreshRequest = true;
 }
 
-
-
 const app = createApp({
-    mounted() {
-        window.VueAppSetPromoCode = function(value) {
-            this.promocode = value;
-        }.bind(this);
-    },
     data() {
         return data;
     },
@@ -41,7 +32,6 @@ const app = createApp({
         plan: refreshPrice,
         quantity: refreshPrice,
         queue: refreshPrice,
-        promocode: refreshPrice,
     },
 })
 

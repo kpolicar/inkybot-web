@@ -93,20 +93,6 @@ class User extends Authenticatable implements MustVerifyEmail
             return 0;
     }
 
-    public function hasDiscountedSubscription($promocode=null) {
-        return !!$this->subscriptionDiscount($promocode);
-    }
-
-    public function subscriptionDiscount($promocode=null)
-    {
-        $query = \DB::table('subscription_discounts');
-        $query->where('subscription_id', $this->subscription()->id);
-        if ($promocode !== null) {
-            $query->where('promocode', $promocode);
-        }
-        return $query->first();
-    }
-
     public function mageDatesNotFromToday()
     {
         return Cache::remember(

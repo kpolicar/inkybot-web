@@ -43,7 +43,7 @@ class Billing
         return config('cashier.product_price_unlimited_with_queue_id');
     }
 
-    public static function price($plan, $user, $quantity=1, $promocode='')
+    public static function price($plan, $user, $quantity=1)
     {
         $price = Price::retrieve([
             'id' => Billing::resolvePlan($plan),
@@ -57,24 +57,7 @@ class Billing
         $amount += $user->stripe_balance;
         $amount = max(0, $amount);
 
-        if ($plan == Billing::$starterPlanCode && $promocode == 'STARTERBLACKFRIDAY2021') {
-            $amount -= static::priceDecreaseForPromoCode($promocode);
-        } else if ($plan == Billing::$standardPlanCode && $promocode == 'STANDARDBLACKFRIDAY2021') {
-            $amount -= static::priceDecreaseForPromoCode($promocode);
-        } else if (($plan == Billing::$unlimitedPlanCode || $plan == Billing::$unlimitedWithQueuePlanCode) && $promocode == 'UNLIMITEDBLACKFRIDAY2021') {
-            $amount -= static::priceDecreaseForPromoCode($promocode);
-        }
-
         return $amount;
-    }
-
-    public static function priceDecreaseForPromoCode($promocode)
-    {
-        return data_get([
-            'STARTERBLACKFRIDAY2021' => 80,
-            'STANDARDBLACKFRIDAY2021' => 150,
-            'UNLIMITEDBLACKFRIDAY2021' => 200,
-        ], $promocode ?? '', 0);
     }
 
     private static function resolveAmountForTieredPrice(User $user, Price $price, $quantity)

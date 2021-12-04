@@ -169,13 +169,8 @@ Route::prefix('discord')->group(function () {
         ->name('discord.link');
 });
 
-Route::post('apply-promo', [StripeController::class, 'applyPromo'])
-    ->middleware('auth')
-    ->name('billing.apply-promo');
 
 Route::get('price', [BillingController::class, 'price'])
     ->name('billing.price');
-Route::post('promocode', [BillingController::class, 'checkPromoCode'])
-    ->name('billing.promocode');
 Route::post('stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
 Route::post('coinbase/webhook', [CoinbaseWebhookController::class, 'handleWebhook']);

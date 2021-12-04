@@ -24,25 +24,6 @@
                 @endsubscribed
             </p>
 
-            @subscribed
-            @if (!Request::user()->hasDiscountedSubscription())
-                <form action="{{ route('billing.apply-promo') }}" method="POST" class="-mt-8 mb-8">
-                    @csrf
-                    <button
-                       class="group mx-auto lg:mx-0 bg-red-300 text-gray-800 font-bold rounded my-6 py-4 px-8 shadow-lg">
-                        {{ __('common.applycoupon_action') }}
-                        <i class="fas fa-angle-right text-lg ml-2 -mr-2 transform group-hover:translate-x-2 duration-100"></i>
-                    </button>
-                </form>
-                @else
-                <p class="-mt-8 mb-8">
-                    <span class="text-red-300">
-                        {{ __('common.applycoupon_success') }}
-                    </span><br>
-                </p>
-                @endif
-            @endsubscribed
-
             @php($subscriptionPeriodEnd = optional(Auth::user()->validSubscription())->current_period_end)
             @php($subscriptionCancelledAt = optional(Auth::user()->validSubscription())->ends_at)
 
@@ -57,8 +38,6 @@
                     @endif
                 </p>
             @endif
-
-
             @if (Auth::user()->subscribed() && !Auth::user()->subscribedToPlan(App\Billing::unlimitedPlan()) && !Auth::user()->subscribedToPlan(App\Billing::unlimitedWithQueuePlan()))
                 <p class="leading-normal uppercase text-sm text-gray-400 -mt-8 mb-8">
                     {!! __('profile.exo_mages_left_in_plan', ['number' => Auth::user()->number_of_exo_mages_left_in_plan]) !!}
