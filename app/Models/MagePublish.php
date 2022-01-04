@@ -14,6 +14,14 @@ class MagePublish extends Model
         'dont_publish_to_forum',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function($model) {
+            optional($model->user)->userCacheAttributesNumberOfExoMagesLeftInPlanClearCache();
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
