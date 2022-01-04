@@ -27,13 +27,6 @@ class Maging extends Model
         'expended' => 0,
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-        static::saved(function($model) {
-            optional($model->user)->userCacheAttributesNumberOfExoMagesLeftInPlanClearCache();
-        });
-    }
 
     public function user() {
         return $this->belongsTo(User::class);
