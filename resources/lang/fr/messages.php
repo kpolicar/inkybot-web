@@ -7,7 +7,7 @@ return [
     'install_instructions' => 'Instruction d\'installation',
 
     'copyright' => 'Copyright © :year Inkybot',
-    'dofus_trademark' => 'Dofus® est une marque déposée d\'Ankama © 2022',
+    'dofus_trademark' => 'Dofus® est une marque déposée d\'Ankama © :year',
     'affiliation' => 'Inkybot n\'est en aucun cas affilié à Ankama SAS.',
 
     'download_started' => 'Votre téléchargement à commencé. Vous devrez dézipper le fichier compressé en utilisant le mot de passe :password',

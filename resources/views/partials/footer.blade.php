@@ -16,7 +16,7 @@
                 </a><br>
             </p>
             <p class="text-gray-700 px-3 text-center md:text-left">
-                {{ __('messages.dofus_trademark') }}<br>
+                {{ __('messages.dofus_trademark', ['year' => now()->format('Y')]) }}<br>
                 {{ __('messages.affiliation') }}
             </p>
         </div>
