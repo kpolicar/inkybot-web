@@ -2,6 +2,7 @@
 
 use App\ClientVersion;
 use App\Exports\MagingExport;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CoinbaseController;
 use App\Http\Controllers\CoinbaseWebhookController;
@@ -42,24 +43,24 @@ Route::group(
         'middleware' => [ 'localize', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function() {
 
-    Route::get('/', [Controller::class, 'home'])
+    Route::get('/', [AppController::class, 'home'])
         ->name('home');
 
     Route::middleware('auth')
-        ->get(LaravelLocalization::transRoute('routes.download'), [Controller::class, 'download'])
+        ->get(LaravelLocalization::transRoute('routes.download'), [AppController::class, 'download'])
         ->name('download');
 
-    Route::get(LaravelLocalization::transRoute('routes.profile'), [Controller::class, 'profile'])
+    Route::get(LaravelLocalization::transRoute('routes.profile'), [AppController::class, 'profile'])
         ->middleware('auth')
         ->name('profile');
 
         Route::middleware(['auth', 'verified', RedirectToInvoicePageIfIncompletePayment::class, PlanExists::class])
             ->group(function () {
 
-                Route::get(LaravelLocalization::transRoute('routes.subscribe'), [Controller::class, 'subscribe'])
+                Route::get(LaravelLocalization::transRoute('routes.subscribe'), [AppController::class, 'subscribe'])
                     ->name('subscribe');
 
-                Route::get(LaravelLocalization::transRoute('routes.subscribe-manage'), [Controller::class, 'subscriptionManage'])
+                Route::get(LaravelLocalization::transRoute('routes.subscribe-manage'), [AppController::class, 'subscriptionManage'])
                     ->middleware('throttle:3,1')
                     ->name('subscribe-manage');
 
@@ -78,7 +79,6 @@ Route::group(
 
                     Route::post('/pay/subscribe/{paymentId}', [StripeController::class, 'subscribe'])
                         ->name('pay');
-
                 });
 
             });
@@ -88,17 +88,17 @@ Route::group(
 
     Route::prefix('/release/{version?}')->group(function () {
 
-        Route::get('/', [Controller::class, 'releaseNotes'])
+        Route::get('/', [AppController::class, 'releaseNotes'])
             ->name('release');
 
-        Route::get('/usage', [Controller::class, 'usage'])
+        Route::get('/usage', [AppController::class, 'usage'])
             ->name('release.usage');
     });
 
     Route::view('terms', 'terms')
         ->name('terms');
 
-    Route::get(LaravelLocalization::transRoute('routes.export'), [Controller::class, 'export'])
+    Route::get(LaravelLocalization::transRoute('routes.export'), [AppController::class, 'export'])
         ->name('export')
         ->middleware(['auth', Subscribed::class, 'throttle:1,10,export']);
 
@@ -108,7 +108,7 @@ Route::group(
         ->middleware(['guest'])
         ->name('login.discord');
 
-    Route::get(LaravelLocalization::transRoute('routes.statistics_activity'), [Controller::class, 'activity'])
+    Route::get(LaravelLocalization::transRoute('routes.statistics_activity'), [AppController::class, 'activity'])
         ->middleware('auth')
         ->name('statistics.activity');
 });
