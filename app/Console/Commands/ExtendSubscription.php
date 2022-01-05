@@ -15,7 +15,7 @@ class ExtendSubscription extends Command
      *
      * @var string
      */
-    protected $signature = 'subscription:extend {user_id}';
+    protected $signature = 'subscription:extend {user} {--days=1}';
 
     /**
      * The console command description.
@@ -41,7 +41,11 @@ class ExtendSubscription extends Command
      */
     public function handle()
     {
-        $user = User::findOrFail($this->argument('user_id'));
+        $user = is_numeric($user = $this->argument('user'))
+            ? User::findOrFail($user)
+            : User::where('email', $user)->firstOrFail();
+        $days = (int) $this->option('days');
+
 
         if ($subscription = $user->subscription()) {
             $stripeSubscription = $subscription->asStripeSubscription();
@@ -59,9 +63,9 @@ class ExtendSubscription extends Command
                     'previous_stripe_id' => $subscription->stripe_id
                 ])
                 ->create(null, [], [
-                    'backdate_start_date' => $currentPeriodStart->addDay()->unix(),
-                    'billing_cycle_anchor' => $currentPeriodEnd->addDay()->unix(),
-                    'cancel_at' => $cancelAt ? $cancelAt->addDay()->unix() : null,
+                    'backdate_start_date' => $currentPeriodStart->addDays($days)->unix(),
+                    'billing_cycle_anchor' => $currentPeriodEnd->addDays($days)->unix(),
+                    'cancel_at' => $cancelAt ? $cancelAt->addDays($days)->unix() : null,
                 ]);
 
             if ($newSubscription) {
@@ -70,7 +74,11 @@ class ExtendSubscription extends Command
                     ->cancelNow();
             }
 
+            $this->info('Successfully extended subscription for user '.$user->email.' until '.$currentPeriodEnd->format('Y-m-d').'.');
+        } else {
+            $this->error('User '.$user->email.' is not subscribed!');
         }
+
         return 0;
     }
 }
