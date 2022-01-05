@@ -42,11 +42,13 @@ class AuthServiceProvider extends ServiceProvider
         ]);
         Passport::routes(null, [
             'prefix' => 'oauth-v2',
-            'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class]
+            'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class],
+            'as' => 'oauth-v2',
         ]);
         Passport::routes(null, [
             'prefix' => 'oauth',
-            'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class]
+            'middleware' => [DecryptApiRequest::class, EncryptApiResponse::class],
+            'as' => 'oauth-v1',
         ]);
 
         Passport::tokensExpireIn(now()->addMinutes(5));

@@ -44,14 +44,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::prefix('api/{version}')
                 ->where(['version' => 'v([0-9.]+(beta)?)'])
                 ->middleware('api')
-                ->middleware(function (Request $request, $next) {
-                    $versions = app(ClientVersion::class);
-                    $code = $request->segment(2);
-                    $version = $versions->firstWhere('code', $code);
-
-                    abort_if($version === null, 404);
-                    return $next($request);
-                })
+                ->middleware([RouteServiceProvider::class, 'ApiMiddleware'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
@@ -59,5 +52,15 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+    }
+
+    private function ApiMiddleware(Request $request, $next)
+    {
+        $versions = app(ClientVersion::class);
+        $code = $request->segment(2);
+        $version = $versions->firstWhere('code', $code);
+
+        abort_if($version === null, 404);
+        return $next($request);
     }
 }

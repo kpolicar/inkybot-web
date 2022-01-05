@@ -6,7 +6,6 @@ use App\Http\Middleware\EncryptApiResponse;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectFromPublicUriMiddleware;
 use App\Http\Middleware\Subscribed;
-use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
 use App\Models\FreeTrial;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Http\Request;
@@ -37,13 +36,7 @@ Route::get('/', [ApiController::class, 'Info']);
 
 Route::middleware('auth:api')->group(function () {
 
-    Route::middleware(EncryptApiResponse::class)->post('/trial/begin', function (Request $request) {
-        $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
-            ->orWhere('ip_address', $ip_address = $request->ip())
-            ->updateOrCreate([], compact('user_id', 'ip_address'));
-
-        return new ClientFreeTrialResource($freeTrial);
-    });
+    Route::post('/trial/begin', [ApiController::class, 'BeginTrial']);
 
     Route::middleware('throttle:notification_rate_limit_per_minute,1,notification')
         ->prefix('/notify')
