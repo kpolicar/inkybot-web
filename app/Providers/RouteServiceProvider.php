@@ -56,7 +56,7 @@ class RouteServiceProvider extends ServiceProvider
 
     private function ApiMiddleware(Request $request, $next)
     {
-        $versions = app(ClientVersion::class);
+        $versions = $this->app[ClientVersion::class];
         $code = $request->segment(2);
         $version = $versions->firstWhere('code', $code);
 
