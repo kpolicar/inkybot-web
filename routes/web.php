@@ -42,64 +42,26 @@ Route::group(
         'middleware' => [ 'localize', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function() {
 
-    Route::get('/', function () {
-        $gameVersion = Cache::get('game_version', function () {
-            $response = rescue(function () {
-               return Http::get('https://launcher.cdn.ankama.com/cytrus.json')->json();
-            }, []);
-
-            $gameVersion = Str::after(
-                data_get($response, 'games.dofus.platforms.windows.main', config('app.latest_dofus_version')),
-                '_');
-
-            Cache::put('game_version', $gameVersion, now()->addDay());
-            return $gameVersion;
-        });
-
-        return view('welcome', compact('gameVersion'));
-    })->name('home');
+    Route::get('/', [Controller::class, 'home'])
+        ->name('home');
 
     Route::middleware('auth')
-        ->get(LaravelLocalization::transRoute('routes.download'), function (ClientVersion $version) {
-            $currentVersion = $version->latest();
-            return redirect(asset("storage/Inkybot_{$currentVersion['code']}patch4.zip"));
-    })->name('download');
+        ->get(LaravelLocalization::transRoute('routes.download'), [Controller::class, 'download'])
+        ->name('download');
 
-    Route::get(LaravelLocalization::transRoute('routes.profile'), function (Request $request) {
-        $message = $request->getSession()->get('notification');
-        $action = "";
-        if (!$message) {
-            if (!optional($request->user())->hasVerifiedEmail()) {
-                $message = __('forms.quick_verify_header');
-                $action = 'partials.resend-verification';
-            } elseif ($request->get('verified')) {
-                $message = __('forms.quick_verify_success');
-            }
-        }
-        $request->user()->loadMissing(['publishes' => function ($query) {
-            $query->orderByDesc('created_at');
-        }]);
-
-        return view('profile')
-            ->with(compact('message', 'action'));
-    })->middleware('auth')->name('profile');
+    Route::get(LaravelLocalization::transRoute('routes.profile'), [Controller::class, 'profile'])
+        ->middleware('auth')
+        ->name('profile');
 
         Route::middleware(['auth', 'verified', RedirectToInvoicePageIfIncompletePayment::class, PlanExists::class])
             ->group(function () {
 
-                Route::get(LaravelLocalization::transRoute('routes.subscribe'), function (Request $request) {
-                    if (!$request->user()->can('purchase-subscription')) {
-                        return redirect(route('subscribe-manage'));
-                    } else {
-                        return view('subscribe');
-                    }
-                })->name('subscribe');
+                Route::get(LaravelLocalization::transRoute('routes.subscribe'), [Controller::class, 'subscribe'])
+                    ->name('subscribe');
 
-                Route::get(LaravelLocalization::transRoute('routes.subscribe-manage'), function (Request $request) {
-                    if (!$request->user()->cashierSubscribed())
-                        abort(403);
-                    return $request->user()->redirectToBillingPortal(url()->previous());
-                })->middleware('throttle:3,1')->name('subscribe-manage');
+                Route::get(LaravelLocalization::transRoute('routes.subscribe-manage'), [Controller::class, 'subscriptionManage'])
+                    ->middleware('throttle:3,1')
+                    ->name('subscribe-manage');
 
 
                 Route::middleware('can:purchase-subscription')->group(function () {
@@ -121,34 +83,26 @@ Route::group(
 
             });
 
-        Route::get(LaravelLocalization::transRoute('routes.install'), function (Request $request) {
-            return view('install');
-        })->name('install');
+        Route::view(LaravelLocalization::transRoute('routes.install'), 'install')
+            ->name('install');
 
     Route::prefix('/release/{version?}')->group(function () {
 
-        Route::get('/', function (ClientVersion $versions, $version){
-            $versionDetails = $version == "latest" ?
-                $versions->latest() :
-                $versions->firstWhere('code', $version);
-            $view = $versionDetails['number'] ?? abort(404);
-            return view("release.$view", ['version' => $versionDetails]);
-        })->name('release');
+        Route::get('/', [Controller::class, 'releaseNotes'])
+            ->name('release');
 
-        Route::get('/usage', function (...$args) {
-            return redirect()->to(route('release', $args).'#usage', 307);
-        })->name('release.usage');
-
+        Route::get('/usage', [Controller::class, 'usage'])
+            ->name('release.usage');
     });
 
     Route::view('terms', 'terms')
         ->name('terms');
 
-    Route::get(LaravelLocalization::transRoute('routes.export'), function (Request $request) {
-        return new MagingExport($request->user());
-    })->name('export')->middleware(['auth', Subscribed::class, 'throttle:1,10,export']);
+    Route::get(LaravelLocalization::transRoute('routes.export'), [Controller::class, 'export'])
+        ->name('export')
+        ->middleware(['auth', Subscribed::class, 'throttle:1,10,export']);
 
-    require_once 'fortify.php';
+    require 'fortify.php';
 
     Route::view(LaravelLocalization::transRoute('routes.login-discord'), 'discord-link')
         ->middleware(['guest'])
@@ -160,9 +114,7 @@ Route::group(
 });
 
 Route::prefix('discord')->group(function () {
-    Route::get('/', function () {
-        return redirect()->to('https://discord.gg/Fkg37XTtq2');
-    })->name('discord');
+    Route::redirect('/', 'https://discord.gg/Fkg37XTtq2')->name('discord');
 
     Route::get('link/{id}', [LinkDiscordController::class, '__invoke'])
         ->middleware([SetLocaleFromSession::class, 'auth', 'signed', 'throttle:3,1'])

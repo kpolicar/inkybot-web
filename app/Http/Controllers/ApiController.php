@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FreeTrial;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory as ViewFactory;
@@ -24,6 +25,7 @@ use App\Http\Resources\ClientUser as ClientUserResource;
 use App\Http\Resources\ClientUserV20 as ClientUserResourceV20;
 use App\Models\Maging;
 use Illuminate\Http\Request;
+use App\Http\Resources\ClientFreeTrial as ClientFreeTrialResource;
 
 class ApiController extends Controller
 {
@@ -31,7 +33,7 @@ class ApiController extends Controller
     public function __construct()
     {
         $this->middleware(Subscribed::class)
-            ->except(['Info', 'User']);
+            ->except(['Info', 'User', 'BeginTrial']);
         $this->middleware(EncryptApiResponse::class)
             ->except('Info', 'StatisticsView', 'StatisticsNewSession');
         $this->middleware(DecryptApiRequest::class)
@@ -48,6 +50,15 @@ class ApiController extends Controller
             'endpoint' => $version['code'],
             'number' => $version['number'],
         ];
+    }
+
+    public function BeginTrial(Request $request)
+    {
+        $freeTrial = FreeTrial::where('user_id', $user_id = $request->user()->id)
+            ->orWhere('ip_address', $ip_address = $request->ip())
+            ->updateOrCreate([], compact('user_id', 'ip_address'));
+
+        return new ClientFreeTrialResource($freeTrial);
     }
 
     public function User($code, Request $request, ClientVersion $versions) {
