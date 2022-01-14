@@ -2,7 +2,7 @@
 
 return [
     'category' => 'The Dofus 2 Maging bot',
-    'heading' => 'Customize your items the way you want',
+    'heading' => 'Maging.<br>Nothing else.<br>We do it the best.',
     'subheading' => 'Tell us what stats you want on your items and we\'ll do the rest.',
     'install_instructions' => 'Installation instructions',
 
