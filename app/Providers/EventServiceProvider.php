@@ -44,6 +44,7 @@ class EventServiceProvider extends ServiceProvider
             SendUserSubscriptionStatusToDiscord::class,
         ],
         UserLinkedWithDiscord::class => [
+            SendUserSubscriptionStatusToDiscord::class,
             SendLinkSuccessfulToDiscord::class,
         ],
         UserSyncedWithDiscord::class => [

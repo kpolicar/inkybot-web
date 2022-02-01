@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class SendUserSubscriptionStatusToDiscord
 {
+    static $executed = false;
     /**
      * Handle the event.
      *
@@ -17,8 +18,12 @@ class SendUserSubscriptionStatusToDiscord
      */
     public function handle(UserEvent $event)
     {
+        if (static::$executed)
+            return;
+        static::$executed = true;
+
         $user = $event->user;
-        if ($user->wasChanged('discord_id') && $previousId = $user->getOriginal('discord_id')) {
+        if ($user->wasChanged('discord_id') && ($previousId = $user->getOriginal('discord_id'))) {
             $content = "!unsubscribe {$previousId}";
             \Http::post(
                 config('discord.webhook_url'),
