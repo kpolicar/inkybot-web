@@ -44,7 +44,7 @@ class RouteServiceProvider extends ServiceProvider
             Route::prefix('api/{version}')
                 ->where(['version' => 'v([0-9.]+(beta)?)'])
                 ->middleware('api')
-                ->middleware([RouteServiceProvider::class, 'ApiMiddleware'])
+                //->middleware([RouteServiceProvider::class, 'ApiMiddleware'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
