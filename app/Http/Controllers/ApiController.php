@@ -161,6 +161,11 @@ class ApiController extends Controller
 
     public function StatisticsUpdate(Request $request) {
         $maging = Maging::activeForUser($request->user());
+        if ($request->boolean('start_new_session')) {
+            if ($maging->expended || $maging->exo_attempts || $maging->exo_successes || !$maging->exists) {
+                $maging = $request->user()->maging()->create();
+            }
+        }
         $expended = $request->input('expend', 0);
         $timeMaging = $request->input('time_maging', 0);
 

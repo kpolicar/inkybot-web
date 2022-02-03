@@ -32,7 +32,7 @@ class AppController extends Controller
     public function download(ClientVersion $version)
     {
         $currentVersion = $version->latest();
-        return redirect(asset("storage/Inkybot_{$currentVersion['code']}patch4.zip"));
+        return redirect(asset("storage/Inkybot_{$currentVersion['code']}.zip"));
     }
 
     public function profile(Request $request)
