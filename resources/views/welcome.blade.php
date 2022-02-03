@@ -11,7 +11,7 @@
         <h1 class="uppercase tracking-loose w-full">{{ __('messages.category') }}</h1>
         <h2 class="my-4 text-5xl font-bold leading-tight uppercase">{!! __('messages.heading') !!}</h2>
 
-        <div class="w-4/5">
+        <div class="w-4/5 md:mx-0 mx-auto">
             <p class="leading-normal text-2xl mb-8">{{ __('messages.subheading') }}</p>
             <p class="leading-normal uppercase text-sm pb-2">
                 {!! __('common.compatible', ['version' => $gameVersion]) !!}
