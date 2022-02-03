@@ -82,7 +82,7 @@ class AppServiceProvider extends ServiceProvider
             return now()->isBefore('2022-01-02');
         });
 
-        if (app()->environment('production')) {
+        if ($this->app->environment('production')) {
             \URL::forceScheme('https');
         }
         \URL::forceRootUrl(\Config::get('app.url'));
