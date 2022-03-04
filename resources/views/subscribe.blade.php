@@ -44,7 +44,7 @@
 
         @if ($cryptoPromo)
             <p class="leading-normal text-lg mb-2 pr-10">
-                {{ __('subscribe.description_promotion')  }}
+                {!! __('subscribe.description_promotion')  !!}
             </p>
             <p class="leading-normal text-lg mb-2 pr-10">
                 {!! __('subscribe.description_promotion_expires') !!}
