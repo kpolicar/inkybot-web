@@ -23,16 +23,16 @@
         <div class="flex-grow lg:flex justify-end lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent lg:text-white text-black p-4 lg:p-0 z-20" id="nav-content">
             <ul class="list-reset lg:flex justify-end items-center">
                 <li class="xl:mr-3 m-1">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('install') }}">{{ __('common.installation') }}</a>
+                    <a class="toggleColour inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('install') }}">{{ __('common.installation') }}</a>
                 </li>
                 <li class="xl:mr-3 m-1">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('release', ['version' => 'latest']) }}">{{ __('common.release_notes') }}</a>
+                    <a class="toggleColour inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('release', ['version' => 'latest']) }}">{{ __('common.release_notes') }}</a>
                 </li>
                 <li class="xl:mr-3 m-1">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" target="_blank" href="{{ route('discord') }}">Discord</a>
+                    <a class="toggleColour inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" target="_blank" href="{{ route('discord') }}">Discord</a>
                 </li>
                 <li class="xl:mr-3 m-1">
-                    <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2"
+                    <a class="toggleColour inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2"
                        title="Cheat-gam3.com"
                        target="_blank"
                        href="https://forum.cheat-gam3.com/forums/inkybot/">
@@ -41,11 +41,11 @@
                 </li>
                 <li class="xl:mr-3 m-1">
                     @auth
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('profile') }}">{{ __('common.profile') }}</a>
+                        <a class="toggleColour inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('profile') }}">{{ __('common.profile') }}</a>
                     @endauth
 
                     @guest
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('login') }}">{{ __('common.login') }}</a>
+                        <a class="toggleColour inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('login') }}">{{ __('common.login') }}</a>
                     @endguest
                 </li>
                 <li class="xl:mr-3 m-1">
@@ -53,14 +53,14 @@
                         <form class="m-0" method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit"
-                                    class="bg-transparent focus:outline-none inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2">
+                                    class="toggleColour bg-transparent focus:outline-none inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2">
                                 {{ __('common.signout') }}
                             </button>
                         </form>
                     @endauth
 
                     @guest
-                        <a class="inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('register') }}">{{ __('common.signup') }}</a>
+                        <a class="toggleColour inline-block no-underline hover:text-gray-500 hover:text-underline xl:py-2 xl:px-4 p-2" href="{{ route('register') }}">{{ __('common.signup') }}</a>
                     @endguest
                 </li>
             </ul>

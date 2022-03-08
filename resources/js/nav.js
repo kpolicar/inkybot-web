@@ -20,13 +20,11 @@ document.addEventListener('scroll', function() {
         //Use to switch toggleColour colours
         for (var i = 0; i < toToggle.length; i++) {
             toToggle[i].classList.add("text-gray-800");
-            toToggle[i].classList.remove("text-white");
+            toToggle[i].classList.remove("lg:text-white");
         }
         header.classList.add("shadow");
         navcontent.classList.remove("bg-gray-100");
         navcontent.classList.add("bg-white");
-        navcontent.classList.remove("lg:text-white");
-        navcontent.classList.add("lg:text-gray-800");
         languageSelector.classList.add("rounded-t-none");
     }
     else {
@@ -37,15 +35,13 @@ document.addEventListener('scroll', function() {
         navaction.classList.add("text-gray-800");
         //Use to switch toggleColour colours
         for (var i = 0; i < toToggle.length; i++) {
-            toToggle[i].classList.add("text-white");
+            toToggle[i].classList.add("lg:text-white");
             toToggle[i].classList.remove("text-gray-800");
         }
 
         header.classList.remove("shadow");
         navcontent.classList.remove("bg-white");
         navcontent.classList.add("bg-gray-100");
-        navcontent.classList.remove("lg:text-gray-800");
-        navcontent.classList.add("lg:text-white");
         languageSelector.classList.remove("rounded-t-none");
 
     }
