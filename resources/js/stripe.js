@@ -79,26 +79,6 @@ import {loadStripe} from '@stripe/stripe-js';
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-
-            var userLocation = {
-                'latitude': null,
-                'longitude': null,
-            };
-            const getCoords = async () => {
-                const pos = await new Promise((resolve, reject) => {
-                    navigator.geolocation.getCurrentPosition(resolve, reject);
-                });
-
-                return pos.coords;
-            };
-            if ('geolocation' in navigator) {
-                try {
-                    userLocation = await getCoords();
-                } catch (e) {
-                }
-            }
-
-
             if (_.find(savedErrors, error => error !== null))
                 return;
 
@@ -148,6 +128,24 @@ import {loadStripe} from '@stripe/stripe-js';
                 handleError();
                 error.classList.add('visible');
                 errorMessage.innerHTML = response.error.message;
+            }
+
+            var userLocation = {
+                'latitude': null,
+                'longitude': null,
+            };
+            const getCoords = async () => {
+                const pos = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject);
+                });
+
+                return pos.coords;
+            };
+            if ('geolocation' in navigator) {
+                try {
+                    userLocation = await getCoords();
+                } catch (e) {
+                }
             }
 
             let data = {
