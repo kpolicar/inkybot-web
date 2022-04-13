@@ -28,7 +28,8 @@ class StripeController extends BillingController
 
         try {
             $paymentMethod = $this->uniqueCustomerPaymentMethod($user, $paymentMethodId);
-            $this->createNewSubscription($request, $user, $plan, $paymentMethod ?? null);
+            $metadata = array_filter($request->only(['longitude', 'latitude']));
+            $this->createNewSubscription($request, $user, $plan, $paymentMethod ?? null, $metadata);
 
         } catch (PaymentFailure $exception) {
             return response()->view('partials.payment.failed', compact('exception'));
@@ -53,9 +54,10 @@ class StripeController extends BillingController
         return response()->view('partials.payment.success', compact('totalCost', 'description'));
     }
 
-    private function createNewSubscription(Request $request, User $user, $plan, PaymentMethod $paymentMethod)
+    private function createNewSubscription(Request $request, User $user, $plan, PaymentMethod $paymentMethod, $metadata=[])
     {
         $subscription = $user->newSubscription('default', Billing::resolvePlan($plan))
+            ->withMetadata($metadata)
             ->quantity($this->quantityFromPost($request))
             ->noProrate()
             ->create($paymentMethod);

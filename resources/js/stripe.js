@@ -76,8 +76,27 @@ import {loadStripe} from '@stripe/stripe-js';
         });
 
         // Listen on the form's 'submit' handler...
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
+
+
+            var userLocation = {
+                'latitude': null,
+                'longitude': null,
+            };
+            const getCoords = async () => {
+                const pos = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject);
+                });
+
+                return pos.coords;
+            };
+            if ('geolocation' in navigator) {
+                try {
+                    userLocation = await getCoords();
+                } catch (e) {
+                }
+            }
 
 
             if (_.find(savedErrors, error => error !== null))
@@ -86,7 +105,7 @@ import {loadStripe} from '@stripe/stripe-js';
             // Trigger HTML5 validation UI on the form if any of the inputs fail
             // validation.
             var plainInputsValid = true;
-            Array.prototype.forEach.call(form.querySelectorAll('input'), function(
+            Array.prototype.forEach.call(form.querySelectorAll('input'), function (
                 input
             ) {
                 if (input.checkValidity && !input.checkValidity()) {
@@ -120,12 +139,12 @@ import {loadStripe} from '@stripe/stripe-js';
                 }
             };
 
-            var handleError = function(error) {
+            var handleError = function (error) {
                 paymentForm.classList.remove('submitting');
                 enableInputs();
             }
 
-            var handleErrorWithMessage = function(response) {
+            var handleErrorWithMessage = function (response) {
                 handleError();
                 error.classList.add('visible');
                 errorMessage.innerHTML = response.error.message;
@@ -135,14 +154,16 @@ import {loadStripe} from '@stripe/stripe-js';
                 quantity: quantity ? quantity.value : 1,
                 plan: plan.value,
                 recurring: recurring.checked,
-                queue: queue.checked
+                queue: queue.checked,
+                latitude: userLocation.latitude,
+                longitude: userLocation.longitude,
             };
             stripe.createPaymentMethod('card', elements[0], additionalData)
-                .then(function(result) {
+                .then(function (result) {
 
                     console.log("stripe result: ", result);
                     if (result.paymentMethod) {
-                        axios.post(paymentForm.getAttribute('data-handler')+'/'+result.paymentMethod.id, data)
+                        axios.post(paymentForm.getAttribute('data-handler') + '/' + result.paymentMethod.id, data)
                             .then(result => {
                                 if (result.data.redirect) {
                                     window.location.href = result.data.redirect;
