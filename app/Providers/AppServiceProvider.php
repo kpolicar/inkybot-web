@@ -79,7 +79,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton('cryptoPromo', function () {
-            return now()->isBefore('2022-04-01');
+            return now()->isBefore('2022-11-01');
         });
 
         if ($this->app->environment('production')) {
