@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "63ba7fecdb2ad20d89c58a53422227c2",
+    "content-hash": "d7fd776b7f58fa5f998aae7639c6c974",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -222,6 +222,84 @@
                 }
             ],
             "time": "2021-01-20T22:51:39+00:00"
+        },
+        {
+            "name": "coconutcraig/laravel-postmark",
+            "version": "v2.11.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/craigpaul/laravel-postmark.git",
+                "reference": "2feeeb9f050600f301d7c451716f1029001e8ceb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craigpaul/laravel-postmark/zipball/2feeeb9f050600f301d7c451716f1029001e8ceb",
+                "reference": "2feeeb9f050600f301d7c451716f1029001e8ceb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "illuminate/mail": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+                "php": "^7.1.3 || ^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.5 || ^4.0 || ^5.0 || ^6.0",
+                "phpunit/phpunit": "^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "suggest": {
+                "mvdnbrk/postmark-inbound": "Allows you to process Postmark Inbound Webhooks."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Coconuts\\Mail\\PostmarkServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Coconuts\\Mail\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Paul",
+                    "email": "craig.paul@coconutcalendar.com",
+                    "homepage": "https://coconutcalendar.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package for sending mail via the Postmark API",
+            "homepage": "https://github.com/craigpaul/laravel-postmark",
+            "keywords": [
+                "coconutcraig",
+                "email",
+                "laravel",
+                "mail",
+                "postmark",
+                "wildbit"
+            ],
+            "support": {
+                "issues": "https://github.com/craigpaul/laravel-postmark/issues",
+                "source": "https://github.com/craigpaul/laravel-postmark/tree/v2.11.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mvdnbrk",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-01-31T12:47:41+00:00"
         },
         {
             "name": "coinbase/coinbase-commerce",
@@ -5915,16 +5993,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v5.4.21",
+            "version": "v5.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "6b88914a7f1bf144df15904f60a19be78a67a3b2"
+                "reference": "4cd1b7e7ee846c8b22cb47cbc435344af9b2a8bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/6b88914a7f1bf144df15904f60a19be78a67a3b2",
-                "reference": "6b88914a7f1bf144df15904f60a19be78a67a3b2",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/4cd1b7e7ee846c8b22cb47cbc435344af9b2a8bf",
+                "reference": "4cd1b7e7ee846c8b22cb47cbc435344af9b2a8bf",
                 "shasum": ""
             },
             "require": {
@@ -5981,8 +6059,11 @@
             ],
             "description": "Provides powerful methods to fetch HTTP resources synchronously or asynchronously",
             "homepage": "https://symfony.com",
+            "keywords": [
+                "http"
+            ],
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v5.4.21"
+                "source": "https://github.com/symfony/http-client/tree/v5.4.22"
             },
             "funding": [
                 {
@@ -5998,7 +6079,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-17T21:35:35+00:00"
+            "time": "2023-03-24T15:16:26+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
