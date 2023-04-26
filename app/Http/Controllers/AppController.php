@@ -15,7 +15,7 @@ class AppController extends Controller
     {
         $gameVersion = Cache::get('game_version', function () {
             $response = rescue(function () {
-                return Http::get('https://launcher.cdn.ankama.com/cytrus.json')->json();
+                return Http::get('https://cytrus.cdn.ankama.com/cytrus.json')->json();
             }, []);
 
             $gameVersion = Str::after(
