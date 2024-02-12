@@ -55,6 +55,7 @@ class AuthServiceProvider extends ServiceProvider
         Passport::refreshTokensExpireIn(now()->addMinutes(5));
 
         Token::creating(function (Token $token) {
+            \Log::info("Token {$token->name} for user {$token->user_id} was created for ".request()->ip());
             if (!$token->name) {
                 $token->name = request()->post('_passport_token_name');
             }

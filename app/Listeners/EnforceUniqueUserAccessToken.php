@@ -34,14 +34,32 @@ class EnforceUniqueUserAccessToken
             ->where('name', '!=', $token->name)
             ->get()
             ->groupBy('name')
-            ->skip($skip);
+            ->skip($skip)
+            ->flatten();
 
 
-        if (!empty($tokensToDelete)) {
-            $user->tokens()
-                ->where('id', '!=', $event->tokenId)
-                ->whereIn('name', $tokensToDelete->keys())
-                ->delete();
+        if ($tokensToDelete->isNotEmpty()) {
+
+            // Look again
+            sleep(1);
+            $tokensToDelete = $user->tokens()
+                ->where('name', '!=', $token->name)
+                ->get()
+                ->skip($skip);
+            if ($tokensToDelete->isEmpty()) {
+                return;
+            }
+
+
+            \Log::info("Deleting tokens for user {$user->id} with email {$user->email}");
+            \Log::info("All tokens:");
+            \Log::info($user->tokens()->get()->pluck('name'));
+            \Log::info("Deleting these tokens:");
+            \Log::info($tokensToDelete->pluck('name'));
+
+
+            \DB::table('oauth_refresh_tokens')->whereIn('access_token_id', $tokensToDelete->pluck('id'))->delete();
+            \DB::table('oauth_access_tokens')->whereIn('id', $tokensToDelete->pluck('id'))->delete();
         }
     }
 }
