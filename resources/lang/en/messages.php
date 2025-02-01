@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'category' => 'The Dofus 2 Maging bot',
+    'category' => 'The Dofus 3 Maging bot',
     'heading' => 'Maging.<br>Nothing else.<br>We do it the best.',
     'subheading' => 'Tell us what stats you want on your items and we\'ll do the rest.',
     'install_instructions' => 'Installation instructions',

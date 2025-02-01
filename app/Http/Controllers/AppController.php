@@ -19,7 +19,7 @@ class AppController extends Controller
             }, []);
 
             $gameVersion = Str::after(
-                data_get($response, 'games.dofus.platforms.windows.main', config('app.latest_dofus_version')),
+                data_get($response, 'games.dofus.platforms.windows.dofus3', config('app.latest_dofus_version')),
                 '_');
 
             Cache::put('game_version', $gameVersion, now()->addDay());
