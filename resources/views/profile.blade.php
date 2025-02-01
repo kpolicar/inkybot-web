@@ -15,8 +15,7 @@
             <p class="leading-normal text-2xl mb-8">
                 @subscribed
                     {{ __('profile.subscribed') }}
-
-                    @if (Auth::user()->validSubscription()->quantity > 1)
+                    @if (optional(Auth::user()->validSubscription())->quantity > 1)
                         // <b>{{ __('profile.instances', ['number' => Auth::user()->validSubscription()->quantity ]) }}</b>
                     @endif
                 @else

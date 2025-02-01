@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'category' => 'Le bot de Forgemagie Dofus 2',
+    'category' => 'Le bot de Forgemagie Dofus 3',
     'heading' => 'Forgemagie.<br>Rien d\'autre.<br>Nous le faisons le mieux.',
     'subheading' => 'Dites nous quelles caractéristiques vous voulez sur vos items et nous ferons le reste!',
     'install_instructions' => 'Instruction d\'installation',

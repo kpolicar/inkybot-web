@@ -45,7 +45,9 @@ class EnforceUniqueUserAccessToken
             $tokensToDelete = $user->tokens()
                 ->where('name', '!=', $token->name)
                 ->get()
-                ->skip($skip);
+                ->groupBy('name')
+                ->skip($skip)
+                ->flatten();
             if ($tokensToDelete->isEmpty()) {
                 return;
             }

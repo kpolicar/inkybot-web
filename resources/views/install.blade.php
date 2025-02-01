@@ -69,6 +69,10 @@
                  class="my-4"
                  alt="{{ __('install.step_download_img_alt') }}">
 
+            <img src="{{ asset('images/installation/windows-feature-media-features.png') }}"
+                 class="my-4"
+                 alt="{{ __('install.step_download_img_alt') }}">
+
             <div class="anchor" id="antivirus"></div>
             <div class="px-4 lg:px-0">
                 <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">

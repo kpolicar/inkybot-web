@@ -4,6 +4,13 @@
         <div class="h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
+    @if(in_array('1920x1080-recommend', $restrictions))
+    <h3 class="text-black text-xl font-bold"><i class="fas fa-vector-square text-3xl mr-3"></i> 1920x1080</h3>
+    <p class="text-black my-3">
+        It's strongly recommended to run this version of Inkybot in 1920x1080 resolution maximized window mode.<br>
+    </p>
+    @endif
+
     @if(in_array('1920x1080', $restrictions))
     <h3 class="text-black text-xl font-bold"><i class="fas fa-vector-square text-3xl mr-3"></i> 1920x1080</h3>
     <p class="text-black my-3">
@@ -20,7 +27,7 @@
     @if(in_array('administrator', $restrictions))
     <h2 class="text-black text-xl font-bold"><i class="fas fa-shield-alt text-3xl mr-3"></i> Administrator mode</h2>
     <p class="text-black my-3">
-        The bot must be run in administrator mode.<br>
+        The bot must be run in administrator mode and added as an exception to your Antivirus.<br>
     </p>
     @endif
 
@@ -47,6 +54,13 @@
         You must <span class="underline">not</span> run other applications (notably, games) in <strong>exclusive-fullscreen mode</strong>!<br>
         Make sure you are running them in <strong>borderless-fullscreen mode</strong>.<br>
         Because of how Windows works, it can interfere with Inkybot's operation.
+    </p>
+    @endif
+
+    @if(in_array('mouse', $restrictions))
+    <h2 class="text-black text-xl font-bold"><i class="fas fa-mouse text-3xl mr-3"></i> Takes control</h2>
+    <p class="text-black my-3">
+        Inkybot will take control of your mouse and keyboard, which means you can't do anything else on your machine while it's in operation.
     </p>
     @endif
 

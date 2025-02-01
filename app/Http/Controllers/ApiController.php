@@ -205,7 +205,6 @@ class ApiController extends Controller
         ]);
         $image = Image::make($request->file('image'))->encode('jpg');
         $image->insert(asset('images/inkybot_watermark.png'), 'bottom-right');
-        $image->insert(asset('images/smithmagus_parachment_watermark.png'), 'top-right', 8, 39);
 
         $fileName = Str::random(40).'.jpg';
         $path = "public/mages/{$request->user()->id}";

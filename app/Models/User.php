@@ -178,11 +178,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function subscribedDeprecated()
     {
-        return !!optional($this->subscribed_to)->isAfter(now());
+        return true; // todo temporary everyone subscribed
+        //return !!optional($this->subscribed_to)->isAfter(now());
     }
 
     public function subscription($name = 'default')
     {
+        $cashierSubscription = $this->cashierSubscription($name);
+        if ($cashierSubscription) {
+            return $cashierSubscription;
+        }
         if ($this->subscribedDeprecated()) {
 
             $dummySubscription = $this->subscriptions()->make([
@@ -197,7 +202,7 @@ class User extends Authenticatable implements MustVerifyEmail
             return $dummySubscription;
         }
 
-        return $this->cashierSubscription($name);
+        return $cashierSubscription;
     }
 
     public function subscribed($name = 'default', $plan = null)
