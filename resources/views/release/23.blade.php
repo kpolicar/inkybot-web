@@ -61,10 +61,6 @@
                 <ul class="text-black">
                     <li class="p-3 pl-0 flex">
                         <i class="fas fa-clock text-3xl mr-3"></i>
-                        <span class="pt-1">Improve <strong>speed</strong> of Inkybot operation even more
-                    </li>
-                    <li class="p-3 pl-0 flex">
-                        <i class="fas fa-clock text-3xl mr-3"></i>
                         <span class="pt-1">Fix <strong>support</strong> for lesser common items, such as some weapons that're not currently supported
                     </li>
                     <li class="p-3 pl-0 flex">
