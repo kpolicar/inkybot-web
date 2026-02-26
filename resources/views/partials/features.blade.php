@@ -13,57 +13,19 @@
             <img src="{{ asset('images/features/setup.png') }}"
                  alt="{{ __('features.setup_alt') }}"
                  id="imgSetupForm"
-                 class="rounded rounded-t-none transform duration-300 scale-100">
-            {{--<video title="{{ __('presentation.video_alt') }}"
-                   id="imgSetupForm"
-                   poster="{{ asset('images/poster_inkybot_intro.png') }}"
-                   class="rounded transform duration-300 scale-100 border-r border-l"
-                   height="1920"
-                   width="1080"
-                   preload="metadata"
-                   muted
-                   controlslist="nodownload"
-                   disablePictureInPicture>
-                <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
-            </video>--}}
+                 class="rounded rounded-t-none transform duration-300 scale-100">wat is this
         </div>
         <div class="w-1/2 mx-auto px-3 mt-8 my-6 mb-3 z-10 cursor-zoom-in flex items-center justify-center">
             <img src="{{ asset('images/features/client.png') }}"
                  alt="{{ __('features.client_alt') }}"
                  id="imgClientForm"
                  class="rounded rounded-t-none transform duration-300 scale-100 scale-110 shadow-2xl">
-            {{--<video title="{{ __('presentation.video_alt') }}"
-                   id="imgClientForm"
-                   poster="{{ asset('images/poster_inkybot_intro.png') }}"
-                   class="rounded transform duration-300 scale-100 scale-110 shadow-2xl border-l border-r"
-                   height="1920"
-                   width="1080"
-                   preload="metadata"
-                   autoplay
-                   muted
-                   controlslist="nodownload"
-                   disablePictureInPicture>
-                <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
-            </video>--}}
         </div>
         <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
             <img src="{{ asset('images/features/config.png') }}"
                  alt="{{ __('features.config_alt') }}"
                  id="imgConfigForm"
                  class="rounded rounded-t-none transform duration-300 scale-100">
-
-            {{--<video title="{{ __('presentation.video_alt') }}"
-                   id="imgConfigForm"
-                   poster="{{ asset('images/poster_inkybot_intro.png') }}"
-                   class="rounded transform duration-300 scale-100 border-l border-r"
-                   height="1920"
-                   width="1080"
-                   preload="metadata"
-                   muted
-                   controlslist="nodownload"
-                   disablePictureInPicture>
-                <source src="{{ asset('videos/inkybot_intro.mp4') }}" type="video/mp4" />
-            </video>--}}
         </div>
         <div class="w-full cursor-zoom-in flex justify-center pt-5 z-0 duration-300">
             <img src="{{ asset('images/features/queue.png') }}"

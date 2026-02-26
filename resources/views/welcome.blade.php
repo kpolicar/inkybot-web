@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@push('head')
-    <meta property="og:video" content="{{ asset('videos/inkybot_intro.mp4') }}" />
-    <meta property="og:video:width" content="1920">
-    <meta property="og:video:height" content="1080">
-@endpush
-
 @section('hero')
     <x-main-hero width-class="w-full lg:w-3/5">
         <h1 class="uppercase tracking-loose w-full">{{ __('messages.category') }}</h1>
@@ -34,6 +28,5 @@
 @section('content')
     @include('partials.whyus')
     @include('partials.features')
-    @include('partials.introvideo')
     @include('partials.pricing')
 @endsection
