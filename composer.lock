@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7fd776b7f58fa5f998aae7639c6c974",
+    "content-hash": "780c2ea8f289943d71ab79a7fbac3a7a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -303,24 +303,17 @@
         },
         {
             "name": "coinbase/coinbase-commerce",
-            "version": "dev-master",
+            "version": "dev-patch-1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Fossil01/coinbase-commerce-php.git",
-                "reference": "107702e71f8b058701f92a3a101f5954ca6792e1"
+                "url": "https://github.com/kpolicar/coinbase-commerce-php.git",
+                "reference": "382fe4a64099a16dd45388fb8e6d1801b67527b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Fossil01/coinbase-commerce-php/zipball/107702e71f8b058701f92a3a101f5954ca6792e1",
-                "reference": "107702e71f8b058701f92a3a101f5954ca6792e1",
+                "url": "https://api.github.com/repos/kpolicar/coinbase-commerce-php/zipball/382fe4a64099a16dd45388fb8e6d1801b67527b5",
+                "reference": "382fe4a64099a16dd45388fb8e6d1801b67527b5",
                 "shasum": ""
-            },
-            "archive": {
-                "exclude": [
-                    "/tests",
-                    "/examples",
-                    "/.circleci"
-                ]
             },
             "require": {
                 "guzzlehttp/guzzle": "~5.0|~6.0|~7.0",
@@ -328,7 +321,7 @@
                 "psr/http-message": "^1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.0",
+                "phpunit/phpunit": "^4.7",
                 "squizlabs/php_codesniffer": "3.*"
             },
             "type": "library",
@@ -341,6 +334,13 @@
                 "psr-4": {
                     "CoinbaseCommerce\\Tests\\": "tests/"
                 }
+            },
+            "archive": {
+                "exclude": [
+                    "/tests",
+                    "/examples",
+                    "/.circleci"
+                ]
             },
             "scripts": {
                 "lint": [
@@ -366,9 +366,9 @@
                 "litecoin"
             ],
             "support": {
-                "source": "https://github.com/Fossil01/coinbase-commerce-php/tree/master"
+                "source": "https://github.com/kpolicar/coinbase-commerce-php/tree/patch-1"
             },
-            "time": "2020-09-17T20:05:08+00:00"
+            "time": "2022-03-09T23:43:37+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -10801,5 +10801,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }

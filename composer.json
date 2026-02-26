@@ -12,7 +12,7 @@
         "ext-json": "*",
         "berkayk/onesignal-laravel": "^1.0",
         "coconutcraig/laravel-postmark": "^2.11",
-        "coinbase/coinbase-commerce": "dev-master#107702e71f8b058701f92a3a101f5954ca6792e1",
+        "coinbase/coinbase-commerce": "dev-patch-1",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -75,6 +75,6 @@
     },
     "repositories": [{
         "type": "vcs",
-        "url": "https://github.com/Fossil01/coinbase-commerce-php"
+        "url": "https://github.com/kpolicar/coinbase-commerce-php"
     }]
 }
