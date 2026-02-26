@@ -72,7 +72,7 @@ services:
     container_name: inkybot-cron
     restart: unless-stopped
     entrypoint: []
-    command: ["/bin/sh", "-c", "crontab /etc/crontabs/laravel && crond -f -l 2"]
+    command: ["/bin/sh", "-c", "chown -R www-data:www-data storage/ bootstrap/cache/ && crontab /etc/crontabs/laravel && crond -f -l 2"]
     volumes:
       - storage-data:/var/www/html/storage
       - .env:/var/www/html/.env:ro
