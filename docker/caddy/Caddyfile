@@ -1,0 +1,25 @@
+migrated.inkybot.me {
+	root * /var/www/html/public
+
+	encode gzip
+
+	# Static file caching
+	@static file {
+		try_files {path}
+	}
+	handle @static {
+		header Cache-Control "public, max-age=2592000, immutable"
+		file_server
+	}
+
+	# Block sensitive files
+	@blocked path /.env /.ht*
+	respond @blocked 403
+
+	# PHP via FastCGI
+	php_fastcgi app:9000 {
+		resolve_root_symlink
+	}
+
+	file_server
+}
