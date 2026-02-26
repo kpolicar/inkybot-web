@@ -18,7 +18,7 @@ const BOT_USER_ID = 859774039269834782;
 const REACTION_MESSAGE_ID = 859776364697485312;
 
 $discord = new \Discord\Discord([
-    'token' => getenv('DISCORD_BOT_TOKEN'),
+    'token' => $_ENV['DISCORD_BOT_TOKEN'],
     'loadAllMembers' => true,
 ]);
 
