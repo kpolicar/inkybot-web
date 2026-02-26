@@ -11,6 +11,7 @@ use Discord\Parts\Channel\Message;
 use Discord\Parts\Guild\Guild;
 
 include __DIR__.'/../vendor/autoload.php';
+\Dotenv\Dotenv::createImmutable(__DIR__.'/../')->load();
 const GUILD_ID = 859753112923013130;
 const WEBHOOK_INTEGRATION_CHANNEL_ID = 859773765868191744;
 const BOT_USER_ID = 859774039269834782;
