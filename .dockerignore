@@ -1,0 +1,48 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.editorconfig
+.styleci.yml
+
+# Node modules (rebuilt in build stage)
+node_modules
+
+# Vendor (rebuilt in build stage)
+vendor
+
+# Environment files (mounted at runtime)
+.env
+.env.prod
+.env.backup
+.env.example
+
+# Tests
+tests
+phpunit.xml
+
+# Docker files
+docker-compose.yml
+docker-compose.override.yml
+
+# Dev and deployment artifacts
+.github
+yarn-error.log
+npm-debug.log
+Homestead.json
+Homestead.yaml
+start.sh
+README.md
+LICENSE
+
+# Storage runtime data (mounted as volume)
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+
+# OAuth keys (injected at runtime)
+storage/*.key

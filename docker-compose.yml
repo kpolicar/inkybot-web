@@ -1,0 +1,105 @@
+version: "3.8"
+
+services:
+  # PHP-FPM Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: inkybot-app
+    restart: unless-stopped
+    volumes:
+      - storage-data:/var/www/html/storage
+      - app-public:/var/www/html/public-nginx
+      - .env:/var/www/html/.env:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - DOCKER_RUN_MIGRATIONS=true
+    networks:
+      - inkybot
+
+  # Nginx Web Server
+  nginx:
+    image: nginx:1.24-alpine
+    container_name: inkybot-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - app-public:/var/www/html/public:ro
+    depends_on:
+      - app
+    networks:
+      - inkybot
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: inkybot-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD:-rootsecret}"
+      MYSQL_DATABASE: "${DB_DATABASE:-inkybot}"
+      MYSQL_USER: "${DB_USERNAME:-inkybot}"
+      MYSQL_PASSWORD: "${DB_PASSWORD:-secret}"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - inkybot
+
+  # Laravel Scheduler (Cron)
+  cron:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: inkybot-cron
+    restart: unless-stopped
+    entrypoint: []
+    command: ["/bin/sh", "-c", "crontab /etc/crontabs/laravel && crond -f -l 2"]
+    volumes:
+      - storage-data:/var/www/html/storage
+      - .env:/var/www/html/.env:ro
+      - ./docker/cron/laravel-cron:/etc/crontabs/laravel:ro
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - inkybot
+
+  # Discord Bot
+  discord-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: inkybot-discord-bot
+    restart: always
+    entrypoint: []
+    command: ["php", "discordapp/index.php"]
+    volumes:
+      - .env:/var/www/html/.env:ro
+    depends_on:
+      - app
+    networks:
+      - inkybot
+
+volumes:
+  mysql-data:
+  storage-data:
+  app-public:
+
+networks:
+  inkybot:
+    driver: bridge
