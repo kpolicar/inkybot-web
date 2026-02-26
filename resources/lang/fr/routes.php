@@ -8,7 +8,6 @@ return [
     'subscribe-stripe' => 'abonnement/carte',
     'subscribe-coinbase' => 'abonnement/crypto',
     'subscribe-coinbase-checkout' => 'abonnement/crypto/payement',
-    'install' => 'installer',
     'login' => 'connexion',
     'login-discord' => 'connexion/discord',
     'logout' => 'deconnexion',

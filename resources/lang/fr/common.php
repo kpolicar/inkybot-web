@@ -3,7 +3,6 @@
 return [
     'menu' => 'Menu',
     'home' => 'Accueil',
-    'installation' => 'Installation',
     'release_notes' => 'Nouveautés',
     'language' => 'Langue',
     'language_english' => 'Anglais',

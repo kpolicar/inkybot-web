@@ -1,4 +1,8 @@
-migrated.inkybot.me {
+phpmyadmin.inkybot.me {
+	reverse_proxy phpmyadmin:80
+}
+
+inkybot.me {
 	root * /var/www/html/public
 
 	encode gzip

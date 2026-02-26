@@ -4,7 +4,6 @@ return [
     'category' => 'The Dofus 3 Maging bot',
     'heading' => 'Maging.<br>Nothing else.<br>We do it the best.',
     'subheading' => 'Tell us what stats you want on your items and we\'ll do the rest.',
-    'install_instructions' => 'Installation instructions',
 
     'copyright' => 'Copyright © :year Inkybot',
     'dofus_trademark' => 'Dofus® is a trademark of Ankama © :year',

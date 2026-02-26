@@ -83,9 +83,6 @@ Route::group(
 
             });
 
-        Route::view(LaravelLocalization::transRoute('routes.install'), 'install')
-            ->name('install');
-
     Route::prefix('/release/{version?}')->group(function () {
 
         Route::get('/', [AppController::class, 'releaseNotes'])
