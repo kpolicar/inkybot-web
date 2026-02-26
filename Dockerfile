@@ -17,7 +17,16 @@ RUN npm run production
 # =============================================================================
 # Stage 2: Install PHP dependencies
 # =============================================================================
-FROM composer:2.2 AS composer-builder
+FROM php:7.4-cli-alpine AS composer-builder
+
+COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
+
+RUN apk add --no-cache git unzip \
+    libpng-dev libjpeg-turbo-dev freetype-dev \
+    libxml2-dev oniguruma-dev zlib-dev libzip-dev icu-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        gd zip mbstring xml bcmath pcntl
 
 WORKDIR /build
 
@@ -32,8 +41,6 @@ RUN composer install \
     --prefer-dist
 
 COPY . .
-
-RUN composer dump-autoload --no-dev --optimize
 
 # =============================================================================
 # Stage 3: Production PHP-FPM image
