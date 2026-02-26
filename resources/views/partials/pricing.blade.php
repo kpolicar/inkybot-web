@@ -26,7 +26,8 @@
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                     <div class="w-full pt-6 text-3xl text-gray-700 font-bold text-center leading-none mb-2">
-                        €8 <small class="text-sm">/ {{ __('common.month') }}</small>
+                        <span class="line-through text-gray-400">€8</span><small class="text-gray-400 text-sm">/ {{ __('common.month') }}</small>
+                        <span class="block text-green-600">FREE</span>
                     </div>
                     <div class="flex items-center justify-center">
                         <x-billing-button
@@ -50,7 +51,8 @@
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-10">
                     <div class="w-full pt-6 text-3xl font-bold text-center leading-none mb-2">
-                        €15 <small class="text-sm">/ {{ __('common.month') }}</small>
+                        <span class="line-through text-gray-400">€15</span><small class="text-gray-400 text-sm">/ {{ __('common.month') }}</small>
+                        <span class="block text-green-600">FREE</span>
                     </div>
                     <div class="flex items-center justify-center">
                         <x-billing-button
@@ -77,7 +79,8 @@
                 </div>
                 <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
                     <div class="w-full pt-6 text-3xl text-gray-700 font-bold text-center leading-none mb-2">
-                        €20 <small class="text-sm">/ {{ __('common.month') }}</small>
+                        <span class="line-through text-gray-400">€20</span><small class="text-sm text-gray-400">/ {{ __('common.month') }}</small>
+                        <span class="block text-green-600">FREE</span>
                     </div>
                     <div class="flex items-center justify-center">
                         <x-billing-button
