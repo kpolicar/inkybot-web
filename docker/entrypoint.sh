@@ -6,9 +6,9 @@ if [ ! -L "public/storage" ]; then
     php artisan storage:link
 fi
 
-# Sync public directory to shared volume for Nginx
-if [ -d "/var/www/html/public-nginx" ]; then
-    cp -a public/. /var/www/html/public-nginx/
+# Sync public directory to shared volume for Caddy
+if [ -d "/var/www/html/public-caddy" ]; then
+    cp -a public/. /var/www/html/public-caddy/
 fi
 
 # Run Laravel optimization commands
