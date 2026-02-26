@@ -1,7 +1,12 @@
 <div class="pt-24">
     <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
-        <div class="z-10 flex @if($invert) justify-end md:text-right @else justify-start md:text-left @endif items-start text-center lg:py-24 pb-40 pt-5 w-full text-white"
-             style="background: url('{{ asset('hero.png') }}') @if($invert) left @else right @endif bottom no-repeat; background-size: contain;">
+        <div class="relative z-10 flex @if($invert) justify-end md:text-right @else justify-start md:text-left @endif items-start text-center lg:py-24 pb-40 pt-5 w-full text-white">
+
+            <div class="video-container" style="@if($invert) left: 0; @else right: 0; @endif">
+                <video autoplay loop muted playsinline class="bg-video" poster="{{ asset('videos/bg-character-poster.png') }}">
+                    <source src="{{ asset('videos/bg-character.webm') }}" type="video/webm">
+                </video>
+            </div>
 
             <div class="{{ $widthClass }}">
                 {{ $slot }}
