@@ -4,7 +4,6 @@ return [
     'category' => 'Le bot de Forgemagie Dofus 3',
     'heading' => 'Forgemagie.<br>Rien d\'autre.<br>Nous le faisons le mieux.',
     'subheading' => 'Dites nous quelles caractéristiques vous voulez sur vos items et nous ferons le reste!',
-    'install_instructions' => 'Instruction d\'installation',
 
     'copyright' => 'Copyright © :year Inkybot',
     'dofus_trademark' => 'Dofus® est une marque déposée d\'Ankama © :year',

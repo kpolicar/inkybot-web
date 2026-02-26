@@ -11,7 +11,6 @@ return [
     'register' => 'Register',
     'profile' => 'Profile',
     'login' => 'Login',
-    'installation' => 'Installation',
     'forgot' => 'Forgot Password',
     'discord-link' => 'Link Discord',
 ];
