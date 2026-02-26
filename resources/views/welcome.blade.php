@@ -22,11 +22,6 @@
                class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg">
                 {{ __('common.download') }}
             </a>
-            <p class="my-2">
-                <a href="{{ route('install') }}" class="text-gray-300 font-bold hover:underline">
-                    {{ __('messages.install_instructions') }}
-                </a>
-            </p>
         </div>
     </x-main-hero>
 @endsection
