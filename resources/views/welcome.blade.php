@@ -30,9 +30,10 @@
             left: -310px;
             align-items: flex-start;
             position: relative;
-            padding-top: 18vh; /* Leaves room for the overhead data stream */
+            padding-top: 8vh; /* Leaves room for the overhead data stream */
             overflow: hidden; /* Hides lines going off-screen */
             font-family: 'Segoe UI', Arial, sans-serif;
+            overflow:visible;
         }
 
         .setup-window {
