@@ -2,7 +2,7 @@
 .rune-icon {
     width: 128px;
     height: 128px;
-    background-image: url('dofus_runes_spritesheet.png');
+    background-image: url('../images/dofus_runes_spritesheet.png');
     background-repeat: no-repeat;
     display: inline-block;
 }

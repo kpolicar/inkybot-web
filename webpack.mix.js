@@ -26,7 +26,7 @@ mix.js('resources/js/app.js', 'public/js')
     .version()
     .version()
 
-    .css('resources/css/rune.css', 'public/css')
+    .css('resources/css/runes.css', 'public/css')
     .version()
 
     .js('resources/js/payment.js', 'public/js')

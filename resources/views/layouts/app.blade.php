@@ -39,7 +39,7 @@
     @show
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/rune.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/runes.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
     @stack('head')

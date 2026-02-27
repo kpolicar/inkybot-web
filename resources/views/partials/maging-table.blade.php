@@ -200,6 +200,45 @@
         font-weight: 900; color: white; -webkit-text-stroke: 0.2px black;
         text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; z-index: 2;
     }
+
+    /* Rune sprite icons scaled to 24px (from 128px originals, scale = 24/128) */
+    .rune-sprite {
+        width: 24px; height: 24px; display: inline-block;
+        background-image: url('/images/dofus_runes_spritesheet.png');
+        background-repeat: no-repeat;
+        background-size: 336px 336px;
+        filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8));
+    }
+    .rune-vit-rune { background-position: -72px -312px; }
+    .rune-pa-vit-rune { background-position: -264px -144px; }
+    .rune-ra-vit-rune { background-position: -312px -216px; }
+    .rune-str-rune { background-position: -120px -240px; }
+    .rune-pa-str-rune { background-position: -264px -96px; }
+    .rune-ra-str-rune { background-position: -120px -192px; }
+    .rune-int-rune { background-position: -288px -24px; }
+    .rune-pa-int-rune { background-position: 0 -96px; }
+    .rune-ra-int-rune { background-position: -312px -168px; }
+    .rune-cha-rune { background-position: -192px 0; }
+    .rune-pa-cha-rune { background-position: -72px -72px; }
+    .rune-ra-cha-rune { background-position: -192px -168px; }
+    .rune-wis-rune { background-position: -192px -312px; }
+    .rune-pa-wis-rune { background-position: 0 -168px; }
+    .rune-ra-wis-rune { background-position: -24px -240px; }
+    .rune-sum-rune { background-position: -144px -240px; }
+    .rune-neutral-dam-rune { background-position: -216px -48px; }
+    .rune-pa-neutral-dam-rune { background-position: -96px -96px; }
+    .rune-earth-dam-rune { background-position: -72px -24px; }
+    .rune-pa-earth-dam-rune { background-position: -192px -72px; }
+    .rune-fire-dam-rune { background-position: -144px -24px; }
+    .rune-pa-fire-dam-rune { background-position: -240px -72px; }
+    .rune-water-dam-rune { background-position: -96px -312px; }
+    .rune-pa-water-dam-rune { background-position: -288px -144px; }
+    .rune-ini-rune { background-position: -264px -24px; }
+    .rune-pa-ini-rune { background-position: -312px -72px; }
+    .rune-ra-ini-rune { background-position: -288px -168px; }
+    .rune-fire-res-per-rune { background-position: -168px -24px; }
+    .rune-pa-fire-res-rune { background-position: -264px -72px; }
+    .rune-ra-fire-res-rune { background-position: -264px -168px; }
 </style>
 
 <div class="dofus-window">
@@ -420,19 +459,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_vi.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">224</span>
+                        <span class="rune-sprite rune-vit-rune"></span><span class="rune-qty">224</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_vi.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">649</span>
+                        <span class="rune-sprite rune-pa-vit-rune"></span><span class="rune-qty">649</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_vi.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">101</span>
+                        <span class="rune-sprite rune-ra-vit-rune"></span><span class="rune-qty">101</span>
                     </div>
                 </div>
             </div>
@@ -448,19 +487,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_fo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">1993</span>
+                        <span class="rune-sprite rune-str-rune"></span><span class="rune-qty">1993</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_fo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">84</span>
+                        <span class="rune-sprite rune-pa-str-rune"></span><span class="rune-qty">84</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_fo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">259</span>
+                        <span class="rune-sprite rune-ra-str-rune"></span><span class="rune-qty">259</span>
                     </div>
                 </div>
             </div>
@@ -476,19 +515,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ine.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">995</span>
+                        <span class="rune-sprite rune-int-rune"></span><span class="rune-qty">995</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_ine.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">32</span>
+                        <span class="rune-sprite rune-pa-int-rune"></span><span class="rune-qty">32</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_ine.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">245</span>
+                        <span class="rune-sprite rune-ra-int-rune"></span><span class="rune-qty">245</span>
                     </div>
                 </div>
             </div>
@@ -504,19 +543,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_cha.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">73</span>
+                        <span class="rune-sprite rune-cha-rune"></span><span class="rune-qty">73</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_cha.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">19</span>
+                        <span class="rune-sprite rune-pa-cha-rune"></span><span class="rune-qty">19</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_cha.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">245</span>
+                        <span class="rune-sprite rune-ra-cha-rune"></span><span class="rune-qty">245</span>
                     </div>
                 </div>
             </div>
@@ -532,19 +571,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_sa.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">258</span>
+                        <span class="rune-sprite rune-wis-rune"></span><span class="rune-qty">258</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_sa.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">201</span>
+                        <span class="rune-sprite rune-pa-wis-rune"></span><span class="rune-qty">201</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_sa.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">341</span>
+                        <span class="rune-sprite rune-ra-wis-rune"></span><span class="rune-qty">341</span>
                     </div>
                 </div>
             </div>
@@ -560,19 +599,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_invo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">64</span>
+                        <span class="rune-sprite rune-sum-rune"></span><span class="rune-qty">64</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_invo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">12</span>
+                        <span class="rune-sprite rune-sum-rune"></span><span class="rune-qty">12</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_invo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">3</span>
+                        <span class="rune-sprite rune-sum-rune"></span><span class="rune-qty">3</span>
                     </div>
                 </div>
             </div>
@@ -588,19 +627,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_do_neu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">54</span>
+                        <span class="rune-sprite rune-neutral-dam-rune"></span><span class="rune-qty">54</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_do_neu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">21</span>
+                        <span class="rune-sprite rune-pa-neutral-dam-rune"></span><span class="rune-qty">21</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_do_neu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">8</span>
+                        <span class="rune-sprite rune-pa-neutral-dam-rune"></span><span class="rune-qty">8</span>
                     </div>
                 </div>
             </div>
@@ -616,19 +655,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_do_ter.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">26</span>
+                        <span class="rune-sprite rune-earth-dam-rune"></span><span class="rune-qty">26</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_do_ter.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">15</span>
+                        <span class="rune-sprite rune-pa-earth-dam-rune"></span><span class="rune-qty">15</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_do_ter.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">4</span>
+                        <span class="rune-sprite rune-pa-earth-dam-rune"></span><span class="rune-qty">4</span>
                     </div>
                 </div>
             </div>
@@ -644,19 +683,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_do_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">26</span>
+                        <span class="rune-sprite rune-fire-dam-rune"></span><span class="rune-qty">26</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_do_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">33</span>
+                        <span class="rune-sprite rune-pa-fire-dam-rune"></span><span class="rune-qty">33</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_do_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">7</span>
+                        <span class="rune-sprite rune-pa-fire-dam-rune"></span><span class="rune-qty">7</span>
                     </div>
                 </div>
             </div>
@@ -672,19 +711,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_do_eau.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">12</span>
+                        <span class="rune-sprite rune-water-dam-rune"></span><span class="rune-qty">12</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_do_eau.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">41</span>
+                        <span class="rune-sprite rune-pa-water-dam-rune"></span><span class="rune-qty">41</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_do_eau.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">9</span>
+                        <span class="rune-sprite rune-pa-water-dam-rune"></span><span class="rune-qty">9</span>
                     </div>
                 </div>
             </div>
@@ -700,19 +739,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ini.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">632</span>
+                        <span class="rune-sprite rune-ini-rune"></span><span class="rune-qty">632</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_ini.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">491</span>
+                        <span class="rune-sprite rune-pa-ini-rune"></span><span class="rune-qty">491</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_ini.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">127</span>
+                        <span class="rune-sprite rune-ra-ini-rune"></span><span class="rune-qty">127</span>
                     </div>
                 </div>
             </div>
@@ -728,19 +767,19 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_re_per_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">337</span>
+                        <span class="rune-sprite rune-fire-res-per-rune"></span><span class="rune-qty">337</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_pa_re_per_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">58</span>
+                        <span class="rune-sprite rune-pa-fire-res-rune"></span><span class="rune-qty">58</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <img src="icons/runes/rune_ra_re_per_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">16</span>
+                        <span class="rune-sprite rune-ra-fire-res-rune"></span><span class="rune-qty">16</span>
                     </div>
                 </div>
             </div>
