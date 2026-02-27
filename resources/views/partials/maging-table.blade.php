@@ -65,7 +65,7 @@
     .btn {
         background: linear-gradient(180deg, #686868 0%, #4D4D4D 100%); border: 1px solid #222;
         color: #999; font-weight: bold; font-size: 11px; padding: 6px 12px; border-radius: 4px;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); cursor: not-allowed; text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
     }
 
     .main-content { display: flex; height: 520px; position: relative; }
@@ -93,9 +93,8 @@
     }
     .btn-clear {
         background: transparent; border: none; color: var(--text-muted); font-weight: bold;
-        display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: uppercase; font-size: 11px; padding: 0;
+        display: flex; align-items: center; gap: 8px; text-transform: uppercase; font-size: 11px; padding: 0;
     }
-    .btn-clear:hover { color: var(--text-light); }
     .btn-clear img { width: 14px; height: 14px; opacity: 0.7; }
 
     .stats-panel {
@@ -323,8 +322,8 @@
                 </div>
             </div>
             <div class="buttons">
-                <button class="btn disabled">FUSIONNER TOUT</button>
-                <button class="btn disabled">FUSIONNER</button>
+                <div class="btn">FUSIONNER TOUT</div>
+                <div class="btn">FUSIONNER</div>
             </div>
         </div>
     </div>
@@ -421,10 +420,10 @@
             </div>
             
             <div class="history-footer">
-                <button class="btn-clear">
+                <div class="btn-clear">
                     <img src="icons/ui/trash.png" alt="🗑️" onerror="this.outerHTML='🗑️'">
                     VIDER L'HISTORIQUE
-                </button>
+                </div>
             </div>
         </div>
         
@@ -605,13 +604,11 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <span class="rune-sprite rune-sum-rune"></span><span class="rune-qty">12</span>
                     </div>
                 </div>
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <span class="rune-sprite rune-sum-rune"></span><span class="rune-qty">3</span>
                     </div>
                 </div>
             </div>
@@ -639,7 +636,6 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <span class="rune-sprite rune-pa-neutral-dam-rune"></span><span class="rune-qty">8</span>
                     </div>
                 </div>
             </div>
@@ -667,7 +663,6 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <span class="rune-sprite rune-pa-earth-dam-rune"></span><span class="rune-qty">4</span>
                     </div>
                 </div>
             </div>
@@ -695,7 +690,6 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <span class="rune-sprite rune-pa-fire-dam-rune"></span><span class="rune-qty">7</span>
                     </div>
                 </div>
             </div>
@@ -723,7 +717,6 @@
                 <div class="col-rune">
                     <div class="rune-box">
                         @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
-                        <span class="rune-sprite rune-pa-water-dam-rune"></span><span class="rune-qty">9</span>
                     </div>
                 </div>
             </div>

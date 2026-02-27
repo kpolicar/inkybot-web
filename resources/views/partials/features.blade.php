@@ -20,7 +20,7 @@
             </li>
             <li>
                 <span class="font-bold text-gray-900 block">Mouse Control</span>
-                Interacts with the game using your cursor
+                Interacts with the game using the mouse
             </li>
             <li>
                 <span class="font-bold text-gray-900 block">Smart AI</span>
