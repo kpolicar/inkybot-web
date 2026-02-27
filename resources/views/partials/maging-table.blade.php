@@ -259,7 +259,7 @@
                 <img src="icons/faces/peaky.png" alt="Profile" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjY2MwMDAiLz48L3N2Zz4='">
             </div>
             <div class="profile-details">
-                <div class="profile-name">Peaky</div>
+                <div class="profile-name">Inkybot</div>
                 <div class="profile-job">JOAILLOMAGE</div>
                 <div class="profile-level">NIV. <span>200</span></div>
                 <div class="xp-bar">

@@ -7,9 +7,27 @@
     <div class="w-full mb-4">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
+    <div class="flex justify-center">
     <div class="dashboard-container">
         @include('partials.setup-form')
         @include('partials.maging-table', ['showOcr' => true, 'streamHeight' => 180])
+    </div>
+    <div class="pl-8 pt-16 max-w-xs">
+        <ul class="space-y-6 text-gray-700 text-lg">
+            <li>
+                <span class="font-bold text-gray-900 block">OCR Vision</span>
+                Reads your game interface in real-time
+            </li>
+            <li>
+                <span class="font-bold text-gray-900 block">Mouse Control</span>
+                Interacts with the game using your cursor
+            </li>
+            <li>
+                <span class="font-bold text-gray-900 block">Smart AI</span>
+                Picks the optimal rune to maximize profit
+            </li>
+        </ul>
+    </div>
     </div>
 </section>
 

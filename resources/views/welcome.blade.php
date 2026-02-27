@@ -23,11 +23,10 @@
 @section('content')
 <style>
     .dashboard-container {
+            left: -50px;
             display: flex;
             /* A strict 100px gap is critical here: the SVG math relies on this 
                exact distance to perfectly drop into the center of the setup form. */
-            gap: 100px; 
-            left: -310px;
             align-items: flex-start;
             position: relative;
             padding-top: 8vh; /* Leaves room for the overhead data stream */
@@ -37,9 +36,8 @@
         }
 
         .setup-window {
-            scale: 0.7;
-            left: 250px;
-            top: -110px;
+            top: -15px;
+            right: -50px;
         }
 </style>
     @include('partials.whyus')
