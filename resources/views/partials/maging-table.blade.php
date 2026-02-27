@@ -1,6 +1,6 @@
 @php
     // Make the pipeline height configurable. Defaults to -180 if not passed to the view.
-    $pipelineY = $pipelineY ?? -180;
+    $pipelineY = $pipelineY ?? -50;
 @endphp
 
 <style>
@@ -118,32 +118,50 @@
     .rune-ocr-svg .ocr-rect { animation: dash-animation 5s linear infinite; } 
     .ocr-connector { opacity: 0.8; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* SCANNER NODE ANIMATION */
+    /* --- SCANNER NODE & SVG ANIMATIONS --- */
     .scanner-node {
         position: absolute;
-        left: -80px; 
-        width: 60px;
-        height: 60px;
+        left: 0px; 
+        width: 50px;
+        height: 50px;
         z-index: 150;
-        background-color: #121212; 
+        background-color: #ffffff; 
         display: flex; justify-content: center; align-items: center;
         border-radius: 4px;
-        box-shadow: 0 0 4px rgba(0,0,0,0.8);
+        box-shadow: 0 0 4px rgba(58, 58, 58, 0.8);
     }
-    .scanner-node svg { width: 44px; height: 44px; color: #AFAFAF; }
-    .scan-line {
-        position: absolute; height: 2px; background: var(--text-green);
-        box-shadow: 0 0 8px var(--text-green), 0 0 4px #fff; border-radius: 50%;
-        animation: scan-anim 4s ease-in-out infinite; z-index: 151;
+    .scanner-node svg { 
+        width: 48px; 
+        height: 48px; 
     }
 
-    @keyframes scan-anim {
-        0% { top: 10%; width: 100%; left: 0%; opacity: 0; }
-        15% { top: 15%; width: 100%; left: 0%; opacity: 1; }
-        40% { top: 40%; width: 50%; left: 25%; } 
-        65% { top: 65%; width: 50%; left: 25%; }
-        85% { top: 85%; width: 100%; left: 0%; opacity: 1; }
-        100% { top: 90%; width: 100%; left: 0%; opacity: 0; }
+    .scan-group {
+        animation: scan-bounce 4s ease-in-out infinite;
+    }
+
+    @keyframes scan-bounce {
+        0%   { transform: translateY(35px); }
+        50%  { transform: translateY(155px); }
+        100% { transform: translateY(35px); }
+    }
+
+    .glow-top { animation: fade-top-glow 4s ease-in-out infinite; }
+    .glow-bottom { animation: fade-bottom-glow 4s ease-in-out infinite; }
+
+    @keyframes fade-top-glow {
+        0%   { opacity: 1; } 
+        40%  { opacity: 1; } 
+        60%  { opacity: 0; } 
+        90%  { opacity: 0; } 
+        100% { opacity: 1; }
+    }
+
+    @keyframes fade-bottom-glow {
+        0%   { opacity: 0; } 
+        40%  { opacity: 0; } 
+        60%  { opacity: 1; } 
+        90%  { opacity: 1; } 
+        100% { opacity: 0; }
     }
 
     /* STATS GRID */
@@ -198,17 +216,38 @@
         <path class="ocr-connector" d="M 743 190 L 743 180 L 807.5 180" />
         <path class="ocr-connector" d="M 795.5 190 L 795.5 {{ $pipelineY }}" />
 
-        <path class="ocr-connector trunk" d="M 807.5 {{ $pipelineY }} L -400 {{ $pipelineY }} L -400 15" />
+        <path class="ocr-connector trunk" d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
     </svg>
 
-    <div class="scanner-node" style="top: calc({{ $pipelineY }}px - 30px);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 7V4h3" /> <path d="M20 7V4h-3" />
-            <path d="M4 17v3h3" /> <path d="M20 17v3h-3" />
-            <rect x="7" y="6" width="10" height="12" rx="1" />
-            <path d="M10 10h4" /> <path d="M10 14h4" />
+    <div class="scanner-node" style="top: calc({{ $pipelineY }}px - 28px);">
+        <svg viewBox="0 0 200 200" width="100%" height="100%">
+            <defs>
+                <linearGradient id="scan-glow-top" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0%" stop-color="#1a1a1a" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#1a1a1a" stop-opacity="0" />
+                </linearGradient>
+
+                <linearGradient id="scan-glow-bottom" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#1a1a1a" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#1a1a1a" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+            
+            <g fill="#333333">
+                <rect x="60" y="55" width="45" height="12" rx="6" />
+                <rect x="60" y="80" width="55" height="12" rx="6" />
+                <rect x="123" y="80" width="20" height="12" rx="6" />
+                <rect x="60" y="105" width="45" height="12" rx="6" />
+                <rect x="113" y="105" width="30" height="12" rx="6" />
+                <rect x="60" y="130" width="55" height="12" rx="6" />
+            </g>
+
+            <g class="scan-group">
+                <rect class="glow-top" x="35" y="-20" width="130" height="20" fill="url(#scan-glow-top)" />
+                <rect class="glow-bottom" x="35" y="4" width="130" height="20" fill="url(#scan-glow-bottom)" />
+                <rect x="35" y="0" width="130" height="4" rx="2" fill="#000000" />
+            </g>
         </svg>
-        <div class="scan-line"></div>
     </div>
     @endif
 
