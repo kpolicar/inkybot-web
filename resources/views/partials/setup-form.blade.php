@@ -1,12 +1,12 @@
 <style>
     .setup-window {
-        width: 600px;
-        height: 600px;
+        width: 420px;
+        height: 420px;
         background-color: #1e1e1e;
         border: 1px solid #3E3E42;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.5);
         color: #EFEFEF;
         position: relative;
         z-index: 2;
@@ -16,63 +16,63 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 10px;
+        padding: 0 7px;
         background-color: #FFFFFF;
         color: #000000;
-        height: 30px;
+        height: 21px;
         user-select: none;
     }
 
-    .setup-window .title { font-size: 12px; display: flex; align-items: center; gap: 8px; }
-    .setup-window .title-icon { width: 14px; height: 14px; background-color: #333; border-radius: 50%; }
+    .setup-window .title { font-size: 8px; display: flex; align-items: center; gap: 6px; }
+    .setup-window .title-icon { width: 10px; height: 10px; background-color: #333; border-radius: 50%; }
     .setup-window .controls { display: flex; height: 100%; }
-    
+
     .setup-window .control-btn {
-        width: 30px; display: flex; justify-content: center;
-        align-items: center; cursor: pointer; font-size: 14px; color: #000000;
+        width: 21px; display: flex; justify-content: center;
+        align-items: center; cursor: pointer; font-size: 10px; color: #000000;
     }
     .setup-window .control-btn:hover { background-color: #E5E5E5; }
     .setup-window .control-btn.close:hover { background-color: #E81123; color: white; }
 
     .setup-window .content { flex: 1; padding: 0; overflow-y: auto; background-color: #1e1e1e; }
-    
-    .setup-window table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .setup-window th, .setup-window td { border: 1px solid #3E3E42; padding: 2px 3px; text-align: left; }
+
+    .setup-window table { width: 100%; border-collapse: collapse; font-size: 9px; }
+    .setup-window th, .setup-window td { border: 1px solid #3E3E42; padding: 1px 2px; text-align: left; }
     .setup-window th { background-color: #080808; color: #EFEFEF; font-weight: normal; }
     .setup-window tr { background-color: #1e1e1e; }
     .setup-window tr.last-row { background-color: #141414; font-weight: bold; }
 
     .setup-window th.icon-cell, .setup-window td.icon-cell {
-        text-align: center; width: 15px; min-width: 15px; max-width: 15px;
-        padding: 2px 2px; color: #EFEFEF; border-top: none; border-bottom: none;
+        text-align: center; width: 10px; min-width: 10px; max-width: 10px;
+        padding: 1px 1px; color: #EFEFEF; border-top: none; border-bottom: none;
     }
     .setup-window th.icon-cell { background-color: #080808; }
     .setup-window td.icon-cell { background-color: #1e1e1e; }
     .setup-window tbody tr:first-child td.icon-cell { background-color: #080808; }
-    .setup-window .refresh-icon { cursor: pointer; font-size: 14px; }
+    .setup-window .refresh-icon { cursor: pointer; font-size: 10px; }
 
     .setup-window .footer {
-        padding: 15px 0px 0px 0px; background-color: #1e1e1e;
-        border-top: 1px solid #3E3E42; display: flex; flex-direction: column; gap: 12px;
+        padding: 10px 0px 0px 0px; background-color: #1e1e1e;
+        border-top: 1px solid #3E3E42; display: flex; flex-direction: column; gap: 8px;
     }
     .setup-window .footer-top { display: flex; justify-content: space-between; align-items: center; }
-    .setup-window .examples-link { color: #EFEFEF; font-size: 13px; text-decoration: underline; margin: 0 4px; }
+    .setup-window .examples-link { color: #EFEFEF; font-size: 9px; text-decoration: underline; margin: 0 3px; }
     .setup-window .footer-middle { display: flex; justify-content: space-between; align-items: center; }
-    
+
     .setup-window .dropdown {
         background-color: #080808; color: #EFEFEF;
-        border: 1px solid #080808; padding: 4px; font-size: 13px; outline: none;
+        border: 1px solid #080808; padding: 3px; font-size: 9px; outline: none;
     }
     .setup-window .trash-icon {
         background-color: #080808; color: #EFEFEF; border: none;
-        padding: 4px 8px; cursor: pointer; font-size: 16px; height: 27px;
+        padding: 3px 6px; cursor: pointer; font-size: 11px; height: 19px;
         display: flex; align-items: center; justify-content: center;
     }
-    .setup-window .footer-bottom { display: flex; justify-content: space-between; gap: 10px; }
-    
+    .setup-window .footer-bottom { display: flex; justify-content: space-between; gap: 7px; }
+
     .setup-window .button {
         background-color: #080808; color: #EFEFEF; border: none;
-        padding: 10px 12px; font-size: 13px; cursor: pointer; flex: 1;
+        padding: 7px 8px; font-size: 9px; cursor: pointer; flex: 1;
         text-align: center; text-transform: uppercase;
     }
     .setup-window .button:hover { background-color: #1a1a1a; }
@@ -122,9 +122,9 @@
     <div class="footer">
         <div class="footer-top"><a href="#" class="examples-link">Voir des exemples</a></div>
         <div class="footer-middle">
-            <select class="dropdown" style="width: 150px;"><option>PM</option></select>
+            <select class="dropdown" style="width: 105px;"><option>PM</option></select>
             <div style="display: flex; align-items: center; gap: 5px;">
-                <select class="dropdown" style="width: 200px;"><option>Alliance Gloursonne</option></select>
+                <select class="dropdown" style="width: 140px;"><option>Alliance Gloursonne</option></select>
                 <button class="trash-icon">🗑️</button>
             </div>
         </div>
