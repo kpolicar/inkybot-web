@@ -24,15 +24,13 @@
     }
 
     .setup-window .title { font-size: 8px; display: flex; align-items: center; gap: 6px; }
-    .setup-window .title-icon { width: 10px; height: 10px; background-color: #333; border-radius: 50%; }
+    .setup-window .title-icon { width: 14px; height: 14px; margin-top: 2px; }
     .setup-window .controls { display: flex; height: 100%; }
 
     .setup-window .control-btn {
         width: 21px; display: flex; justify-content: center;
-        align-items: center; cursor: pointer; font-size: 10px; color: #000000;
+        align-items: center; font-size: 10px; color: #000000;
     }
-    .setup-window .control-btn:hover { background-color: #E5E5E5; }
-    .setup-window .control-btn.close:hover { background-color: #E81123; color: white; }
 
     .setup-window .content { flex: 1; padding: 0; overflow-y: auto; background-color: #1e1e1e; }
 
@@ -49,11 +47,17 @@
     .setup-window th.icon-cell { background-color: #080808; }
     .setup-window td.icon-cell { background-color: #1e1e1e; }
     .setup-window tbody tr:first-child td.icon-cell { background-color: #080808; }
-    .setup-window .refresh-icon { cursor: pointer; font-size: 10px; }
+    .setup-window .refresh-icon { font-size: 10px; }
 
     .setup-window .footer {
         padding: 10px 0px 0px 0px; background-color: #1e1e1e;
         border-top: 1px solid #3E3E42; display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .setup-window .footer .button {
+        display:  flex;
+        justify-content: center;
+        align-items: center;
     }
     .setup-window .footer-top { display: flex; justify-content: space-between; align-items: center; }
     .setup-window .examples-link { color: #EFEFEF; font-size: 9px; text-decoration: underline; margin: 0 3px; }
@@ -62,26 +66,31 @@
     .setup-window .dropdown {
         background-color: #080808; color: #EFEFEF;
         border: 1px solid #080808; padding: 3px; font-size: 9px; outline: none;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .setup-window .dropdown::after {
+        content: '▾'; font-size: 8px; color: #999; margin-left: 4px;
     }
     .setup-window .trash-icon {
         background-color: #080808; color: #EFEFEF; border: none;
-        padding: 3px 6px; cursor: pointer; font-size: 11px; height: 19px;
+        padding: 3px 6px; font-size: 11px; height: 19px;
         display: flex; align-items: center; justify-content: center;
     }
     .setup-window .footer-bottom { display: flex; justify-content: space-between; gap: 7px; }
 
     .setup-window .button {
         background-color: #080808; color: #EFEFEF; border: none;
-        padding: 7px 8px; font-size: 9px; cursor: pointer; flex: 1;
+        padding: 7px 8px; font-size: 9px; flex: 1;
         text-align: center; text-transform: uppercase;
     }
-    .setup-window .button:hover { background-color: #1a1a1a; }
 </style>
 
 <div class="setup-window">
     <div class="title-bar">
         <div class="title">
-            <div class="title-icon"></div>
+            <svg class="title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34">
+                <path fill="#000" transform="translate(3 0)" d="M 25.875 0.0625 C 7.531 0.0625 8.78125 11.4375 8.78125 11.4375 C 8.2290994 12.246696 7.6995693 13.046426 7.25 13.84375 C 7.2192731 13.898245 7.1865288 13.94563 7.15625 14 L 4 14 A 1.0001 1.0001 0 0 0 3.90625 14 A 1.001098 1.001098 0 0 0 3.5 15.90625 L 3 16 C 1.343 16 0 17.344 0 19 L 0 23 C 0 24.656 1.343 26 3 26 L 13 26 C 14.657 26 16 24.656 16 23 L 16 19 C 16 17.344 14.657 16 13 16 L 12.46875 15.875 A 1.0001 1.0001 0 0 0 12 14 L 8.78125 14 C 9.3768313 12.98664 10.046844 11.978044 10.8125 10.96875 C 10.850157 10.925536 10.924518 10.804345 10.96875 10.75 C 11.312321 10.305889 11.682667 9.871631 12.0625 9.4375 C 12.206935 9.262417 12.364614 9.0972071 12.53125 8.90625 C 14.065329 7.2428175 15.90652 5.6997788 18.0625 4.40625 C 16.2125 6.10525 13.15425 9.5635 11.65625 12.1875 C 14.10025 12.4015 17.5465 11.016 19.9375 9 C 19.3975 8.939 16.875 8.48475 16.125 7.84375 C 17.563 7.95975 19.95325 7.97425 20.90625 7.90625 C 22.84525 6.47025 25.063 3.0785 25.875 0.0625 z"/>
+            </svg>
             Inkybot - Préparer
         </div>
         <div class="controls">
@@ -122,16 +131,16 @@
     <div class="footer">
         <div class="footer-top"><a href="#" class="examples-link">Voir des exemples</a></div>
         <div class="footer-middle">
-            <select class="dropdown" style="width: 105px;"><option>PM</option></select>
+            <div class="dropdown" style="width: 105px;">PM</div>
             <div style="display: flex; align-items: center; gap: 5px;">
-                <select class="dropdown" style="width: 140px;"><option>Alliance Gloursonne</option></select>
-                <button class="trash-icon">🗑️</button>
+                <div class="dropdown" style="width: 140px;">Alliance Gloursonne</div>
+                <div class="trash-icon">🗑️</div>
             </div>
         </div>
         <div class="footer-bottom">
-            <button class="button">AJOUTER EXO</button>
-            <button class="button">SUPPRIMER EXOS</button>
-            <button class="button">ENREGISTRER LE PRÉRÉGLAGE</button>
+            <div class="button">AJOUTER EXO</div>
+            <div class="button">SUPPRIMER EXOS</div>
+            <div class="button">ENREGISTRER LE PRÉRÉGLAGE</div>
         </div>
     </div>
 </div>
