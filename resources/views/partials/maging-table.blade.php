@@ -73,6 +73,7 @@
         width: 260px; background-color: var(--bg-main-left);
         border-right: 2px solid var(--border-window); border-radius: 0 0 0 10px;
         display: flex; flex-direction: column; position: relative; 
+        contain: layout paint; /* <--- ADD THIS */
     }
     .history-list { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px; position: relative; z-index: 2; }
     .history-list::-webkit-scrollbar { width: 6px; }
@@ -100,6 +101,7 @@
     .stats-panel {
         flex: 1; background-color: var(--bg-main-right); border-radius: 0 0 10px 0;
         padding: 15px 20px; display: flex; flex-direction: column; position: relative;
+        contain: layout paint;
     }
 
     /* --- OCR SVG ANIMATION STYLES --- */
@@ -110,12 +112,27 @@
 
     @keyframes dash-animation { to { stroke-dashoffset: -140; } }
 
-    .ocr-rect, .ocr-connector {
-        fill: none; stroke: white; stroke-width: 2; stroke-dasharray: 8, 6; 
-        animation: dash-animation 3s linear infinite; filter: drop-shadow(0 0 2px rgba(0,0,0,0.8));
+    /* 1. The High-Performance Fake Shadow (Static, solid, slightly thicker) */
+    .ocr-shadow, .ocr-connector-shadow path {
+        fill: none; 
+        stroke: rgba(0, 0, 0, 0.1); 
+        stroke-width: 5; /* Thicker than the white line to create a dark border/glow */
+        stroke-linecap: round; 
+        stroke-linejoin: round;
+        /* Notice: No animations and no filters! */
+    }
+
+    /* 2. The Animating White Dashes (Rendered on top) */
+    .ocr-rect, .ocr-connector path {
+        fill: none; 
+        stroke: white; 
+        stroke-width: 2; 
+        stroke-dasharray: 8, 6; 
+        animation: dash-animation 3s linear infinite; 
+        /* filter: drop-shadow REMOVED */
     }
     .rune-ocr-svg .ocr-rect { animation: dash-animation 5s linear infinite; } 
-    .ocr-connector { opacity: 0.8; stroke-linecap: round; stroke-linejoin: round; }
+    .ocr-connector path { opacity: 0.9; stroke-linecap: round; stroke-linejoin: round; }
 
     /* --- SCANNER NODE & SVG ANIMATIONS --- */
     .scanner-node {
@@ -136,6 +153,8 @@
 
     .scan-group {
         animation: scan-bounce 4s ease-in-out infinite;
+        will-change: transform;
+        transform: translateZ(0);
     }
 
     @keyframes scan-bounce {
@@ -144,8 +163,8 @@
         100% { transform: translateY(35px); }
     }
 
-    .glow-top { animation: fade-top-glow 4s ease-in-out infinite; }
-    .glow-bottom { animation: fade-bottom-glow 4s ease-in-out infinite; }
+    .glow-top { animation: fade-top-glow 4s ease-in-out infinite; will-change: opacity; }
+    .glow-bottom { animation: fade-bottom-glow 4s ease-in-out infinite; will-change: opacity; }
 
     @keyframes fade-top-glow {
         0%   { opacity: 1; } 
@@ -193,7 +212,7 @@
         box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;
     }
     .rune-ocr-svg { position: absolute; top: -2px; left: -2px; width: 32px; height: 32px; pointer-events: none; z-index: 100; }
-    .rune-box img { width: 85%; height: 85%; object-fit: contain; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8)); }
+    .rune-box img { width: 85%; height: 85%; object-fit: contain; }
     .rune-qty {
         position: absolute; top: 0px; right: 1px; font-family: 'Verdana', sans-serif; font-size: 9px;
         font-weight: 900; color: white; -webkit-text-stroke: 0.2px black;
@@ -206,7 +225,6 @@
         background-image: url('/images/dofus_runes_spritesheet.png');
         background-repeat: no-repeat;
         background-size: 336px 336px;
-        filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8));
     }
     .rune-vit-rune { background-position: -72px -312px; }
     .rune-pa-vit-rune { background-position: -264px -144px; }
@@ -244,18 +262,33 @@
 
     @if($showOcr)
     <svg class="master-connector-svg" xmlns="http://www.w3.org/2000/svg">
-        <path class="ocr-connector" d="M 130 158 L 130 {{ $pipelineY }}" />
-
-        <path class="ocr-connector" d="M 304.5 184 L 304.5 {{ $pipelineY }}" />
-        <path class="ocr-connector" d="M 360.5 184 L 360.5 {{ $pipelineY }}" />
-        <path class="ocr-connector" d="M 527.5 184 L 527.5 {{ $pipelineY }}" />
+    
+    <g class="ocr-connector-shadow">
+        <path d="M 130 158 L 130 {{ $pipelineY }}" />
+        <path d="M 304.5 184 L 304.5 {{ $pipelineY }}" />
+        <path d="M 360.5 184 L 360.5 {{ $pipelineY }}" />
+        <path d="M 527.5 184 L 527.5 {{ $pipelineY }}" />
         
-        <path class="ocr-connector" d="M 847 190 L 847 180 L 807.5 180" />
-        <path class="ocr-connector" d="M 743 190 L 743 180 L 807.5 180" />
-        <path class="ocr-connector" d="M 795.5 190 L 795.5 {{ $pipelineY }}" />
+        <path d="M 847 190 L 847 180 L 807.5 180" />
+        <path d="M 743 190 L 743 180 L 807.5 180" />
+        <path d="M 795.5 190 L 795.5 {{ $pipelineY }}" />
 
-        <path class="ocr-connector trunk" d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
-    </svg>
+        <path d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
+    </g>
+
+    <g class="ocr-connector">
+        <path d="M 130 158 L 130 {{ $pipelineY }}" />
+        <path d="M 304.5 184 L 304.5 {{ $pipelineY }}" />
+        <path d="M 360.5 184 L 360.5 {{ $pipelineY }}" />
+        <path d="M 527.5 184 L 527.5 {{ $pipelineY }}" />
+        
+        <path d="M 847 190 L 847 180 L 807.5 180" />
+        <path d="M 743 190 L 743 180 L 807.5 180" />
+        <path d="M 795.5 190 L 795.5 {{ $pipelineY }}" />
+
+        <path d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
+    </g>
+</svg>
 
     <div class="scanner-node" style="top: calc({{ $pipelineY }}px - 28px);">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
