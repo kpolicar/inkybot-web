@@ -21,6 +21,34 @@
 @endsection
 
 @section('content')
+<style>
+    .dashboard-container {
+            display: flex;
+            /* A strict 100px gap is critical here: the SVG math relies on this 
+               exact distance to perfectly drop into the center of the setup form. */
+            gap: 100px; 
+            align-items: flex-start;
+            position: relative;
+            padding-top: 25vh; /* Leaves room for the overhead data stream */
+            min-height: 100vh;
+            overflow: hidden; /* Hides lines going off-screen */
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .dofus-window {
+            scale: 0.8;
+        }
+        .setup-window {
+            scale: 0.7;
+            left: 200px;
+        }
+</style>
+<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.3/dist/dotlottie-wc.js" type="module"></script>
+<dotlottie-wc src="https://lottie.host/08950b70-2830-4282-be81-d2e2cc85af9e/Tsqt8kdijr.lottie" style="width: 300px;height: 300px" autoplay loop></dotlottie-wc>
+    <div class="dashboard-container">
+        @include('partials.setup-form')
+        @include('partials.maging-table', ['showOcr' => true, 'streamHeight' => 180])
+    </div>
     @include('partials.whyus')
     @include('partials.features')
     @include('partials.pricing')

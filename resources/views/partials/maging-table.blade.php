@@ -1,0 +1,711 @@
+@php
+    // Make the pipeline height configurable. Defaults to -180 if not passed to the view.
+    $pipelineY = $pipelineY ?? -180;
+@endphp
+
+<style>
+    :root {
+        --bg-outer: #212032; --bg-header: linear-gradient(180deg, #575675 0%, #3D3C55 100%);
+        --bg-top-panel: #3D3D53; --bg-main-left: #36354C; --bg-main-right: #252438;
+        --bg-row: #2F2D48; --bg-slot: #222135; --border-window: #151421;
+        --text-light: #F2F2F2; --text-muted: #9D9CAE; --text-green: #8FD838; --xp-bar: #E1E63C;
+    }
+
+    .dofus-window {
+        width: 900px; background-color: var(--bg-outer);
+        border-radius: 12px; border: 2px solid var(--border-window);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.1);
+        display: flex; flex-direction: column; position: relative; z-index: 1;
+        overflow: visible; /* CRITICAL: Lets SVG lines render outside the bounds to the left */
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        color: var(--text-light); user-select: none;
+    }
+
+    .window-header {
+        background: var(--bg-header); text-align: center; padding: 8px 0;
+        font-size: 18px; font-weight: bold; color: white;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        border-bottom: 2px solid var(--border-window);
+        border-radius: 10px 10px 0 0; position: relative;
+    }
+    .window-header::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+        background: rgba(255,255,255,0.15); border-radius: 10px 10px 0 0;
+    }
+
+    .top-panel {
+        background-color: var(--bg-top-panel); padding: 12px 20px;
+        display: flex; justify-content: space-between; align-items: center;
+        border-bottom: 2px solid var(--border-window); position: relative; z-index: 10; 
+    }
+
+    .profile-section { display: flex; align-items: center; gap: 12px; width: 250px; }
+    .profile-img { width: 52px; height: 52px; background-color: #111; border: 2px solid #CCC; border-radius: 4px; overflow: hidden; }
+    .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+    .profile-details { display: flex; flex-direction: column; gap: 2px; }
+    .profile-name { font-size: 16px; font-weight: bold; }
+    .profile-job { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+    .profile-level { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+    .profile-level span { color: white; font-weight: bold; }
+    .xp-bar { display: flex; gap: 2px; height: 6px; }
+    .xp-bar div { flex: 1; width: 8px; background-color: var(--xp-bar); border-radius: 1px; box-shadow: 0 1px 1px rgba(0,0,0,0.5); }
+
+    .reliquat-section { font-size: 14px; color: var(--text-muted); font-style: italic; flex: 1; text-align: center; }
+    .actions-section { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+    .item-slots { display: flex; gap: 8px; }
+    .slot {
+        width: 38px; height: 38px; background-color: var(--bg-slot); border-radius: 4px;
+        border: 1px inset rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .slot img { width: 80%; height: 80%; object-fit: contain; }
+    .slot-faint img { opacity: 0.2; filter: grayscale(100%); }
+
+    .buttons { display: flex; gap: 8px; }
+    .btn {
+        background: linear-gradient(180deg, #686868 0%, #4D4D4D 100%); border: 1px solid #222;
+        color: #999; font-weight: bold; font-size: 11px; padding: 6px 12px; border-radius: 4px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); cursor: not-allowed; text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+    }
+
+    .main-content { display: flex; height: 520px; position: relative; }
+    .history-panel {
+        width: 260px; background-color: var(--bg-main-left);
+        border-right: 2px solid var(--border-window); border-radius: 0 0 0 10px;
+        display: flex; flex-direction: column; position: relative; 
+    }
+    .history-list { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px; position: relative; z-index: 2; }
+    .history-list::-webkit-scrollbar { width: 6px; }
+    .history-list::-webkit-scrollbar-track { background: #252438; }
+    .history-list::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+    .history-item { display: flex; gap: 12px; align-items: flex-start; }
+    .history-main-icon { width: 24px; height: 24px; flex-shrink: 0; }
+    .history-main-icon img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)); }
+    .history-details { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: bold; }
+    .history-stat { display: flex; align-items: center; gap: 6px; }
+    .history-stat-icon { width: 14px; height: 14px; display: inline-flex; justify-content: center; align-items: center; }
+    .history-stat-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .text-pos { color: var(--text-green); } .text-neg { color: #EFEFEF; } .text-info { color: #8A899C; font-weight: normal; margin-left: 20px;}
+
+    .history-footer {
+        padding: 12px 15px; background-color: var(--bg-main-left);
+        border-top: 1px solid rgba(255,255,255,0.05); border-radius: 0 0 0 10px; position: relative; z-index: 2;
+    }
+    .btn-clear {
+        background: transparent; border: none; color: var(--text-muted); font-weight: bold;
+        display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: uppercase; font-size: 11px; padding: 0;
+    }
+    .btn-clear:hover { color: var(--text-light); }
+    .btn-clear img { width: 14px; height: 14px; opacity: 0.7; }
+
+    .stats-panel {
+        flex: 1; background-color: var(--bg-main-right); border-radius: 0 0 10px 0;
+        padding: 15px 20px; display: flex; flex-direction: column; position: relative;
+    }
+
+    /* --- OCR SVG ANIMATION STYLES --- */
+    .panel-ocr-svg, .master-connector-svg {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none; z-index: 100; overflow: visible; 
+    }
+
+    @keyframes dash-animation { to { stroke-dashoffset: -140; } }
+
+    .ocr-rect, .ocr-connector {
+        fill: none; stroke: white; stroke-width: 2; stroke-dasharray: 8, 6; 
+        animation: dash-animation 3s linear infinite; filter: drop-shadow(0 0 2px rgba(0,0,0,0.8));
+    }
+    .rune-ocr-svg .ocr-rect { animation: dash-animation 5s linear infinite; } 
+    .ocr-connector { opacity: 0.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* SCANNER NODE ANIMATION */
+    .scanner-node {
+        position: absolute;
+        left: -80px; 
+        width: 60px;
+        height: 60px;
+        z-index: 150;
+        background-color: #121212; 
+        display: flex; justify-content: center; align-items: center;
+        border-radius: 4px;
+        box-shadow: 0 0 4px rgba(0,0,0,0.8);
+    }
+    .scanner-node svg { width: 44px; height: 44px; color: #AFAFAF; }
+    .scan-line {
+        position: absolute; height: 2px; background: var(--text-green);
+        box-shadow: 0 0 8px var(--text-green), 0 0 4px #fff; border-radius: 50%;
+        animation: scan-anim 4s ease-in-out infinite; z-index: 151;
+    }
+
+    @keyframes scan-anim {
+        0% { top: 10%; width: 100%; left: 0%; opacity: 0; }
+        15% { top: 15%; width: 100%; left: 0%; opacity: 1; }
+        40% { top: 40%; width: 50%; left: 25%; } 
+        65% { top: 65%; width: 50%; left: 25%; }
+        85% { top: 85%; width: 100%; left: 0%; opacity: 1; }
+        100% { top: 90%; width: 100%; left: 0%; opacity: 0; }
+    }
+
+    /* STATS GRID */
+    .stats-grid {
+        display: grid; grid-template-columns: 45px 55px 1fr 60px 45px 45px 45px;
+        align-items: center; gap: 6px; position: relative; z-index: 2; 
+    }
+    .stats-header { color: var(--text-muted); font-size: 13px; margin-bottom: 8px; padding: 0 8px; }
+    .stats-header div { text-align: left; } .stats-header .col-rune { text-align: center; }
+
+    .stat-row {
+        background-color: var(--bg-row); border-radius: 6px; padding: 2px 8px;
+        margin-bottom: 4px; font-size: 13px; transition: background-color 0.2s;
+        border: 1px solid transparent; position: relative; height: 32px;
+    }
+    .stat-row:hover { background-color: #373554; }
+    .row-highlight { border: 2px solid var(--text-green); background-color: #2F3830; }
+    .row-highlight:hover { background-color: #384239; }
+
+    .col-min, .col-max { color: var(--text-muted); text-align: center; }
+    .col-stat { display: flex; align-items: center; gap: 6px; color: var(--text-green); font-weight: bold; }
+    .col-modif { display: flex; justify-content: center; align-items: center; }
+    .modif-badge { background-color: var(--text-green); color: #121212; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px; }
+    .stat-icon { width: 14px; height: 14px; display: inline-flex; justify-content: center; align-items: center; }
+    .stat-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .col-rune { display: flex; justify-content: center; align-items: center; }
+
+    .rune-box {
+        width: 28px; height: 28px; background-color: var(--bg-slot); border-radius: 4px; position: relative;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;
+    }
+    .rune-ocr-svg { position: absolute; top: -2px; left: -2px; width: 32px; height: 32px; pointer-events: none; z-index: 100; }
+    .rune-box img { width: 85%; height: 85%; object-fit: contain; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.8)); }
+    .rune-qty {
+        position: absolute; top: 0px; right: 1px; font-family: 'Verdana', sans-serif; font-size: 9px;
+        font-weight: 900; color: white; -webkit-text-stroke: 0.2px black;
+        text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; z-index: 2;
+    }
+</style>
+
+<div class="dofus-window">
+
+    @if($showOcr)
+    <svg class="master-connector-svg" xmlns="http://www.w3.org/2000/svg">
+        <path class="ocr-connector" d="M 130 158 L 130 {{ $pipelineY }}" />
+
+        <path class="ocr-connector" d="M 304.5 184 L 304.5 {{ $pipelineY }}" />
+        <path class="ocr-connector" d="M 360.5 184 L 360.5 {{ $pipelineY }}" />
+        <path class="ocr-connector" d="M 527.5 184 L 527.5 {{ $pipelineY }}" />
+        
+        <path class="ocr-connector" d="M 847 190 L 847 180 L 807.5 180" />
+        <path class="ocr-connector" d="M 743 190 L 743 180 L 807.5 180" />
+        <path class="ocr-connector" d="M 795.5 190 L 795.5 {{ $pipelineY }}" />
+
+        <path class="ocr-connector trunk" d="M 807.5 {{ $pipelineY }} L -400 {{ $pipelineY }} L -400 15" />
+    </svg>
+
+    <div class="scanner-node" style="top: calc({{ $pipelineY }}px - 30px);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 7V4h3" /> <path d="M20 7V4h-3" />
+            <path d="M4 17v3h3" /> <path d="M20 17v3h-3" />
+            <rect x="7" y="6" width="10" height="12" rx="1" />
+            <path d="M10 10h4" /> <path d="M10 14h4" />
+        </svg>
+        <div class="scan-line"></div>
+    </div>
+    @endif
+
+    <div class="window-header">Joaillomager</div>
+    
+    <div class="top-panel">
+        <div class="profile-section">
+            <div class="profile-img">
+                <img src="icons/faces/peaky.png" alt="Profile" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNjY2MwMDAiLz48L3N2Zz4='">
+            </div>
+            <div class="profile-details">
+                <div class="profile-name">Peaky</div>
+                <div class="profile-job">JOAILLOMAGE</div>
+                <div class="profile-level">NIV. <span>200</span></div>
+                <div class="xp-bar">
+                    <div></div><div></div><div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reliquat-section">reliquat : 1.2</div>
+        
+        <div class="actions-section">
+            <div class="item-slots">
+                <div class="slot">
+                    <img src="icons/items/ring.png" alt="Ring" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZGEwMCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZkYTAwIiBzdHJva2Utd2lkdGg9IjQiLz48L3N2Zz4='">
+                </div>
+                <div class="slot slot-faint">
+                    <img src="icons/ui/empty_rune.png" alt="Empty Rune" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZiI+PHBvbHlnb24gcG9pbnRzPSIxMiwyIDIyLDEyIDEyLDIyIDIsMTIiLz48L3N2Zz4='">
+                </div>
+                <div class="slot slot-faint">
+                    <img src="icons/ui/empty_feather.png" alt="Empty Feather" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmZiI+PHBhdGggZD0iTTEyLDIgQzEyLDIgMjIsMTIgMjIsMjIgQzIyLDIyIDEyLDEyIDEyLDIgWiIvPjwvc3ZnPg=='">
+                </div>
+            </div>
+            <div class="buttons">
+                <button class="btn disabled">FUSIONNER TOUT</button>
+                <button class="btn disabled">FUSIONNER</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="history-panel">
+            
+            @if($showOcr)
+            <svg class="panel-ocr-svg" xmlns="http://www.w3.org/2000/svg">
+                <rect class="ocr-rect" x="8" y="10" width="244" height="460" rx="4" />
+            </svg>
+            @endif
+
+            <div class="history-list">
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_do_eau.png" alt="rune" onerror="this.outerHTML='🔹'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_fire.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 Dommage Feu</div>
+                        <div class="history-stat text-neg"><span class="history-stat-icon"><img src="icons/stats/initiative.png" alt="⚡" onerror="this.outerHTML='⚡'"></span> -10 Initiative</div>
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_water.png" alt="🌊" onerror="this.outerHTML='💧'"></span> 1 Dommage Eau</div>
+                        <div class="history-stat text-neg"><span class="history-stat-icon"><img src="icons/stats/damage_earth.png" alt="🤎" onerror="this.outerHTML='🟤'"></span> -1 Dommage Terre</div>
+                        <div class="text-info">+ reliquat</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_do_feu.png" alt="rune" onerror="this.outerHTML='🔸'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_fire.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 Dommage Feu</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_do_feu.png" alt="rune" onerror="this.outerHTML='🔸'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_fire.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 Dommage Feu</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_do_neu.png" alt="rune" onerror="this.outerHTML='⚪'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_neutral.png" alt="☯️" onerror="this.outerHTML='☯️'"></span> 1 Dommage Neutre</div>
+                        <div class="history-stat text-neg"><span class="history-stat-icon"><img src="icons/stats/intelligence.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> -1 Intelligence</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_do_neu.png" alt="rune" onerror="this.outerHTML='⚪'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_neutral.png" alt="☯️" onerror="this.outerHTML='☯️'"></span> 1 Dommage Neutre</div>
+                        <div class="history-stat text-neg"><span class="history-stat-icon"><img src="icons/stats/res_fire.png" alt="🛡️" onerror="this.outerHTML='🛡️'"></span> -1% Résistance Feu</div>
+                        <div class="text-info">+ reliquat</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_ine.png" alt="rune" onerror="this.outerHTML='🟥'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/intelligence.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 Intelligence</div>
+                    </div>
+                </div>
+                
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_ine.png" alt="rune" onerror="this.outerHTML='🟥'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/intelligence.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 Intelligence</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_ine.png" alt="rune" onerror="this.outerHTML='🟥'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/intelligence.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 Intelligence</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_fo.png" alt="rune" onerror="this.outerHTML='🟫'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/strength.png" alt="🪨" onerror="this.outerHTML='🟤'"></span> 1 Force</div>
+                        <div class="text-info">- reliquat</div>
+                    </div>
+                </div>
+
+                <div class="history-item">
+                    <div class="history-main-icon"><img src="icons/runes/rune_fo.png" alt="rune" onerror="this.outerHTML='🟫'"></div>
+                    <div class="history-details">
+                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/strength.png" alt="🪨" onerror="this.outerHTML='🟤'"></span> 1 Force</div>
+                        <div class="text-info">- reliquat</div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="history-footer">
+                <button class="btn-clear">
+                    <img src="icons/ui/trash.png" alt="🗑️" onerror="this.outerHTML='🗑️'">
+                    VIDER L'HISTORIQUE
+                </button>
+            </div>
+        </div>
+        
+        <div class="stats-panel">
+            
+            @if($showOcr)
+            <svg class="panel-ocr-svg" xmlns="http://www.w3.org/2000/svg">
+                <rect class="ocr-rect" x="20" y="36" width="45" height="460" rx="4" />
+                <rect class="ocr-rect" x="71" y="36" width="55" height="460" rx="4" />
+                <rect class="ocr-rect" x="132" y="36" width="267" height="460" rx="4" />
+            </svg>
+            @endif
+
+            <div class="stats-grid stats-header">
+                <div class="col-min">Min</div>
+                <div class="col-max">Max</div>
+                <div class="col-stat">Effets / Carac.</div>
+                <div class="col-modif">Modif.</div>
+                <div class="col-rune"></div>
+                <div class="col-rune">Pa</div>
+                <div class="col-rune">Ra</div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">201</div>
+                <div class="col-max">250</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/vitality.png" alt="❤️" onerror="this.outerHTML='❤️'"></span>
+                    210 Vitalité
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_vi.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">224</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_vi.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">649</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_vi.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">101</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row row-highlight">
+                <div class="col-min">31</div>
+                <div class="col-max">40</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/strength.png" alt="🪨" onerror="this.outerHTML='🟤'"></span>
+                    33 Force
+                </div>
+                <div class="col-modif"><span class="modif-badge">+1</span></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_fo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">1993</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_fo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">84</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_fo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">259</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">31</div>
+                <div class="col-max">40</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/intelligence.png" alt="🔥" onerror="this.outerHTML='🔥'"></span>
+                    11 Intelligence
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ine.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">995</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_ine.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">32</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_ine.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">245</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">31</div>
+                <div class="col-max">40</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/chance.png" alt="💧" onerror="this.outerHTML='💧'"></span>
+                    31 Chance
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_cha.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">73</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_cha.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">19</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_cha.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">245</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">31</div>
+                <div class="col-max">40</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/wisdom.png" alt="🟣" onerror="this.outerHTML='🟣'"></span>
+                    30 Sagesse
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_sa.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">258</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_sa.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">201</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_sa.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">341</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">1</div>
+                <div class="col-max">1</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/summons.png" alt="🐉" onerror="this.outerHTML='🟢'"></span>
+                    1 Invocation
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_invo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">64</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_invo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">12</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_invo.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">7</div>
+                <div class="col-max">10</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/damage_neutral.png" alt="☯️" onerror="this.outerHTML='⚪'"></span>
+                    8 Dommages Neutre
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_do_neu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">54</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_do_neu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">21</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_do_neu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">7</div>
+                <div class="col-max">10</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/damage_earth.png" alt="🤎" onerror="this.outerHTML='🟤'"></span>
+                    9 Dommages Terre
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_do_ter.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">26</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_do_ter.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">15</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_do_ter.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">7</div>
+                <div class="col-max">10</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/damage_fire.png" alt="❤️‍🔥" onerror="this.outerHTML='🔴'"></span>
+                    10 Dommages Feu
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_do_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">26</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_do_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">33</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_do_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">7</div>
+                <div class="col-max">10</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/damage_water.png" alt="🌊" onerror="this.outerHTML='🔵'"></span>
+                    10 Dommages Eau
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_do_eau.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">12</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_do_eau.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">41</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_do_eau.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">201</div>
+                <div class="col-max">300</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/initiative.png" alt="⚡" onerror="this.outerHTML='⚡'"></span>
+                    226 Initiative
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ini.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">632</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_ini.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">491</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_ini.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">127</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid stat-row">
+                <div class="col-min">4</div>
+                <div class="col-max">6</div>
+                <div class="col-stat">
+                    <span class="stat-icon"><img src="icons/stats/res_fire.png" alt="🛡️" onerror="this.outerHTML='🛡️'"></span>
+                    1% Résistance Feu
+                </div>
+                <div class="col-modif"></div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_re_per_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">337</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_pa_re_per_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">58</span>
+                    </div>
+                </div>
+                <div class="col-rune">
+                    <div class="rune-box">
+                        @if($showOcr) <svg class="rune-ocr-svg" xmlns="http://www.w3.org/2000/svg"><rect class="ocr-rect" x="1" y="1" width="30" height="30" rx="4" /></svg> @endif
+                        <img src="icons/runes/rune_ra_re_per_feu.png" alt="" onerror="this.style.display='none'"><span class="rune-qty">16</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
