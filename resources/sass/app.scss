@@ -5,6 +5,7 @@
 @import "fontawesome";
 @import "stripe";
 @import "winforms";
+@import "dofus";
 @import "~flatpickr";
 
 @layer utilities {
@@ -202,4 +203,15 @@ input[type="color"]:focus,
 
 :root {
     --swiper-navigation-color: white;
+}
+
+.setup-form-offset {
+    position: relative;
+    top: -15px;
+    right: -45px;
+}
+@media (max-width: 1500px) {
+    .setup-form-offset {
+        position: static;
+    }
 }

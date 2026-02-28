@@ -14,7 +14,7 @@
 
     <div class="content" data-hl="qf-queue">
         <div class="queue-item">
-            <div class="item-icon-placeholder icon-gloursonne"></div>
+            <div class="item-icon-placeholder icon-bearbaric_wedding_ring"></div>
             <div class="item-details">
                 <div class="detail-col">
                     <div class="detail-label">{{ __('winforms.queue_stat_preset') }}</div>
@@ -39,7 +39,7 @@
         </div>
 
         <div class="queue-item">
-            <div class="item-icon-placeholder icon-veinard"></div>
+            <div class="item-icon-placeholder icon-jammy_jack_glove"></div>
             <div class="item-details">
                 <div class="detail-col">
                     <div class="detail-label">{{ __('winforms.queue_stat_preset') }}</div>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="queue-item">
-            <div class="item-icon-placeholder icon-crocanneau"></div>
+            <div class="item-icon-placeholder icon-crocoring"></div>
             <div class="item-details">
                 <div class="detail-col">
                     <div class="detail-label">{{ __('winforms.queue_stat_preset') }}</div>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="queue-item">
-            <div class="item-icon-placeholder icon-crocanneau"></div>
+            <div class="item-icon-placeholder icon-crocoring"></div>
             <div class="item-details">
                 <div class="detail-col">
                     <div class="detail-label">{{ __('winforms.queue_stat_preset') }}</div>
@@ -114,7 +114,7 @@
         </div>
 
         <div class="queue-item">
-            <div class="item-icon-placeholder icon-gelano"></div>
+            <div class="item-icon-placeholder icon-belladonnas_cruelty"></div>
             <div class="item-details">
                 <div class="detail-col">
                     <div class="detail-label">{{ __('winforms.queue_stat_preset') }}</div>

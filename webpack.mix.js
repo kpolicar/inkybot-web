@@ -26,6 +26,10 @@ mix.js('resources/js/app.js', 'public/js')
     .version()
     .version()
 
+    .css('resources/css/stats.css', 'public/css')
+    .version()
+    .version()
+
     .css('resources/css/runes.css', 'public/css')
     .version()
 
