@@ -1,11 +1,20 @@
 {
   "enabledPlugins": {
-    "mcp-toolkit@docker": true
+    "mcp-toolkit@docker": true,
+    "frontend-design@claude-plugins-official": true,
+    "php-lsp@claude-plugins-official": true,
+    "laravel-boost@claude-plugins-official": true
   },
   "mcpServers": {
     "docker": {
       "command": "docker",
-      "args": ["mcp", "gateway", "run", "--transport", "stdio"],
+      "args": [
+        "mcp",
+        "gateway",
+        "run",
+        "--transport",
+        "stdio"
+      ],
       "env": {
         "DOCKER_MCP_IN_CONTAINER": "1"
       }

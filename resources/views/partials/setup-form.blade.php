@@ -1,7 +1,7 @@
 <style>
     .setup-window {
-        width: 420px;
-        height: 420px;
+        width: calc(420px * var(--sw-scale, 1));
+        height: calc(420px * var(--sw-scale, 1));
         background-color: #1e1e1e;
         border: 1px solid #3E3E42;
         display: flex;
@@ -10,6 +10,7 @@
         color: #EFEFEF;
         position: relative;
         z-index: 2;
+        overflow-x: hidden;
     }
 
     .setup-window .title-bar {
@@ -19,68 +20,78 @@
         padding: 0 7px;
         background-color: #FFFFFF;
         color: #000000;
-        height: 21px;
+        height: calc(21px * var(--sw-scale, 1));
         user-select: none;
+        flex-shrink: 0;
     }
 
-    .setup-window .title { font-size: 8px; display: flex; align-items: center; gap: 6px; }
-    .setup-window .title-icon { width: 14px; height: 14px; margin-top: 2px; }
+    .setup-window .title { font-size: calc(8px * var(--sw-scale, 1)); display: flex; align-items: center; gap: 6px; }
+    .setup-window .title-icon { width: calc(14px * var(--sw-scale, 1)); height: calc(14px * var(--sw-scale, 1)); margin-top: calc(2px * var(--sw-scale, 1)); }
     .setup-window .controls { display: flex; height: 100%; }
 
     .setup-window .control-btn {
-        width: 21px; display: flex; justify-content: center;
-        align-items: center; font-size: 10px; color: #000000;
+        width: calc(21px * var(--sw-scale, 1)); display: flex; justify-content: center;
+        align-items: center; font-size: calc(10px * var(--sw-scale, 1)); color: #000000;
     }
 
-    .setup-window .content { flex: 1; padding: 0; overflow-y: auto; background-color: #1e1e1e; }
+    .setup-window .content { flex: 1; padding: 0; overflow-y: auto; overflow-x: hidden; background-color: #1e1e1e; }
 
-    .setup-window table { width: 100%; border-collapse: collapse; font-size: 9px; }
-    .setup-window th, .setup-window td { border: 1px solid #3E3E42; padding: 1px 2px; text-align: left; }
+    .setup-window table { width: 100%; border-collapse: collapse; font-size: calc(9px * var(--sw-scale, 1)); }
+    .setup-window th, .setup-window td { border: 1px solid #3E3E42; padding: calc(1px * var(--sw-scale, 1)) calc(2px * var(--sw-scale, 1)); text-align: left; }
     .setup-window th { background-color: #080808; color: #EFEFEF; font-weight: normal; }
     .setup-window tr { background-color: #1e1e1e; }
     .setup-window tr.last-row { background-color: #141414; font-weight: bold; }
 
     .setup-window th.icon-cell, .setup-window td.icon-cell {
-        text-align: center; width: 10px; min-width: 10px; max-width: 10px;
-        padding: 1px 1px; color: #EFEFEF; border-top: none; border-bottom: none;
+        text-align: center;
+        width: calc(10px * var(--sw-scale, 1));
+        min-width: calc(10px * var(--sw-scale, 1));
+        max-width: calc(10px * var(--sw-scale, 1));
+        padding: calc(1px * var(--sw-scale, 1));
+        color: #EFEFEF; border-top: none; border-bottom: none;
     }
     .setup-window th.icon-cell { background-color: #080808; }
     .setup-window td.icon-cell { background-color: #1e1e1e; }
     .setup-window tbody tr:first-child td.icon-cell { background-color: #080808; }
-    .setup-window .refresh-icon { font-size: 10px; }
+    .setup-window .refresh-icon { font-size: calc(10px * var(--sw-scale, 1)); }
 
     .setup-window .footer {
-        padding: 10px 0px 0px 0px; background-color: #1e1e1e;
-        border-top: 1px solid #3E3E42; display: flex; flex-direction: column; gap: 8px;
+        padding: calc(10px * var(--sw-scale, 1)) 0px 0px 0px; background-color: #1e1e1e;
+        border-top: 1px solid #3E3E42; display: flex; flex-direction: column;
+        gap: calc(8px * var(--sw-scale, 1));
+        flex-shrink: 0;
     }
 
     .setup-window .footer .button {
-        display:  flex;
+        display: flex;
         justify-content: center;
         align-items: center;
     }
     .setup-window .footer-top { display: flex; justify-content: space-between; align-items: center; }
-    .setup-window .examples-link { color: #EFEFEF; font-size: 9px; text-decoration: underline; margin: 0 3px; }
+    .setup-window .examples-link { color: #EFEFEF; font-size: calc(9px * var(--sw-scale, 1)); text-decoration: underline; margin: 0 calc(3px * var(--sw-scale, 1)); }
     .setup-window .footer-middle { display: flex; justify-content: space-between; align-items: center; }
 
     .setup-window .dropdown {
         background-color: #080808; color: #EFEFEF;
-        border: 1px solid #080808; padding: 3px; font-size: 9px; outline: none;
+        border: 1px solid #080808; padding: calc(3px * var(--sw-scale, 1)); font-size: calc(9px * var(--sw-scale, 1)); outline: none;
         display: flex; justify-content: space-between; align-items: center;
     }
     .setup-window .dropdown::after {
-        content: '▾'; font-size: 8px; color: #999; margin-left: 4px;
+        content: '▾'; font-size: calc(8px * var(--sw-scale, 1)); color: #999; margin-left: calc(4px * var(--sw-scale, 1));
     }
     .setup-window .trash-icon {
         background-color: #080808; color: #EFEFEF; border: none;
-        padding: 3px 6px; font-size: 11px; height: 19px;
+        padding: calc(3px * var(--sw-scale, 1)) calc(6px * var(--sw-scale, 1));
+        font-size: calc(11px * var(--sw-scale, 1));
+        height: calc(19px * var(--sw-scale, 1));
         display: flex; align-items: center; justify-content: center;
     }
-    .setup-window .footer-bottom { display: flex; justify-content: space-between; gap: 7px; }
+    .setup-window .footer-bottom { display: flex; justify-content: space-between; gap: calc(7px * var(--sw-scale, 1)); }
 
     .setup-window .button {
         background-color: #080808; color: #EFEFEF; border: none;
-        padding: 7px 8px; font-size: 9px; flex: 1;
+        padding: calc(7px * var(--sw-scale, 1)) calc(8px * var(--sw-scale, 1));
+        font-size: calc(9px * var(--sw-scale, 1)); flex: 1;
         text-align: center; text-transform: uppercase;
     }
 </style>
@@ -101,7 +112,7 @@
     <div class="content">
         <table>
             <thead>
-                <tr style="border-bottom: 1px solid var(--border-color);">
+                <tr>
                     <th>Caractéristique</th>
                     <th>Valeur</th>
                     <th>Cible</th>
@@ -131,9 +142,9 @@
     <div class="footer">
         <div class="footer-top"><a href="#" class="examples-link">Voir des exemples</a></div>
         <div class="footer-middle">
-            <div class="dropdown" style="width: 105px;">PM</div>
+            <div class="dropdown" style="width: calc(105px * var(--sw-scale, 1));">PM</div>
             <div style="display: flex; align-items: center; gap: 5px;">
-                <div class="dropdown" style="width: 140px;">Alliance Gloursonne</div>
+                <div class="dropdown" style="width: calc(140px * var(--sw-scale, 1));">Alliance Gloursonne</div>
                 <div class="trash-icon">🗑️</div>
             </div>
         </div>

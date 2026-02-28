@@ -41,6 +41,73 @@
         <div class="h-1 mx-auto gradient w-40 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
+    <style>
+        .sf-annotated { position: relative; flex-shrink: 0; }
+        .sf-popup {
+            position: absolute;
+            width: 155px;
+            background: #ffffff;
+            border: 1px solid #e3e8ef;
+            border-radius: 8px;
+            padding: 10px 12px 11px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.05);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .sf-popup__label {
+            font-size: 9px;
+            font-weight: 700;
+            color: #0a2540;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 5px;
+        }
+        .sf-popup__desc {
+            font-size: 10px;
+            color: #425466;
+            line-height: 1.45;
+            margin: 0 0 6px 0;
+        }
+        .sf-popup__example {
+            font-size: 9px;
+            color: #697386;
+            font-style: italic;
+            line-height: 1.4;
+            margin: 0;
+            border-left: 2px solid #e3e8ef;
+            padding-left: 6px;
+        }
+        .sf-popup--top    { top: -20px;                           right: -170px; }
+        .sf-popup--center { top: 50%; transform: translateY(-50%); right: -170px; }
+        .sf-popup--bottom { bottom: -20px;                         right: -170px; }
+    </style>
+
+    <div class="flex justify-center" style="gap: 24px;">
+        <div class="sf-annotated" style="--sw-scale: 1.2;">
+            @include('partials.setup-form')
+
+            <div class="sf-popup sf-popup--top">
+                <div class="sf-popup__label">Cible</div>
+                <p class="sf-popup__desc">The stat value you'd ideally like to reach when maging.</p>
+                <p class="sf-popup__example">"I'd like to reach 250 Vitalité if possible."</p>
+            </div>
+
+            <div class="sf-popup sf-popup--center">
+                <div class="sf-popup__label">Minimum</div>
+                <p class="sf-popup__desc">A hard floor — the bot will never accept a value below this.</p>
+                <p class="sf-popup__example">"I must reach at least 240 Vitalité, don't settle for less."</p>
+            </div>
+
+            <div class="sf-popup sf-popup--bottom">
+                <div class="sf-popup__label">Priorité</div>
+                <p class="sf-popup__desc">When reliquat sink is available, higher-priority stats are improved first.</p>
+                <p class="sf-popup__example">"Vitalité will be prioritized first, then % Résistance Neutre, etc."</p>
+            </div>
+        </div>
+        @include('partials.config-form')
+    </div>
+
 
     <div class="flex flex-wrap mx-auto px-6">
         <div class="w-1/4 mx-auto px-3 mt-8 my-6 mb-3 z-0 cursor-zoom-in flex items-center justify-center">
