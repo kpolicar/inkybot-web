@@ -42,7 +42,7 @@
     </div>
 
     <div id="sf-annotated-wrapper" class="flex justify-around items-center" style="gap: 120px; margin: 120px 0;">
-        <div class="sf-annotated" style="--sw-scale: 1.2;">
+        <div class="sf-annotated">
             @include('partials.setup-form')
 
             <div class="sf-popup" data-hl="sf-cible" style="top: -100px; left: 150px;">

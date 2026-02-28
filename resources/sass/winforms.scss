@@ -16,6 +16,10 @@
 // ── Shared block: CSS vars + all common styles ────────────────────────────
 // Every pixel-size value is wrapped in calc(Xpx * var(--sw-scale)) so the
 // entire form scales uniformly. Borders stay at 1px (never scale borders).
+#features-section .setup-window {
+    --sw-scale: 1.2;
+} 
+
 .config-window,
 .setup-window,
 .queue-window {
@@ -164,6 +168,9 @@
     }
     .table-container { flex: 1; overflow-y: auto; }
     td.cb-cell { text-align: center; vertical-align: middle; }
+
+    // ── Non-default cell (value differs from factory defaults) ─────────────
+    td.non-default { background-color: var(--wf-black); }
 
     // ── HTML checkbox — table cells ────────────────────────────────────────
     // White background + dark gray checkmark to match WinForms aesthetics
@@ -398,6 +405,9 @@
 #sf-annotated-wrapper .setup-window td.hl-active,
 #sf-annotated-wrapper .config-window td.hl-active {
     background-color: rgba(143, 216, 56, 0.08) !important;
+}
+#sf-annotated-wrapper .config-window td.non-default.hl-active {
+    background-color: darken(#8FD838, 44%) !important;
 }
 
 
