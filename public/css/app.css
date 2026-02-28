@@ -28577,6 +28577,10 @@ readers do not read off random characters that represent icons */
   display: block;
 }
 
+#features-section .setup-window {
+  --sw-scale: 1.2;
+}
+
 .config-window,
 .setup-window,
 .queue-window {
@@ -28795,6 +28799,10 @@ readers do not read off random characters that represent icons */
 .config-window td.cb-cell {
   text-align: center;
   vertical-align: middle;
+}
+
+.config-window td.non-default {
+  background-color: var(--wf-black);
 }
 
 .config-window td.cb-cell input[type=checkbox] {
@@ -29163,6 +29171,10 @@ readers do not read off random characters that represent icons */
 #sf-annotated-wrapper .setup-window td.hl-active,
 #sf-annotated-wrapper .config-window td.hl-active {
   background-color: rgba(143, 216, 56, 0.08) !important;
+}
+
+#sf-annotated-wrapper .config-window td.non-default.hl-active {
+  background-color: #192808 !important;
 }
 
 .sf-annotated {

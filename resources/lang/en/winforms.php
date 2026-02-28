@@ -79,12 +79,12 @@ return [
     // ── Popup: Config form — Max for Rune ─────────────────────────────────────
     'popup_cf_max_rune_label'    => 'Max for Rune',
     'popup_cf_max_rune_desc'     => 'The bot won\'t use this rune once the stat hits this value, regardless of remaining sink.',
-    'popup_cf_max_rune_example'  => '"Stop using PA Vit runes after reaching 115."',
+    'popup_cf_max_rune_example'  => '"Stop using PA Vit runes after reaching 290."',
 
     // ── Popup: Config form — Rune Threshold ───────────────────────────────────
     'popup_cf_threshold_label'   => 'Rune Threshold',
     'popup_cf_threshold_desc'    => 'The stat value at which the bot switches to using the next rune tier.',
-    'popup_cf_threshold_example' => '"Change to PA Vit rune when Vitality reaches 90."',
+    'popup_cf_threshold_example' => '"Change to PA Vit rune when Vitality reaches 70."',
 
     // ── Popup: Config form — Custom Script ────────────────────────────────────
     'popup_cf_script_label'      => 'Custom Script',
