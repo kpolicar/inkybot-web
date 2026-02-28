@@ -7,7 +7,7 @@
     <div class="w-full mb-4">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
-    <div class="flex justify-center">
+    <div id="how-works-outer" class="flex justify-center">
     <div class="dashboard-container">
         @include('partials.setup-form')
         @include('partials.maging-table', ['showOcr' => true, 'streamHeight' => 180])
@@ -147,6 +147,19 @@
 
             /* queue-form: single popup in the middle */
             .sf-popup[data-hl="qf-queue"] { top: 40% !important; left: 10px !important; right: auto !important; }
+
+            /* "How does it work" section: stack setup-form above maging-table */
+            #how-works-outer {
+                flex-direction: column;
+                align-items: center;
+                overflow-x: hidden; /* clip the SVG horizontal extension that goes off-screen */
+            }
+            .dashboard-container {
+                flex-direction: column !important;
+                align-items: center !important;
+                left: 0 !important;
+                gap: 60px !important; /* matches pipelineY=-50 so dashed lines emerge into the gap */
+            }
         }
     </style>
 

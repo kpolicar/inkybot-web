@@ -134,6 +134,14 @@
     .rune-ocr-svg .ocr-rect { animation: dash-animation 5s linear infinite; } 
     .ocr-connector path { opacity: 0.9; stroke-linecap: round; stroke-linejoin: round; }
 
+    /* desktop pipe goes left; mobile pipe goes up — toggled via media query */
+    .ocr-mobile-pipe { display: none; }
+    @media (max-width: 1500px) {
+        .ocr-desktop-pipe { display: none; }
+        .ocr-mobile-pipe  { display: block; }
+        .scanner-node     { left: calc(50% - 25px) !important; }
+    }
+
     /* --- SCANNER NODE & SVG ANIMATIONS --- */
     .scanner-node {
         position: absolute;
@@ -273,7 +281,9 @@
         <path d="M 743 190 L 743 180 L 807.5 180" />
         <path d="M 795.5 190 L 795.5 {{ $pipelineY }}" />
 
-        <path d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
+        <path class="ocr-desktop-pipe" d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
+        <path class="ocr-mobile-pipe"  d="M 795.5 {{ $pipelineY }} L 130 {{ $pipelineY }} L 130 0" />
+        <path class="ocr-mobile-pipe"  d="M 450 {{ $pipelineY }} L 450 -300" />
     </g>
 
     <g class="ocr-connector">
@@ -286,11 +296,13 @@
         <path d="M 743 190 L 743 180 L 807.5 180" />
         <path d="M 795.5 190 L 795.5 {{ $pipelineY }}" />
 
-        <path d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
+        <path class="ocr-desktop-pipe" d="M 795.5 {{ $pipelineY }} L -170 {{ $pipelineY }} L -170 15" />
+        <path class="ocr-mobile-pipe"  d="M 795.5 {{ $pipelineY }} L 130 {{ $pipelineY }} L 130 0" />
+        <path class="ocr-mobile-pipe"  d="M 450 {{ $pipelineY }} L 450 -300" />
     </g>
 </svg>
 
-    <div class="scanner-node" style="top: calc({{ $pipelineY }}px - 28px);">
+    <div class="scanner-node" style="--pipeline-y: {{ $pipelineY }}px; top: calc(var(--pipeline-y) - 28px);">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
             <defs>
                 <linearGradient id="scan-glow-top" x1="0" y1="1" x2="0" y2="0">
