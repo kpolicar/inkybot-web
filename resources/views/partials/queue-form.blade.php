@@ -159,7 +159,7 @@
         </div>
     </div>
 
-    <div class="content">
+    <div class="content" data-hl="qf-queue">
         <div class="queue-item">
             <div class="item-icon-placeholder icon-gloursonne"></div>
             <div class="item-details">
