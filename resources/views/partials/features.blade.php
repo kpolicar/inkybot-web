@@ -81,31 +81,73 @@
         .sf-popup--top    { top: -20px;                           right: -170px; }
         .sf-popup--center { top: 50%; transform: translateY(-50%); right: -170px; }
         .sf-popup--bottom { bottom: -20px;                         right: -170px; }
+        .sf-popup--left   { right: auto; left: -170px; }
     </style>
 
-    <div class="flex justify-center" style="gap: 24px;">
+    <div class="flex justify-around items-center" style="gap: 120px; margin: 120px 0;">
         <div class="sf-annotated" style="--sw-scale: 1.2;">
             @include('partials.setup-form')
 
-            <div class="sf-popup sf-popup--top">
+            <div class="sf-popup" style="top: -100px; left: 150px;">
                 <div class="sf-popup__label">Cible</div>
                 <p class="sf-popup__desc">The stat value you'd ideally like to reach when maging.</p>
                 <p class="sf-popup__example">"I'd like to reach 250 Vitalité if possible."</p>
             </div>
 
-            <div class="sf-popup sf-popup--center">
-                <div class="sf-popup__label">Minimum</div>
-                <p class="sf-popup__desc">A hard floor — the bot will never accept a value below this.</p>
-                <p class="sf-popup__example">"I must reach at least 240 Vitalité, don't settle for less."</p>
-            </div>
-
-            <div class="sf-popup sf-popup--bottom">
+            <div class="sf-popup" style="top: 50px; right: -130px;">
                 <div class="sf-popup__label">Priorité</div>
                 <p class="sf-popup__desc">When reliquat sink is available, higher-priority stats are improved first.</p>
                 <p class="sf-popup__example">"Vitalité will be prioritized first, then % Résistance Neutre, etc."</p>
             </div>
+
+            <div class="sf-popup" style="bottom: -70px; left: 330px;">
+                <div class="sf-popup__label">Minimum</div>
+                <p class="sf-popup__desc">A hard floor — the bot will never accept a value below this.</p>
+                <p class="sf-popup__example">"I must reach at least 240 Vitalité, don't settle for less."</p>
+            </div>
         </div>
-        @include('partials.config-form')
+
+        <div class="sf-annotated">
+            @include('partials.config-form')
+
+            <div class="sf-popup sf-popup--top" style="top: -100px; left: -80px;">
+                <div class="sf-popup__label">Use Runes</div>
+                <p class="sf-popup__desc">Toggle whether the bot should use this rune type for this stat.</p>
+                <p class="sf-popup__example">"Don't use SM Wisdom rune."</p>
+            </div>
+
+            <div class="sf-popup" style="top: -20px; right: -120px;">
+                <div class="sf-popup__label">Max for Rune</div>
+                <p class="sf-popup__desc">The bot won't use this rune once the stat hits this value, regardless of remaining sink.</p>
+                <p class="sf-popup__example">"Stop using PA Vit runes after reaching 115."</p>
+            </div>
+
+            <div class="sf-popup" style="top: -80px; right: 200px;">
+                <div class="sf-popup__label">Rune Threshold</div>
+                <p class="sf-popup__desc">The stat value at which the bot switches to using the next rune tier.</p>
+                <p class="sf-popup__example">"Change to PA Vit rune when Vitality reaches 90."</p>
+            </div>
+
+            <div class="sf-popup" style="bottom: -60px; left: -120px;">
+                <div class="sf-popup__label">Custom script</div>
+                <p class="sf-popup__desc">Load a custom script to override default AI behavior.</p>
+            </div>
+
+            <div class="sf-popup" style="bottom: -20px; right: -120px;">
+                <div class="sf-popup__label">Presets</div>
+                <p class="sf-popup__desc">Save your current configuration as a preset for later use.</p>
+            </div>
+        </div>
+
+        <div class="sf-annotated">
+            @include('partials.queue-form')
+
+            <div class="sf-popup" style="top: 150px; left: -90px;">
+                <div class="sf-popup__label">Maging Queue</div>
+                <p class="sf-popup__desc">Add items to the queue to keep the bot running in the background across multiple presets.</p>
+                <p class="sf-popup__example">"Next up is the Gelano — the bot will automatically start maging it after finishing the current item."</p>
+            </div>
+        </div>
     </div>
 
 

@@ -34,11 +34,6 @@
             font-family: 'Segoe UI', Arial, sans-serif;
             overflow:visible;
         }
-
-        .setup-window {
-            top: -15px;
-            right: -50px;
-        }
 </style>
     @include('partials.whyus')
     @include('partials.features')

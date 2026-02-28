@@ -1,7 +1,6 @@
 <style>
     .setup-window {
         width: calc(420px * var(--sw-scale, 1));
-        height: calc(420px * var(--sw-scale, 1));
         background-color: #1e1e1e;
         border: 1px solid #3E3E42;
         display: flex;
@@ -71,13 +70,22 @@
     .setup-window .examples-link { color: #EFEFEF; font-size: calc(9px * var(--sw-scale, 1)); text-decoration: underline; margin: 0 calc(3px * var(--sw-scale, 1)); }
     .setup-window .footer-middle { display: flex; justify-content: space-between; align-items: center; }
 
-    .setup-window .dropdown {
-        background-color: #080808; color: #EFEFEF;
-        border: 1px solid #080808; padding: calc(3px * var(--sw-scale, 1)); font-size: calc(9px * var(--sw-scale, 1)); outline: none;
-        display: flex; justify-content: space-between; align-items: center;
+    .setup-window .custom-dropdown {
+        display: flex; align-items: stretch;
+        background-color: #080808;
+        height: calc(19px * var(--sw-scale, 1));
     }
-    .setup-window .dropdown::after {
-        content: '▾'; font-size: calc(8px * var(--sw-scale, 1)); color: #999; margin-left: calc(4px * var(--sw-scale, 1));
+    .setup-window .custom-dropdown-text {
+        flex: 1; padding: 0 calc(5px * var(--sw-scale, 1));
+        font-size: calc(9px * var(--sw-scale, 1));
+        display: flex; align-items: center; color: #EFEFEF;
+    }
+    .setup-window .custom-dropdown-arrow {
+        background-color: #FFFFFF; color: #000000;
+        width: calc(16px * var(--sw-scale, 1));
+        display: flex; justify-content: center; align-items: center;
+        font-size: calc(7px * var(--sw-scale, 1));
+        flex-shrink: 0;
     }
     .setup-window .trash-icon {
         background-color: #080808; color: #EFEFEF; border: none;
@@ -142,9 +150,15 @@
     <div class="footer">
         <div class="footer-top"><a href="#" class="examples-link">Voir des exemples</a></div>
         <div class="footer-middle">
-            <div class="dropdown" style="width: calc(105px * var(--sw-scale, 1));">PM</div>
-            <div style="display: flex; align-items: center; gap: 5px;">
-                <div class="dropdown" style="width: calc(140px * var(--sw-scale, 1));">Alliance Gloursonne</div>
+            <div class="custom-dropdown" style="width: calc(105px * var(--sw-scale, 1));">
+                <div class="custom-dropdown-text">PM</div>
+                <div class="custom-dropdown-arrow">▼</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: calc(5px * var(--sw-scale, 1));">
+                <div class="custom-dropdown" style="width: calc(140px * var(--sw-scale, 1));">
+                    <div class="custom-dropdown-text">Alliance Gloursonne</div>
+                    <div class="custom-dropdown-arrow">▼</div>
+                </div>
                 <div class="trash-icon">🗑️</div>
             </div>
         </div>
