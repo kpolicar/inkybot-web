@@ -123,27 +123,27 @@
                 <tr>
                     <th>Caractéristique</th>
                     <th>Valeur</th>
-                    <th>Cible</th>
-                    <th>Minimum</th>
-                    <th>Priorité</th>
+                    <th data-hl="sf-cible"   data-hl-col="3">Cible</th>
+                    <th data-hl="sf-minimum" data-hl-col="4">Minimum</th>
+                    <th data-hl="sf-priorite" data-hl-col="5">Priorité</th>
                     <th class="icon-cell">-</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>Vitalité</td><td>292</td><td>250</td><td>240</td><td>10</td><td class="icon-cell refresh-icon">⟲</td></tr>
-                <tr><td>Chance</td><td>59</td><td>55</td><td>-</td><td>8</td><td class="icon-cell"></td></tr>
-                <tr><td>Agilité</td><td>58</td><td>55</td><td>-</td><td>8</td><td class="icon-cell"></td></tr>
-                <tr><td>Sagesse</td><td>30</td><td>38</td><td>-</td><td>7</td><td class="icon-cell"></td></tr>
-                <tr><td>Portée</td><td>1</td><td>1</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
-                <tr><td>Dommages Eau</td><td>11</td><td>11</td><td>-</td><td>6</td><td class="icon-cell"></td></tr>
-                <tr><td>Dommages Air</td><td>11</td><td>11</td><td>-</td><td>6</td><td class="icon-cell"></td></tr>
-                <tr><td>Prospection</td><td>6</td><td>0</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
-                <tr><td>Initiative</td><td>391</td><td>380</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
-                <tr><td>% Résistance Neutre</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
-                <tr><td>% Résistance Terre</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
-                <tr><td>% Résistance Feu</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
-                <tr><td>Tacle</td><td>4</td><td>4</td><td>-</td><td>5</td><td class="icon-cell"></td></tr>
-                <tr class="last-row"><td>PM</td><td>0</td><td>1</td><td>1</td><td>0</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.vitality') }}</td><td>292</td><td>250</td><td>240</td><td>10</td><td class="icon-cell refresh-icon">⟲</td></tr>
+                <tr><td>{{ __('stats.chance') }}</td><td>59</td><td>55</td><td>-</td><td>8</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.agility') }}</td><td>58</td><td>55</td><td>-</td><td>8</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.wisdom') }}</td><td>30</td><td>38</td><td>-</td><td>7</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.range') }}</td><td>1</td><td>1</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.water_damage') }}</td><td>11</td><td>11</td><td>-</td><td>6</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.air_damage') }}</td><td>11</td><td>11</td><td>-</td><td>6</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.prospecting') }}</td><td>6</td><td>0</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.initiative') }}</td><td>391</td><td>380</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.per_neutral_resistance') }}</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.per_earth_resistance') }}</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.per_fire_resistance') }}</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
+                <tr><td>{{ __('stats.lock') }}</td><td>4</td><td>4</td><td>-</td><td>5</td><td class="icon-cell"></td></tr>
+                <tr class="last-row"><td>{{ __('stats.mp') }}</td><td>0</td><td>1</td><td>1</td><td>0</td><td class="icon-cell"></td></tr>
             </tbody>
         </table>
     </div>

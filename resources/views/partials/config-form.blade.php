@@ -149,37 +149,73 @@
                 <thead>
                     <tr>
                         <th>Stat</th>
-                        <th class="cb-cell">Use SM Runes</th>
-                        <th class="cb-cell">Use PA Runes</th>
-                        <th class="cb-cell">Use RA Runes</th>
-                        <th>PA Rune Threshold</th>
-                        <th>RA Rune Threshold</th>
-                        <th>Max (SM Rune)</th>
-                        <th>Max (PA Rune)</th>
+                        <th class="cb-cell" data-hl="cf-use-runes"  data-hl-col="2">Use SM Runes</th>
+                        <th class="cb-cell" data-hl="cf-use-runes"  data-hl-col="3">Use PA Runes</th>
+                        <th class="cb-cell" data-hl="cf-use-runes"  data-hl-col="4">Use RA Runes</th>
+                        <th data-hl="cf-threshold" data-hl-col="5">PA Rune Threshold</th>
+                        <th data-hl="cf-threshold" data-hl-col="6">RA Rune Threshold</th>
+                        <th data-hl="cf-max-rune"  data-hl-col="7">Max (SM Rune)</th>
+                        <th data-hl="cf-max-rune"  data-hl-col="8">Max (PA Rune)</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Initiative</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>170</td><td>470</td><td>210</td><td>570</td></tr>
-                    <tr><td>Vitality</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>90</td><td>310</td><td>115</td><td>315</td></tr>
-                    <tr><td>Pods</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>90</td><td>470</td><td>110</td><td>570</td></tr>
-                    <tr><td>Strength</td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
-                    <tr><td>Intelligence</td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
-                    <tr><td>Agility</td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
-                    <tr><td>Chance</td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
-                    <tr><td>Critical Resis...</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
-                    <tr><td>Pushback Re...</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
-                    <tr><td>Power</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>50</td><td>21</td><td>54</td></tr>
-                    <tr><td>Power (traps)</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>50</td><td>21</td><td>54</td></tr>
-                    <tr><td>Neutral Resis...</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
-                    <tr><td>Earth Resista...</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
-                    <tr><td>Fire Resistance</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
-                    <tr><td>Air Resistance</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
-                    <tr><td>Water Resist...</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
-                    <tr><td>Wisdom</td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>40</td><td>19</td><td>45</td></tr>
-                    <tr><td>Prospecting</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>17</td><td>-</td><td>19</td><td>-</td></tr>
-                    <tr><td>Lock</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>19</td><td>-</td></tr>
-                    <tr><td>Dodge</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>19</td><td>-</td></tr>
-                    <tr><td>Neutral Dam...</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    {{-- Primary stats --}}
+                    <tr><td>{{ __('stats.ap') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.mp') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.range') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.vitality') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>90</td><td>310</td><td>115</td><td>315</td></tr>
+                    <tr><td>{{ __('stats.strength') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
+                    <tr><td>{{ __('stats.intelligence') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
+                    <tr><td>{{ __('stats.agility') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
+                    <tr><td>{{ __('stats.chance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>55</td><td>21</td><td>62</td></tr>
+                    <tr><td>{{ __('stats.wisdom') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>40</td><td>19</td><td>45</td></tr>
+                    <tr><td>{{ __('stats.power') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>50</td><td>21</td><td>54</td></tr>
+                    <tr><td>{{ __('stats.power_traps') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>17</td><td>50</td><td>21</td><td>54</td></tr>
+                    <tr><td>{{ __('stats.critical') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.initiative') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>170</td><td>470</td><td>210</td><td>570</td></tr>
+                    <tr><td>{{ __('stats.pods') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td>90</td><td>470</td><td>110</td><td>570</td></tr>
+                    <tr><td>{{ __('stats.summons') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    {{-- Secondary combat stats --}}
+                    <tr><td>{{ __('stats.heals') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>15</td><td>-</td><td>19</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.prospecting') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>17</td><td>-</td><td>19</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.lock') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>19</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.dodge') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>19</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.ap_reduction') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>12</td><td>-</td><td>15</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.ap_parry') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>12</td><td>-</td><td>15</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.mp_reduction') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>12</td><td>-</td><td>15</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.mp_parry') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>12</td><td>-</td><td>15</td><td>-</td></tr>
+                    {{-- Damage stats --}}
+                    <tr><td>{{ __('stats.damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.neutral_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.earth_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.fire_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.water_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.air_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.critical_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.pushback_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.trap_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.spell_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.weapon_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.ranged_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.melee_damage') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    {{-- Resistance stats --}}
+                    <tr><td>{{ __('stats.neutral_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.per_neutral_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.earth_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.per_earth_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.fire_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.per_fire_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.water_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.per_water_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.air_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.per_air_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.critical_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.pushback_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td>14</td><td>-</td><td>17</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.ranged_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.melee_resistance') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    {{-- Other --}}
+                    <tr><td>{{ __('stats.hunting_weapon') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                    <tr><td>{{ __('stats.reflect') }}</td><td class="cb-cell"><div class="cb checked"></div></td><td class="cb-cell"><div class="cb"></div></td><td class="cb-cell"><div class="cb"></div></td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
                 </tbody>
             </table>
         </div>
@@ -216,12 +252,12 @@
     <div class="footer">
         <div class="footer-left">
             <a href="#" class="examples-link">See examples</a>
-            <div class="file-picker">
+            <div class="file-picker" data-hl="cf-script">
                 Custom Maging Script
                 <div class="button">Choose File</div>
             </div>
         </div>
-        <div class="footer-right">
+        <div class="footer-right" data-hl="cf-presets">
             <div class="item-dropdown-group">
                 <div class="custom-dropdown" style="width: 150px;">
                     <div class="custom-dropdown-text">Levitrof Wedding Ring</div>
