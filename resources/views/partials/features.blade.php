@@ -38,7 +38,7 @@
         {{ __('features.heading') }}
     </h2>
     <div class="w-full mb-4">
-        <div class="h-1 mx-auto gradient w-40 opacity-25 my-0 py-0 rounded-t"></div>
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
     <style>
@@ -119,6 +119,34 @@
         .queue-window .queue-item.hl-active {
             background-color: rgba(143, 216, 56, 0.07);
             box-shadow: inset 2px 0 0 rgba(143, 216, 56, 0.4);
+        }
+
+        /* ── mobile / small-screen: stack forms vertically ── */
+        @media (max-width: 1500px) {
+            #sf-annotated-wrapper {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 60px !important;
+                margin: 60px auto !important;
+            }
+
+            /* Shared reset — clear desktop bottom/transform offsets */
+            .sf-popup { bottom: auto !important; transform: none !important; opacity: 0.85; }
+
+            /* setup-form: one per vertical third, alternating sides */
+            .sf-popup[data-hl="sf-cible"]    { top: 15% !important; left: auto !important; right: 10px !important; }
+            .sf-popup[data-hl="sf-priorite"] { top: 47% !important; left: 10px !important; right: auto !important; }
+            .sf-popup[data-hl="sf-minimum"]  { top: 75% !important; left: auto !important; right: 10px !important; }
+
+            /* config-form: two in top third, one middle, two in bottom third */
+            .sf-popup[data-hl="cf-use-runes"]  { top:  8% !important; left: auto !important; right: 10px !important; }
+            .sf-popup[data-hl="cf-max-rune"]   { top: 24% !important; left: 10px !important; right: auto !important; }
+            .sf-popup[data-hl="cf-threshold"]  { top: 47% !important; left: auto !important; right: 10px !important; }
+            .sf-popup[data-hl="cf-script"]     { top: 65% !important; left: 10px !important; right: auto !important; }
+            .sf-popup[data-hl="cf-presets"]    { top: 81% !important; left: auto !important; right: 10px !important; }
+
+            /* queue-form: single popup in the middle */
+            .sf-popup[data-hl="qf-queue"] { top: 40% !important; left: 10px !important; right: auto !important; }
         }
     </style>
 
