@@ -4,6 +4,7 @@ import { French } from "flatpickr/dist/l10n/fr.js"
 require('./bootstrap');
 require('./nav');
 require('./noise');
+require('./winforms');
 
 var notifications = document.querySelectorAll("[data-hide]")
 notifications.forEach(notification => {
