@@ -18,7 +18,7 @@
         display: flex; flex-direction: column; position: relative; z-index: 1;
         overflow: visible; /* CRITICAL: Lets SVG lines render outside the bounds to the left */
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        color: var(--text-light); user-select: none;
+        color: var(--text-light);
     }
 
     .window-header {

@@ -1,0 +1,169 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="$this.Text" xml:space="preserve">
+        <value>Inkybot - Config</value>
+    </data>
+  <data name="addPresetButton.Text" xml:space="preserve">
+    <value>ENREGISTRER LE PRÉRÉGLAGE</value>
+  </data>
+  <data name="autoRestartBotCheckbox.Text" xml:space="preserve">
+    <value>Automatically start new statistics session on successful exo</value>
+  </data>
+    <data name="UseSmRunesColumn.HeaderText" xml:space="preserve">
+    <value>Utiliser des runes SM</value>
+  </data>
+    <data name="UseSmRunesColumn.ToolTipText" xml:space="preserve">
+    <value>Indiquez si vous souhaitez ou non utiliser des runes SM</value>
+  </data>
+  <data name="presetsComboBox.TextEmpty" xml:space="preserve">
+    <value>Rien</value>
+  </data>
+  <data name="enableSafeMageQueueingCheckbox.Text" xml:space="preserve">
+    <value>Mise en file d'attente en mode sans échec</value>
+  </data>
+    <data name="UsePaRunesColumn.HeaderText" xml:space="preserve">
+    <value>Utiliser des runes PA</value>
+  </data>
+  <data name="deletePresetButton.TooltipText" xml:space="preserve">
+    <value>Supprimer le préréglage</value>
+  </data>
+    <data name="UsePaRunesColumn.ToolTipText" xml:space="preserve">
+    <value>Indiquez si vous souhaitez ou non utiliser des runes PA</value>
+  </data>
+    <data name="UseRaRunesColumn.HeaderText" xml:space="preserve">
+    <value>Utiliser des runes RA</value>
+  </data>
+    <data name="UseRaRunesColumn.ToolTipText" xml:space="preserve">
+    <value>Indiquez si vous souhaitez ou non utiliser des runes RA</value>
+  </data>
+    <data name="MaxPaRuneCanHitColumn.HeaderText" xml:space="preserve">
+        <value>Max (PA Rune)</value>
+    </data>
+    <data name="MaxSmRuneCanHitColumn.HeaderText" xml:space="preserve">
+        <value>Max (SM Rune)</value>
+    </data>
+    <data name="PaRuneThresholdColumn.HeaderText" xml:space="preserve">
+        <value>PA Rune Seuil</value>
+    </data>
+  <data name="config.useRune" xml:space="preserve">
+    <value>L'utilisation de la :rune est activée</value>
+  </data>
+  <data name="config.dontUseRune" xml:space="preserve">
+    <value>L'utilisation de la :rune est désactivée</value>
+  </data>
+    <data name="showAdvancedOptionsButton.ToolTipText" xml:space="preserve">
+    <value>Montrer les options avancées</value>
+  </data>
+    <data name="showAdvancedOptionsButton.ToolTipTextHide" xml:space="preserve">
+    <value>Masquer les options avancées</value>
+  </data>
+    <data name="RaRuneThresholdColumn.HeaderText" xml:space="preserve">
+        <value>RA Rune Seuil</value>
+    </data>
+    <data name="restoreHighSinkStatsCheckbox.Text" xml:space="preserve">
+        <value>Restaurez immédiatement les caractéristiques de chute élevée (PA, PM, Portée, Invocations)</value>
+    </data>
+    <data name="StatColumn.HeaderText" xml:space="preserve">
+        <value>Caractéristique</value>
+    </data>
+    <data name="PaRuneThresholdColumn.ToolTipText" xml:space="preserve">
+    <value>Changez en runes PA une fois que cette valeur est atteinte</value>
+  </data>
+    <data name="RaRuneThresholdColumn.ToolTipText" xml:space="preserve">
+    <value>Changez pour les runes RA une fois cette valeur atteinte</value>
+  </data>
+    <data name="MaxSmRuneCanHitColumn.ToolTipText" xml:space="preserve">
+    <value>La valeur maximale à laquelle les runes SM doivent encore être utilisées</value>
+  </data>
+    <data name="MaxPaRuneCanHitColumn.ToolTipText" xml:space="preserve">
+    <value>La valeur maximale à laquelle les runes PA doivent encore être utilisées</value>
+  </data>
+    <data name="autoRestartBotCheckbox.Text" xml:space="preserve">
+    <value>Relancer automatiquement le bot (des anomalies peuvent interrompre le bot)</value>
+  </data>
+  <data name="config.neverchange" xml:space="preserve">
+    <value>Ne jamais passer à :rune</value>
+  </data>
+  <data name="config.prefer" xml:space="preserve">
+    <value>Toujours préférer :rune1 au lieu de :rune2</value>
+  </data>
+  <data name="config.changeonthreshold" xml:space="preserve">
+    <value>Passer à :rune quand :stat atteint :threshold</value>
+  </data>
+  <data name="config.neverchange_threshold" xml:space="preserve">
+    <value>IA ne passera jamais à :rune à cause du :threshold</value>
+  </data>
+  <data name="config.alwaysland" xml:space="preserve">
+    <value>:rune peut toujours être utilisée</value>
+  </data>
+  <data name="config.canland_maxvalue" xml:space="preserve">
+    <value>:rune peut être utilisée uniquement quand la valeur est inférieure ou égale à :maxvalue</value>
+  </data>
+    <data name="showWarningsCheckbox.Text" xml:space="preserve">
+    <value>Afficher des conseils et avertissements utiles</value>
+  </data>
+    <data name="automaticShutdownLabel.Text" xml:space="preserve">
+    <value>Arrêt automatique lorsque le bot s'arrête</value>
+  </data>
+    <data name="enableRuneCheckingCheckbox.Text" xml:space="preserve">
+    <value>Arrêter de forgermager si la quantité de runes détectées est à 0 (uniquement à haute résolution)</value>
+  </data>
+    <data name="customScriptLabel.Text" xml:space="preserve">
+    <value>Script de forgemagie personnalisé</value>
+  </data>
+    <data name="scriptChangeButton.Text" xml:space="preserve">
+    <value>Choisir le Fichier</value>
+  </data>
+    <data name="scriptResetButton.Text" xml:space="preserve">
+    <value>Réinitialiser IA</value>
+  </data>
+    <data name="publishExosCheckbox.Text" xml:space="preserve">
+    <value>Publier ses exos au Hall of Fame</value>
+  </data>
+    <data name="enableKamasCalculationCheckbox.Text" xml:space="preserve">
+    <value>Suivre la moyenne des kamas dépensés</value>
+  </data>
+    <data name="config.default" xml:space="preserve">
+    <value>La valeur par défaut est :value</value>
+  </data>
+  <data name="exampleScriptsLinkLabel.Text" xml:space="preserve">
+    <value>Voir des exemples</value>
+  </data>
+    <data name="popup.error_notavailable_unlimitedstandard_plan" xml:space="preserve">
+    <value>Cette fonctionnalité est réservée aux utilisateurs abonnés au forfait Standard ou Illimité. Visitez le site Web officiel d'Inkybot pour mettre à niveau les plans.</value>
+  </data>
+    <data name="popup.error_notavailable_current_plan" xml:space="preserve">
+    <value>Cette fonctionnalité n'est pas disponible dans votre plan tarifaire actuel. Visitez le site Web officiel d'Inkybot pour mettre à niveau les plans.</value>
+  </data>
+    <data name="popup.error_restricted" xml:space="preserve">
+    <value>Fonctionnalité restreinte</value>
+  </data>
+  <data name="autoShutdownComboBox.OptionDisabled" xml:space="preserve">
+    <value>Désactivé</value>
+  </data>
+  <data name="autoShutdownComboBox.OptionMinute" xml:space="preserve">
+    <value>1 minute</value>
+  </data>
+  <data name="autoShutdownComboBox.OptionMinutes" xml:space="preserve">
+    <value>:value minutes</value>
+  </data>
+  <data name="customResizeRatioNumericUpDownLabel.Text" xml:space="preserve">
+    <value>Rapport de redimensionnement d'image ROC personnalisé
+(laisser à "1" sauf si les caractéristiques ne le sont pas
+reconnu correctement)</value>
+  </data>
+  <data name="autoStartNewSessionCheckbox.Text" xml:space="preserve">
+    <value>Démarrer automatiquement une nouvelle session de statistiques après un passage d'exo</value>
+  </data>
+</root>
