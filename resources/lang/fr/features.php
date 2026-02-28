@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'heading' => 'Caractéristiques',
+    'heading' => 'Comment l\'utiliser?',
     'setup_alt' => 'Fiche de préparation à l\'Alliance Gloursonne',
     'client_alt' => 'Aperçu du client Inkybot avec un mage exotique PM réussi de l\'Alliance Gloursonne',
     'config_alt' => 'Formulaire de configuration pour Alliance Gloursonne',
