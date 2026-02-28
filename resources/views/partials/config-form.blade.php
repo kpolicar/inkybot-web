@@ -120,7 +120,7 @@
     </div>
     <div class="footer">
         <div class="footer-left">
-            <a href="#" class="examples-link">{{ __('winforms.config_see_examples') }}</a>
+            <span href="#" class="examples-link">{{ __('winforms.config_see_examples') }}</a>
             <div class="file-picker" data-hl="cf-script">
                 {{ __('winforms.config_custom_script') }}
                 <div class="button">{{ __('winforms.config_choose_file') }}</div>

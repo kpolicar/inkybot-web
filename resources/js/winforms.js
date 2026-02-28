@@ -11,10 +11,12 @@
             td.dataset.hl = key;
         });
     });
-    // Only the first queue item gets the highlight
+    // All queue items get the highlight
     wrapper.querySelectorAll('.queue-window .content[data-hl]').forEach(function (content) {
-        var first = content.querySelector('.queue-item');
-        if (first) first.dataset.hl = content.dataset.hl;
+        var key = content.dataset.hl;
+        content.querySelectorAll('.queue-item').forEach(function (item) {
+            item.dataset.hl = key;
+        });
     });
 
     // ── Highlight helpers ─────────────────────────────────────────────────

@@ -1,0 +1,386 @@
+// ============================================================
+// Dofus Maging Window — styles extracted from maging-table.blade.php
+// ============================================================
+
+:root {
+    --bg-outer: #212032;
+    --bg-header: linear-gradient(180deg, #575675 0%, #3D3C55 100%);
+    --bg-top-panel: #3D3D53;
+    --bg-main-left: #36354C;
+    --bg-main-right: #252438;
+    --bg-row: #2F2D48;
+    --bg-slot: #222135;
+    --border-window: #151421;
+    --text-light: #F2F2F2;
+    --text-muted: #9D9CAE;
+    --text-green: #8FD838;
+    --xp-bar: #E1E63C;
+}
+
+.dofus-window {
+    width: 900px;
+    background-color: var(--bg-outer);
+    border-radius: 12px;
+    border: 2px solid var(--border-window);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    overflow: visible; /* CRITICAL: Lets SVG lines render outside the bounds to the left */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: var(--text-light);
+}
+
+.window-header {
+    background: var(--bg-header);
+    text-align: center;
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    border-bottom: 2px solid var(--border-window);
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+.window-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px 10px 0 0;
+}
+
+.top-panel {
+    background-color: var(--bg-top-panel);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-window);
+    position: relative;
+    z-index: 10;
+}
+
+.profile-section { display: flex; align-items: center; gap: 12px; width: 250px; }
+.profile-img { width: 52px; height: 52px; background-color: #111; border: 2px solid #CCC; border-radius: 4px; overflow: hidden; }
+.profile-img img { width: 100%; height: 100%; object-fit: cover; }
+.profile-details { display: flex; flex-direction: column; gap: 2px; }
+.profile-name { font-size: 16px; font-weight: bold; }
+.profile-job { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+.profile-level { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.profile-level span { color: white; font-weight: bold; }
+.xp-bar { display: flex; gap: 2px; height: 6px; }
+.xp-bar div { flex: 1; width: 8px; background-color: var(--xp-bar); border-radius: 1px; box-shadow: 0 1px 1px rgba(0,0,0,0.5); }
+
+.reliquat-section { font-size: 14px; color: var(--text-muted); font-style: italic; flex: 1; text-align: center; }
+.actions-section { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.item-slots { display: flex; gap: 8px; }
+.slot {
+    width: 38px; height: 38px;
+    background-color: var(--bg-slot);
+    border-radius: 4px;
+    border: 1px inset rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05);
+}
+.slot img { width: 80%; height: 80%; object-fit: contain; }
+.slot-faint img { opacity: 0.2; filter: grayscale(100%); }
+
+.buttons { display: flex; gap: 8px; }
+.btn {
+    background: linear-gradient(180deg, #686868 0%, #4D4D4D 100%);
+    border: 1px solid #222;
+    color: #999;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
+}
+
+.main-content { display: flex; height: 520px; position: relative; }
+.history-panel {
+    width: 260px;
+    background-color: var(--bg-main-left);
+    border-right: 2px solid var(--border-window);
+    border-radius: 0 0 0 10px;
+    display: flex; flex-direction: column;
+    position: relative;
+    contain: layout paint;
+}
+.history-list { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px; position: relative; z-index: 2; }
+.history-list::-webkit-scrollbar { width: 6px; }
+.history-list::-webkit-scrollbar-track { background: #252438; }
+.history-list::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+.history-item { display: flex; gap: 12px; align-items: flex-start; }
+.history-main-icon { width: 24px; height: 24px; flex-shrink: 0; }
+.history-main-icon img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)); }
+.history-details { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: bold; }
+.history-stat { display: flex; align-items: center; gap: 6px; }
+.history-stat-icon { width: 14px; height: 14px; display: inline-flex; justify-content: center; align-items: center; flex-shrink: 0; }
+.history-stat-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.text-pos { color: var(--text-green); }
+.text-neg { color: #EFEFEF; }
+.text-info { color: #8A899C; font-weight: normal; margin-left: 20px; }
+
+.history-footer {
+    padding: 12px 15px;
+    background-color: var(--bg-main-left);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-radius: 0 0 0 10px;
+    position: relative;
+    z-index: 2;
+}
+.btn-clear {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-weight: bold;
+    display: flex; align-items: center; gap: 8px;
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 0;
+}
+.btn-clear img { width: 14px; height: 14px; opacity: 0.7; }
+
+.stats-panel {
+    flex: 1;
+    background-color: var(--bg-main-right);
+    border-radius: 0 0 10px 0;
+    padding: 15px 20px;
+    display: flex; flex-direction: column;
+    position: relative;
+    contain: layout paint;
+}
+
+// --- OCR SVG ANIMATION STYLES ---
+.panel-ocr-svg, .master-connector-svg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 100; overflow: visible;
+}
+
+@keyframes dash-animation { to { stroke-dashoffset: -140; } }
+
+.ocr-shadow, .ocr-connector-shadow path {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.ocr-rect, .ocr-connector path {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 8, 6;
+    animation: dash-animation 3s linear infinite;
+}
+.rune-ocr-svg .ocr-rect { animation: dash-animation 5s linear infinite; }
+.ocr-connector path { opacity: 0.9; stroke-linecap: round; stroke-linejoin: round; }
+
+.ocr-mobile-pipe { display: none; }
+@media (max-width: 1500px) {
+    .ocr-desktop-pipe { display: none; }
+    .ocr-mobile-pipe  { display: block; }
+    .scanner-node     { left: calc(50% - 25px) !important; top: calc(var(--pipeline-y) + 10px); }
+}
+
+// --- SCANNER NODE & SVG ANIMATIONS ---
+.scanner-node {
+    position: absolute;
+    top: calc(var(--pipeline-y) - 28px);
+    left: 0;
+    width: 50px; height: 50px;
+    z-index: 150;
+    background-color: #ffffff;
+    display: flex; justify-content: center; align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(58, 58, 58, 0.8);
+}
+.scanner-node svg { width: 48px; height: 48px; }
+
+.scan-group {
+    animation: scan-bounce 4s ease-in-out infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+@keyframes scan-bounce {
+    0%   { transform: translateY(35px); }
+    50%  { transform: translateY(155px); }
+    100% { transform: translateY(35px); }
+}
+
+.glow-top    { animation: fade-top-glow 4s ease-in-out infinite; will-change: opacity; }
+.glow-bottom { animation: fade-bottom-glow 4s ease-in-out infinite; will-change: opacity; }
+
+@keyframes fade-top-glow {
+    0%   { opacity: 1; }
+    40%  { opacity: 1; }
+    60%  { opacity: 0; }
+    90%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fade-bottom-glow {
+    0%   { opacity: 0; }
+    40%  { opacity: 0; }
+    60%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+// STATS GRID
+.stats-grid {
+    display: grid;
+    grid-template-columns: 45px 55px 1fr 60px 45px 45px 45px;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    z-index: 2;
+}
+.stats-header { color: var(--text-muted); font-size: 13px; margin-bottom: 8px; padding: 0 8px; }
+.stats-header div { text-align: left; }
+.stats-header .col-rune { text-align: center; }
+
+.stat-row {
+    background-color: var(--bg-row);
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin-bottom: 4px;
+    font-size: 13px;
+    transition: background-color 0.2s;
+    border: 1px solid transparent;
+    position: relative;
+    height: 32px;
+}
+.stat-row:hover { background-color: #373554; }
+.row-highlight { border: 2px solid var(--text-green); background-color: #2F3830; }
+.row-highlight:hover { background-color: #384239; }
+
+.col-min, .col-max { color: var(--text-muted); text-align: center; }
+.col-stat { display: flex; align-items: center; gap: 6px; color: var(--text-green); font-weight: bold; }
+.col-modif { display: flex; justify-content: center; align-items: center; }
+.modif-badge { background-color: var(--text-green); color: #121212; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px; }
+.col-rune { display: flex; justify-content: center; align-items: center; }
+
+// Img-based stat icon container (for stats without a sprite equivalent)
+.stat-icon-img {
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    img { max-width: 100%; max-height: 100%; object-fit: contain; }
+}
+
+.rune-box {
+    width: 28px; height: 28px;
+    background-color: var(--bg-slot);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    display: flex; justify-content: center; align-items: center;
+}
+.rune-ocr-svg { position: absolute; top: -2px; left: -2px; width: 32px; height: 32px; pointer-events: none; z-index: 100; }
+.rune-box img { width: 85%; height: 85%; object-fit: contain; }
+.rune-qty {
+    position: absolute; top: 0; right: 1px;
+    font-family: 'Verdana', sans-serif;
+    font-size: 9px; font-weight: 900;
+    color: white; -webkit-text-stroke: 0.2px black;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    z-index: 2;
+}
+
+// Rune sprite icons scaled to 24px (from 128px originals, scale = 24/128)
+.rune-sprite {
+    width: 24px; height: 24px;
+    display: inline-block;
+    background-image: url('/images/dofus_runes_spritesheet.png');
+    background-repeat: no-repeat;
+    background-size: 336px 336px;
+}
+.rune-vit-rune        { background-position: -72px -312px; }
+.rune-pa-vit-rune     { background-position: -264px -144px; }
+.rune-ra-vit-rune     { background-position: -312px -216px; }
+.rune-str-rune        { background-position: -120px -240px; }
+.rune-pa-str-rune     { background-position: -264px -96px; }
+.rune-ra-str-rune     { background-position: -120px -192px; }
+.rune-int-rune        { background-position: -288px -24px; }
+.rune-pa-int-rune     { background-position: 0 -96px; }
+.rune-ra-int-rune     { background-position: -312px -168px; }
+.rune-cha-rune        { background-position: -192px 0; }
+.rune-pa-cha-rune     { background-position: -72px -72px; }
+.rune-ra-cha-rune     { background-position: -192px -168px; }
+.rune-wis-rune        { background-position: -192px -312px; }
+.rune-pa-wis-rune     { background-position: 0 -168px; }
+.rune-ra-wis-rune     { background-position: -24px -240px; }
+.rune-sum-rune        { background-position: -144px -240px; }
+.rune-neutral-dam-rune    { background-position: -216px -48px; }
+.rune-pa-neutral-dam-rune { background-position: -96px -96px; }
+.rune-earth-dam-rune      { background-position: -72px -24px; }
+.rune-pa-earth-dam-rune   { background-position: -192px -72px; }
+.rune-fire-dam-rune       { background-position: -144px -24px; }
+.rune-pa-fire-dam-rune    { background-position: -240px -72px; }
+.rune-water-dam-rune      { background-position: -96px -312px; }
+.rune-pa-water-dam-rune   { background-position: -288px -144px; }
+.rune-ini-rune        { background-position: -264px -24px; }
+.rune-pa-ini-rune     { background-position: -312px -72px; }
+.rune-ra-ini-rune     { background-position: -288px -168px; }
+.rune-fire-res-per-rune { background-position: -168px -24px; }
+.rune-pa-fire-res-rune  { background-position: -264px -72px; }
+.rune-ra-fire-res-rune  { background-position: -264px -168px; }
+
+// Item slot sprites — 2px padding, image scaled to 34px inside 38px slot
+.slot-gloursonne {
+    background-image: url('/images/items/items-sprite.png');
+    background-repeat: no-repeat;
+    background-size: 136px 34px; /* 4 frames × 34px */
+    background-position: 2px 2px;
+}
+
+// ============================================================
+// Stat sprite icons — scaled to 14px for use inside .dofus-window
+// Full spritesheet: 275×275px (5 cols × 5 rows of 55px)
+// At 14px: background-size = 70×70px, positions × (14/55)
+// ============================================================
+.dofus-window {
+    .stat-icon {
+        width: 14px;
+        height: 14px;
+        background-size: 70px 70px;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+
+    .stat-icon.stat-ap           { background-position:    0      0; }
+    .stat-icon.stat-apparry      { background-position: -14px     0; }
+    .stat-icon.stat-apreduction  { background-position: -28px     0; }
+    .stat-icon.stat-agility      { background-position: -42px     0; }
+    .stat-icon.stat-chance       { background-position: -56px     0; }
+    .stat-icon.stat-critical     { background-position:    0  -14px; }
+    .stat-icon.stat-dodge        { background-position: -14px -14px; }
+    .stat-icon.stat-heals        { background-position: -28px -14px; }
+    .stat-icon.stat-initiative   { background-position: -42px -14px; }
+    .stat-icon.stat-intelligence { background-position: -56px -14px; }
+    .stat-icon.stat-lock         { background-position:    0  -28px; }
+    .stat-icon.stat-mp           { background-position: -14px -28px; }
+    .stat-icon.stat-mpparry      { background-position: -28px -28px; }
+    .stat-icon.stat-mpreduction  { background-position: -42px -28px; }
+    .stat-icon.stat-pods         { background-position: -56px -28px; }
+    .stat-icon.stat-power        { background-position:    0  -42px; }
+    .stat-icon.stat-prospecting  { background-position: -14px -42px; }
+    .stat-icon.stat-range        { background-position: -28px -42px; }
+    .stat-icon.stat-strength     { background-position: -42px -42px; }
+    .stat-icon.stat-summons      { background-position: -56px -42px; }
+    .stat-icon.stat-vitality     { background-position:    0  -56px; }
+    .stat-icon.stat-wisdom       { background-position: -14px -56px; }
+}

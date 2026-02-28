@@ -9,7 +9,9 @@
     </div>
     <div id="how-works-outer" class="flex justify-center">
         <div class="dashboard-container">
-            @include('partials.setup-form')
+            <div class="setup-form-offset">
+                @include('partials.setup-form')
+            </div>
             @include('partials.maging-table', ['showOcr' => true, 'streamHeight' => 180])
         </div>
         <div class="how-works-desc pl-8 pt-16 max-w-xs">

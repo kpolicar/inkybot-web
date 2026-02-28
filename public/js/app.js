@@ -2766,11 +2766,13 @@ gradient.initGradient("#gradient-canvas");
     th.closest('table').querySelectorAll('tr td:nth-child(' + colIdx + ')').forEach(function (td) {
       td.dataset.hl = key;
     });
-  }); // Only the first queue item gets the highlight
+  }); // All queue items get the highlight
 
   wrapper.querySelectorAll('.queue-window .content[data-hl]').forEach(function (content) {
-    var first = content.querySelector('.queue-item');
-    if (first) first.dataset.hl = content.dataset.hl;
+    var key = content.dataset.hl;
+    content.querySelectorAll('.queue-item').forEach(function (item) {
+      item.dataset.hl = key;
+    });
   }); // ── Highlight helpers ─────────────────────────────────────────────────
 
   function addHl(key) {
@@ -22839,6 +22841,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/stats.css":
+/*!*********************************!*\
+  !*** ./resources/css/stats.css ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/css/runes.css":
 /*!*********************************!*\
   !*** ./resources/css/runes.css ***!
@@ -23745,6 +23760,7 @@ try {
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/runes": 0,
+/******/ 			"css/stats": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
@@ -23793,9 +23809,10 @@ try {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/runes","css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/runes","css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/runes","css/app"], () => (__webpack_require__("./resources/css/runes.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/runes","css/stats","css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/runes","css/stats","css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/runes","css/stats","css/app"], () => (__webpack_require__("./resources/css/stats.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/runes","css/stats","css/app"], () => (__webpack_require__("./resources/css/runes.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

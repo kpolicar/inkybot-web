@@ -42,7 +42,7 @@
         </table>
     </div>
     <div class="footer">
-        <div class="footer-top"><a href="#" class="examples-link">{{ __('winforms.setup_see_examples') }}</a></div>
+        <div class="footer-top"><span href="#" class="examples-link">{{ __('winforms.setup_see_examples') }}</a></div>
         <div class="footer-middle">
             <div class="custom-dropdown" style="width: calc(105px * var(--sw-scale, 1));">
                 <div class="custom-dropdown-text">PM</div>

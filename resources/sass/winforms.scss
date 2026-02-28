@@ -132,7 +132,6 @@
         font-size: calc(9px * var(--sw-scale));
         text-align: center;
         text-transform: uppercase;
-        cursor: pointer;
         display: flex; justify-content: center; align-items: center;
     }
 
@@ -251,7 +250,7 @@
         display: flex; justify-content: space-between; align-items: center;
     }
     .num-input-controls { display: flex; flex-direction: column; margin-left: calc(4px * var(--sw-scale)); }
-    .num-input-btn { font-size: calc(7px * var(--sw-scale)); line-height: calc(7px * var(--sw-scale)); color: #999; cursor: pointer; }
+    .num-input-btn { font-size: calc(7px * var(--sw-scale)); line-height: calc(7px * var(--sw-scale)); color: #999; }
 
     .footer {
         padding: calc(10px * var(--sw-scale));
@@ -372,6 +371,22 @@
     .icon-crocanneau { background: radial-gradient(circle, #4fa699 0%, #1f423d 100%); }
     .icon-gelano     { background: radial-gradient(circle, #9b7fd4 0%, #2d1a5a 100%); }
     .icon-douze      { background: radial-gradient(circle, #d4a017 0%, #5a3800 100%); }
+
+    // ── Item sprite sheet (128×128 per frame, horizontal, 4 frames) ────────
+    $_icon-frame: 36px; // must match .item-icon-placeholder width/height
+    $_icon-pad:   2px;
+    $_icon-inner: $_icon-frame - $_icon-pad * 2; // drawable area inside padding
+    @mixin item-sprite($frame) {
+        background-image: url('/images/items/items-sprite.png');
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: calc(#{$_icon-inner * 4} * var(--sw-scale)) calc(#{$_icon-inner} * var(--sw-scale));
+        background-position: calc(#{$_icon-pad - $_icon-inner * $frame} * var(--sw-scale)) calc(#{$_icon-pad} * var(--sw-scale));
+    }
+    .icon-bearbaric_wedding_ring { @include item-sprite(0); }
+    .icon-belladonnas_cruelty    { @include item-sprite(1); }
+    .icon-crocoring              { @include item-sprite(2); }
+    .icon-jammy_jack_glove       { @include item-sprite(3); }
 
     .item-details { display: flex; gap: calc(8px * var(--sw-scale)); flex: 1; }
     .detail-col   { display: flex; flex-direction: column; gap: calc(4px * var(--sw-scale)); }
