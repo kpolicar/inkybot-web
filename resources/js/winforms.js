@@ -1,6 +1,6 @@
 // ── Annotation popup loop & hover interaction (features page) ────────────
 (function () {
-    var wrapper = document.getElementById('sf-annotated-wrapper');
+    var wrapper = document.querySelector('.form-showcase');
     if (!wrapper) return;
 
     // Propagate data-hl from th[data-hl-col] down to all td in that column
@@ -31,15 +31,15 @@
             el.classList.remove('hl-hover');
         });
     }
-    // hl-hover only applies to the popup card (scale animation),
+    // hl-hover only applies to the annotation card (scale animation),
     // never to table cells or queue items (loop does NOT call this)
     function addHlHover(key) {
-        wrapper.querySelectorAll('.sf-popup[data-hl="' + key + '"]').forEach(function (el) {
+        wrapper.querySelectorAll('.annotation[data-hl="' + key + '"]').forEach(function (el) {
             el.classList.add('hl-hover');
         });
     }
     function removeHlHover(key) {
-        wrapper.querySelectorAll('.sf-popup[data-hl="' + key + '"]').forEach(function (el) {
+        wrapper.querySelectorAll('.annotation[data-hl="' + key + '"]').forEach(function (el) {
             el.classList.remove('hl-hover');
         });
     }
@@ -97,8 +97,8 @@
     }
 
     // ── User interaction ──────────────────────────────────────────────────
-    wrapper.querySelectorAll('.sf-annotated').forEach(function (container) {
-        // Pause as soon as mouse enters any annotated block
+    wrapper.querySelectorAll('.form-card').forEach(function (container) {
+        // Pause as soon as mouse enters any form card
         container.addEventListener('mouseenter', function () {
             clearTimeout(resumeId);
             userActive = true;
@@ -120,7 +120,7 @@
                 }
                 hoverKey = key;
                 addHl(hoverKey);
-                addHlHover(hoverKey); // scale popup — cursor only
+                addHlHover(hoverKey); // scale annotation — cursor only
             } else if (hoverKey) {
                 removeHl(hoverKey);
                 removeHlHover(hoverKey);
@@ -136,7 +136,7 @@
 
 // ── Feature image scaling (existing section below the forms) ─────────────
 (function () {
-    var f = document.querySelector('#features-section');
+    var f = document.querySelector('.features-section');
     var a = document.querySelector('#imgSetupForm');
     var b = document.querySelector('#imgClientForm');
     var c = document.querySelector('#imgConfigForm');

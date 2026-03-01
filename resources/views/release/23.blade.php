@@ -82,7 +82,7 @@
 
     <div class="anchor" id="usage"></div>
     
-<section class="bg-gray-100 py-8 pb-12" id="features-section">
+<section class="features-section bg-gray-100 py-8 pb-12">
 
     <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         {{ __('features.heading') }}
@@ -91,68 +91,74 @@
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
-    <div id="sf-annotated-wrapper" class="flex justify-around items-center" style="gap: 120px; margin: 120px 0;">
-        <div class="sf-annotated">
-            @include('partials.setup-form')
+    <div class="form-showcase flex justify-around items-center" style="gap: 120px; margin: 120px 0;">
+        <div class="form-card">
+            <div class="annotation-anchor">
+                @include('partials.setup-form')
 
-            <div class="sf-popup" data-hl="sf-cible" style="top: -100px; left: 150px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_sf_cible_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_sf_cible_desc') }}</p>
-                <p class="sf-popup__example">{{ __('winforms.popup_sf_cible_example') }}</p>
-            </div>
+                <div class="annotation" data-hl="sf-cible">
+                    <div class="annotation__title">{{ __('winforms.popup_sf_cible_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_sf_cible_desc') }}</p>
+                    <p class="annotation__example">{{ __('winforms.popup_sf_cible_example') }}</p>
+                </div>
 
-            <div class="sf-popup" data-hl="sf-priorite" style="top: 50px; right: -130px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_sf_priorite_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_sf_priorite_desc') }}</p>
-                <p class="sf-popup__example">{{ __('winforms.popup_sf_priorite_example') }}</p>
-            </div>
+                <div class="annotation" data-hl="sf-priorite">
+                    <div class="annotation__title">{{ __('winforms.popup_sf_priorite_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_sf_priorite_desc') }}</p>
+                    <p class="annotation__example">{{ __('winforms.popup_sf_priorite_example') }}</p>
+                </div>
 
-            <div class="sf-popup" data-hl="sf-minimum" style="bottom: -70px; left: 330px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_sf_minimum_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_sf_minimum_desc') }}</p>
-                <p class="sf-popup__example">{{ __('winforms.popup_sf_minimum_example') }}</p>
-            </div>
-        </div>
-
-        <div class="sf-annotated">
-            @include('partials.config-form')
-
-            <div class="sf-popup sf-popup--top" data-hl="cf-use-runes" style="top: -100px; left: -80px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_cf_use_runes_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_cf_use_runes_desc') }}</p>
-                <p class="sf-popup__example">{{ __('winforms.popup_cf_use_runes_example') }}</p>
-            </div>
-
-            <div class="sf-popup" data-hl="cf-max-rune" style="top: -20px; right: -120px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_cf_max_rune_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_cf_max_rune_desc') }}</p>
-                <p class="sf-popup__example">{{ __('winforms.popup_cf_max_rune_example') }}</p>
-            </div>
-
-            <div class="sf-popup" data-hl="cf-threshold" style="top: -80px; right: 200px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_cf_threshold_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_cf_threshold_desc') }}</p>
-                <p class="sf-popup__example">{{ __('winforms.popup_cf_threshold_example') }}</p>
-            </div>
-
-            <div class="sf-popup" data-hl="cf-script" style="bottom: -60px; left: -120px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_cf_script_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_cf_script_desc') }}</p>
-            </div>
-
-            <div class="sf-popup" data-hl="cf-presets" style="bottom: -20px; right: -120px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_cf_presets_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_cf_presets_desc') }}</p>
+                <div class="annotation" data-hl="sf-minimum">
+                    <div class="annotation__title">{{ __('winforms.popup_sf_minimum_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_sf_minimum_desc') }}</p>
+                    <p class="annotation__example">{{ __('winforms.popup_sf_minimum_example') }}</p>
+                </div>
             </div>
         </div>
 
-        <div class="sf-annotated">
-            @include('partials.queue-form')
+        <div class="form-card">
+            <div class="annotation-anchor">
+                @include('partials.config-form')
 
-            <div class="sf-popup" data-hl="qf-queue" style="top: 150px; left: -90px;">
-                <div class="sf-popup__label">{{ __('winforms.popup_qf_queue_label') }}</div>
-                <p class="sf-popup__desc">{{ __('winforms.popup_qf_queue_desc') }}</p>
-                <p class="sf-popup__example">{{ __('winforms.popup_qf_queue_example') }}</p>
+                <div class="annotation annotation--top" data-hl="cf-use-runes">
+                    <div class="annotation__title">{{ __('winforms.popup_cf_use_runes_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_cf_use_runes_desc') }}</p>
+                    <p class="annotation__example">{{ __('winforms.popup_cf_use_runes_example') }}</p>
+                </div>
+
+                <div class="annotation" data-hl="cf-max-rune">
+                    <div class="annotation__title">{{ __('winforms.popup_cf_max_rune_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_cf_max_rune_desc') }}</p>
+                    <p class="annotation__example">{{ __('winforms.popup_cf_max_rune_example') }}</p>
+                </div>
+
+                <div class="annotation" data-hl="cf-threshold">
+                    <div class="annotation__title">{{ __('winforms.popup_cf_threshold_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_cf_threshold_desc') }}</p>
+                    <p class="annotation__example">{{ __('winforms.popup_cf_threshold_example') }}</p>
+                </div>
+
+                <div class="annotation" data-hl="cf-script">
+                    <div class="annotation__title">{{ __('winforms.popup_cf_script_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_cf_script_desc') }}</p>
+                </div>
+
+                <div class="annotation" data-hl="cf-presets">
+                    <div class="annotation__title">{{ __('winforms.popup_cf_presets_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_cf_presets_desc') }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <div class="annotation-anchor">
+                @include('partials.queue-form')
+
+                <div class="annotation" data-hl="qf-queue">
+                    <div class="annotation__title">{{ __('winforms.popup_qf_queue_label') }}</div>
+                    <p class="annotation__desc">{{ __('winforms.popup_qf_queue_desc') }}</p>
+                    <p class="annotation__example">{{ __('winforms.popup_qf_queue_example') }}</p>
+                </div>
             </div>
         </div>
     </div>

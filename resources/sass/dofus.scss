@@ -17,25 +17,8 @@
     --xp-bar: #E1E63C;
 }
 
-@screen sm {
-    .dofus-window {
-        --sw-scale: 0.7 !important;
-    }
-}
-
-@screen md {
-    .dofus-window {
-        --sw-scale: 0.8 !important;
-    }
-}
-
-@screen lg {
-    .dofus-window {
-        --sw-scale: 1 !important;
-    }
-}
 .dofus-window {
-    --sw-scale: 0.5;
+    // --sw-scale base (0.5) is set in winforms.scss alongside the other window scales
     width: calc(900px * var(--sw-scale));
     background-color: var(--bg-outer);
     border-radius: 12px;
@@ -214,14 +197,12 @@
 .rune-ocr-svg .ocr-rect { animation: dash-animation 5s linear infinite; }
 .ocr-connector path { opacity: 0.9; stroke-linecap: round; stroke-linejoin: round; }
 
-// default = mobile: desktop pipe hidden
-.ocr-desktop-pipe { display: none; }
+// Mobile defaults for OCR pipe + scanner node are in winforms.scss
+// (must come before @screen overrides in the cascade)
 
 // --- SCANNER NODE & SVG ANIMATIONS ---
 .scanner-node {
     position: absolute;
-    top: calc(var(--pipeline-y) + 10px * var(--sw-scale)); // mobile default
-    left: calc(50% - 22px * var(--sw-scale));              // mobile default — half of scaled node width
     width: calc(50px * var(--sw-scale)); height: calc(50px * var(--sw-scale));
     z-index: 150;
     background-color: #ffffff;
@@ -230,13 +211,6 @@
     box-shadow: 0 0 4px rgba(58, 58, 58, 0.8);
 }
 .scanner-node svg { width: calc(48px * var(--sw-scale)); height: calc(48px * var(--sw-scale)); }
-
-// desktop overrides — after the base block so they win in the cascade
-@screen xl {
-    .ocr-desktop-pipe { display: block; }
-    .ocr-mobile-pipe  { display: none; }
-    .scanner-node     { left: 0; top: calc(var(--pipeline-y) - 28px * var(--sw-scale)); }
-}
 
 .scan-group {
     animation: scan-bounce 4s ease-in-out infinite;

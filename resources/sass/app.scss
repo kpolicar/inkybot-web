@@ -209,18 +209,4 @@ input[type="color"]:focus,
 @screen 2xl { .container { max-width: 1280px; } }
 @screen 3xl { .container { max-width: 1280px; } }
 
-.setup-form-offset {
-    position: static;
-}
-@screen lg {
-    .setup-form-offset {
-        margin-left: 8px;
-    }
-}
-@screen xl {
-    .setup-form-offset {
-        position: relative;
-        top: -15px;
-        right: -45px;
-    }
-}
+// .demo-offset styles are now in winforms.scss responsive section
