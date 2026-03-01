@@ -71,7 +71,7 @@
     </div>
     @endif
 
-    <div class="window-header">Joaillomager</div>
+    <div class="window-header">{{ __('maging.window_title') }}</div>
     
     <div class="top-panel">
         <div class="profile-section">
@@ -80,8 +80,8 @@
             </div>
             <div class="profile-details">
                 <div class="profile-name">Inkybot</div>
-                <div class="profile-job">JOAILLOMAGE</div>
-                <div class="profile-level">NIV. <span>200</span></div>
+                <div class="profile-job">{{ __('maging.job_title') }}</div>
+                <div class="profile-level">{{ __('maging.level') }} <span>200</span></div>
                 <div class="xp-bar">
                     <div></div><div></div><div></div><div></div><div></div><div></div>
                     <div></div><div></div><div></div><div></div><div></div><div></div>
@@ -102,8 +102,8 @@
                 </div>
             </div>
             <div class="buttons">
-                <div class="btn">FUSIONNER TOUT</div>
-                <div class="btn">FUSIONNER</div>
+                <div class="btn">{{ __('maging.merge_all') }}</div>
+                <div class="btn">{{ __('maging.merge') }}</div>
             </div>
         </div>
     </div>
@@ -202,7 +202,7 @@
             <div class="history-footer">
                 <div class="btn-clear">
                     <img src="icons/ui/trash.png" alt="🗑️" onerror="this.outerHTML='🗑️'">
-                    VIDER L'HISTORIQUE
+                    {{ __('maging.clear_history') }}
                 </div>
             </div>
         </div>

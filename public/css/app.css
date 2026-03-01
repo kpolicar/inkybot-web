@@ -29556,7 +29556,7 @@ readers do not read off random characters that represent icons */
   gap: 8px;
 }
 
-slot {
+.slot {
   width: 38px;
   height: 38px;
   background-color: var(--bg-slot);
@@ -29568,14 +29568,14 @@ slot {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-slot img {
+.slot img {
   width: 80%;
   height: 80%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-slot-faint img {
+.slot-faint img {
   opacity: 0.2;
   filter: grayscale(100%);
 }
@@ -30107,144 +30107,6 @@ slot-faint img {
   z-index: 2;
 }
 
-.stat-icon {
-  width: 55px;
-  height: 55px;
-  display: inline-block;
-}
-
-.stat-ap {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: 0px 0px;
-}
-
-.stat-apparry {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -55px 0px;
-}
-
-.stat-apreduction {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -110px 0px;
-}
-
-.stat-agility {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -165px 0px;
-}
-
-.stat-chance {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -220px 0px;
-}
-
-.stat-critical {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: 0px -55px;
-}
-
-.stat-dodge {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -55px -55px;
-}
-
-.stat-heals {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -110px -55px;
-}
-
-.stat-initiative {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -165px -55px;
-}
-
-.stat-intelligence {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -220px -55px;
-}
-
-.stat-lock {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: 0px -110px;
-}
-
-.stat-mp {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -55px -110px;
-}
-
-.stat-mpparry {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -110px -110px;
-}
-
-.stat-mpreduction {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -165px -110px;
-}
-
-.stat-pods {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -220px -110px;
-}
-
-.stat-power {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: 0px -165px;
-}
-
-.stat-prospecting {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -55px -165px;
-}
-
-.stat-range {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -110px -165px;
-}
-
-.stat-strength {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -165px -165px;
-}
-
-.stat-summons {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -220px -165px;
-}
-
-.stat-vitality {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: 0px -220px;
-}
-
-.stat-wisdom {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-position: -55px -220px;
-}
-
 .rune-sprite {
   width: 24px;
   height: 24px;
@@ -30461,7 +30323,7 @@ slot-faint img {
   background-position: -264px -168px;
 }
 
-slot-gloursonne {
+.slot-gloursonne {
   background-image: url(/images/items-sprite.png?ed392d146db7d1aac7b3d348a4eb7594);
   background-repeat: no-repeat;
   background-size: 136px 34px;
@@ -30474,160 +30336,6 @@ slot-gloursonne {
   height: 14px;
   display: inline-block;
   flex-shrink: 0;
-}
-
-.dofus-window .stat-icon.stat-ap {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: 0px 0px;
-}
-
-.dofus-window .stat-icon.stat-apparry {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -14px 0px;
-}
-
-.dofus-window .stat-icon.stat-apreduction {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -28px 0px;
-}
-
-.dofus-window .stat-icon.stat-agility {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -42px 0px;
-}
-
-.dofus-window .stat-icon.stat-chance {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -56px 0px;
-}
-
-.dofus-window .stat-icon.stat-critical {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: 0px -14px;
-}
-
-.dofus-window .stat-icon.stat-dodge {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -14px -14px;
-}
-
-.dofus-window .stat-icon.stat-heals {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -28px -14px;
-}
-
-.dofus-window .stat-icon.stat-initiative {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -42px -14px;
-}
-
-.dofus-window .stat-icon.stat-intelligence {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -56px -14px;
-}
-
-.dofus-window .stat-icon.stat-lock {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: 0px -28px;
-}
-
-.dofus-window .stat-icon.stat-mp {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -14px -28px;
-}
-
-.dofus-window .stat-icon.stat-mpparry {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -28px -28px;
-}
-
-.dofus-window .stat-icon.stat-mpreduction {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -42px -28px;
-}
-
-.dofus-window .stat-icon.stat-pods {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -56px -28px;
-}
-
-.dofus-window .stat-icon.stat-power {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: 0px -42px;
-}
-
-.dofus-window .stat-icon.stat-prospecting {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -14px -42px;
-}
-
-.dofus-window .stat-icon.stat-range {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -28px -42px;
-}
-
-.dofus-window .stat-icon.stat-strength {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -42px -42px;
-}
-
-.dofus-window .stat-icon.stat-summons {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -56px -42px;
-}
-
-.dofus-window .stat-icon.stat-vitality {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: 0px -56px;
-}
-
-.dofus-window .stat-icon.stat-wisdom {
-  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
-  background-repeat: no-repeat;
-  background-size: 70px 70px;
-  background-position: -14px -56px;
 }
 
 .dofus-window .stat-icon.sprite-air {

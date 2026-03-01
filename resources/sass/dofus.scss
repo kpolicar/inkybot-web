@@ -78,7 +78,7 @@
 .reliquat-section { font-size: 14px; color: var(--text-muted); font-style: italic; flex: 1; text-align: center; }
 .actions-section { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 .item-slots { display: flex; gap: 8px; }
-	slot {
+.slot {
     width: 38px; height: 38px;
     background-color: var(--bg-slot);
     border-radius: 4px;
@@ -86,8 +86,8 @@
     display: flex; align-items: center; justify-content: center;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05);
 }
-	slot img { width: 80%; height: 80%; object-fit: contain; }
-	slot-faint img { opacity: 0.2; filter: grayscale(100%); }
+.slot img { width: 80%; height: 80%; object-fit: contain; }
+.slot-faint img { opacity: 0.2; filter: grayscale(100%); }
 
 .buttons { display: flex; gap: 8px; }
 .btn {
@@ -352,7 +352,7 @@ $_rune-sheet: 336px;
 .rune-ra-fire-res-rune    { @include rune-sprite(11,  7); }
 
 // Item slot sprites — 2px padding, image scaled to 34px inside 38px slot
-	slot-gloursonne {
+.slot-gloursonne {
     background-image: url('../images/items-sprite.png');
     background-repeat: no-repeat;
     background-size: 136px 34px; /* 4 frames × 34px */
