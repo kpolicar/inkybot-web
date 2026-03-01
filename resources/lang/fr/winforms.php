@@ -97,5 +97,5 @@ return [
     // ── Popup: Queue form — Maging Queue ──────────────────────────────────────
     'popup_qf_queue_label'       => 'File de Forgemagie',
     'popup_qf_queue_desc'        => 'Ajoutez des objets à la file pour que le bot continue en arrière-plan avec différents préréglages.',
-    'popup_qf_queue_example'     => '"Le Gelano est le suivant — le bot commencera automatiquement à le forgemager après avoir terminé l\'objet actuel."',
+    'popup_qf_queue_example'     => '"Le Alliance Gloursonne est le suivant — le bot commencera automatiquement à le forgemager après avoir terminé l\'objet actuel."',
 ];

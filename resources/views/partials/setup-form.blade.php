@@ -1,3 +1,21 @@
+@php
+    $setupRows = $setupRows ?? [
+        ['stat' => 'stats.mp',                   'value' => '-',   'target' => 1,   'minimum' => 1,   'priority' => 0, 'exo' => 1],
+        ['stat' => 'stats.vitality',             'value' => 292, 'target' => 250, 'minimum' => 240, 'priority' => 10],
+        ['stat' => 'stats.chance',               'value' => 59,  'target' => 55,  'minimum' => '-', 'priority' => 8],
+        ['stat' => 'stats.agility',              'value' => 58,  'target' => 55,  'minimum' => '-', 'priority' => 8],
+        ['stat' => 'stats.wisdom',               'value' => 30,  'target' => 38,  'minimum' => '-', 'priority' => 7],
+        ['stat' => 'stats.range',                'value' => 1,   'target' => 1,   'minimum' => '-', 'priority' => 0],
+        ['stat' => 'stats.water_damage',         'value' => 11,  'target' => 11,  'minimum' => '-', 'priority' => 6],
+        ['stat' => 'stats.air_damage',           'value' => 11,  'target' => 11,  'minimum' => '-', 'priority' => 6],
+        ['stat' => 'stats.prospecting',          'value' => 6,   'target' => 0,   'minimum' => '-', 'priority' => 0],
+        ['stat' => 'stats.initiative',           'value' => 391, 'target' => 380, 'minimum' => '-', 'priority' => 0],
+        ['stat' => 'stats.per_neutral_resistance','value' => 7,  'target' => 7,   'minimum' => '-', 'priority' => 9],
+        ['stat' => 'stats.per_earth_resistance', 'value' => 7,   'target' => 7,   'minimum' => '-', 'priority' => 9],
+        ['stat' => 'stats.per_fire_resistance',  'value' => 7,   'target' => 7,   'minimum' => '-', 'priority' => 9],
+        ['stat' => 'stats.lock',                 'value' => 4,   'target' => 4,   'minimum' => '-', 'priority' => 5],
+    ];
+@endphp
 <div class="setup-window">
     <div class="title-bar">
         <div class="title">
@@ -24,20 +42,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>{{ __('stats.vitality') }}</td><td>292</td><td>250</td><td>240</td><td>10</td><td class="icon-cell refresh-icon">⟲</td></tr>
-                <tr><td>{{ __('stats.chance') }}</td><td>59</td><td>55</td><td>-</td><td>8</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.agility') }}</td><td>58</td><td>55</td><td>-</td><td>8</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.wisdom') }}</td><td>30</td><td>38</td><td>-</td><td>7</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.range') }}</td><td>1</td><td>1</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.water_damage') }}</td><td>11</td><td>11</td><td>-</td><td>6</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.air_damage') }}</td><td>11</td><td>11</td><td>-</td><td>6</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.prospecting') }}</td><td>6</td><td>0</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.initiative') }}</td><td>391</td><td>380</td><td>-</td><td>0</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.per_neutral_resistance') }}</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.per_earth_resistance') }}</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.per_fire_resistance') }}</td><td>7</td><td>7</td><td>-</td><td>9</td><td class="icon-cell"></td></tr>
-                <tr><td>{{ __('stats.lock') }}</td><td>4</td><td>4</td><td>-</td><td>5</td><td class="icon-cell"></td></tr>
-                <tr class="last-row"><td>{{ __('stats.mp') }}</td><td>0</td><td>1</td><td>1</td><td>0</td><td class="icon-cell"></td></tr>
+                @foreach($setupRows as $row)
+                    <tr class="{{ ($row['exo'] ?? false) ? 'row-exo' : '' }}">
+                        <td>{{ __($row['stat']) }}</td>
+                        <td>{{ $row['value'] }}</td>
+                        <td>{{ $row['target'] }}</td>
+                        <td>{{ $row['minimum'] }}</td>
+                        <td>{{ $row['priority'] }}</td>
+                        <td class="icon-cell{{ $loop->first ? ' refresh-icon' : '' }}">{{ $loop->first ? '⟲' : '' }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

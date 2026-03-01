@@ -28980,9 +28980,13 @@ readers do not read off random characters that represent icons */
   overflow-x: hidden;
 }
 
-.setup-window tr.last-row {
-  background-color: var(--wf-bg-darkest);
+.setup-window tr.row-exo {
+  background-color: var(--wf-bg-dark);
   font-weight: bold;
+}
+
+.setup-window tr.row-exo:hover {
+  background-color: var(--wf-bg-dark);
 }
 
 .setup-window th.icon-cell, .setup-window td.icon-cell {
@@ -29209,6 +29213,10 @@ readers do not read off random characters that represent icons */
 #sf-annotated-wrapper .setup-window td.hl-active,
 #sf-annotated-wrapper .config-window td.hl-active {
   background-color: rgba(143, 216, 56, 0.08) !important;
+}
+
+#sf-annotated-wrapper .setup-window tr.row-exo td.hl-active {
+  background-color: #192808 !important;
 }
 
 #sf-annotated-wrapper .config-window td.non-default.hl-active {

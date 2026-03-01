@@ -97,5 +97,5 @@ return [
     // ── Popup: Queue form — Maging Queue ──────────────────────────────────────
     'popup_qf_queue_label'       => 'Maging Queue',
     'popup_qf_queue_desc'        => 'Add items to the queue to keep the bot running in the background across multiple presets.',
-    'popup_qf_queue_example'     => '"Next up is the Gelano — the bot will automatically start maging it after finishing the current item."',
+    'popup_qf_queue_example'     => '"Next up is the Barbaric Wedding Ring — the bot will automatically start maging it after finishing the current item."',
 ];

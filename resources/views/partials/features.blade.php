@@ -1,3 +1,20 @@
+@php
+    $featuresSetupRows = [
+        ['stat' => 'stats.ap',                 'value' => 0,  'target' => 1, 'minimum' => '1', 'priority' => 11, 'exo' => 1],
+        ['stat' => 'stats.vitality',           'value' => 210,  'target' => 250, 'minimum' => '-', 'priority' => 10],
+        ['stat' => 'stats.strength',           'value' => 33,   'target' => 40,  'minimum' => '-', 'priority' => 8],
+        ['stat' => 'stats.intelligence',       'value' => 11,   'target' => 40,  'minimum' => '-', 'priority' => 8],
+        ['stat' => 'stats.chance',             'value' => 31,   'target' => 40,  'minimum' => '-', 'priority' => 8],
+        ['stat' => 'stats.wisdom',             'value' => 30,   'target' => 40,  'minimum' => '-', 'priority' => 7],
+        ['stat' => 'stats.summons',            'value' => 1,    'target' => 1,   'minimum' => '-', 'priority' => 5],
+        ['stat' => 'stats.neutral_damage',     'value' => 8,    'target' => 10,  'minimum' => '-', 'priority' => 6],
+        ['stat' => 'stats.earth_damage',       'value' => 9,    'target' => 10,  'minimum' => '-', 'priority' => 6],
+        ['stat' => 'stats.fire_damage',        'value' => 10,   'target' => 10,  'minimum' => '-', 'priority' => 6],
+        ['stat' => 'stats.water_damage',       'value' => 10,   'target' => 10,  'minimum' => '-', 'priority' => 6],
+        ['stat' => 'stats.initiative',         'value' => 226,  'target' => 300, 'minimum' => '-', 'priority' => 0],
+        ['stat' => 'stats.per_fire_resistance','value' => 1,    'target' => 6,   'minimum' => '-', 'priority' => 9],
+    ];
+@endphp
 <div class="anchor" id="works"></div>
 <section class="bg-gray-100 py-8 pb-12 border-b" id="works-section">
 
@@ -10,7 +27,7 @@
     <div id="how-works-outer" class="flex justify-center">
         <div class="dashboard-container">
             <div class="setup-form-offset">
-                @include('partials.setup-form')
+                @include('partials.setup-form', ['setupRows' => $featuresSetupRows])
             </div>
             @include('partials.maging-table', ['showOcr' => true, 'streamHeight' => 180])
         </div>
