@@ -81,93 +81,84 @@
     </section>
 
     <div class="anchor" id="usage"></div>
-    <section class="bg-gray-100 py-8 pb-12">
+    
+<section class="bg-gray-100 py-8 pb-12" id="features-section">
 
-        <div class="container mx-auto px-2 pt-4 pb-2 text-gray-800">
+    <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        {{ __('features.heading') }}
+    </h2>
+    <div class="w-full mb-4">
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+    </div>
 
-            <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">How to use</h2>
-            <div class="w-full mb-4">
-                <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+    <div id="sf-annotated-wrapper" class="flex justify-around items-center" style="gap: 120px; margin: 120px 0;">
+        <div class="sf-annotated">
+            @include('partials.setup-form')
+
+            <div class="sf-popup" data-hl="sf-cible" style="top: -100px; left: 150px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_sf_cible_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_sf_cible_desc') }}</p>
+                <p class="sf-popup__example">{{ __('winforms.popup_sf_cible_example') }}</p>
             </div>
 
-            <div class="px-4 lg:px-0">
-                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    1. Open Inkybot as administrator and Login
-                </h3>
-                <p class="text-base">You will need to login to your Inkybot account to gain access to the Dofus client. From there on
-                    you can login to your Dofus account as you would normally.</p>
+            <div class="sf-popup" data-hl="sf-priorite" style="top: 50px; right: -130px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_sf_priorite_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_sf_priorite_desc') }}</p>
+                <p class="sf-popup__example">{{ __('winforms.popup_sf_priorite_example') }}</p>
             </div>
 
-            <img src="{{ asset('images/releases/login.jpg') }}" class="shadow-lg rounded-t rounded-b-xl my-4" alt="Login to your Dofus Account" height="1919" width="1040">
-
-            <div class="anchor" id="full-screen"></div>
-            <div class="px-4 lg:px-0">
-                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    2. Assign the appropriate in-game settings
-                </h3>
-                <p class="text-base">
-                    It is essential you put your <strong>graphics settings as high</strong> as possible, especially <strong>anti-aliasing</strong>.
-                    In general, if you can see the text better, so can Inkybot. Remember, we use OCR to gather in-game information.
-                </p>
-                <p class="text-base">
-                    Also, make sure you turn off <strong>Full screen mode</strong> as it will mess up Inkybot's OCR bounds.
-                    You may have to restart Inkybot after changing this setting.
-                </p>
+            <div class="sf-popup" data-hl="sf-minimum" style="bottom: -70px; left: 330px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_sf_minimum_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_sf_minimum_desc') }}</p>
+                <p class="sf-popup__example">{{ __('winforms.popup_sf_minimum_example') }}</p>
             </div>
-            <div class="flex flex-wrap">
-                <img src="{{ asset('images/ingame_settings.png') }}"
-                     class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain"
-                     alt="Assign the correct Performance settings in-game">
-                <img src="{{ asset('images/ingame_settings_menu.png') }}"
-                     class="lg:w-1/2 w-full shadow-lg rounded-t rounded-b-xl my-4 object-contain"
-                     alt="Assign the correct Menu settings in-game">
-            </div>
-
-            <div class="anchor" id="ocr-bounds"></div>
-            <div class="px-4 lg:px-0">
-                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    3. Ensure the OCR indicators cover the appropriate bounds
-                </h3>
-                <p class="text-base">
-                    You can view the OCR bounds by pressing the "Debug" button on the sidebar. The OCR bounds adjust
-                    according to the window.
-                </p>
-                <p class="text-base">
-                    We <strong>highly recommend</strong> you run Inkybot <strong>maximized</strong> as this will
-                    improve OCR results, thus minimizing error.
-                </p>
-            </div>
-
-            <img src="{{ asset('images/releases/2.58_ocrindicators.png') }}"
-                 class="shadow-lg rounded-t rounded-b-xl my-4"
-                 alt="Ensure that the OCR indicators are correctly positioned">
-
-            <div class="anchor" id="advanced-mode"></div>
-            <div class="px-4 lg:px-0">
-                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    4. Activate Advanced Mode
-                </h3>
-                <p class="text-base">
-                    Make sure you enable "Advanced Mode" in-game. You can find this option on the maging table under the item stats.
-                </p>
-            </div>
-            <img src="{{ asset('images/releases/advanced_mode.png') }}"
-                 class="shadow-lg rounded my-4"
-                 alt="Activate advanced mode in the maging table">
-
-            <div class="px-4 lg:px-0">
-                <h3 class="mt-10 w-full text-xl font-bold leading-tight text-gray-700 uppercase">
-                    5. Configure your stats and begin maging!
-                </h3>
-                <p class="text-base">
-                    You can access the stats configurator by pressing the "Stats" button on the sidebar.
-                    You will know the bot is finished when it removes the item from the maging table. Voilà!
-                </p>
-            </div>
-
-            @include('partials.from_to')
         </div>
 
-    </section>
+        <div class="sf-annotated">
+            @include('partials.config-form')
 
+            <div class="sf-popup sf-popup--top" data-hl="cf-use-runes" style="top: -100px; left: -80px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_cf_use_runes_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_cf_use_runes_desc') }}</p>
+                <p class="sf-popup__example">{{ __('winforms.popup_cf_use_runes_example') }}</p>
+            </div>
+
+            <div class="sf-popup" data-hl="cf-max-rune" style="top: -20px; right: -120px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_cf_max_rune_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_cf_max_rune_desc') }}</p>
+                <p class="sf-popup__example">{{ __('winforms.popup_cf_max_rune_example') }}</p>
+            </div>
+
+            <div class="sf-popup" data-hl="cf-threshold" style="top: -80px; right: 200px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_cf_threshold_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_cf_threshold_desc') }}</p>
+                <p class="sf-popup__example">{{ __('winforms.popup_cf_threshold_example') }}</p>
+            </div>
+
+            <div class="sf-popup" data-hl="cf-script" style="bottom: -60px; left: -120px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_cf_script_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_cf_script_desc') }}</p>
+            </div>
+
+            <div class="sf-popup" data-hl="cf-presets" style="bottom: -20px; right: -120px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_cf_presets_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_cf_presets_desc') }}</p>
+            </div>
+        </div>
+
+        <div class="sf-annotated">
+            @include('partials.queue-form')
+
+            <div class="sf-popup" data-hl="qf-queue" style="top: 150px; left: -90px;">
+                <div class="sf-popup__label">{{ __('winforms.popup_qf_queue_label') }}</div>
+                <p class="sf-popup__desc">{{ __('winforms.popup_qf_queue_desc') }}</p>
+                <p class="sf-popup__example">{{ __('winforms.popup_qf_queue_example') }}</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+</div>
 @endsection
