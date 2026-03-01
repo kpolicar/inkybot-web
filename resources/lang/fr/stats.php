@@ -59,4 +59,8 @@ return [
     'hunting_weapon' => 'Arme de Chasse',
     'reflect' => 'Renvoi de Dommage',
 
+    'reliquat'      => 'reliquat',
+    'reliquat_gain' => '+ reliquat',
+    'reliquat_loss' => '- reliquat',
+
 ];

@@ -89,7 +89,7 @@
             </div>
         </div>
         
-        <div class="reliquat-section">reliquat : 1.2</div>
+        <div class="reliquat-section">{{ __('stats.reliquat') }} : 1.2</div>
         
         <div class="actions-section">
             <div class="item-slots">
@@ -119,81 +119,81 @@
 
             <div class="history-list">
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_do_eau.png" alt="rune" onerror="this.outerHTML='🔹'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-water-dam-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_fire.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 {{ __('stats.fire_damage') }}</div>
-                        <div class="history-stat text-neg"><span class="stat-icon stat-initiative"></span> -10 {{ __('stats.initiative') }}</div>
-                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_water.png" alt="🌊" onerror="this.outerHTML='💧'"></span> 1 {{ __('stats.water_damage') }}</div>
-                        <div class="history-stat text-neg"><span class="history-stat-icon"><img src="icons/stats/damage_earth.png" alt="🤎" onerror="this.outerHTML='🟤'"></span> -1 {{ __('stats.earth_damage') }}</div>
-                        <div class="text-info">+ reliquat</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-feu"></span> 1 {{ __('stats.fire_damage') }}</div>
+                        <div class="history-stat text-neg"><span class="stat-icon sprite-initiative"></span> -10 {{ __('stats.initiative') }}</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-eau"></span> 1 {{ __('stats.water_damage') }}</div>
+                        <div class="history-stat text-neg"><span class="stat-icon sprite-terre"></span> -1 {{ __('stats.earth_damage') }}</div>
+                        <div class="text-info">{{ __('stats.reliquat_gain') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_do_feu.png" alt="rune" onerror="this.outerHTML='🔸'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-fire-dam-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_fire.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 {{ __('stats.fire_damage') }}</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-feu"></span> 1 {{ __('stats.fire_damage') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_do_feu.png" alt="rune" onerror="this.outerHTML='🔸'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-fire-dam-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_fire.png" alt="🔥" onerror="this.outerHTML='🔥'"></span> 1 {{ __('stats.fire_damage') }}</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-feu"></span> 1 {{ __('stats.fire_damage') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_do_neu.png" alt="rune" onerror="this.outerHTML='⚪'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-neutral-dam-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_neutral.png" alt="☯️" onerror="this.outerHTML='☯️'"></span> 1 {{ __('stats.neutral_damage') }}</div>
-                        <div class="history-stat text-neg"><span class="stat-icon stat-intelligence"></span> -1 {{ __('stats.intelligence') }}</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-neutre"></span> 1 {{ __('stats.neutral_damage') }}</div>
+                        <div class="history-stat text-neg"><span class="stat-icon sprite-feu"></span> -1 {{ __('stats.intelligence') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_do_neu.png" alt="rune" onerror="this.outerHTML='⚪'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-neutral-dam-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="history-stat-icon"><img src="icons/stats/damage_neutral.png" alt="☯️" onerror="this.outerHTML='☯️'"></span> 1 {{ __('stats.neutral_damage') }}</div>
-                        <div class="history-stat text-neg"><span class="history-stat-icon"><img src="icons/stats/res_fire.png" alt="🛡️" onerror="this.outerHTML='🛡️'"></span> -1 {{ __('stats.per_fire_resistance') }}</div>
-                        <div class="text-info">+ reliquat</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-neutre"></span> 1 {{ __('stats.neutral_damage') }}</div>
+                        <div class="history-stat text-neg"><span class="stat-icon sprite-resFeu"></span> -1 {{ __('stats.per_fire_resistance') }}</div>
+                        <div class="text-info">{{ __('stats.reliquat_gain') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_ine.png" alt="rune" onerror="this.outerHTML='🟥'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-int-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="stat-icon stat-intelligence"></span> 1 {{ __('stats.intelligence') }}</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-feu"></span> 1 {{ __('stats.intelligence') }}</div>
                     </div>
                 </div>
                 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_ine.png" alt="rune" onerror="this.outerHTML='🟥'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-int-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="stat-icon stat-intelligence"></span> 1 {{ __('stats.intelligence') }}</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-feu"></span> 1 {{ __('stats.intelligence') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_ine.png" alt="rune" onerror="this.outerHTML='🟥'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-int-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="stat-icon stat-intelligence"></span> 1 {{ __('stats.intelligence') }}</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-feu"></span> 1 {{ __('stats.intelligence') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_fo.png" alt="rune" onerror="this.outerHTML='🟫'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-str-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="stat-icon stat-strength"></span> 1 {{ __('stats.strength') }}</div>
-                        <div class="text-info">- reliquat</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-terre"></span> 1 {{ __('stats.strength') }}</div>
+                        <div class="text-info">{{ __('stats.reliquat_loss') }}</div>
                     </div>
                 </div>
 
                 <div class="history-item">
-                    <div class="history-main-icon"><img src="icons/runes/rune_fo.png" alt="rune" onerror="this.outerHTML='🟫'"></div>
+                    <div class="history-main-icon"><span class="rune-sprite rune-str-rune"></span></div>
                     <div class="history-details">
-                        <div class="history-stat text-pos"><span class="stat-icon stat-strength"></span> 1 {{ __('stats.strength') }}</div>
-                        <div class="text-info">- reliquat</div>
+                        <div class="history-stat text-pos"><span class="stat-icon sprite-terre"></span> 1 {{ __('stats.strength') }}</div>
+                        <div class="text-info">{{ __('stats.reliquat_loss') }}</div>
                     </div>
                 </div>
 
@@ -231,7 +231,7 @@
                 <div class="col-min">201</div>
                 <div class="col-max">250</div>
                 <div class="col-stat">
-                    <span class="stat-icon stat-vitality"></span>
+                    <span class="stat-icon sprite-pv"></span>
                     210 {{ __('stats.vitality') }}
                 </div>
                 <div class="col-modif"></div>
@@ -259,7 +259,7 @@
                 <div class="col-min">31</div>
                 <div class="col-max">40</div>
                 <div class="col-stat">
-                    <span class="stat-icon stat-strength"></span>
+                    <span class="stat-icon sprite-terre"></span>
                     33 {{ __('stats.strength') }}
                 </div>
                 <div class="col-modif"><span class="modif-badge">+1</span></div>
@@ -287,7 +287,7 @@
                 <div class="col-min">31</div>
                 <div class="col-max">40</div>
                 <div class="col-stat">
-                    <span class="stat-icon stat-intelligence"></span>
+                    <span class="stat-icon sprite-feu"></span>
                     11 {{ __('stats.intelligence') }}
                 </div>
                 <div class="col-modif"></div>
@@ -315,7 +315,7 @@
                 <div class="col-min">31</div>
                 <div class="col-max">40</div>
                 <div class="col-stat">
-                    <span class="stat-icon stat-chance"></span>
+                    <span class="stat-icon sprite-eau"></span>
                     31 {{ __('stats.chance') }}
                 </div>
                 <div class="col-modif"></div>
@@ -343,7 +343,7 @@
                 <div class="col-min">31</div>
                 <div class="col-max">40</div>
                 <div class="col-stat">
-                    <span class="stat-icon stat-wisdom"></span>
+                    <span class="stat-icon sprite-sagesse"></span>
                     30 {{ __('stats.wisdom') }}
                 </div>
                 <div class="col-modif"></div>
@@ -371,7 +371,7 @@
                 <div class="col-min">1</div>
                 <div class="col-max">1</div>
                 <div class="col-stat">
-                    <span class="stat-icon stat-summons"></span>
+                    <span class="stat-icon sprite-invocation"></span>
                     1 {{ __('stats.summons') }}
                 </div>
                 <div class="col-modif"></div>
@@ -397,7 +397,7 @@
                 <div class="col-min">7</div>
                 <div class="col-max">10</div>
                 <div class="col-stat">
-                    <span class="stat-icon-img"><img src="icons/stats/damage_neutral.png" alt="☯️"></span>
+                    <span class="stat-icon sprite-neutre"></span>
                     8 {{ __('stats.neutral_damage') }}
                 </div>
                 <div class="col-modif"></div>
@@ -424,7 +424,7 @@
                 <div class="col-min">7</div>
                 <div class="col-max">10</div>
                 <div class="col-stat">
-                    <span class="stat-icon-img"><img src="icons/stats/damage_earth.png" alt="🤎"></span>
+                    <span class="stat-icon sprite-terre"></span>
                     9 {{ __('stats.earth_damage') }}
                 </div>
                 <div class="col-modif"></div>
@@ -451,7 +451,7 @@
                 <div class="col-min">7</div>
                 <div class="col-max">10</div>
                 <div class="col-stat">
-                    <span class="stat-icon-img"><img src="icons/stats/damage_fire.png" alt="🔴"></span>
+                    <span class="stat-icon sprite-feu"></span>
                     10 {{ __('stats.fire_damage') }}
                 </div>
                 <div class="col-modif"></div>
@@ -478,7 +478,7 @@
                 <div class="col-min">7</div>
                 <div class="col-max">10</div>
                 <div class="col-stat">
-                    <span class="stat-icon-img"><img src="icons/stats/damage_water.png" alt="🌊"></span>
+                    <span class="stat-icon sprite-eau"></span>
                     10 {{ __('stats.water_damage') }}
                 </div>
                 <div class="col-modif"></div>
@@ -505,7 +505,7 @@
                 <div class="col-min">201</div>
                 <div class="col-max">300</div>
                 <div class="col-stat">
-                    <span class="stat-icon stat-initiative"></span>
+                    <span class="stat-icon sprite-initiative"></span>
                     226 {{ __('stats.initiative') }}
                 </div>
                 <div class="col-modif"></div>
@@ -533,7 +533,7 @@
                 <div class="col-min">4</div>
                 <div class="col-max">6</div>
                 <div class="col-stat">
-                    <span class="stat-icon-img"><img src="icons/stats/res_fire.png" alt="🛡️"></span>
+                    <span class="stat-icon sprite-resFeu"></span>
                     1 {{ __('stats.per_fire_resistance') }}
                 </div>
                 <div class="col-modif"></div>

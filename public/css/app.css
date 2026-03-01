@@ -29556,7 +29556,7 @@ readers do not read off random characters that represent icons */
   gap: 8px;
 }
 
-.slot {
+slot {
   width: 38px;
   height: 38px;
   background-color: var(--bg-slot);
@@ -29568,14 +29568,14 @@ readers do not read off random characters that represent icons */
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.slot img {
+slot img {
   width: 80%;
   height: 80%;
   -o-object-fit: contain;
      object-fit: contain;
 }
 
-.slot-faint img {
+slot-faint img {
   opacity: 0.2;
   filter: grayscale(100%);
 }
@@ -30107,136 +30107,361 @@ readers do not read off random characters that represent icons */
   z-index: 2;
 }
 
+.stat-icon {
+  width: 55px;
+  height: 55px;
+  display: inline-block;
+}
+
+.stat-ap {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+
+.stat-apparry {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -55px 0px;
+}
+
+.stat-apreduction {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -110px 0px;
+}
+
+.stat-agility {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -165px 0px;
+}
+
+.stat-chance {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -220px 0px;
+}
+
+.stat-critical {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: 0px -55px;
+}
+
+.stat-dodge {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -55px -55px;
+}
+
+.stat-heals {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -110px -55px;
+}
+
+.stat-initiative {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -165px -55px;
+}
+
+.stat-intelligence {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -220px -55px;
+}
+
+.stat-lock {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: 0px -110px;
+}
+
+.stat-mp {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -55px -110px;
+}
+
+.stat-mpparry {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -110px -110px;
+}
+
+.stat-mpreduction {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -165px -110px;
+}
+
+.stat-pods {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -220px -110px;
+}
+
+.stat-power {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: 0px -165px;
+}
+
+.stat-prospecting {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -55px -165px;
+}
+
+.stat-range {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -110px -165px;
+}
+
+.stat-strength {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -165px -165px;
+}
+
+.stat-summons {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -220px -165px;
+}
+
+.stat-vitality {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: 0px -220px;
+}
+
+.stat-wisdom {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-position: -55px -220px;
+}
+
 .rune-sprite {
   width: 24px;
   height: 24px;
   display: inline-block;
-  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
-  background-repeat: no-repeat;
-  background-size: 336px 336px;
 }
 
 .rune-vit-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -72px -312px;
 }
 
 .rune-pa-vit-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -264px -144px;
 }
 
 .rune-ra-vit-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -312px -216px;
 }
 
 .rune-str-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -120px -240px;
 }
 
 .rune-pa-str-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -264px -96px;
 }
 
 .rune-ra-str-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -120px -192px;
 }
 
 .rune-int-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -288px -24px;
 }
 
 .rune-pa-int-rune {
-  background-position: 0 -96px;
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
+  background-position: 0px -96px;
 }
 
 .rune-ra-int-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -312px -168px;
 }
 
 .rune-cha-rune {
-  background-position: -192px 0;
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
+  background-position: -192px 0px;
 }
 
 .rune-pa-cha-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -72px -72px;
 }
 
 .rune-ra-cha-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -192px -168px;
 }
 
 .rune-wis-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -192px -312px;
 }
 
 .rune-pa-wis-rune {
-  background-position: 0 -168px;
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
+  background-position: 0px -168px;
 }
 
 .rune-ra-wis-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -24px -240px;
 }
 
 .rune-sum-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -144px -240px;
 }
 
 .rune-neutral-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -216px -48px;
 }
 
 .rune-pa-neutral-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -96px -96px;
 }
 
 .rune-earth-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -72px -24px;
 }
 
 .rune-pa-earth-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -192px -72px;
 }
 
 .rune-fire-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -144px -24px;
 }
 
 .rune-pa-fire-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -240px -72px;
 }
 
 .rune-water-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -96px -312px;
 }
 
 .rune-pa-water-dam-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -288px -144px;
 }
 
 .rune-ini-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -264px -24px;
 }
 
 .rune-pa-ini-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -312px -72px;
 }
 
 .rune-ra-ini-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -288px -168px;
 }
 
 .rune-fire-res-per-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -168px -24px;
 }
 
 .rune-pa-fire-res-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -264px -72px;
 }
 
 .rune-ra-fire-res-rune {
+  background-image: url(/images/dofus_runes_spritesheet.png?f5e1c9e7889e38c494f9aa8b0a18b8b9);
+  background-repeat: no-repeat;
+  background-size: 336px 336px;
   background-position: -264px -168px;
 }
 
-.slot-gloursonne {
+slot-gloursonne {
   background-image: url(/images/items-sprite.png?ed392d146db7d1aac7b3d348a4eb7594);
   background-repeat: no-repeat;
   background-size: 136px 34px;
@@ -30247,97 +30472,1128 @@ readers do not read off random characters that represent icons */
 .dofus-window .stat-icon {
   width: 14px;
   height: 14px;
-  background-size: 70px 70px;
   display: inline-block;
   flex-shrink: 0;
 }
 
 .dofus-window .stat-icon.stat-ap {
-  background-position: 0 0;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: 0px 0px;
 }
 
 .dofus-window .stat-icon.stat-apparry {
-  background-position: -14px 0;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: -14px 0px;
 }
 
 .dofus-window .stat-icon.stat-apreduction {
-  background-position: -28px 0;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: -28px 0px;
 }
 
 .dofus-window .stat-icon.stat-agility {
-  background-position: -42px 0;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: -42px 0px;
 }
 
 .dofus-window .stat-icon.stat-chance {
-  background-position: -56px 0;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: -56px 0px;
 }
 
 .dofus-window .stat-icon.stat-critical {
-  background-position: 0 -14px;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: 0px -14px;
 }
 
 .dofus-window .stat-icon.stat-dodge {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -14px -14px;
 }
 
 .dofus-window .stat-icon.stat-heals {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -28px -14px;
 }
 
 .dofus-window .stat-icon.stat-initiative {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -42px -14px;
 }
 
 .dofus-window .stat-icon.stat-intelligence {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -56px -14px;
 }
 
 .dofus-window .stat-icon.stat-lock {
-  background-position: 0 -28px;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: 0px -28px;
 }
 
 .dofus-window .stat-icon.stat-mp {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -14px -28px;
 }
 
 .dofus-window .stat-icon.stat-mpparry {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -28px -28px;
 }
 
 .dofus-window .stat-icon.stat-mpreduction {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -42px -28px;
 }
 
 .dofus-window .stat-icon.stat-pods {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -56px -28px;
 }
 
 .dofus-window .stat-icon.stat-power {
-  background-position: 0 -42px;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: 0px -42px;
 }
 
 .dofus-window .stat-icon.stat-prospecting {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -14px -42px;
 }
 
 .dofus-window .stat-icon.stat-range {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -28px -42px;
 }
 
 .dofus-window .stat-icon.stat-strength {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -42px -42px;
 }
 
 .dofus-window .stat-icon.stat-summons {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -56px -42px;
 }
 
 .dofus-window .stat-icon.stat-vitality {
-  background-position: 0 -56px;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
+  background-position: 0px -56px;
 }
 
 .dofus-window .stat-icon.stat-wisdom {
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  background-size: 70px 70px;
   background-position: -14px -56px;
+}
+
+.dofus-window .stat-icon.sprite-air {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: 0px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-ajouterEtat {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -14px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-armeChasse {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -28px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-attirer {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -42px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-cadeau {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -56px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-critique {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -70px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-dmgCritique {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -84px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-dmgMelee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -98px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-dmgPoussee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -112px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-dmgSort {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -126px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-dommages {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -140px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-eau {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -154px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-esquivePA {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -168px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-esquivePM {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -182px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-feu {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -196px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-fuite {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -210px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-initiative {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -224px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-invocation {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -238px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-kama {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -252px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-liaison {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -266px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-multiElement {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -280px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-neutre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -294px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-pa {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -308px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-piege {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -322px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-pm {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -336px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-po {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -350px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-pod {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -364px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-pp {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -378px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-puissance {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -392px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-pv {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -406px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-renvoi {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -420px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resAir {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -434px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resCrit {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -448px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resDistance {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -462px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resEau {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -476px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resFeu {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -490px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resMelee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -504px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resNeutre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -518px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resPoussee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -532px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-resTerre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -546px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-retraitPA {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -560px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-retraitPM {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -574px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-sagesse {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -588px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-soin {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -602px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-tacle {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -616px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.dofus-window .stat-icon.sprite-terre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  background-size: 644px 14px;
+  width: 14px;
+  height: 14px;
+  background-position: -630px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-air {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: 0px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-ajouterEtat {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -55px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-armeChasse {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -110px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-attirer {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -165px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-cadeau {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -220px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-critique {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -275px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-dmgCritique {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -330px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-dmgMelee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -385px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-dmgPoussee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -440px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-dmgSort {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -495px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-dommages {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -550px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-eau {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -605px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-esquivePA {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -660px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-esquivePM {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -715px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-feu {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -770px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-fuite {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -825px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-initiative {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -880px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-invocation {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -935px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-kama {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -990px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-liaison {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1045px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-multiElement {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1100px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-neutre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1155px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-pa {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1210px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-piege {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1265px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-pm {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1320px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-po {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1375px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-pod {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1430px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-pp {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1485px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-puissance {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1540px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-pv {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1595px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-renvoi {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1650px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resAir {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1705px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resCrit {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1760px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resDistance {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1815px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resEau {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1870px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resFeu {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1925px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resMelee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -1980px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resNeutre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2035px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resPoussee {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2090px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-resTerre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2145px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-retraitPA {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2200px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-retraitPM {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2255px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-sagesse {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2310px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-soin {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2365px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-tacle {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2420px 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sprite-terre {
+  background-image: url(/images/stats_effects_spritesheet.png?a08f47bd02d4d2bc6271c1fca0975f0e);
+  background-repeat: no-repeat;
+  width: 55px;
+  height: 55px;
+  background-position: -2475px 0;
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .flatpickr-calendar {
