@@ -162,7 +162,7 @@
 
 // ── Config window (unique styles) ─────────────────────────────────────────
 .config-window {
-    width: calc(600px * var(--sw-scale));
+    width: 100%;
     height: calc(650px * var(--sw-scale));
 
     .content { padding: 0; display: flex; flex-direction: column; }
@@ -294,7 +294,7 @@
 
 // ── Setup window (unique styles) ──────────────────────────────────────────
 .setup-window {
-    width: calc(420px * var(--sw-scale));
+    width: 100%;
     position: relative; z-index: 2; overflow-x: hidden;
 
     .title-icon { margin-top: calc(2px * var(--sw-scale)); }
@@ -333,7 +333,7 @@
 
 // ── Queue window (unique styles) ───────────────────────────────────────────
 .queue-window {
-    width: calc(430px * var(--sw-scale));
+    width: 100%;
 
     .title-icon { margin-top: calc(1px * var(--sw-scale)); }
     .content { display: flex; flex-direction: column; }
@@ -428,7 +428,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 // Feature-page annotation popups
 // ═══════════════════════════════════════════════════════════════════════════
-.form-card { flex-shrink: 0; }
+.form-card { flex-shrink: 0; width: 100%; }
 .annotation-anchor { position: relative; }
 
 .annotation {
@@ -485,6 +485,7 @@
     justify-content: center;
     gap: 30px;
     margin: 30px auto;
+    padding: 0 12px;
 }
 
 // Annotation mobile overrides
@@ -524,6 +525,7 @@
     align-items: center;
     left: 0;
     gap: 60px;
+    padding: 0 12px;
 }
 
 // ── How-works description — Mobile: side-by-side bullets ────────────────
@@ -580,11 +582,21 @@
 //                          dofus  queue  setup  config  feat-setup
 @screen sm {
     @include wf-scales(0.5, 1.0, 0.9, 0.7, 1.0);
+
+    // Restore calculated widths (mobile uses fit-content)
+    .config-window { width: calc(600px * var(--sw-scale)); }
+    .setup-window  { width: calc(420px * var(--sw-scale)); }
+    .queue-window  { width: calc(430px * var(--sw-scale)); }
+    .dofus-window  { width: calc(900px * var(--sw-scale)); }
+
     .form-showcase {
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
         gap: 30px;
+        .form-card {
+            width: fit-content;
+        }
     }
 }
 //                          dofus  queue  setup  config  feat-setup

@@ -28835,7 +28835,7 @@ readers do not read off random characters that represent icons */
 }
 
 .config-window {
-  width: calc(600px * var(--sw-scale));
+  width: 100%;
   height: calc(650px * var(--sw-scale));
 }
 
@@ -29027,7 +29027,7 @@ readers do not read off random characters that represent icons */
 }
 
 .setup-window {
-  width: calc(420px * var(--sw-scale));
+  width: 100%;
   position: relative;
   z-index: 2;
   overflow-x: hidden;
@@ -29117,7 +29117,7 @@ readers do not read off random characters that represent icons */
 }
 
 .queue-window {
-  width: calc(430px * var(--sw-scale));
+  width: 100%;
 }
 
 .queue-window .title-icon {
@@ -29286,6 +29286,7 @@ readers do not read off random characters that represent icons */
 
 .form-card {
   flex-shrink: 0;
+  width: 100%;
 }
 
 .annotation-anchor {
@@ -29379,6 +29380,7 @@ readers do not read off random characters that represent icons */
   justify-content: center;
   gap: 30px;
   margin: 30px auto;
+  padding: 0 12px;
 }
 
 .annotation {
@@ -29464,6 +29466,7 @@ readers do not read off random characters that represent icons */
   align-items: center;
   left: 0;
   gap: 60px;
+  padding: 0 12px;
 }
 
 .how-works .how-works__desc {
@@ -29526,11 +29529,33 @@ readers do not read off random characters that represent icons */
     --sw-scale: 1;
   }
 
+  .config-window {
+    width: calc(600px * var(--sw-scale));
+  }
+
+  .setup-window {
+    width: calc(420px * var(--sw-scale));
+  }
+
+  .queue-window {
+    width: calc(430px * var(--sw-scale));
+  }
+
+  .dofus-window {
+    width: calc(900px * var(--sw-scale));
+  }
+
   .form-showcase {
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 30px;
+  }
+
+  .form-showcase .form-card {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
 }
 
