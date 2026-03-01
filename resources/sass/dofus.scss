@@ -78,7 +78,7 @@
 .reliquat-section { font-size: 14px; color: var(--text-muted); font-style: italic; flex: 1; text-align: center; }
 .actions-section { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
 .item-slots { display: flex; gap: 8px; }
-.slot {
+	slot {
     width: 38px; height: 38px;
     background-color: var(--bg-slot);
     border-radius: 4px;
@@ -86,8 +86,8 @@
     display: flex; align-items: center; justify-content: center;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05);
 }
-.slot img { width: 80%; height: 80%; object-fit: contain; }
-.slot-faint img { opacity: 0.2; filter: grayscale(100%); }
+	slot img { width: 80%; height: 80%; object-fit: contain; }
+	slot-faint img { opacity: 0.2; filter: grayscale(100%); }
 
 .buttons { display: flex; gap: 8px; }
 .btn {
@@ -300,87 +300,194 @@
     z-index: 2;
 }
 
-// Rune sprite icons scaled to 24px (from 128px originals, scale = 24/128)
-.rune-sprite {
-    width: 24px; height: 24px;
-    display: inline-block;
-    background-image: url('/images/dofus_runes_spritesheet.png');
+
+
+
+// Rune sprite icons (24px per cell, 14 cols × 14 rows = 336×336px sheet)
+$_rune-cell:  24px;
+$_rune-sheet: 336px;
+
+@mixin rune-sprite($col, $row) {
+    background-image: url('../images/dofus_runes_spritesheet.png');
     background-repeat: no-repeat;
-    background-size: 336px 336px;
+    background-size: $_rune-sheet $_rune-sheet;
+    background-position: #{-$col * $_rune-cell} #{-$row * $_rune-cell};
 }
-.rune-vit-rune        { background-position: -72px -312px; }
-.rune-pa-vit-rune     { background-position: -264px -144px; }
-.rune-ra-vit-rune     { background-position: -312px -216px; }
-.rune-str-rune        { background-position: -120px -240px; }
-.rune-pa-str-rune     { background-position: -264px -96px; }
-.rune-ra-str-rune     { background-position: -120px -192px; }
-.rune-int-rune        { background-position: -288px -24px; }
-.rune-pa-int-rune     { background-position: 0 -96px; }
-.rune-ra-int-rune     { background-position: -312px -168px; }
-.rune-cha-rune        { background-position: -192px 0; }
-.rune-pa-cha-rune     { background-position: -72px -72px; }
-.rune-ra-cha-rune     { background-position: -192px -168px; }
-.rune-wis-rune        { background-position: -192px -312px; }
-.rune-pa-wis-rune     { background-position: 0 -168px; }
-.rune-ra-wis-rune     { background-position: -24px -240px; }
-.rune-sum-rune        { background-position: -144px -240px; }
-.rune-neutral-dam-rune    { background-position: -216px -48px; }
-.rune-pa-neutral-dam-rune { background-position: -96px -96px; }
-.rune-earth-dam-rune      { background-position: -72px -24px; }
-.rune-pa-earth-dam-rune   { background-position: -192px -72px; }
-.rune-fire-dam-rune       { background-position: -144px -24px; }
-.rune-pa-fire-dam-rune    { background-position: -240px -72px; }
-.rune-water-dam-rune      { background-position: -96px -312px; }
-.rune-pa-water-dam-rune   { background-position: -288px -144px; }
-.rune-ini-rune        { background-position: -264px -24px; }
-.rune-pa-ini-rune     { background-position: -312px -72px; }
-.rune-ra-ini-rune     { background-position: -288px -168px; }
-.rune-fire-res-per-rune { background-position: -168px -24px; }
-.rune-pa-fire-res-rune  { background-position: -264px -72px; }
-.rune-ra-fire-res-rune  { background-position: -264px -168px; }
+
+.rune-sprite {
+    width: $_rune-cell;
+    height: $_rune-cell;
+    display: inline-block;
+}
+
+.rune-vit-rune            { @include rune-sprite( 3, 13); }
+.rune-pa-vit-rune         { @include rune-sprite(11,  6); }
+.rune-ra-vit-rune         { @include rune-sprite(13,  9); }
+.rune-str-rune            { @include rune-sprite( 5, 10); }
+.rune-pa-str-rune         { @include rune-sprite(11,  4); }
+.rune-ra-str-rune         { @include rune-sprite( 5,  8); }
+.rune-int-rune            { @include rune-sprite(12,  1); }
+.rune-pa-int-rune         { @include rune-sprite( 0,  4); }
+.rune-ra-int-rune         { @include rune-sprite(13,  7); }
+.rune-cha-rune            { @include rune-sprite( 8,  0); }
+.rune-pa-cha-rune         { @include rune-sprite( 3,  3); }
+.rune-ra-cha-rune         { @include rune-sprite( 8,  7); }
+.rune-wis-rune            { @include rune-sprite( 8, 13); }
+.rune-pa-wis-rune         { @include rune-sprite( 0,  7); }
+.rune-ra-wis-rune         { @include rune-sprite( 1, 10); }
+.rune-sum-rune            { @include rune-sprite( 6, 10); }
+.rune-neutral-dam-rune    { @include rune-sprite( 9,  2); }
+.rune-pa-neutral-dam-rune { @include rune-sprite( 4,  4); }
+.rune-earth-dam-rune      { @include rune-sprite( 3,  1); }
+.rune-pa-earth-dam-rune   { @include rune-sprite( 8,  3); }
+.rune-fire-dam-rune       { @include rune-sprite( 6,  1); }
+.rune-pa-fire-dam-rune    { @include rune-sprite(10,  3); }
+.rune-water-dam-rune      { @include rune-sprite( 4, 13); }
+.rune-pa-water-dam-rune   { @include rune-sprite(12,  6); }
+.rune-ini-rune            { @include rune-sprite(11,  1); }
+.rune-pa-ini-rune         { @include rune-sprite(13,  3); }
+.rune-ra-ini-rune         { @include rune-sprite(12,  7); }
+.rune-fire-res-per-rune   { @include rune-sprite( 7,  1); }
+.rune-pa-fire-res-rune    { @include rune-sprite(11,  3); }
+.rune-ra-fire-res-rune    { @include rune-sprite(11,  7); }
 
 // Item slot sprites — 2px padding, image scaled to 34px inside 38px slot
-.slot-gloursonne {
-    background-image: url('/images/items/items-sprite.png');
+	slot-gloursonne {
+    background-image: url('../images/items-sprite.png');
     background-repeat: no-repeat;
     background-size: 136px 34px; /* 4 frames × 34px */
     background-position: 2px 2px;
 }
 
-// ============================================================
-// Stat sprite icons — scaled to 14px for use inside .dofus-window
-// Full spritesheet: 275×275px (5 cols × 5 rows of 55px)
-// At 14px: background-size = 70×70px, positions × (14/55)
-// ============================================================
+// === Stats Effects Spritesheet ===
+$_stat-cell-sm: 14px;
+$_statseffect-cell:    55px;
+$_statseffect-count:   46;
+$_statseffect-cell-sm: 14px;
+
+@mixin statseffect-sprite($index) {
+  background-image: url('../images/stats_effects_spritesheet.png');
+  background-repeat: no-repeat;
+  width: $_statseffect-cell;
+  height: $_statseffect-cell;
+  background-position: #{-($index * $_statseffect-cell)} 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+@mixin statseffect-sprite-sm($index) {
+  background-image: url('../images/stats_effects_spritesheet.png');
+  background-repeat: no-repeat;
+  background-size: #{$_statseffect-count * $_statseffect-cell-sm} $_statseffect-cell-sm;
+  width: $_statseffect-cell-sm;
+  height: $_statseffect-cell-sm;
+  background-position: #{-($index * $_statseffect-cell-sm)} 0;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 .dofus-window {
     .stat-icon {
-        width: 14px;
-        height: 14px;
-        background-size: 70px 70px;
+        width: $_stat-cell-sm;
+        height: $_stat-cell-sm;
         display: inline-block;
         flex-shrink: 0;
     }
 
-    .stat-icon.stat-ap           { background-position:    0      0; }
-    .stat-icon.stat-apparry      { background-position: -14px     0; }
-    .stat-icon.stat-apreduction  { background-position: -28px     0; }
-    .stat-icon.stat-agility      { background-position: -42px     0; }
-    .stat-icon.stat-chance       { background-position: -56px     0; }
-    .stat-icon.stat-critical     { background-position:    0  -14px; }
-    .stat-icon.stat-dodge        { background-position: -14px -14px; }
-    .stat-icon.stat-heals        { background-position: -28px -14px; }
-    .stat-icon.stat-initiative   { background-position: -42px -14px; }
-    .stat-icon.stat-intelligence { background-position: -56px -14px; }
-    .stat-icon.stat-lock         { background-position:    0  -28px; }
-    .stat-icon.stat-mp           { background-position: -14px -28px; }
-    .stat-icon.stat-mpparry      { background-position: -28px -28px; }
-    .stat-icon.stat-mpreduction  { background-position: -42px -28px; }
-    .stat-icon.stat-pods         { background-position: -56px -28px; }
-    .stat-icon.stat-power        { background-position:    0  -42px; }
-    .stat-icon.stat-prospecting  { background-position: -14px -42px; }
-    .stat-icon.stat-range        { background-position: -28px -42px; }
-    .stat-icon.stat-strength     { background-position: -42px -42px; }
-    .stat-icon.stat-summons      { background-position: -56px -42px; }
-    .stat-icon.stat-vitality     { background-position:    0  -56px; }
-    .stat-icon.stat-wisdom       { background-position: -14px -56px; }
+    // Stats Effects spritesheet — scaled to 14px
+    .stat-icon.sprite-air          { @include statseffect-sprite-sm(0); }
+    .stat-icon.sprite-ajouterEtat  { @include statseffect-sprite-sm(1); }
+    .stat-icon.sprite-armeChasse   { @include statseffect-sprite-sm(2); }
+    .stat-icon.sprite-attirer      { @include statseffect-sprite-sm(3); }
+    .stat-icon.sprite-cadeau       { @include statseffect-sprite-sm(4); }
+    .stat-icon.sprite-critique     { @include statseffect-sprite-sm(5); }
+    .stat-icon.sprite-dmgCritique  { @include statseffect-sprite-sm(6); }
+    .stat-icon.sprite-dmgMelee     { @include statseffect-sprite-sm(7); }
+    .stat-icon.sprite-dmgPoussee   { @include statseffect-sprite-sm(8); }
+    .stat-icon.sprite-dmgSort      { @include statseffect-sprite-sm(9); }
+    .stat-icon.sprite-dommages     { @include statseffect-sprite-sm(10); }
+    .stat-icon.sprite-eau          { @include statseffect-sprite-sm(11); }
+    .stat-icon.sprite-esquivePA    { @include statseffect-sprite-sm(12); }
+    .stat-icon.sprite-esquivePM    { @include statseffect-sprite-sm(13); }
+    .stat-icon.sprite-feu          { @include statseffect-sprite-sm(14); }
+    .stat-icon.sprite-fuite        { @include statseffect-sprite-sm(15); }
+    .stat-icon.sprite-initiative   { @include statseffect-sprite-sm(16); }
+    .stat-icon.sprite-invocation   { @include statseffect-sprite-sm(17); }
+    .stat-icon.sprite-kama         { @include statseffect-sprite-sm(18); }
+    .stat-icon.sprite-liaison      { @include statseffect-sprite-sm(19); }
+    .stat-icon.sprite-multiElement { @include statseffect-sprite-sm(20); }
+    .stat-icon.sprite-neutre       { @include statseffect-sprite-sm(21); }
+    .stat-icon.sprite-pa           { @include statseffect-sprite-sm(22); }
+    .stat-icon.sprite-piege        { @include statseffect-sprite-sm(23); }
+    .stat-icon.sprite-pm           { @include statseffect-sprite-sm(24); }
+    .stat-icon.sprite-po           { @include statseffect-sprite-sm(25); }
+    .stat-icon.sprite-pod          { @include statseffect-sprite-sm(26); }
+    .stat-icon.sprite-pp           { @include statseffect-sprite-sm(27); }
+    .stat-icon.sprite-puissance    { @include statseffect-sprite-sm(28); }
+    .stat-icon.sprite-pv           { @include statseffect-sprite-sm(29); }
+    .stat-icon.sprite-renvoi       { @include statseffect-sprite-sm(30); }
+    .stat-icon.sprite-resAir       { @include statseffect-sprite-sm(31); }
+    .stat-icon.sprite-resCrit      { @include statseffect-sprite-sm(32); }
+    .stat-icon.sprite-resDistance  { @include statseffect-sprite-sm(33); }
+    .stat-icon.sprite-resEau       { @include statseffect-sprite-sm(34); }
+    .stat-icon.sprite-resFeu       { @include statseffect-sprite-sm(35); }
+    .stat-icon.sprite-resMelee     { @include statseffect-sprite-sm(36); }
+    .stat-icon.sprite-resNeutre    { @include statseffect-sprite-sm(37); }
+    .stat-icon.sprite-resPoussee   { @include statseffect-sprite-sm(38); }
+    .stat-icon.sprite-resTerre     { @include statseffect-sprite-sm(39); }
+    .stat-icon.sprite-retraitPA    { @include statseffect-sprite-sm(40); }
+    .stat-icon.sprite-retraitPM    { @include statseffect-sprite-sm(41); }
+    .stat-icon.sprite-sagesse      { @include statseffect-sprite-sm(42); }
+    .stat-icon.sprite-soin         { @include statseffect-sprite-sm(43); }
+    .stat-icon.sprite-tacle        { @include statseffect-sprite-sm(44); }
+    .stat-icon.sprite-terre        { @include statseffect-sprite-sm(45); }
 }
+
+// Stats Effects sprite classes (full size):
+.sprite-air { @include statseffect-sprite(0); }
+.sprite-ajouterEtat { @include statseffect-sprite(1); }
+.sprite-armeChasse { @include statseffect-sprite(2); }
+.sprite-attirer { @include statseffect-sprite(3); }
+.sprite-cadeau { @include statseffect-sprite(4); }
+.sprite-critique { @include statseffect-sprite(5); }
+.sprite-dmgCritique { @include statseffect-sprite(6); }
+.sprite-dmgMelee { @include statseffect-sprite(7); }
+.sprite-dmgPoussee { @include statseffect-sprite(8); }
+.sprite-dmgSort { @include statseffect-sprite(9); }
+.sprite-dommages { @include statseffect-sprite(10); }
+.sprite-eau { @include statseffect-sprite(11); }
+.sprite-esquivePA { @include statseffect-sprite(12); }
+.sprite-esquivePM { @include statseffect-sprite(13); }
+.sprite-feu { @include statseffect-sprite(14); }
+.sprite-fuite { @include statseffect-sprite(15); }
+.sprite-initiative { @include statseffect-sprite(16); }
+.sprite-invocation { @include statseffect-sprite(17); }
+.sprite-kama { @include statseffect-sprite(18); }
+.sprite-liaison { @include statseffect-sprite(19); }
+.sprite-multiElement { @include statseffect-sprite(20); }
+.sprite-neutre { @include statseffect-sprite(21); }
+.sprite-pa { @include statseffect-sprite(22); }
+.sprite-piege { @include statseffect-sprite(23); }
+.sprite-pm { @include statseffect-sprite(24); }
+.sprite-po { @include statseffect-sprite(25); }
+.sprite-pod { @include statseffect-sprite(26); }
+.sprite-pp { @include statseffect-sprite(27); }
+.sprite-puissance { @include statseffect-sprite(28); }
+.sprite-pv { @include statseffect-sprite(29); }
+.sprite-renvoi { @include statseffect-sprite(30); }
+.sprite-resAir { @include statseffect-sprite(31); }
+.sprite-resCrit { @include statseffect-sprite(32); }
+.sprite-resDistance { @include statseffect-sprite(33); }
+.sprite-resEau { @include statseffect-sprite(34); }
+.sprite-resFeu { @include statseffect-sprite(35); }
+.sprite-resMelee { @include statseffect-sprite(36); }
+.sprite-resNeutre { @include statseffect-sprite(37); }
+.sprite-resPoussee { @include statseffect-sprite(38); }
+.sprite-resTerre { @include statseffect-sprite(39); }
+.sprite-retraitPA { @include statseffect-sprite(40); }
+.sprite-retraitPM { @include statseffect-sprite(41); }
+.sprite-sagesse { @include statseffect-sprite(42); }
+.sprite-soin { @include statseffect-sprite(43); }
+.sprite-tacle { @include statseffect-sprite(44); }
+.sprite-terre { @include statseffect-sprite(45); }
+// ...add more as needed

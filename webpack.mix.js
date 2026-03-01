@@ -24,14 +24,6 @@ mix.js('resources/js/app.js', 'public/js')
 
     .sass('resources/sass/app.scss', 'public/css')
     .version()
-    .version()
-
-    .css('resources/css/stats.css', 'public/css')
-    .version()
-    .version()
-
-    .css('resources/css/runes.css', 'public/css')
-    .version()
 
     .js('resources/js/payment.js', 'public/js')
     .vue()

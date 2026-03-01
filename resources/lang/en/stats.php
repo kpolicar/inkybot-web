@@ -59,4 +59,8 @@ return [
     'hunting_weapon' => 'Hunting Weapon',
     'reflect' => 'Reflect',
 
+    'reliquat'      => 'sink',
+    'reliquat_gain' => '+ sink',
+    'reliquat_loss' => '- sink',
+
 ];

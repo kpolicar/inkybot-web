@@ -377,7 +377,7 @@
     $_icon-pad:   2px;
     $_icon-inner: $_icon-frame - $_icon-pad * 2; // drawable area inside padding
     @mixin item-sprite($frame) {
-        background-image: url('/images/items/items-sprite.png');
+        background-image: url('../images/items-sprite.png');
         background-repeat: no-repeat;
         background-color: transparent;
         background-size: calc(#{$_icon-inner * 4} * var(--sw-scale)) calc(#{$_icon-inner} * var(--sw-scale));
