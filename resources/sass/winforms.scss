@@ -372,21 +372,23 @@
     .icon-gelano     { background: radial-gradient(circle, #9b7fd4 0%, #2d1a5a 100%); }
     .icon-douze      { background: radial-gradient(circle, #d4a017 0%, #5a3800 100%); }
 
-    // ── Item sprite sheet (128×128 per frame, horizontal, 4 frames) ────────
+    // ── Item sprite sheet (128×128 per frame, horizontal, 5 frames) ────────
+    // Each frame is scaled to fill the placeholder exactly — no padding offset
+    // so frames align cleanly with no bleed into neighbours.
     $_icon-frame: 36px; // must match .item-icon-placeholder width/height
-    $_icon-pad:   2px;
-    $_icon-inner: $_icon-frame - $_icon-pad * 2; // drawable area inside padding
+    $_icon-count: 5;
     @mixin item-sprite($frame) {
         background-image: url('../images/items-sprite.png');
         background-repeat: no-repeat;
         background-color: transparent;
-        background-size: calc(#{$_icon-inner * 4} * var(--sw-scale)) calc(#{$_icon-inner} * var(--sw-scale));
-        background-position: calc(#{$_icon-pad - $_icon-inner * $frame} * var(--sw-scale)) calc(#{$_icon-pad} * var(--sw-scale));
+        background-size: calc(#{$_icon-frame * $_icon-count} * var(--sw-scale)) calc(#{$_icon-frame} * var(--sw-scale));
+        background-position: calc(#{-$_icon-frame * $frame} * var(--sw-scale)) 0;
     }
     .icon-bearbaric_wedding_ring { @include item-sprite(0); }
     .icon-belladonnas_cruelty    { @include item-sprite(1); }
     .icon-crocoring              { @include item-sprite(2); }
     .icon-jammy_jack_glove       { @include item-sprite(3); }
+    .icon-levitrof_wedding_ring       { @include item-sprite(4); }
 
     .item-details { display: flex; gap: calc(8px * var(--sw-scale)); flex: 1; }
     .detail-col   { display: flex; flex-direction: column; gap: calc(4px * var(--sw-scale)); }

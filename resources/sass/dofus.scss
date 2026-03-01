@@ -351,13 +351,18 @@ $_rune-sheet: 336px;
 .rune-pa-fire-res-rune    { @include rune-sprite(11,  3); }
 .rune-ra-fire-res-rune    { @include rune-sprite(11,  7); }
 
-// Item slot sprites — 2px padding, image scaled to 34px inside 38px slot
-.slot-gloursonne {
+// Item slot sprites — each frame scaled to fill the 38×38 slot exactly
+$_item-slot:  38px;
+$_item-count:  5;
+
+@mixin item-sprite($frame) {
     background-image: url('../images/items-sprite.png');
     background-repeat: no-repeat;
-    background-size: 136px 34px; /* 4 frames × 34px */
-    background-position: 2px 2px;
+    background-size: #{$_item-slot * $_item-count} #{$_item-slot};
+    background-position: #{-$frame * $_item-slot} 0;
 }
+
+.slot-gloursonne { @include item-sprite(4); }
 
 // === Stats Effects Spritesheet ===
 $_stat-cell-sm: 14px;
