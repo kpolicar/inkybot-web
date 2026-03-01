@@ -21,20 +21,6 @@
 @endsection
 
 @section('content')
-<style>
-    .dashboard-container {
-            left: -50px;
-            display: flex;
-            /* A strict 100px gap is critical here: the SVG math relies on this 
-               exact distance to perfectly drop into the center of the setup form. */
-            align-items: flex-start;
-            position: relative;
-            padding-top: 8vh; /* Leaves room for the overhead data stream */
-            overflow: hidden; /* Hides lines going off-screen */
-            font-family: 'Segoe UI', Arial, sans-serif;
-            overflow:visible;
-        }
-</style>
     @include('partials.whyus')
     @include('partials.features')
     @include('partials.pricing')

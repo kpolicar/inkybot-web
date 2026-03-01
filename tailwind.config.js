@@ -14,6 +14,10 @@ module.exports = {
         extend: {
             cursor: {
                 'zoom-in': 'zoom-in',
+            },
+            screens: {
+                '2xl':     '1536px',
+                '3xl':     '1800px',
             }
         }
     },

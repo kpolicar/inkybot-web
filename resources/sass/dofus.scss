@@ -17,8 +17,26 @@
     --xp-bar: #E1E63C;
 }
 
+@screen sm {
+    .dofus-window {
+        --sw-scale: 0.7 !important;
+    }
+}
+
+@screen md {
+    .dofus-window {
+        --sw-scale: 0.8 !important;
+    }
+}
+
+@screen lg {
+    .dofus-window {
+        --sw-scale: 1 !important;
+    }
+}
 .dofus-window {
-    width: 900px;
+    --sw-scale: 0.5;
+    width: calc(900px * var(--sw-scale));
     background-color: var(--bg-outer);
     border-radius: 12px;
     border: 2px solid var(--border-window);
@@ -35,8 +53,8 @@
 .window-header {
     background: var(--bg-header);
     text-align: center;
-    padding: 8px 0;
-    font-size: 18px;
+    padding: calc(8px * var(--sw-scale)) 0;
+    font-size: calc(18px * var(--sw-scale));
     font-weight: bold;
     color: white;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
@@ -55,7 +73,7 @@
 
 .top-panel {
     background-color: var(--bg-top-panel);
-    padding: 12px 20px;
+    padding: calc(12px * var(--sw-scale)) calc(20px * var(--sw-scale));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,22 +82,22 @@
     z-index: 10;
 }
 
-.profile-section { display: flex; align-items: center; gap: 12px; width: 250px; }
-.profile-img { width: 52px; height: 52px; background-color: #111; border: 2px solid #CCC; border-radius: 4px; overflow: hidden; }
+.profile-section { display: flex; align-items: center; gap: calc(12px * var(--sw-scale)); width: calc(250px * var(--sw-scale)); }
+.profile-img { width: calc(52px * var(--sw-scale)); height: calc(52px * var(--sw-scale)); background-color: #111; border: 2px solid #CCC; border-radius: 4px; overflow: hidden; }
 .profile-img img { width: 100%; height: 100%; object-fit: cover; }
-.profile-details { display: flex; flex-direction: column; gap: 2px; }
-.profile-name { font-size: 16px; font-weight: bold; }
-.profile-job { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
-.profile-level { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+.profile-details { display: flex; flex-direction: column; gap: calc(2px * var(--sw-scale)); }
+.profile-name { font-size: calc(16px * var(--sw-scale)); font-weight: bold; }
+.profile-job { font-size: calc(11px * var(--sw-scale)); color: var(--text-muted); letter-spacing: 0.5px; text-transform: uppercase; }
+.profile-level { font-size: calc(11px * var(--sw-scale)); color: var(--text-muted); margin-bottom: calc(4px * var(--sw-scale)); }
 .profile-level span { color: white; font-weight: bold; }
-.xp-bar { display: flex; gap: 2px; height: 6px; }
-.xp-bar div { flex: 1; width: 8px; background-color: var(--xp-bar); border-radius: 1px; box-shadow: 0 1px 1px rgba(0,0,0,0.5); }
+.xp-bar { display: flex; gap: calc(2px * var(--sw-scale)); height: calc(6px * var(--sw-scale)); }
+.xp-bar div { flex: 1; width: calc(8px * var(--sw-scale)); background-color: var(--xp-bar); border-radius: 1px; box-shadow: 0 1px 1px rgba(0,0,0,0.5); }
 
-.reliquat-section { font-size: 14px; color: var(--text-muted); font-style: italic; flex: 1; text-align: center; }
-.actions-section { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-.item-slots { display: flex; gap: 8px; }
+.reliquat-section { font-size: calc(14px * var(--sw-scale)); color: var(--text-muted); font-style: italic; flex: 1; text-align: center; }
+.actions-section { display: flex; flex-direction: column; align-items: flex-end; gap: calc(10px * var(--sw-scale)); }
+.item-slots { display: flex; gap: calc(8px * var(--sw-scale)); }
 .slot {
-    width: 38px; height: 38px;
+    width: calc(38px * var(--sw-scale)); height: calc(38px * var(--sw-scale));
     background-color: var(--bg-slot);
     border-radius: 4px;
     border: 1px inset rgba(0,0,0,0.5);
@@ -89,22 +107,22 @@
 .slot img { width: 80%; height: 80%; object-fit: contain; }
 .slot-faint img { opacity: 0.2; filter: grayscale(100%); }
 
-.buttons { display: flex; gap: 8px; }
+.buttons { display: flex; gap: calc(8px * var(--sw-scale)); }
 .btn {
     background: linear-gradient(180deg, #686868 0%, #4D4D4D 100%);
     border: 1px solid #222;
     color: #999;
     font-weight: bold;
-    font-size: 11px;
-    padding: 6px 12px;
+    font-size: calc(11px * var(--sw-scale));
+    padding: calc(6px * var(--sw-scale)) calc(12px * var(--sw-scale));
     border-radius: 4px;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 }
 
-.main-content { display: flex; height: 520px; position: relative; }
+.main-content { display: flex; height: calc(520px * var(--sw-scale)); position: relative; }
 .history-panel {
-    width: 260px;
+    width: calc(260px * var(--sw-scale));
     background-color: var(--bg-main-left);
     border-right: 2px solid var(--border-window);
     border-radius: 0 0 0 10px;
@@ -112,23 +130,23 @@
     position: relative;
     contain: layout paint;
 }
-.history-list { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px; position: relative; z-index: 2; }
-.history-list::-webkit-scrollbar { width: 6px; }
+.history-list { flex: 1; overflow-y: auto; padding: calc(15px * var(--sw-scale)); display: flex; flex-direction: column; gap: calc(15px * var(--sw-scale)); position: relative; z-index: 2; }
+.history-list::-webkit-scrollbar { width: calc(6px * var(--sw-scale)); }
 .history-list::-webkit-scrollbar-track { background: #252438; }
 .history-list::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
-.history-item { display: flex; gap: 12px; align-items: flex-start; }
-.history-main-icon { width: 24px; height: 24px; flex-shrink: 0; }
+.history-item { display: flex; gap: calc(12px * var(--sw-scale)); align-items: flex-start; }
+.history-main-icon { width: calc(24px * var(--sw-scale)); height: calc(24px * var(--sw-scale)); flex-shrink: 0; }
 .history-main-icon img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5)); }
-.history-details { display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: bold; }
-.history-stat { display: flex; align-items: center; gap: 6px; }
-.history-stat-icon { width: 14px; height: 14px; display: inline-flex; justify-content: center; align-items: center; flex-shrink: 0; }
+.history-details { display: flex; flex-direction: column; gap: calc(6px * var(--sw-scale)); font-size: calc(13px * var(--sw-scale)); font-weight: bold; }
+.history-stat { display: flex; align-items: center; gap: calc(6px * var(--sw-scale)); }
+.history-stat-icon { width: calc(14px * var(--sw-scale)); height: calc(14px * var(--sw-scale)); display: inline-flex; justify-content: center; align-items: center; flex-shrink: 0; }
 .history-stat-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .text-pos { color: var(--text-green); }
 .text-neg { color: #EFEFEF; }
-.text-info { color: #8A899C; font-weight: normal; margin-left: 20px; }
+.text-info { color: #8A899C; font-weight: normal; margin-left: calc(20px * var(--sw-scale)); }
 
 .history-footer {
-    padding: 12px 15px;
+    padding: calc(12px * var(--sw-scale)) calc(15px * var(--sw-scale));
     background-color: var(--bg-main-left);
     border-top: 1px solid rgba(255,255,255,0.05);
     border-radius: 0 0 0 10px;
@@ -140,18 +158,18 @@
     border: none;
     color: var(--text-muted);
     font-weight: bold;
-    display: flex; align-items: center; gap: 8px;
+    display: flex; align-items: center; gap: calc(8px * var(--sw-scale));
     text-transform: uppercase;
-    font-size: 11px;
+    font-size: calc(11px * var(--sw-scale));
     padding: 0;
 }
-.btn-clear img { width: 14px; height: 14px; opacity: 0.7; }
+.btn-clear img { width: calc(14px * var(--sw-scale)); height: calc(14px * var(--sw-scale)); opacity: 0.7; }
 
 .stats-panel {
     flex: 1;
     background-color: var(--bg-main-right);
     border-radius: 0 0 10px 0;
-    padding: 15px 20px;
+    padding: calc(15px * var(--sw-scale)) calc(20px * var(--sw-scale));
     display: flex; flex-direction: column;
     position: relative;
     contain: layout paint;
@@ -161,6 +179,19 @@
 .panel-ocr-svg, .master-connector-svg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 100; overflow: visible;
+}
+
+// Scale SVG contents to match --sw-scale. SVG path coordinates are absolute
+// and don't respond to CSS sizing on the container, so we apply a CSS transform
+// from the top-left origin to keep them aligned with the scaled layout.
+.master-connector-svg g {
+    transform: scale(var(--sw-scale));
+    transform-origin: 0 0;
+}
+.panel-ocr-svg rect,
+.rune-ocr-svg rect {
+    transform: scale(var(--sw-scale));
+    transform-origin: 0 0;
 }
 
 @keyframes dash-animation { to { stroke-dashoffset: -140; } }
@@ -183,26 +214,29 @@
 .rune-ocr-svg .ocr-rect { animation: dash-animation 5s linear infinite; }
 .ocr-connector path { opacity: 0.9; stroke-linecap: round; stroke-linejoin: round; }
 
-.ocr-mobile-pipe { display: none; }
-@media (max-width: 1500px) {
-    .ocr-desktop-pipe { display: none; }
-    .ocr-mobile-pipe  { display: block; }
-    .scanner-node     { left: calc(50% - 25px) !important; top: calc(var(--pipeline-y) + 10px); }
-}
+// default = mobile: desktop pipe hidden
+.ocr-desktop-pipe { display: none; }
 
 // --- SCANNER NODE & SVG ANIMATIONS ---
 .scanner-node {
     position: absolute;
-    top: calc(var(--pipeline-y) - 28px);
-    left: 0;
-    width: 50px; height: 50px;
+    top: calc(var(--pipeline-y) + 10px * var(--sw-scale)); // mobile default
+    left: calc(50% - 22px * var(--sw-scale));              // mobile default — half of scaled node width
+    width: calc(50px * var(--sw-scale)); height: calc(50px * var(--sw-scale));
     z-index: 150;
     background-color: #ffffff;
     display: flex; justify-content: center; align-items: center;
     border-radius: 4px;
     box-shadow: 0 0 4px rgba(58, 58, 58, 0.8);
 }
-.scanner-node svg { width: 48px; height: 48px; }
+.scanner-node svg { width: calc(48px * var(--sw-scale)); height: calc(48px * var(--sw-scale)); }
+
+// desktop overrides — after the base block so they win in the cascade
+@screen xl {
+    .ocr-desktop-pipe { display: block; }
+    .ocr-mobile-pipe  { display: none; }
+    .scanner-node     { left: 0; top: calc(var(--pipeline-y) - 28px * var(--sw-scale)); }
+}
 
 .scan-group {
     animation: scan-bounce 4s ease-in-out infinite;
@@ -211,9 +245,9 @@
 }
 
 @keyframes scan-bounce {
-    0%   { transform: translateY(35px); }
-    50%  { transform: translateY(155px); }
-    100% { transform: translateY(35px); }
+    0%   { transform: translateY(calc(35px * var(--sw-scale))); }
+    50%  { transform: translateY(calc(155px * var(--sw-scale))); }
+    100% { transform: translateY(calc(35px * var(--sw-scale))); }
 }
 
 .glow-top    { animation: fade-top-glow 4s ease-in-out infinite; will-change: opacity; }
@@ -238,41 +272,41 @@
 // STATS GRID
 .stats-grid {
     display: grid;
-    grid-template-columns: 45px 55px 1fr 60px 45px 45px 45px;
+    grid-template-columns: calc(45px * var(--sw-scale)) calc(55px * var(--sw-scale)) 1fr calc(60px * var(--sw-scale)) calc(45px * var(--sw-scale)) calc(45px * var(--sw-scale)) calc(45px * var(--sw-scale));
     align-items: center;
-    gap: 6px;
+    gap: calc(6px * var(--sw-scale));
     position: relative;
     z-index: 2;
 }
-.stats-header { color: var(--text-muted); font-size: 13px; margin-bottom: 8px; padding: 0 8px; }
+.stats-header { color: var(--text-muted); font-size: calc(13px * var(--sw-scale)); margin-bottom: calc(8px * var(--sw-scale)); padding: 0 calc(8px * var(--sw-scale)); }
 .stats-header div { text-align: left; }
 .stats-header .col-rune { text-align: center; }
 
 .stat-row {
     background-color: var(--bg-row);
     border-radius: 6px;
-    padding: 2px 8px;
-    margin-bottom: 4px;
-    font-size: 13px;
+    padding: calc(2px * var(--sw-scale)) calc(8px * var(--sw-scale));
+    margin-bottom: calc(4px * var(--sw-scale));
+    font-size: calc(13px * var(--sw-scale));
     transition: background-color 0.2s;
     border: 1px solid transparent;
     position: relative;
-    height: 32px;
+    height: calc(32px * var(--sw-scale));
 }
 .stat-row:hover { background-color: #373554; }
 .row-highlight { border: 2px solid var(--text-green); background-color: #2F3830; }
 .row-highlight:hover { background-color: #384239; }
 
 .col-min, .col-max { color: var(--text-muted); text-align: center; }
-.col-stat { display: flex; align-items: center; gap: 6px; color: var(--text-green); font-weight: bold; }
+.col-stat { display: flex; align-items: center; gap: calc(6px * var(--sw-scale)); color: var(--text-green); font-weight: bold; }
 .col-modif { display: flex; justify-content: center; align-items: center; }
-.modif-badge { background-color: var(--text-green); color: #121212; font-weight: bold; font-size: 11px; padding: 2px 6px; border-radius: 3px; }
+.modif-badge { background-color: var(--text-green); color: #121212; font-weight: bold; font-size: calc(11px * var(--sw-scale)); padding: calc(2px * var(--sw-scale)) calc(6px * var(--sw-scale)); border-radius: 3px; }
 .col-rune { display: flex; justify-content: center; align-items: center; }
 
 // Img-based stat icon container (for stats without a sprite equivalent)
 .stat-icon-img {
-    width: 14px;
-    height: 14px;
+    width: calc(14px * var(--sw-scale));
+    height: calc(14px * var(--sw-scale));
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -282,19 +316,19 @@
 }
 
 .rune-box {
-    width: 28px; height: 28px;
+    width: calc(28px * var(--sw-scale)); height: calc(28px * var(--sw-scale));
     background-color: var(--bg-slot);
     border-radius: 4px;
     position: relative;
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
     display: flex; justify-content: center; align-items: center;
 }
-.rune-ocr-svg { position: absolute; top: -2px; left: -2px; width: 32px; height: 32px; pointer-events: none; z-index: 100; }
+.rune-ocr-svg { position: absolute; top: -2px; left: -2px; width: calc(32px * var(--sw-scale)); height: calc(32px * var(--sw-scale)); pointer-events: none; z-index: 100; }
 .rune-box img { width: 85%; height: 85%; object-fit: contain; }
 .rune-qty {
     position: absolute; top: 0; right: 1px;
     font-family: 'Verdana', sans-serif;
-    font-size: 9px; font-weight: 900;
+    font-size: calc(9px * var(--sw-scale)); font-weight: 900;
     color: white; -webkit-text-stroke: 0.2px black;
     text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
     z-index: 2;
@@ -310,13 +344,13 @@ $_rune-sheet: 336px;
 @mixin rune-sprite($col, $row) {
     background-image: url('../images/dofus_runes_spritesheet.png');
     background-repeat: no-repeat;
-    background-size: $_rune-sheet $_rune-sheet;
-    background-position: #{-$col * $_rune-cell} #{-$row * $_rune-cell};
+    background-size: calc(#{$_rune-sheet} * var(--sw-scale)) calc(#{$_rune-sheet} * var(--sw-scale));
+    background-position: calc(#{-$col * $_rune-cell} * var(--sw-scale)) calc(#{-$row * $_rune-cell} * var(--sw-scale));
 }
 
 .rune-sprite {
-    width: $_rune-cell;
-    height: $_rune-cell;
+    width: calc(#{$_rune-cell} * var(--sw-scale));
+    height: calc(#{$_rune-cell} * var(--sw-scale));
     display: inline-block;
 }
 
@@ -358,8 +392,8 @@ $_item-count:  5;
 @mixin item-sprite($frame) {
     background-image: url('../images/items-sprite.png');
     background-repeat: no-repeat;
-    background-size: #{$_item-slot * $_item-count} #{$_item-slot};
-    background-position: #{-$frame * $_item-slot} 0;
+    background-size: calc(#{$_item-slot * $_item-count} * var(--sw-scale)) calc(#{$_item-slot} * var(--sw-scale));
+    background-position: calc(#{-$frame * $_item-slot} * var(--sw-scale)) 0;
 }
 
 .slot-gloursonne { @include item-sprite(4); }
@@ -383,18 +417,18 @@ $_statseffect-cell-sm: 14px;
 @mixin statseffect-sprite-sm($index) {
   background-image: url('../images/stats_effects_spritesheet.png');
   background-repeat: no-repeat;
-  background-size: #{$_statseffect-count * $_statseffect-cell-sm} $_statseffect-cell-sm;
-  width: $_statseffect-cell-sm;
-  height: $_statseffect-cell-sm;
-  background-position: #{-($index * $_statseffect-cell-sm)} 0;
+  background-size: calc(#{$_statseffect-count * $_statseffect-cell-sm} * var(--sw-scale)) calc(#{$_statseffect-cell-sm} * var(--sw-scale));
+  width: calc(#{$_statseffect-cell-sm} * var(--sw-scale));
+  height: calc(#{$_statseffect-cell-sm} * var(--sw-scale));
+  background-position: calc(#{-($index * $_statseffect-cell-sm)} * var(--sw-scale)) 0;
   display: inline-block;
   flex-shrink: 0;
 }
 
 .dofus-window {
     .stat-icon {
-        width: $_stat-cell-sm;
-        height: $_stat-cell-sm;
+        width: calc(#{$_stat-cell-sm} * var(--sw-scale));
+        height: calc(#{$_stat-cell-sm} * var(--sw-scale));
         display: inline-block;
         flex-shrink: 0;
     }

@@ -60,7 +60,7 @@
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
-    <div id="sf-annotated-wrapper" class="flex justify-around items-center" style="gap: 120px; margin: 120px 0;">
+    <div id="sf-annotated-wrapper" class="flex justify-around items-center">
         <div class="sf-annotated">
             @include('partials.setup-form')
 

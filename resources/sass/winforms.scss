@@ -16,8 +16,17 @@
 // ── Shared block: CSS vars + all common styles ────────────────────────────
 // Every pixel-size value is wrapped in calc(Xpx * var(--sw-scale)) so the
 // entire form scales uniformly. Borders stay at 1px (never scale borders).
+.setup-window{
+    --sw-scale: 0.8;
+} 
 #features-section .setup-window {
-    --sw-scale: 1.2;
+    --sw-scale: 1.0;
+} 
+.queue-window{
+    --sw-scale: 0.9;
+} 
+.config-window{
+    --sw-scale: 0.7;
 } 
 
 .config-window,
@@ -35,9 +44,6 @@
     --wf-black:        #000000;
     --wf-hl-green:     #8FD838;
     --wf-hl-green-rgb: 143, 216, 56;   // kept as RGB for rgba() usage
-
-    // ── Scale (default = 1, override to zoom the whole form) ──────────────
-    --sw-scale: 1;
 
     // ── Window base ────────────────────────────────────────────────────────
     background-color: var(--wf-bg);
@@ -477,65 +483,160 @@
 .sf-popup--center.hl-hover       { transform: translateY(-50%) scale(1.04); }
 
 
-// ── Mobile / small-screen layout ──────────────────────────────────────────
-@media (max-width: 1500px) {
+// ── Mobile / small-screen layout (default) ────────────────────────────────
+#sf-annotated-wrapper {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 30px !important;
+    margin: 30px auto !important;
+}
+
+// DOM order: setup(1) · config(2) · queue(3)
+// Visual order on mobile: setup(1) · queue(2) · config(3, full-width row below)
+#sf-annotated-wrapper > .sf-annotated:nth-child(1) { order: 1; }
+#sf-annotated-wrapper > .sf-annotated:nth-child(2) { order: 3; width: 100%; display: flex; justify-content: center; }
+#sf-annotated-wrapper > .sf-annotated:nth-child(3) { order: 2; }
+
+.sf-popup { bottom: auto !important; transform: none !important; opacity: 0.85; }
+.sf-popup.hl-hover         { transform: scale(1.04) !important; }
+.sf-popup--center.hl-hover { transform: scale(1.04) !important; }
+
+// setup-form popups — alternating sides
+.sf-popup[data-hl="sf-cible"]    { top: 15% !important; left: auto !important;  right: 10px !important; }
+.sf-popup[data-hl="sf-priorite"] { top: 47% !important; left: 10px !important;  right: auto !important; }
+.sf-popup[data-hl="sf-minimum"]  { top: 75% !important; left: auto !important;  right: 10px !important; }
+
+// config-form popups
+.sf-popup[data-hl="cf-use-runes"] { top:  8% !important; left: auto !important; right: 10px !important; }
+.sf-popup[data-hl="cf-max-rune"]  { top: 24% !important; left: 10px !important; right: auto !important; }
+.sf-popup[data-hl="cf-threshold"] { top: 47% !important; left: auto !important; right: 10px !important; }
+.sf-popup[data-hl="cf-script"]    { top: 65% !important; left: 10px !important; right: auto !important; }
+.sf-popup[data-hl="cf-presets"]   { top: 81% !important; left: auto !important; right: 10px !important; }
+
+// queue-form popup
+.sf-popup[data-hl="qf-queue"]     { top: 40% !important; left: 10px !important; right: auto !important; }
+
+// "How does it work" — stack vertically
+#how-works-outer {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+.dashboard-container {
+    position: relative;
+    display: flex;
+    overflow: visible;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    flex-direction: column !important;
+    align-items: center !important;
+    left: 0 !important;
+    gap: 60px !important;
+}
+
+// OCR / Mouse Control / Smart AI — side-by-side on mobile
+#how-works-outer .how-works-desc {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-top: 16px !important;
+    width: 100%;
+}
+#how-works-outer .how-works-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 16px 24px !important;
+    justify-content: center !important;
+}
+#how-works-outer .how-works-list li {
+    flex: 1;
+    min-width: 120px;
+    max-width: 220px;
+    text-align: center;
+}
+
+
+// ── Desktop overrides ──────────────────────────────────────────────────────
+@screen 2xl {
+    // sf-annotated-wrapper — restore row layout
     #sf-annotated-wrapper {
-        flex-direction: column !important;
+        flex-wrap: nowrap !important;
         align-items: center !important;
-        gap: 60px !important;
-        margin: 60px auto !important;
+        justify-content: space-around !important;
+        gap: 120px !important;
+        margin: 120px 0 !important;
     }
+    #sf-annotated-wrapper > .sf-annotated:nth-child(1) { order: 0; }
+    #sf-annotated-wrapper > .sf-annotated:nth-child(2) { order: 0; width: auto; display: block; }
+    #sf-annotated-wrapper > .sf-annotated:nth-child(3) { order: 0; }
 
-    .sf-popup { bottom: auto !important; transform: none !important; opacity: 0.85; }
-    .sf-popup.hl-hover         { transform: scale(1.04) !important; }
-    .sf-popup--center.hl-hover { transform: scale(1.04) !important; }
+    // Popup — restore desktop appearance
+    .sf-popup { opacity: 1; }
+    .sf-popup--center { transform: translateY(-50%); }
+    .sf-popup--center.hl-hover { transform: translateY(-50%) scale(1.04) !important; }
 
-    // setup-form popups — alternating sides
-    .sf-popup[data-hl="sf-cible"]    { top: 15% !important; left: auto !important; right: 10px !important; }
-    .sf-popup[data-hl="sf-priorite"] { top: 47% !important; left: 10px !important; right: auto !important; }
-    .sf-popup[data-hl="sf-minimum"]  { top: 75% !important; left: auto !important; right: 10px !important; }
+    // Popup desktop positions (matching blade inline styles)
+    .sf-popup[data-hl="sf-cible"]    { top: -100px !important; left: 150px !important;   right: auto !important;   bottom: auto !important; }
+    .sf-popup[data-hl="sf-priorite"] { top: 50px !important;   right: -130px !important; left: auto !important;    bottom: auto !important; }
+    .sf-popup[data-hl="sf-minimum"]  { bottom: -70px !important; left: 330px !important; top: auto !important;     right: auto !important; }
+    .sf-popup[data-hl="cf-use-runes"] { top: -100px !important; left: -80px !important;  right: auto !important;   bottom: auto !important; }
+    .sf-popup[data-hl="cf-max-rune"]  { top: -20px !important;  right: -120px !important; left: auto !important;   bottom: auto !important; }
+    .sf-popup[data-hl="cf-threshold"] { top: -80px !important;  right: 200px !important;  left: auto !important;   bottom: auto !important; }
+    .sf-popup[data-hl="cf-script"]    { bottom: -60px !important; left: -120px !important; top: auto !important;   right: auto !important; }
+    .sf-popup[data-hl="cf-presets"]   { bottom: -20px !important; right: -120px !important; left: auto !important; top: auto !important; }
+    .sf-popup[data-hl="qf-queue"]     { top: 150px !important;  left: -90px !important;   right: auto !important;  bottom: auto !important; }
 
-    // config-form popups
-    .sf-popup[data-hl="cf-use-runes"] { top:  8% !important; left: auto !important; right: 10px !important; }
-    .sf-popup[data-hl="cf-max-rune"]  { top: 24% !important; left: 10px !important; right: auto !important; }
-    .sf-popup[data-hl="cf-threshold"] { top: 47% !important; left: auto !important; right: 10px !important; }
-    .sf-popup[data-hl="cf-script"]    { top: 65% !important; left: 10px !important; right: auto !important; }
-    .sf-popup[data-hl="cf-presets"]   { top: 81% !important; left: auto !important; right: 10px !important; }
+}
 
-    // queue-form popup
-    .sf-popup[data-hl="qf-queue"]     { top: 40% !important; left: 10px !important; right: auto !important; }
-
-    // "How does it work" — stack vertically
-    #how-works-outer {
-        flex-direction: column;
-        align-items: center;
-        overflow-x: hidden;
-    }
+@screen xl {
     .dashboard-container {
-        flex-direction: column !important;
-        align-items: center !important;
-        left: 0 !important;
-        gap: 60px !important;
+        left: -50px !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 0 !important;
+        padding-top: 8vh;
     }
-
-    // OCR / Mouse Control / Smart AI — side-by-side on mobile
+    // How-works-outer — restore desktop layout
+    #how-works-outer {
+        flex-direction: row;
+        align-items: flex-start;
+        overflow-x: visible;
+    }
     #how-works-outer .how-works-desc {
-        max-width: 100% !important;
-        padding-left: 0 !important;
-        padding-top: 16px !important;
-        width: 100%;
+        max-width: 20rem !important;  // max-w-xs
+        padding-left: 2rem !important; // pl-8
+        padding-top: 4rem !important;  // pt-16
+        width: auto !important;
     }
     #how-works-outer .how-works-list {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        gap: 16px 24px !important;
-        justify-content: center !important;
+        display: block !important;
+        flex-direction: unset !important;
+        flex-wrap: unset !important;
+        gap: 0 !important;
+        justify-content: unset !important;
     }
     #how-works-outer .how-works-list li {
-        flex: 1;
-        min-width: 120px;
-        max-width: 220px;
-        text-align: center;
+        flex: unset;
+        min-width: unset;
+        max-width: unset;
+        text-align: left;
     }
 }
+
+// ── Responsive scale table ─────────────────────────────────────────────────
+//                                dofus  wf     config  features-setup
+@mixin wf-scales($d, $wf, $sw, $c, $fs) {
+    .dofus-window                   { --sw-scale: #{$d};  }
+    .queue-window                  { --sw-scale: #{$wf}; }
+    .setup-window                   { --sw-scale: #{$sw}; }
+    .config-window                  { --sw-scale: #{$c};  }
+    #features-section .setup-window { --sw-scale: #{$fs}; }
+}
+
+@screen sm  { @include wf-scales(0.5, 0.5, 0.9, 0.7, 0.7); }
+@screen md  { @include wf-scales(0.6, 0.6, 1.0, 1.0, 0.8); }
+@screen lg  { @include wf-scales(0.7, 0.7, 1.1, 1.1, 0.9); }
+@screen xl  { @include wf-scales(0.8, 0.8, 0.8, 1.1, 0.9); }
+@screen 2xl { @include wf-scales(0.9, 0.9, 1.0, 1.0, 0.9); }
+@screen 3xl { @include wf-scales(1.0, 1.0, 1.0, 1.0, 1.2); }
