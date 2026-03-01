@@ -1,0 +1,29 @@
+{
+  "packages": [
+    "nodejs@16",
+    "python@3.11"
+  ],
+  "env": {
+    "VENV_DIR": ".venv"
+  },
+  "shell": {
+    "init_hook": [
+      "echo '🔧 Setting up Python virtual environment...'",
+      "python -m venv $VENV_DIR",
+      "source $VENV_DIR/bin/activate",
+      "pip install --quiet --upgrade pip",
+      "pip install --quiet requests Pillow",
+      "echo '📦 Cleaning up old Node modules (to prevent version conflicts)...'",
+      "rm -rf node_modules package-lock.json",
+      "echo '📥 Installing Node dependencies...'",
+      "npm install",
+      "echo '✅ Devbox environment is ready!'"
+    ],
+    "scripts": {
+      "build": "npm run production",
+      "dev": "npm run development",
+      "watch": "npm run watch",
+      "spritesheet": "python helpers/build_spritesheet.py"
+    }
+  }
+}

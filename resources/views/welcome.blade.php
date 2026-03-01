@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@push('head')
-    <meta property="og:video" content="{{ asset('videos/inkybot_intro.mp4') }}" />
-    <meta property="og:video:width" content="1920">
-    <meta property="og:video:height" content="1080">
-@endpush
-
 @section('hero')
     <x-main-hero width-class="w-full lg:w-3/5">
         <h1 class="uppercase tracking-loose w-full">{{ __('messages.category') }}</h1>
@@ -22,18 +16,26 @@
                class="inline-block mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded py-4 px-8 shadow-lg">
                 {{ __('common.download') }}
             </a>
-            <p class="my-2">
-                <a href="{{ route('install') }}" class="text-gray-300 font-bold hover:underline">
-                    {{ __('messages.install_instructions') }}
-                </a>
-            </p>
         </div>
     </x-main-hero>
 @endsection
 
 @section('content')
+<style>
+    .dashboard-container {
+            left: -50px;
+            display: flex;
+            /* A strict 100px gap is critical here: the SVG math relies on this 
+               exact distance to perfectly drop into the center of the setup form. */
+            align-items: flex-start;
+            position: relative;
+            padding-top: 8vh; /* Leaves room for the overhead data stream */
+            overflow: hidden; /* Hides lines going off-screen */
+            font-family: 'Segoe UI', Arial, sans-serif;
+            overflow:visible;
+        }
+</style>
     @include('partials.whyus')
     @include('partials.features')
-    @include('partials.introvideo')
     @include('partials.pricing')
 @endsection

@@ -1,0 +1,537 @@
+// ═══════════════════════════════════════════════════════════════════════════
+// winforms.scss — Shared styles for the three Windows Forms UI replicas:
+//   .config-window  .setup-window  .queue-window
+//
+// All three support:
+//   • --sw-scale  — uniform scale factor (default 1). Set it on any ancestor
+//                   element and the entire form scales proportionally.
+//   • Color CSS vars — override any color per-element or globally.
+//
+// Usage example: <div class="sf-annotated" style="--sw-scale: 1.2">
+//                    @include('partials.setup-form')
+//                </div>
+// ═══════════════════════════════════════════════════════════════════════════
+
+
+// ── Shared block: CSS vars + all common styles ────────────────────────────
+// Every pixel-size value is wrapped in calc(Xpx * var(--sw-scale)) so the
+// entire form scales uniformly. Borders stay at 1px (never scale borders).
+#features-section .setup-window {
+    --sw-scale: 1.2;
+} 
+
+.config-window,
+.setup-window,
+.queue-window {
+
+    // ── Color variables (override per element or globally) ─────────────────
+    --wf-bg:           #1e1e1e;
+    --wf-bg-dark:      #080808;
+    --wf-bg-darkest:   #141414;
+    --wf-border:       #3E3E42;
+    --wf-text:         #EFEFEF;
+    --wf-text-dim:     #dcdcdc;
+    --wf-white:        #ffffff;
+    --wf-black:        #000000;
+    --wf-hl-green:     #8FD838;
+    --wf-hl-green-rgb: 143, 216, 56;   // kept as RGB for rgba() usage
+
+    // ── Scale (default = 1, override to zoom the whole form) ──────────────
+    --sw-scale: 1;
+
+    // ── Window base ────────────────────────────────────────────────────────
+    background-color: var(--wf-bg);
+    border: 1px solid var(--wf-border);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+    color: var(--wf-text);
+    font-family: sans-serif;
+
+    // ── Title bar ──────────────────────────────────────────────────────────
+    .title-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 calc(7px * var(--sw-scale));
+        background-color: var(--wf-white);
+        color: var(--wf-black);
+        height: calc(21px * var(--sw-scale));
+        user-select: none;
+        flex-shrink: 0;
+    }
+    .title {
+        font-size: calc(8px * var(--sw-scale));
+        display: flex; align-items: center; gap: 6px;
+    }
+    .title-icon {
+        width: calc(14px * var(--sw-scale));
+        height: calc(14px * var(--sw-scale));
+    }
+    .controls    { display: flex; height: 100%; }
+    .control-btn {
+        width: calc(21px * var(--sw-scale));
+        display: flex; justify-content: center; align-items: center;
+        font-size: calc(10px * var(--sw-scale));
+        color: var(--wf-black);
+    }
+
+    // ── Content area (base) ────────────────────────────────────────────────
+    .content {
+        flex: 1;
+        overflow-y: auto;
+        background-color: var(--wf-bg);
+    }
+
+    // ── Footer (base) ──────────────────────────────────────────────────────
+    .footer {
+        background-color: var(--wf-bg);
+        border-top: 1px solid var(--wf-border);
+        flex-shrink: 0;
+    }
+
+    // ── Custom dropdown ────────────────────────────────────────────────────
+    .custom-dropdown {
+        display: flex; align-items: stretch;
+        background-color: var(--wf-bg-dark);
+        height: calc(19px * var(--sw-scale));
+    }
+    .custom-dropdown-text {
+        flex: 1;
+        padding: 0 calc(5px * var(--sw-scale));
+        font-size: calc(9px * var(--sw-scale));
+        display: flex; align-items: center;
+        color: var(--wf-text);
+    }
+    .custom-dropdown-arrow {
+        background-color: var(--wf-white);
+        color: var(--wf-black);
+        width: calc(16px * var(--sw-scale));
+        display: flex; justify-content: center; align-items: center;
+        font-size: calc(7px * var(--sw-scale));
+        flex-shrink: 0;
+    }
+
+    // ── Trash icon ─────────────────────────────────────────────────────────
+    .trash-icon {
+        background-color: var(--wf-bg-dark);
+        color: var(--wf-text);
+        border: none;
+        padding: calc(3px * var(--sw-scale)) calc(6px * var(--sw-scale));
+        font-size: calc(11px * var(--sw-scale));
+        height: calc(19px * var(--sw-scale));
+        display: flex; align-items: center; justify-content: center;
+    }
+
+    // ── Button (base) ──────────────────────────────────────────────────────
+    .button {
+        background-color: var(--wf-bg-dark);
+        color: var(--wf-text);
+        border: none;
+        padding: calc(7px * var(--sw-scale)) calc(8px * var(--sw-scale));
+        font-size: calc(9px * var(--sw-scale));
+        text-align: center;
+        text-transform: uppercase;
+        display: flex; justify-content: center; align-items: center;
+    }
+
+    // ── Examples link ──────────────────────────────────────────────────────
+    .examples-link {
+        color: var(--wf-text);
+        font-size: calc(9px * var(--sw-scale));
+        text-decoration: underline;
+    }
+
+    // ── Table base (config + setup share this; queue has no table) ─────────
+    table { width: 100%; border-collapse: collapse; font-size: calc(9px * var(--sw-scale)); }
+    th, td {
+        border: 1px solid var(--wf-border);
+        padding: calc(1px * var(--sw-scale)) calc(2px * var(--sw-scale));
+        text-align: left;
+    }
+    th  { background-color: var(--wf-bg-dark); color: var(--wf-text); font-weight: normal; }
+    tr  { background-color: var(--wf-bg); }
+}
+
+
+// ── Config window (unique styles) ─────────────────────────────────────────
+.config-window {
+    width: calc(600px * var(--sw-scale));
+    height: calc(650px * var(--sw-scale));
+
+    .content { padding: 0; display: flex; flex-direction: column; }
+    .hint-bar {
+        padding: calc(5px * var(--sw-scale));
+        font-size: calc(9px * var(--sw-scale));
+        border-bottom: 1px solid var(--wf-border);
+    }
+    .table-container { flex: 1; overflow-y: auto; }
+    td.cb-cell { text-align: center; vertical-align: middle; }
+
+    // ── Non-default cell (value differs from factory defaults) ─────────────
+    td.non-default { background-color: var(--wf-black); }
+
+    // ── HTML checkbox — table cells ────────────────────────────────────────
+    // White background + dark gray checkmark to match WinForms aesthetics
+    td.cb-cell input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: calc(9px * var(--sw-scale));
+        height: calc(9px * var(--sw-scale));
+        border: 1px solid #767676;
+        background-color: var(--wf-white);
+        cursor: default;
+        display: inline-block;
+        vertical-align: middle;
+        flex-shrink: 0;
+        pointer-events: none;
+
+        &:checked {
+            background-color: var(--wf-white);
+            border-color: #767676;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath stroke='%23444444' stroke-width='1.5' fill='none' d='M1 4.5L3 6.5 7 1.5'/%3E%3C/svg%3E");
+            background-size: calc(7px * var(--sw-scale));
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    // ── Settings section ───────────────────────────────────────────────────
+    .settings-section {
+        padding: calc(10px * var(--sw-scale));
+        border-top: 1px solid var(--wf-border);
+        font-size: calc(9px * var(--sw-scale));
+        display: flex; flex-direction: column;
+        gap: calc(8px * var(--sw-scale));
+        flex-shrink: 0;
+    }
+    .checkbox-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: calc(5px * var(--sw-scale)) calc(15px * var(--sw-scale));
+    }
+    .checkbox-item { display: flex; align-items: center; gap: calc(6px * var(--sw-scale)); }
+
+    // ── HTML checkbox — settings section (same visual style, slightly larger)
+    .checkbox-item input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: calc(10px * var(--sw-scale));
+        height: calc(10px * var(--sw-scale));
+        border: 1px solid #767676;
+        background-color: var(--wf-white);
+        cursor: default;
+        display: inline-block;
+        vertical-align: middle;
+        flex-shrink: 0;
+        pointer-events: none;
+
+        &:checked {
+            background-color: var(--wf-white);
+            border-color: #767676;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath stroke='%23444444' stroke-width='1.8' fill='none' d='M1.5 5L4 7.5 8.5 2.5'/%3E%3C/svg%3E");
+            background-size: calc(9px * var(--sw-scale));
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    .controls-group { display: flex; align-items: center; justify-content: space-between; }
+    .control-item   { display: flex; align-items: center; gap: calc(8px * var(--sw-scale)); }
+
+    .num-input {
+        background-color: var(--wf-bg-dark);
+        color: var(--wf-text);
+        border: 1px solid var(--wf-bg-dark);
+        padding: calc(3px * var(--sw-scale)) calc(5px * var(--sw-scale));
+        font-size: calc(9px * var(--sw-scale));
+        width: calc(40px * var(--sw-scale));
+        text-align: right;
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .num-input-controls { display: flex; flex-direction: column; margin-left: calc(4px * var(--sw-scale)); }
+    .num-input-btn { font-size: calc(7px * var(--sw-scale)); line-height: calc(7px * var(--sw-scale)); color: #999; }
+
+    .footer {
+        padding: calc(10px * var(--sw-scale));
+        display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .footer-left  { display: flex; flex-direction: column; gap: calc(8px * var(--sw-scale)); }
+    .footer-right {
+        display: flex; flex-direction: column;
+        gap: calc(8px * var(--sw-scale)); align-items: flex-end;
+        transition: background-color 0.25s ease;
+        border-radius: 2px; outline: 1px solid transparent;
+
+        &.hl-active {
+            background-color: rgba(var(--wf-hl-green-rgb), 0.1);
+            outline-color: rgba(var(--wf-hl-green-rgb), 0.4);
+        }
+    }
+
+    .file-picker {
+        display: flex; align-items: center;
+        gap: calc(8px * var(--sw-scale));
+        font-size: calc(9px * var(--sw-scale));
+        transition: background-color 0.25s ease;
+        border-radius: 2px; outline: 1px solid transparent;
+
+        &.hl-active {
+            background-color: rgba(var(--wf-hl-green-rgb), 0.1);
+            outline-color: rgba(var(--wf-hl-green-rgb), 0.4);
+        }
+    }
+
+    .button.save { background-color: var(--wf-black); padding: calc(7px * var(--sw-scale)) calc(15px * var(--sw-scale)); }
+    .item-dropdown-group { display: flex; align-items: center; gap: calc(2px * var(--sw-scale)); }
+}
+
+
+// ── Setup window (unique styles) ──────────────────────────────────────────
+.setup-window {
+    width: calc(420px * var(--sw-scale));
+    position: relative; z-index: 2; overflow-x: hidden;
+
+    // Setup's title icon needs a small top nudge to align with the text
+    .title-icon { margin-top: calc(2px * var(--sw-scale)); }
+
+    // Prevents the table from causing horizontal scroll on narrow viewports
+    .content { overflow-x: hidden; }
+
+    tr.last-row { background-color: var(--wf-bg-darkest); font-weight: bold; }
+
+    // Icon column (refresh button, remove button)
+    th.icon-cell, td.icon-cell {
+        text-align: center;
+        width: calc(10px * var(--sw-scale));
+        min-width: calc(10px * var(--sw-scale));
+        max-width: calc(10px * var(--sw-scale));
+        padding: calc(1px * var(--sw-scale));
+        color: var(--wf-text); border-top: none; border-bottom: none;
+    }
+    th.icon-cell { background-color: var(--wf-bg-dark); }
+    td.icon-cell { background-color: var(--wf-bg); }
+    tbody tr:first-child td.icon-cell { background-color: var(--wf-bg-dark); }
+    .refresh-icon { font-size: calc(10px * var(--sw-scale)); }
+
+    .footer {
+        padding: calc(10px * var(--sw-scale)) 0 0 0;
+        display: flex; flex-direction: column;
+        gap: calc(8px * var(--sw-scale));
+    }
+    .footer .button { display: flex; justify-content: center; align-items: center; }
+    .footer-top    { display: flex; justify-content: space-between; align-items: center; }
+    .footer-middle { display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: calc(7px * var(--sw-scale)); }
+
+    .examples-link { margin: 0 calc(3px * var(--sw-scale)); }
+
+    // Setup buttons stretch to fill their container equally
+    .button { flex: 1; }
+}
+
+
+// ── Queue window (unique styles) ───────────────────────────────────────────
+.queue-window {
+    width: calc(430px * var(--sw-scale));
+
+    // Queue's icon sits 1px lower than config's (matches the original WinForms layout)
+    .title-icon { margin-top: calc(1px * var(--sw-scale)); }
+
+    .content { display: flex; flex-direction: column; }
+
+    .footer { padding: calc(7px * var(--sw-scale)) calc(8px * var(--sw-scale)); }
+
+    // Queue's single button spans the full width
+    .button { width: 100%; }
+
+    .queue-item {
+        display: flex; align-items: center;
+        padding: calc(8px * var(--sw-scale)) calc(10px * var(--sw-scale));
+        border-bottom: 1px solid var(--wf-border);
+        gap: calc(10px * var(--sw-scale));
+        transition: background-color 0.25s ease;
+
+        &.hl-active {
+            background-color: rgba(var(--wf-hl-green-rgb), 0.07);
+            box-shadow: inset 2px 0 0 rgba(var(--wf-hl-green-rgb), 0.4);
+        }
+    }
+
+    .item-icon-placeholder {
+        width: calc(36px * var(--sw-scale));
+        height: calc(36px * var(--sw-scale));
+        background-color: #2D2D30;
+        display: flex; justify-content: center; align-items: center;
+        border: 1px solid var(--wf-border);
+        border-radius: 2px; flex-shrink: 0;
+    }
+    .icon-gloursonne { background: radial-gradient(circle, #b19356 0%, #3e331c 100%); }
+    .icon-veinard    { background: radial-gradient(circle, #5b7573 0%, #1e2a2a 100%); }
+    .icon-crocanneau { background: radial-gradient(circle, #4fa699 0%, #1f423d 100%); }
+    .icon-gelano     { background: radial-gradient(circle, #9b7fd4 0%, #2d1a5a 100%); }
+    .icon-douze      { background: radial-gradient(circle, #d4a017 0%, #5a3800 100%); }
+
+    // ── Item sprite sheet (128×128 per frame, horizontal, 5 frames) ────────
+    // Each frame is scaled to fill the placeholder exactly — no padding offset
+    // so frames align cleanly with no bleed into neighbours.
+    $_icon-frame: 36px; // must match .item-icon-placeholder width/height
+    $_icon-count: 5;
+    @mixin item-sprite($frame) {
+        background-image: url('../images/items-sprite.png');
+        background-repeat: no-repeat;
+        background-color: transparent;
+        background-size: calc(#{$_icon-frame * $_icon-count} * var(--sw-scale)) calc(#{$_icon-frame} * var(--sw-scale));
+        background-position: calc(#{-$_icon-frame * $frame} * var(--sw-scale)) 0;
+    }
+    .icon-bearbaric_wedding_ring { @include item-sprite(0); }
+    .icon-belladonnas_cruelty    { @include item-sprite(1); }
+    .icon-crocoring              { @include item-sprite(2); }
+    .icon-jammy_jack_glove       { @include item-sprite(3); }
+    .icon-levitrof_wedding_ring       { @include item-sprite(4); }
+
+    .item-details { display: flex; gap: calc(8px * var(--sw-scale)); flex: 1; }
+    .detail-col   { display: flex; flex-direction: column; gap: calc(4px * var(--sw-scale)); }
+    .detail-label { color: var(--wf-text-dim); font-size: calc(9px * var(--sw-scale)); }
+
+    .item-actions { display: flex; flex-direction: column; gap: calc(3px * var(--sw-scale)); flex-shrink: 0; }
+    .action-btn {
+        background-color: var(--wf-bg-dark);
+        color: var(--wf-text);
+        border: none;
+        padding: calc(3px * var(--sw-scale)) calc(6px * var(--sw-scale));
+        font-size: calc(9px * var(--sw-scale));
+        text-align: center; text-transform: uppercase;
+        width: calc(70px * var(--sw-scale));
+    }
+}
+
+
+// ── Feature-page highlight transitions (column/table cells) ───────────────
+#sf-annotated-wrapper .setup-window th,
+#sf-annotated-wrapper .setup-window td,
+#sf-annotated-wrapper .config-window th,
+#sf-annotated-wrapper .config-window td {
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+#sf-annotated-wrapper .setup-window th.hl-active,
+#sf-annotated-wrapper .config-window th.hl-active {
+    background-color: rgba(143, 216, 56, 0.25) !important;
+    color: #c8ef70 !important;
+}
+#sf-annotated-wrapper .setup-window td.hl-active,
+#sf-annotated-wrapper .config-window td.hl-active {
+    background-color: rgba(143, 216, 56, 0.08) !important;
+}
+#sf-annotated-wrapper .config-window td.non-default.hl-active {
+    background-color: darken(#8FD838, 44%) !important;
+}
+
+
+// ── Feature-page annotation popups ────────────────────────────────────────
+.sf-annotated { position: relative; flex-shrink: 0; }
+
+.sf-popup {
+    position: absolute;
+    width: 155px;
+    background: #ffffff;
+    border: 1px solid #e3e8ef;
+    border-radius: 8px;
+    padding: 10px 12px 11px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.05);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    z-index: 10;
+    pointer-events: auto;
+    cursor: default;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+}
+.sf-popup__label {
+    font-size: 9px; font-weight: 700; color: #0a2540;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 5px; transition: color 0.25s ease;
+}
+.sf-popup__desc    { font-size: 10px; color: #425466; line-height: 1.45; margin: 0 0 6px 0; }
+.sf-popup__example {
+    font-size: 9px; color: #697386; font-style: italic; line-height: 1.4; margin: 0;
+    border-left: 2px solid #e3e8ef; padding-left: 6px;
+}
+
+.sf-popup--top    { top: -20px;                            right: -170px; }
+.sf-popup--center { top: 50%; transform: translateY(-50%); right: -170px; }
+.sf-popup--bottom { bottom: -20px;                         right: -170px; }
+.sf-popup--left   { right: auto; left: -170px; }
+
+// Active highlight (loop + hover)
+.sf-popup.hl-active {
+    border-color: #8FD838;
+    box-shadow: 0 4px 20px rgba(143,216,56,0.2), 0 0 0 3px rgba(143,216,56,0.1), 0 1px 4px rgba(0,0,0,0.05);
+}
+.sf-popup.hl-active .sf-popup__label { color: #3a6a10; }
+
+// Scale animation — cursor-hover only, never during loop
+.sf-popup.hl-hover               { transform: scale(1.04); }
+.sf-popup--center.hl-hover       { transform: translateY(-50%) scale(1.04); }
+
+
+// ── Mobile / small-screen layout ──────────────────────────────────────────
+@media (max-width: 1500px) {
+    #sf-annotated-wrapper {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 60px !important;
+        margin: 60px auto !important;
+    }
+
+    .sf-popup { bottom: auto !important; transform: none !important; opacity: 0.85; }
+    .sf-popup.hl-hover         { transform: scale(1.04) !important; }
+    .sf-popup--center.hl-hover { transform: scale(1.04) !important; }
+
+    // setup-form popups — alternating sides
+    .sf-popup[data-hl="sf-cible"]    { top: 15% !important; left: auto !important; right: 10px !important; }
+    .sf-popup[data-hl="sf-priorite"] { top: 47% !important; left: 10px !important; right: auto !important; }
+    .sf-popup[data-hl="sf-minimum"]  { top: 75% !important; left: auto !important; right: 10px !important; }
+
+    // config-form popups
+    .sf-popup[data-hl="cf-use-runes"] { top:  8% !important; left: auto !important; right: 10px !important; }
+    .sf-popup[data-hl="cf-max-rune"]  { top: 24% !important; left: 10px !important; right: auto !important; }
+    .sf-popup[data-hl="cf-threshold"] { top: 47% !important; left: auto !important; right: 10px !important; }
+    .sf-popup[data-hl="cf-script"]    { top: 65% !important; left: 10px !important; right: auto !important; }
+    .sf-popup[data-hl="cf-presets"]   { top: 81% !important; left: auto !important; right: 10px !important; }
+
+    // queue-form popup
+    .sf-popup[data-hl="qf-queue"]     { top: 40% !important; left: 10px !important; right: auto !important; }
+
+    // "How does it work" — stack vertically
+    #how-works-outer {
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+    }
+    .dashboard-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        left: 0 !important;
+        gap: 60px !important;
+    }
+
+    // OCR / Mouse Control / Smart AI — side-by-side on mobile
+    #how-works-outer .how-works-desc {
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-top: 16px !important;
+        width: 100%;
+    }
+    #how-works-outer .how-works-list {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 16px 24px !important;
+        justify-content: center !important;
+    }
+    #how-works-outer .how-works-list li {
+        flex: 1;
+        min-width: 120px;
+        max-width: 220px;
+        text-align: center;
+    }
+}

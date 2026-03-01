@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'heading' => 'Features',
+    'heading' => 'How to use it?',
     'setup_alt' => 'Setup form for Bearbaric wedding ring',
     'client_alt' => 'Preview of the Inkybot client with a successful MP exotic mage of Bearbaric wedding ring',
     'config_alt' => 'Configuration form for Bearbaric wedding ring',

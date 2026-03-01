@@ -1,0 +1,75 @@
+/* Dofus Stats Sprite Sheet */
+
+.stat-icon {
+  width: 55px;
+  height: 55px;
+  background-image: url(/images/dofus_stats_spritesheet.png?1b10da2e1068b75c83c5a53eb8df985a);
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.stat-ap { background-position: 0 0;
+}
+
+.stat-apparry { background-position: -55px 0;
+}
+
+.stat-apreduction { background-position: -110px 0;
+}
+
+.stat-agility { background-position: -165px 0;
+}
+
+.stat-chance { background-position: -220px 0;
+}
+
+.stat-critical { background-position: 0 -55px;
+}
+
+.stat-dodge { background-position: -55px -55px;
+}
+
+.stat-heals { background-position: -110px -55px;
+}
+
+.stat-initiative { background-position: -165px -55px;
+}
+
+.stat-intelligence { background-position: -220px -55px;
+}
+
+.stat-lock { background-position: 0 -110px;
+}
+
+.stat-mp { background-position: -55px -110px;
+}
+
+.stat-mpparry { background-position: -110px -110px;
+}
+
+.stat-mpreduction { background-position: -165px -110px;
+}
+
+.stat-pods { background-position: -220px -110px;
+}
+
+.stat-power { background-position: 0 -165px;
+}
+
+.stat-prospecting { background-position: -55px -165px;
+}
+
+.stat-range { background-position: -110px -165px;
+}
+
+.stat-strength { background-position: -165px -165px;
+}
+
+.stat-summons { background-position: -220px -165px;
+}
+
+.stat-vitality { background-position: 0 -220px;
+}
+
+.stat-wisdom { background-position: -55px -220px;
+}

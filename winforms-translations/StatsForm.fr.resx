@@ -1,0 +1,95 @@
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="$this.Text" xml:space="preserve">
+        <value>Inkybot - Préparer</value>
+    </data>
+    <data name="addExoButton.Text" xml:space="preserve">
+        <value>AJOUTER EXO</value>
+    </data>
+    <data name="linkLabel1.Text" xml:space="preserve">
+    <value>Voir des exemples</value>
+  </data>
+    <data name="clearExosButton.Text" xml:space="preserve">
+        <value>SUPPRIMER EXOS</value>
+    </data>
+    <data name="TargetColumn.HeaderText" xml:space="preserve">
+        <value>Cible</value>
+    </data>
+    <data name="ValueColumn.HeaderText" xml:space="preserve">
+        <value>Valeur</value>
+    </data>
+    <data name="StatColumn.HeaderText" xml:space="preserve">
+        <value>Caractéristique</value>
+    </data>
+    <data name="addPresetButton.Text" xml:space="preserve">
+    <value>ENREGISTRER LE PRÉRÉGLAGE</value>
+  </data>
+    <data name="popup.error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+    <data name="deletePresetButton.TooltipText" xml:space="preserve">
+        <value>Supprimer le préréglage</value>
+    </data>
+    <data name="presetsComboBox.TextEmpty" xml:space="preserve">
+    <value>Rien</value>
+  </data>
+    <data name="popup.error_restricted" xml:space="preserve">
+    <value>Fonctionnalité Restreinte</value>
+  </data>
+    <data name="popup.error_notavailable_freetrial" xml:space="preserve">
+    <value>Cette fonctionnalité est réservée aux utilisateurs abonnés! Visitez le site Web officiel d'Inkybot pour souscrire à votre compte.</value>
+  </data>
+    <data name="MinColumn.HeaderText" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
+    <data name="popup.multiple_minimums_info_title" xml:space="preserve">
+    <value>Informations</value>
+  </data>
+    <data name="popup.multiple_minimums_info" xml:space="preserve">
+    <value>Le saviez vous:
+Inky bot est plus performant si vous configurez 1 à 2 valeur minimale.
+
+Les minimums sont utilisés pour être sûr que les tentatives exos ne soient pas tenter sur des jets en dessous de ces valeurs. Configurez seulement les valeurs ou voulez qu’elle soit sûr à ces valeurs minimum le reste vous pouvez ne configurer que la valeur cible.</value>
+    </data>
+    <data name="popup.error_notavailable_current_plan" xml:space="preserve">
+    <value>Cette fonctionnalité n'est pas disponible dans votre plan tarifaire actuel. Visitez le site Web officiel d'Inkybot pour mettre à niveau les plans.</value>
+  </data>
+    <data name="popup.error_notavailable_current_plan_run_out" xml:space="preserve">
+    <value>Vous avez atteint la limite du nombre d'exos que vous pouvez mager avec votre plan tarifaire. Visitez le site Web officiel d'Inkybot pour mettre à niveau les plans.</value>
+  </data>
+    <data name="PriorityColumn.HeaderText" xml:space="preserve">
+    <value>Priorité</value>
+  </data>
+    <data name="ValueColumn.ToolTipText" xml:space="preserve">
+    <value>La valeur actuelle de cette caractéristique</value>
+  </data>
+    <data name="TargetColumn.ToolTipText" xml:space="preserve">
+    <value>La valeur de stats que tu souhaiterais atteindre</value>
+  </data>
+    <data name="MinColumn.ToolTipText" xml:space="preserve">
+    <value>Valeur minimale de la stat afin que l’objet soit considérer comme terminé</value>
+  </data>
+    <data name="PriorityColumn.ToolTipText" xml:space="preserve">
+    <value>L’ordre des stats que tu veux améliorer (rang élevé = plus important)</value>
+  </data>
+    <data name="showAdvancedOptionsButton.ToolTipText" xml:space="preserve">
+    <value>Montrer les options avancées</value>
+  </data>
+    <data name="showAdvancedOptionsButton.ToolTipTextHide" xml:space="preserve">
+    <value>Masquer les options avancées</value>
+  </data>
+    <data name="refreshButton.ToolTipText" xml:space="preserve">
+    <value>Actualiser les caractéristiques</value>
+  </data>
+</root>
