@@ -29119,35 +29119,43 @@ readers do not read off random characters that represent icons */
 }
 
 .queue-window .icon-bearbaric_wedding_ring {
-  background-image: url(/images/items-sprite.png?ed392d146db7d1aac7b3d348a4eb7594);
+  background-image: url(/images/items-sprite.png?c028a57bf4794f4d42159bb67c4283c4);
   background-repeat: no-repeat;
   background-color: transparent;
-  background-size: calc(128px * var(--sw-scale)) calc(32px * var(--sw-scale));
-  background-position: calc(2px * var(--sw-scale)) calc(2px * var(--sw-scale));
+  background-size: calc(180px * var(--sw-scale)) calc(36px * var(--sw-scale));
+  background-position: calc(0px * var(--sw-scale)) 0;
 }
 
 .queue-window .icon-belladonnas_cruelty {
-  background-image: url(/images/items-sprite.png?ed392d146db7d1aac7b3d348a4eb7594);
+  background-image: url(/images/items-sprite.png?c028a57bf4794f4d42159bb67c4283c4);
   background-repeat: no-repeat;
   background-color: transparent;
-  background-size: calc(128px * var(--sw-scale)) calc(32px * var(--sw-scale));
-  background-position: calc(-30px * var(--sw-scale)) calc(2px * var(--sw-scale));
+  background-size: calc(180px * var(--sw-scale)) calc(36px * var(--sw-scale));
+  background-position: calc(-36px * var(--sw-scale)) 0;
 }
 
 .queue-window .icon-crocoring {
-  background-image: url(/images/items-sprite.png?ed392d146db7d1aac7b3d348a4eb7594);
+  background-image: url(/images/items-sprite.png?c028a57bf4794f4d42159bb67c4283c4);
   background-repeat: no-repeat;
   background-color: transparent;
-  background-size: calc(128px * var(--sw-scale)) calc(32px * var(--sw-scale));
-  background-position: calc(-62px * var(--sw-scale)) calc(2px * var(--sw-scale));
+  background-size: calc(180px * var(--sw-scale)) calc(36px * var(--sw-scale));
+  background-position: calc(-72px * var(--sw-scale)) 0;
 }
 
 .queue-window .icon-jammy_jack_glove {
-  background-image: url(/images/items-sprite.png?ed392d146db7d1aac7b3d348a4eb7594);
+  background-image: url(/images/items-sprite.png?c028a57bf4794f4d42159bb67c4283c4);
   background-repeat: no-repeat;
   background-color: transparent;
-  background-size: calc(128px * var(--sw-scale)) calc(32px * var(--sw-scale));
-  background-position: calc(-94px * var(--sw-scale)) calc(2px * var(--sw-scale));
+  background-size: calc(180px * var(--sw-scale)) calc(36px * var(--sw-scale));
+  background-position: calc(-108px * var(--sw-scale)) 0;
+}
+
+.queue-window .icon-levitrof_wedding_ring {
+  background-image: url(/images/items-sprite.png?c028a57bf4794f4d42159bb67c4283c4);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: calc(180px * var(--sw-scale)) calc(36px * var(--sw-scale));
+  background-position: calc(-144px * var(--sw-scale)) 0;
 }
 
 .queue-window .item-details {
@@ -30324,11 +30332,10 @@ readers do not read off random characters that represent icons */
 }
 
 .slot-gloursonne {
-  background-image: url(/images/items-sprite.png?ed392d146db7d1aac7b3d348a4eb7594);
+  background-image: url(/images/items-sprite.png?c028a57bf4794f4d42159bb67c4283c4);
   background-repeat: no-repeat;
-  background-size: 136px 34px;
-  /* 4 frames × 34px */
-  background-position: 2px 2px;
+  background-size: 190px 38px;
+  background-position: -152px 0;
 }
 
 .dofus-window .stat-icon {
