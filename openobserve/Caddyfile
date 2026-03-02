@@ -1,5 +1,21 @@
 openobserve.inkybot.me {
+    
+    # 1. The Write-Only Firewall Rule
+    @public_token_abuse {
+        header Authorization "Basic ***REMOVED***"
+        
+        # Allow standard JSON ingestion AND OpenTelemetry (OTLP) ingestion paths.
+        # If the path doesn't match one of these, it triggers the block.
+        not path /api/*/*/_json /api/*/*/_bulk /api/*/*/_multi /api/*/v1/logs /api/*/v1/metrics /api/*/v1/traces /opentelemetry.*
+    }
+
+    # 2. Block the request if it matched the rule above
+    respond @public_token_abuse "Forbidden: Token is strictly write-only." 403
+
+    # 3. gRPC Routing (OTLP)
     @grpc protocol grpc
     reverse_proxy @grpc h2c://openobserve:5081
+    
+    # 4. Standard HTTP Routing (Web UI, HTTP Ingestion)
     reverse_proxy openobserve:5080
 }
