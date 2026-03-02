@@ -1,3 +1,5 @@
 openobserve.inkybot.me {
+    @grpc protocol grpc
+    reverse_proxy @grpc h2c://openobserve:5081
     reverse_proxy openobserve:5080
 }
