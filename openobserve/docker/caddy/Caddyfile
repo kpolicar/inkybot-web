@@ -1,0 +1,3 @@
+openobserve.inkybot.me {
+    reverse_proxy openobserve:5080
+}

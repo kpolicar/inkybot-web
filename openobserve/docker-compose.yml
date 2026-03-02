@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  openobserve:
+    image: public.ecr.aws/zinclabs/openobserve:latest
+    container_name: openobserve
+    restart: unless-stopped
+    environment:
+      # Change these before deploying!
+      - ZO_ROOT_USER_EMAIL=inkybot.me@gmail.com
+      - ZO_ROOT_USER_PASSWORD=***REMOVED***
+    volumes:
+      - ./o2_data:/data
+    # We do NOT expose port 5080 here. 
+    # Caddy will securely route external traffic to it internally.
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./caddy_data:/data
+      - ./caddy_config:/config
+    depends_on:
+      - openobserve
