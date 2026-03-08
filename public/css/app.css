@@ -32686,6 +32686,7 @@ span.flatpickr-weekday {
 
 html {
   background: white;
+  overflow-x: hidden;
 }
 
 /* Container holding the video and content */
