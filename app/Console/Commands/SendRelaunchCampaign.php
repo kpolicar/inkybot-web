@@ -37,8 +37,14 @@ class SendRelaunchCampaign extends Command
             return self::SUCCESS;
         }
 
+        // Resolve resume offset to an ID boundary — OFFSET without LIMIT is invalid in MySQL
+        $resumeFromId = 0;
+        if ($skip > 0) {
+            $resumeFromId = User::orderBy('id')->skip($skip)->take(1)->value('id') ?? 0;
+        }
+
         $query = User::orderBy('id')
-            ->skip($skip);
+            ->when($resumeFromId > 0, fn ($q) => $q->where('id', '>=', $resumeFromId));
 
         $total = $query->count();
 
