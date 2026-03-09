@@ -9,6 +9,9 @@ services:
       # Change these before deploying!
       - ZO_ROOT_USER_EMAIL=inkybot.me@gmail.com
       - ZO_ROOT_USER_PASSWORD=***REMOVED***
+      - ZO_COMPACT_DATA_RETENTION_DAYS=14
+      - ZO_TELEMETRY=false
+      - ZO_AUTH_JWT_SECRET=***REMOVED***
     volumes:
       - ./o2_data:/data
     # We do NOT expose port 5080 here. 
