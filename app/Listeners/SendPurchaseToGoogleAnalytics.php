@@ -19,6 +19,10 @@ class SendPurchaseToGoogleAnalytics implements ShouldQueue
             return;
         }
 
+        if ($user->subscriptions()->count() > 1) {
+            return;
+        }
+
         app(GoogleAnalytics::class)->sendPurchaseEvent($user);
     }
 
