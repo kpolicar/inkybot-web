@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-29 -20 228 76" style="overflow:visible; background-color:white;">
+    <defs>
+        <clipPath id="inkybot-reveal">
+            <rect x="36" y="0" width="0" height="36">
+                <animate attributeName="width"
+                    values="0;0;18;18;36;36;54;54;68;68;84;84;100;100;120;120;0"
+                    keyTimes="0;0.259;0.280;0.309;0.330;0.359;0.380;0.409;0.430;0.459;0.480;0.509;0.530;0.554;0.570;0.850;1"
+                    dur="8s" repeatCount="indefinite"/>
+            </rect>
+        </clipPath>
+    </defs>
+    <!-- Animated border: two comets chasing clockwise, diagonally opposite -->
+    <!-- Perimeter = 2*(200+76) = 552; "65 211 65 211" places heads at top-left & bottom-right -->
+    <!-- Thin static frame -->
+    <rect x="-29" y="-20" width="228" height="76" fill="none" stroke="#c0c0c0" stroke-width="0.75"/>
+    <!-- Soft glow halo (wide, faint) -->
+    <!-- Perimeter = 2*(228+76) = 608; dasharray head=65, gap=239 → two comets opposite -->
+    <rect x="-29" y="-20" width="228" height="76" fill="none"
+          stroke="black" stroke-width="8" stroke-linecap="round" opacity="0.07"
+          stroke-dasharray="65 239 65 239">
+        <animate attributeName="stroke-dashoffset"
+            values="0;-228;-304;-532;-608"
+            keyTimes="0;0.42;0.475;0.895;1"
+            keySplines="0.5 0 0.5 1;0.15 0.1 0.85 0.9;0.5 0 0.5 1;0.15 0.1 0.85 0.9"
+            dur="2.4s" calcMode="spline" repeatCount="indefinite"/>
+    </rect>
+    <!-- Sharp comet heads -->
+    <rect x="-29" y="-20" width="228" height="76" fill="none"
+          stroke="black" stroke-width="2" stroke-linecap="round"
+          stroke-dasharray="65 239 65 239">
+        <animate attributeName="stroke-dashoffset"
+            values="0;-228;-304;-532;-608"
+            keyTimes="0;0.42;0.475;0.895;1"
+            keySplines="0.5 0 0.5 1;0.15 0.1 0.85 0.9;0.5 0 0.5 1;0.15 0.1 0.85 0.9"
+            dur="2.4s" calcMode="spline" repeatCount="indefinite"/>
+    </rect>
+    <!-- Outer group: slides container+quill from center to left and back -->
+    <g transform="translate(70 0)">
+        <animateTransform attributeName="transform" type="translate"
+            values="70 0;70 0;0 0;0 0;70 0;70 0"
+            keyTimes="0;0.060;0.160;0.750;0.875;1"
+            dur="8s" repeatCount="indefinite" calcMode="spline"
+            keySplines="0.4 0 0.6 1;0.25 0.1 0.25 1;0.4 0 0.6 1;0.25 0.1 0.25 1;0.4 0 0.6 1"/>
+        <!-- Ink container -->
+        <g fill="black" transform="translate(3 0)">
+            <path d="M 4 14 A 1.0001 1.0001 0 0 0 3.90625 14 A 1.001098 1.001098 0 0 0 3.5 15.90625 L 3 16 C 1.343 16 0 17.344 0 19 L 0 23 C 0 24.656 1.343 26 3 26 L 13 26 C 14.657 26 16 24.656 16 23 L 16 19 C 16 17.344 14.657 16 13 16 L 12.46875 15.875 A 1.0001 1.0001 0 0 0 12 14 Z"/>
+        </g>
+        <!-- Base shelf -->
+        <rect fill="black" x="0" y="31" width="31" height="3"/>
+        <!-- Quill -->
+        <g fill="black">
+            <animateTransform attributeName="transform" type="translate"
+                values="0 0;0 0;0 -8;27 11;35 6;35 11;51 6;51 11;65 6;65 11;79 6;79 11;95 6;95 11;111 6;111 11;121 6;121 -2;80 -16;30 -10;0 0;0 0"
+                keyTimes="0;0.160;0.195;0.225;0.260;0.280;0.310;0.330;0.360;0.380;0.410;0.430;0.460;0.480;0.510;0.530;0.555;0.570;0.610;0.645;0.670;1"
+                dur="8s" repeatCount="indefinite" calcMode="spline"
+                keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.7 0 0.3 1;0.5 0 0.5 1;0.0 0 0.2 1;0.4 0 0.6 1"/>
+            <path transform="translate(3 0)" d="M 25.875 0.0625 C 7.531 0.0625 8.78125 11.4375 8.78125 11.4375 C 8.2290994 12.246696 7.6995693 13.046426 7.25 13.84375 C 7.2192731 13.898245 7.1865288 13.94563 7.15625 14 L 6 17 L 8.78125 14 C 9.3768313 12.98664 10.046844 11.978044 10.8125 10.96875 C 10.850157 10.925536 10.924518 10.804345 10.96875 10.75 C 11.312321 10.305889 11.682667 9.871631 12.0625 9.4375 C 12.206935 9.262417 12.364614 9.0972071 12.53125 8.90625 C 14.065329 7.2428175 15.90652 5.6997788 18.0625 4.40625 C 16.2125 6.10525 13.15425 9.5635 11.65625 12.1875 C 14.10025 12.4015 17.5465 11.016 19.9375 9 C 19.3975 8.939 16.875 8.48475 16.125 7.84375 C 17.563 7.95975 19.95325 7.97425 20.90625 7.90625 C 22.84525 6.47025 25.063 3.0785 25.875 0.0625 z"/>
+        </g>
+    </g>
+    <!-- "INKYBOT" text revealed letter-by-letter, fades out after -->
+    <g clip-path="url(#inkybot-reveal)">
+        <animate attributeName="opacity"
+            values="0;0;1;1;0;0"
+            keyTimes="0;0.250;0.260;0.720;0.830;1"
+            dur="8s" repeatCount="indefinite"/>
+        <text x="38" y="25" fill="black" font-weight="bold" font-size="24" font-family="Arial, Helvetica, sans-serif">INKYBOT</text>
+    </g>
+</svg>
