@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Illuminate\Support\Facades\Cookie;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -36,9 +37,20 @@ class CreateNewUser implements CreatesNewUsers
         $data = [
             'name' => $input['name'],
             'email' => $input['email'],
-            'password' => Hash::make($input['password'])
+            'password' => Hash::make($input['password']),
+            'ga_client_id' => rescue(function () { return $this->extractGaClientId(); }),
         ];
 
         return User::create($data);
+    }
+
+    private function extractGaClientId(): ?string
+    {
+        $gaCookie = request()->cookie('_ga');
+        if ($gaCookie && preg_match('/GA\d+\.\d+\.(.+)$/', $gaCookie, $matches)) {
+            return $matches[1];
+        }
+
+        return null;
     }
 }

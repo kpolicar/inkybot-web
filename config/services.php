@@ -41,4 +41,9 @@ return [
         'webhook_secret' => env('COINBASE_WEBHOOK_SECRET')
     ],
 
+    'google_analytics' => [
+        'measurement_id' => env('GA_MEASUREMENT_ID', 'G-YB4YCLC9B6'),
+        'api_secret' => env('GA_API_SECRET'),
+    ],
+
 ];

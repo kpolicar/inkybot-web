@@ -40,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\CheckReferral::class,
+            \App\Http\Middleware\CaptureGoogleAnalyticsClientId::class,
         ],
 
         'api' => [

@@ -13,6 +13,8 @@ use App\Listeners\PostMagePublishToForum;
 use App\Listeners\SaveCoinbaseWebhook;
 use App\Listeners\SendLinkSuccessfulToDiscord;
 use App\Listeners\SendMagePublishToDiscord;
+use App\Listeners\SendPurchaseToGoogleAnalytics;
+use App\Listeners\SendRegistrationToGoogleAnalytics;
 use App\Listeners\SendUserSubscriptionStatusToDiscord;
 use App\Listeners\StorePayment;
 use App\Models\MagePublish;
@@ -37,12 +39,14 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            SendRegistrationToGoogleAnalytics::class,
         ],
         AccessTokenCreated::class => [
             EnforceUniqueUserAccessToken::class,
         ],
         UserPurchasedSubscription::class => [
             SendUserSubscriptionStatusToDiscord::class,
+            SendPurchaseToGoogleAnalytics::class,
         ],
         UserLinkedWithDiscord::class => [
             SendUserSubscriptionStatusToDiscord::class,

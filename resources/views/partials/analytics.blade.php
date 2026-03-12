@@ -6,5 +6,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'G-YB4YCLC9B6');
+    gtag('config', 'G-YB4YCLC9B6'@auth, {
+        'user_id': '{{ auth()->id() }}'
+    }@endauth);
 </script>
