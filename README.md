@@ -19,19 +19,19 @@ Laravel backend and website for Inkybot, a bot that automates "maging" (re-rolli
 sequenceDiagram
     participant Player
     participant Client
-    participant L as inkybot.me (Laravel)
+    participant L as inkybot.me Laravel app
     Player->>L: sign up, subscribe, download the build
-    Client->>L: version check, then log in (OAuth; 5-min tokens refreshed every 53 s)
+    Client->>L: version check, then log in (OAuth, 5-min tokens refreshed every 53 s)
     Client->>L: user, plan, gates, trial state (on login, then every 60 s)
     Client->>L: start a one-hour trial (once, if no plan)
     Client->>L: statistics batch (every 45 s while maging, and on finish)
     Client->>L: exo screenshot (when an AP/MP exo lands)
     L->>XenForo: watermarked screenshot to the user's forum thread
-    Client->>L: notify: item done, needs you, error, out of runes
-    L->>Discord: channel webhook; the bundled bot reads it
+    Client->>L: notify events - item done, needs you, error, out of runes
+    L->>Discord: channel webhook, read by the bundled bot
     Discord->>Player: DM
     L->>OneSignal: web push to the player
-    Client-->>OpenObserve: logs and metrics every 30 s (bypasses Laravel; off in the current build)
+    Client-->>OpenObserve: logs and metrics every 30 s (bypasses Laravel, off in the current build)
 ```
 
 - **Auth.** Fortify for the website; Passport for the client. Each instance names its token and a listener caps concurrent instances at the subscription quantity. OAuth and statistics bodies plus most responses are AES-256-CBC encrypted with a shared key; `/publish` adds a shared-secret header.
