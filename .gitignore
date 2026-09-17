@@ -13,3 +13,18 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 start.sh
+
+# Secrets hardening (post security audit)
+.env.*
+!.env.example
+storage/*.txt
+*.sql
+*.dump
+id_*
+*.pem
+*.key
+auth.json
+secrets.json
+openobserve/o2_data/
+caddy_data/
+caddy_config/
